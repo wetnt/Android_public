@@ -14,6 +14,11 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
     }
 
+    public void test(){
+    	int x = 0;
+    	int y = 0;
+    }
+    
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
