@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import bbk.zzz.debug.BBKDebug;
+import bbk.zzz.debug.bd;
 
 import android.os.Environment;
 import android.os.StatFs;
@@ -18,34 +18,34 @@ import android.util.Log;
 
 public class BBKSdCard2 {
 
-//	public static void Test() {
-//
-//		String PhoneCard = BBKSdCard2.getPhoneCardPath();// 手机内部
-//		String SDCard = BBKSdCard2.getSDCardPath();// 手机内置SDcard
-//		String NormalSDCard = BBKSdCard2.getNormalSDCardPath();// 默认SDcard
-//		String SDCardPathEx = BBKSdCard2.getSDCardPathEx();// 所有card
-//
-//		long PhoneCardSize = BBKSdCard2.getAvailableSize(PhoneCard);
-//		long SDCardSize = BBKSdCard2.getAvailableSize(SDCard);
-//		long NormalSDCardSize = BBKSdCard2.getAvailableSize(NormalSDCard);
-//
-//		BBKDebug.d(PhoneCard + "=" + PhoneCardSize, false, false);
-//		BBKDebug.d(SDCard + "=" + SDCardSize, false, false);
-//		BBKDebug.d(NormalSDCard + "=" + NormalSDCardSize, false, false);
-//
-//		BBKDebug.d("--------------------", false, false);
-//
-//		String columns[] = SDCardPathEx.split("\n");
-//		for (int i = 0; i < columns.length; i++) {
-//			BBKDebug.d(columns[i], false, false);
-//		}
-//	}
-	
+	// public static void Test() {
+	//
+	// String PhoneCard = BBKSdCard2.getPhoneCardPath();// 手机内部
+	// String SDCard = BBKSdCard2.getSDCardPath();// 手机内置SDcard
+	// String NormalSDCard = BBKSdCard2.getNormalSDCardPath();// 默认SDcard
+	// String SDCardPathEx = BBKSdCard2.getSDCardPathEx();// 所有card
+	//
+	// long PhoneCardSize = BBKSdCard2.getAvailableSize(PhoneCard);
+	// long SDCardSize = BBKSdCard2.getAvailableSize(SDCard);
+	// long NormalSDCardSize = BBKSdCard2.getAvailableSize(NormalSDCard);
+	//
+	// BBKDebug.d(PhoneCard + "=" + PhoneCardSize, false, false);
+	// BBKDebug.d(SDCard + "=" + SDCardSize, false, false);
+	// BBKDebug.d(NormalSDCard + "=" + NormalSDCardSize, false, false);
+	//
+	// BBKDebug.d("--------------------", false, false);
+	//
+	// String columns[] = SDCardPathEx.split("\n");
+	// for (int i = 0; i < columns.length; i++) {
+	// BBKDebug.d(columns[i], false, false);
+	// }
+	// }
+
 	private static String[] PathListMB;
 	private static ArrayList<String> PathList = new ArrayList<String>();
 
 	public static String[] GetAllSdPath() {
-		BBKDebug.d("GetAllSdPath", false, false);
+		bd.d("GetAllSdPath", false, false);
 		// ---------------------------------------------------------------------
 		PathList.clear();
 		getSDCardPathExternal(PathList);// 所有card
@@ -57,7 +57,7 @@ public class BBKSdCard2 {
 		PathListMB = new String[PathList.size()];
 		for (int i = 0; i < PathList.size(); i++) {
 			String x = PathList.get(i) + " " + (int) (BBKSdCard2.getAvailableSize(PathList.get(i)) / 1048576) + "MB";
-			BBKDebug.d(x, false, false);
+			bd.d(x, false, false);
 			PathListMB[i] = x;
 		}
 		// ---------------------------------------------------------------------
@@ -120,7 +120,8 @@ public class BBKSdCard2 {
 	}
 
 	// 获取最后一个SDcard
-	public static String SdPathAll[] ;	
+	public static String SdPathAll[];
+
 	public static String getLastSdCardPath() {
 		// -------------------------------------------------------
 		String SDCardPath = "";
@@ -129,7 +130,7 @@ public class BBKSdCard2 {
 		SdPathAll = SDCardPathEx.split("\n");
 		// -------------------------------------------------------
 		for (int i = 0; i < SdPathAll.length; i++) {
-			BBKDebug.d(SdPathAll[i], false, false);
+			bd.d(SdPathAll[i], false, false);
 		}
 		// -------------------------------------------------------
 		if (SdPathAll.length > 1)

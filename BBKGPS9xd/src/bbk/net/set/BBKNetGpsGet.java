@@ -5,7 +5,7 @@ import java.util.Random;
 import bbk.bbk.box.BBKSoft;
 import bbk.map.lay.BBKMapLayJson;
 import bbk.net.abc.BBKHttpGet;
-import bbk.zzz.debug.BBKDebug;
+import bbk.zzz.debug.bd;
 
 public class BBKNetGpsGet {
 	// ====================================================================================
@@ -54,11 +54,11 @@ public class BBKNetGpsGet {
 		myAsk += "&ln=" + GetUerLn;
 		myAsk += "&ta=0&tb=0";
 		myAsk += "rnd=" + GetRandInt();
-		BBKDebug.d(myAsk, false, false);
+		bd.d(myAsk, false, false);
 		// --------------------------------------------------
 		myjson = BBKHttpGet.BBKHttpGetUrl(myAsk, BBKSoft.myNetSet.gbCode, false);
 		// ------------------------------------------------------
-		BBKDebug.d(myjson, false, false);
+		bd.d(myjson, false, false);
 		BBKSoft.myLays.laytmp.clone(BBKMapLayJson.BBKMapLayFromJson(myjson));
 		// ------------------------------------------------------
 		// handlerAsk.post(RunnableAsk);

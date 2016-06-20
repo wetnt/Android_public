@@ -237,7 +237,8 @@ public class Main_Track extends BBKLayView {
 		public void run() {
 			// ------------------------------------------------------
 			list = BBKListView.DirFilesToListMap(BBKSoft.PathBbjs, BBKMapLay.bbklayExtension);
-			//list = BBKListView.DirFilesToListMap(BBKSoft.PathBbts, BBKMapLay.bbklayExtension);
+			// list = BBKListView.DirFilesToListMap(BBKSoft.PathBbts,
+			// BBKMapLay.bbklayExtension);
 			if (list == null)
 				return;
 			temp.clear();

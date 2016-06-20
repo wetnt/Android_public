@@ -5,12 +5,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import bbk.bbk.box.BBKSoft;
-import bbk.map.data.shapefile.BBKShapeToBBKLay;
 import bbk.map.lay.BBKMapLay.Lay_type;
 import bbk.sys.abc.BBKMsgBox;
 import bbk.sys.abc.BBKSYS;
 import bbk.uis.view.BBKListView;
-import bbk.zzz.debug.BBKDebug;
+import bbk.zzz.debug.bd;
 
 public class BBKFile {
 
@@ -33,8 +32,8 @@ public class BBKFile {
 	public static void BBKFileRun(File file, String pathname, String Exte) {
 		// -----------------------------------------------------
 		boolean loadkey = false;
-		BBKDebug.d(pathname, false, false);
-		BBKDebug.d(Exte, false, false);
+		bd.d(pathname, false, false);
+		bd.d(Exte, false, false);
 		// -----------------------------------------------------
 		if (Exte.equals("bbt")) {
 			BBKSoft.myLays.laytmp = BBKBBT.BBTtoLay_type(pathname, false);
@@ -51,14 +50,6 @@ public class BBKFile {
 			// int n = BBKSoft.myLays.laytmp.pois.size();
 			// BBKDebug.d(n, false, false);
 			// loadkey =true;
-		}
-		// -----------------------------------------------------
-		if (Exte.equals("shp")) {
-			// -----------------------------------------------------
-			String fpn = pathname.replace(".shp", "");
-			BBKSoft.myLays.laytmp = BBKShapeToBBKLay.BBKShapeFileLoad(fpn, true);
-			loadkey = true;
-			// -----------------------------------------------------
 		}
 		// -----------------------------------------------------
 		if (loadkey) {

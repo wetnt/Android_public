@@ -24,7 +24,7 @@ import bbk.net.abc.BBKNetCheck;
 import bbk.sys.abc.BBKMsgBox;
 import bbk.sys.abc.BBKSYS;
 import bbk.uis.view.BBKLayView;
-import bbk.zzz.debug.BBKDebug;
+import bbk.zzz.debug.bd;
 
 public class BBKMapZoomSet extends BBKLayView {
 	// ====================================================================================
@@ -453,8 +453,8 @@ public class BBKMapZoomSet extends BBKLayView {
 	public JSONObject MapZoomTypeReadJson() {
 		// ---------------------------------------------------------------------
 		String softStr = BBKSYS.FileRead(setpathname);
-		BBKDebug.d("BBKMapZoomSet.MySoftRead.path = " + setpathname, false, true);
-		BBKDebug.d("BBKMapZoomSet.MySoftRead.strg = " + softStr, false, true);
+		bd.d("BBKMapZoomSet.MySoftRead.path = " + setpathname, false, true);
+		bd.d("BBKMapZoomSet.MySoftRead.strg = " + softStr, false, true);
 		// ---------------------------------------------------------------------
 		if (softStr == null || softStr.length() < 10)
 			return null;
@@ -465,7 +465,7 @@ public class BBKMapZoomSet extends BBKLayView {
 			sets = new JSONObject(softStr);
 			// ----------------------------------------------
 		} catch (JSONException ex) {
-			BBKDebug.d("BBKMapZoomSet.MySoftRead.JSON = " + setpathname, false, true);
+			bd.d("BBKMapZoomSet.MySoftRead.JSON = " + setpathname, false, true);
 			return null;
 		}
 		// ---------------------------------------------------------------------
@@ -477,7 +477,7 @@ public class BBKMapZoomSet extends BBKLayView {
 
 	public boolean MapZoomTypeSaveJson(JSONArray MapZoomJS, JSONArray MapTypeJS) {
 		// ---------------------------------------------------------------------
-		BBKDebug.d("BBKMapZoomSet.SetSave.path = " + setpathname, false, true);
+		bd.d("BBKMapZoomSet.SetSave.path = " + setpathname, false, true);
 		// ---------------------------------------------------------------------
 		try {
 			// ---------------------------------------------------------------------
@@ -488,12 +488,12 @@ public class BBKMapZoomSet extends BBKLayView {
 			sets.put("MapCentJd", BBKSoft.myMaps.mapPt.j);
 			// ---------------------------------------------------------------------
 			String sss = sets.toString();
-			BBKDebug.d("BBKMapZoomSet.SetSave.json = " + sss, false, true);
+			bd.d("BBKMapZoomSet.SetSave.json = " + sss, false, true);
 			BBKSYS.FileSave(setpathname, sss);
 			return true;
 			// ---------------------------------------------------------------------
 		} catch (JSONException ex) {
-			BBKDebug.d("BBKMapZoomSet.SetSave.errs = " + ex.toString(), false, true);
+			bd.d("BBKMapZoomSet.SetSave.errs = " + ex.toString(), false, true);
 		}
 		return false;
 		// ---------------------------------------------------------------------

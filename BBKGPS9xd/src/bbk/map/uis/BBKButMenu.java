@@ -14,7 +14,9 @@ import bbk.bbk.box.BBKAbout;
 import bbk.map.gps.BBKGpsReport;
 import bbk.map.lay.BBKMapLay.line_type;
 import bbk.sys.abc.BBKMsgBox;
+import bbk.sys.abc.BBKSavePathSelect;
 import bbk.sys.file.FileManager;
+import bbk.zzz.debug.bd;
 
 public class BBKButMenu {
 
@@ -55,6 +57,7 @@ public class BBKButMenu {
 		MenuItemAdd(2, menu, "载入资源", R.drawable.menu_open_in_newwindow);
 		// ---------------------------------------------
 		MenuItemAdd(3, menu, "屏幕亮度", R.drawable.menu_day);
+		MenuItemAdd(3, menu, "存储设置", R.drawable.menu_debug);
 		MenuItemAdd(3, menu, "地图设置", R.drawable.menu_syssettings);
 		MenuItemAdd(3, menu, "网络设置", R.drawable.menu_debug);
 		// ---------------------------------------------
@@ -100,7 +103,7 @@ public class BBKButMenu {
 		if (s == "切换地图") {
 			BBKMsgBox.tShow("切换地图！");
 			BBKSoft.myMaps.MapTypeSet();
-			BBKSoft.MapFlash(true);			
+			BBKSoft.MapFlash(true);
 		}
 		// ---------------------------------------------
 		if (s == "图层清空") {
@@ -134,6 +137,11 @@ public class BBKButMenu {
 		// ---------------------------------------------
 		if (s == "网络设置") {
 			BBKSoft.myNetSet.layshow(true);
+		}
+		// ---------------------------------------------
+		if (s == "存储设置") {
+			BBKSavePathSelect.SetSoftPathEmpty(bbkAct);
+			bd.d("请重新开启软件！", true, false);
 		}
 		// ---------------------------------------------
 		if (s == "地图火星开关") {
@@ -214,7 +222,7 @@ public class BBKButMenu {
 		if (!BBKSoft.SoftHttpCheck())
 			return;
 		// ---------------------------------------------
-		String url = "http://www.boboking.com";
+		String url = "http://www.bbkgps.com";
 		Intent i = new Intent(Intent.ACTION_VIEW);
 		i.setData(Uri.parse(url));
 		bbkAct.startActivity(i);
@@ -222,7 +230,6 @@ public class BBKButMenu {
 	}
 
 	// ====================================================================================
-
 	// ====================================================================================
 	public void BBKGpsSYSTime() {
 		// ---------------------------------------------

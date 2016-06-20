@@ -1,5 +1,6 @@
 package bbk.map.ask;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +16,7 @@ import bbk.map.dat.BBKReg.RegWJ;
 import bbk.map.lay.BBKMapLay.Lay_type;
 import bbk.map.lay.BBKMapLay.poi_type;
 import bbk.net.abc.BBKHttpGet;
-import bbk.zzz.debug.BBKDebug;
+import bbk.zzz.debug.bd;
 
 public class BBKBaiDu {
 
@@ -64,11 +65,15 @@ public class BBKBaiDu {
 		// ------------------------------------------------------
 		// 接口为火星坐标，查询时需要把真实坐标改为火星坐标
 		String tp = BBKReg.Str_WJ_TF(str);
-		tp = URLEncoder.encode(tp);
+		try {
+			tp = URLEncoder.encode(tp, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			return false;
+		}
 		// ------------------------------------------------------
 		final String myjson = GgAsk(tp, cw, cj);
 		if (myjson == null || myjson.length() < 10) {
-			BBKDebug.d("BaiDuiAskRun.myjson == null", false, false);
+			bd.d("BaiDuiAskRun.myjson == null", false, false);
 			return false;
 		}
 		// ------------------------------------------------------
@@ -209,7 +214,7 @@ public class BBKBaiDu {
 			return tab;
 			// ----------------------------------------------
 		} catch (JSONException ex) {
-			BBKDebug.d("BBKBaiDu.JsonToHashMap = " + ex.toString(), true, false);
+			bd.d("BBKBaiDu.JsonToHashMap = " + ex.toString(), true, false);
 		}
 		// ----------------------------------------------
 		return null;

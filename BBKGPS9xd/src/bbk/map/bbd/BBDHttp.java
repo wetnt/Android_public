@@ -13,7 +13,7 @@ import java.util.TimerTask;
 import bbk.map.abc.BBKMap;
 import bbk.map.bbd.BBD.Pt;
 import bbk.sys.abc.BBKSYS;
-import bbk.zzz.debug.BBKDebug;
+import bbk.zzz.debug.bd;
 
 public class BBDHttp {
 
@@ -172,7 +172,7 @@ public class BBDHttp {
 
 	private void file_down_out(int id) {
 		// ----------------------------------------------------
-		BBKDebug.d("TimeOut=" + DownFile[id].p.nme, false, false);
+		bd.d("TimeOut=" + DownFile[id].p.nme, false, false);
 		file_down_end(id);
 		// ----------------------------------------------------
 	}
@@ -204,7 +204,7 @@ public class BBDHttp {
 		try {
 			String url = BBDHead.maphttphead + BBDHead.mappicsurls[DownFile[id].p.t] + DownFile[id].p.url;
 			// -------------------------------------------------------------------
-			BBKDebug.d(url, false, false);
+			bd.d(url, false, false);
 			URLConnection conn;
 			URL myURL = new URL(url);
 			// -------------------------------------------------------------------
@@ -221,7 +221,7 @@ public class BBDHttp {
 			}
 			// -------------------------------------------------------------------
 			if (conn == null) {
-				BBKDebug.d("down_file conn == null", false, false);
+				bd.d("down_file conn == null", false, false);
 				return;
 			}
 			// -------------------------------------------------------------------
@@ -266,7 +266,7 @@ public class BBDHttp {
 			// -------------------------------------------------------------------
 		} catch (IOException e) {
 			// -------------------------------------------------------------------
-			BBKDebug.d("BBDHttp.down_file(" + id + ")=" + e.toString(), false, false);
+			bd.d("BBDHttp.down_file(" + id + ")=" + e.toString(), false, false);
 			file_down_out(id);
 			// -------------------------------------------------------------------
 		}

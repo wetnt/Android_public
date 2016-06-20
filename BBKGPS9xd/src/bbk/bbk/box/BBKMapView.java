@@ -1,5 +1,6 @@
 package bbk.bbk.box;
 
+import android.annotation.SuppressLint;
 import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.os.Handler;
@@ -14,26 +15,26 @@ import bbk.map.abc.BBKMapMath;
 public class BBKMapView {
 
 	// ------------------------------------------------------
-	final int NONE = 0;// 初始状态
-	final int DRAG = 1;// 拖动
-	final int ZOOM = 2;// 缩放
-	int mode = NONE;
+	private final int NONE = 0;// 初始状态
+	private final int DRAG = 1;// 拖动
+	private final int ZOOM = 2;// 缩放
+	private int mode = NONE;
 	// ------------------------------------------------------
-	Matrix mapVwMatrix = new Matrix();
-	Matrix savedMatrix = new Matrix();
-	PointF mapVwStart = new PointF();
-	PointF mapVwMid = new PointF();
+	private Matrix mapVwMatrix = new Matrix();
+	private Matrix savedMatrix = new Matrix();
+	private PointF mapVwStart = new PointF();
+	private PointF mapVwMid = new PointF();
 	// ------------------------------------------------------
-	float mapVwOldDist;
-	float newDist;
-	float mapscale;
-	float doubletaptime;
+	private float mapVwOldDist;
+	private float newDist;
+	private float mapscale;
 
 	// ====================================================================================
 	public void ImgViewTouchMainSet() {
 		ImgViewTouchSet(BBKSoft.myBoxs.MapImg);
 	}
 
+	@SuppressLint("ClickableViewAccessibility")
 	public void ImgViewTouchSet(ImageView myImageView) {
 		myImageView.setOnTouchListener(new OnTouchListener() {
 			// ====================================================================================
@@ -102,7 +103,6 @@ public class BBKMapView {
 				// ------------------------------------------------------
 				}
 				// ------------------------------------------------------
-				// Perform the transformation
 				view.setImageMatrix(mapVwMatrix);
 				// ------------------------------------------------------
 				return true; // indicate event was handled
@@ -110,10 +110,7 @@ public class BBKMapView {
 			}
 
 			// ====================================================================================
-
-			// 计算移动距离
-			// ====================================================================================
-			private float spacing(MotionEvent event) {
+			private float spacing(MotionEvent event) {// 计算移动距离
 				// -----------------------------------------------------------
 				float x = event.getX(0) - event.getX(1);
 				float y = event.getY(0) - event.getY(1);
@@ -122,9 +119,7 @@ public class BBKMapView {
 				// -----------------------------------------------------------
 			}
 
-			// 计算中点位置
-			// ====================================================================================
-			private void midPoint(PointF point, MotionEvent event) {
+			private void midPoint(PointF point, MotionEvent event) {// 计算中点位置
 				float x = event.getX(0) + event.getX(1);
 				float y = event.getY(0) + event.getY(1);
 				point.set(x / 2, y / 2);
@@ -132,8 +127,6 @@ public class BBKMapView {
 			// ====================================================================================
 		});
 	}
-
-	// ====================================================================================
 
 	// ====================================================================================
 	private void MouseDOWN(ImageView view, MotionEvent event) {
@@ -200,11 +193,9 @@ public class BBKMapView {
 	}
 
 	// ====================================================================================
-	private long firClick;
-	private long secClick;
+	private long firClick, secClick;
 	private int doubleclicktimex = 400;
 
-	// ====================================================================================
 	private boolean DoubleTapCheck() {// 双击事件
 		secClick = System.currentTimeMillis();
 		if (secClick - firClick < doubleclicktimex) {
@@ -213,7 +204,6 @@ public class BBKMapView {
 			firClick = System.currentTimeMillis();
 			return false;
 		}
-		// ----------------------------------------------------------------------------
 	}
 
 	// ====================================================================================
@@ -255,26 +245,21 @@ public class BBKMapView {
 		BBKSoft.MapFlash(true);
 		// ----------------------------------------------------------------------------
 	}
-
 	// ====================================================================================
 	// ====================================================================================
 	// ====================================================================================
-
 	// ====================================================================================
 	public int GetZoomScale(double scale) {
 		// --------------------------------------------------------------------
 		double mapVmZoom = Math.log(scale) / Math.log(2);
-		if (mapVmZoom > 0) {
+		if (mapVmZoom > 0)
 			mapVmZoom = mapVmZoom + 0.5;
-		}
-		if (mapVmZoom < 0) {
+		if (mapVmZoom < 0)
 			mapVmZoom = mapVmZoom - 0.5;
-		}
 		// --------------------------------------------------------------------
 		return (int) mapVmZoom;
 		// --------------------------------------------------------------------
 	}
-
 	// ====================================================================================
 	// ====================================================================================
 	// ====================================================================================

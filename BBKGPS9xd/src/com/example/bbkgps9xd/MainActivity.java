@@ -2,7 +2,7 @@ package com.example.bbkgps9xd;
 
 import bbk.bbk.box.BBKSoft;
 import bbk.hrd.abc.BBKScreen;
-import bbk.zzz.debug.BBKDebug;
+import bbk.zzz.debug.bd;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -185,7 +185,7 @@ public class MainActivity extends Activity {
 		FrameLayout MainLay = (FrameLayout) findViewById(R.id.MainBox);
 		MainBoxW = MainLay.getWidth();
 		MainBoxH = MainLay.getHeight();
-		BBKDebug.d(MainBoxW + "x" + MainBoxH, false, false);
+		bd.d(MainBoxW + "x" + MainBoxH, false, false);
 		BBKSoft.BBKScreenOrientRun(ScreenOrient, MainBoxW, MainBoxH);
 		// -----------------------------------------------------------------------
 	}

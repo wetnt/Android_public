@@ -10,7 +10,7 @@ import com.example.bbkgps9xd.R;
 
 import bbk.bbk.box.BBKSoft;
 import bbk.map.dat.BBKFile;
-import bbk.zzz.debug.BBKDebug;
+import bbk.zzz.debug.bd;
 
 import android.annotation.SuppressLint;
 import android.app.ListActivity;
@@ -90,7 +90,7 @@ public class FileManager extends ListActivity {
 			data.putExtras(bundle);
 			setResult(2, data);
 			// --------------------------------------------
-			BBKDebug.d(file.getPath(), true, false);
+			bd.d(file.getPath(), true, false);
 			BBKFile.BBKFileAdd(file);
 			// --------------------------------------------
 			finish();

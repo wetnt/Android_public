@@ -21,7 +21,7 @@ import bbk.map.lay.BBKMapLay.poi_type;
 import bbk.map.uis.Main_Ask;
 import bbk.net.abc.BBKHttpGet;
 import bbk.sys.abc.BBKString;
-import bbk.zzz.debug.BBKDebug;
+import bbk.zzz.debug.bd;
 
 public class BBKGoogle {
 
@@ -95,7 +95,7 @@ public class BBKGoogle {
 		}
 		// ------------------------------------------------------
 		String NaviWeb = setNaviUrl(a, b, md, cw, cj);
-		BBKDebug.d(NaviWeb, false, true);
+		bd.d(NaviWeb, false, true);
 		final String myjson = BBKHttpGet.BBKHttpGetUrl(NaviWeb, gbCode, false);
 		// ------------------------------------------------------
 		// JSON转换为结构化数据
@@ -251,7 +251,7 @@ public class BBKGoogle {
 			}
 			// ------------------------------------------------------------------
 		} catch (JSONException ex) {
-			BBKDebug.d("BBKGoogle.JsonToHashMap = " + ex.toString(), true, false);
+			bd.d("BBKGoogle.JsonToHashMap = " + ex.toString(), true, false);
 		}
 		// ------------------------------------------------------------------
 		return null;
@@ -930,7 +930,7 @@ public class BBKGoogle {
 			}
 			// ------------------------------------------------------------------
 		} catch (JSONException ex) {
-			BBKDebug.d("BBKGoogle.JsonToHashMap = " + ex.toString(), true, false);
+			bd.d("BBKGoogle.JsonToHashMap = " + ex.toString(), true, false);
 		}
 		// ------------------------------------------------------------------
 		return null;

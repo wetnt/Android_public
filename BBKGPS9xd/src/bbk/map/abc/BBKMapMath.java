@@ -6,7 +6,6 @@ public class BBKMapMath {
 
 	// =================比例尺==============================================================
 	public final static String BLCKMM[] = { "8000km(0)", "4000km(1)", "2000km(2)", "1000km(3)", "500km(4)", "250km(5)", "120km(6)", "60km(7)", "30km(8)", "15km(9)", "7.5km(10)", "3km(11)", "2km(12)", "800m(13)", "400m(14)", "200m(15)", "100m(16)", "50m(17)", "25m(18)", "12m(19)", "6m(20)", "3m(21)", "1m(22)", "0.5m(22)" };
-	// =================比例尺==============================================================
 	public final static long BLCLONG[] = { 1, 1, 20000000, 10000000, 5000000, 2500000, 120000, 60000, 16000, 15500, 8000, 4000, 2000, 1000, 500, 250, 120, 53, 30, 15, 8, 4, 2, 1 };
 	// =================比例尺==============================================================
 	public static double pow2n[] = new double[21];
@@ -21,23 +20,23 @@ public class BBKMapMath {
 
 	// =================墨卡托投影经纬到像素换算===========
 	public static double GetPixelByLon(double dbLon, double nLayer) {// 经度到像素X值
-		return (dbLon + 180) * Math.pow(2, nLayer + 8) / 360;
+		return (dbLon + 180) * Math.pow(2, nLayer + 8) / 360 * BBKMap.TileZoom;
 	}
 
 	public static double GetPixelByLat(double dbLat, double nLayer) {// 纬度到像素Y值
 		double dbSinY = Math.sin(dbLat * Math.PI / 180);
 		double dbTemp = Math.log((1 + dbSinY) / (1 - dbSinY));
 		double dbRet = Math.pow(2, nLayer + 7) * (1 - dbTemp / (2 * Math.PI));
-		return dbRet;
+		return dbRet * BBKMap.TileZoom;
 	}
 
 	// =================墨卡托投影经纬到像素换算==========
 	public static double GetLonByPixel(double dbPixel, double nLayer) {// 像素X到经度
-		return dbPixel * 360 / Math.pow(2, nLayer + 8) - 180;
+		return dbPixel / BBKMap.TileZoom * 360 / Math.pow(2, nLayer + 8) - 180;
 	}
 
 	public static double GetLatByPixel(double dbPixel, int nLayer) {// 像素Y到纬度
-		double dbTempY = 2 * Math.PI * (1 - dbPixel / Math.pow(2, nLayer + 7));
+		double dbTempY = 2 * Math.PI * (1 - dbPixel / BBKMap.TileZoom / Math.pow(2, nLayer + 7));
 		double dbTempZ = Math.pow(Math.E, dbTempY);
 		double dbRatio = (dbTempZ - 1) / (dbTempZ + 1);
 		double dbRet = Math.asin(dbRatio) * 180 / Math.PI;

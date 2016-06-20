@@ -27,7 +27,7 @@ import bbk.map.lay.BBKMapLay.Lay_type;
 import bbk.sys.abc.BBKMsgBox;
 import bbk.uis.view.BBKLayView;
 import bbk.uis.view.BBKListView;
-import bbk.zzz.debug.BBKDebug;
+import bbk.zzz.debug.bd;
 
 public class Main_Track2 extends BBKLayView {
 
@@ -179,10 +179,10 @@ public class Main_Track2 extends BBKLayView {
 		if (name.length() <= 0)
 			return;
 		String path = BBKSoft.PathBbts + name + ".bbt";
-		BBKDebug.d(path, false, false);
+		bd.d(path, false, false);
 		// -------------------------------------------------------------------------
 		Lay_type lay = BBKBBT.BBTtoLay_type(path, false);
-		BBKDebug.d(lay.line.get(0).p.size(), false, false);
+		bd.d(lay.line.get(0).p.size(), false, false);
 		BBKSoft.myLays.laytmp.clone(lay);
 		// -------------------------------------------------------------------------
 		ArrayList<HashMap<String, Object>> lt;

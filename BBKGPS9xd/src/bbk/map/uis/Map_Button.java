@@ -161,7 +161,7 @@ public class Map_Button extends BBKLayView {
 		MoreMenu = (LinearLayout) BBKLay.findViewById(R.id.MoreMenu);
 		// ----------------------------------------------------------------------
 		MAPsss = (ImageButton) BBKLay.findViewById(R.id.MAP);
-		Naviab = (ImageButton) BBKLay.findViewById(R.id.Naviabc);
+		Naviab = (ImageButton) BBKLay.findViewById(R.id.Navi);
 		Tripss = (ImageButton) BBKLay.findViewById(R.id.Trip);
 		Logsss = (ImageButton) BBKLay.findViewById(R.id.Log);
 		Clears = (ImageButton) BBKLay.findViewById(R.id.Clear);

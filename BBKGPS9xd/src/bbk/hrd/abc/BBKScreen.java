@@ -25,18 +25,18 @@ public class BBKScreen {
 		act.getWindow().setFlags(flags, mask);// 系统标题栏
 		// --------------隐去标题栏--------------------------------------
 	}
-	
+
 	public static void BBKActivitySet_Hide_Self_Title(Activity act) {
 		// --------------隐去标题栏--------------------------------------
 		act.requestWindowFeature(Window.FEATURE_NO_TITLE);// 程序自己标题栏
 		act.requestWindowFeature(8); // 全屏抗锯齿
 		// --------------隐去标题栏--------------------------------------
 	}
-	
-	public static void BBKActivitySet_Hide_Home_Button(Activity act) {//屏蔽Home按键
+
+	public static void BBKActivitySet_Hide_Home_Button(Activity act) {// 屏蔽Home按键
 		// --------------屏蔽Home按键--------------------------------------
-		act.getWindow().setFlags(FLAG_HOMEKEY_DISPATCHED,FLAG_HOMEKEY_DISPATCHED);
-		//不同机型会死机，弃之不用
+		act.getWindow().setFlags(FLAG_HOMEKEY_DISPATCHED, FLAG_HOMEKEY_DISPATCHED);
+		// 不同机型会死机，弃之不用
 		// --------------隐去标题栏--------------------------------------
 	}
 
@@ -46,7 +46,7 @@ public class BBKScreen {
 		// int mask2 =WindowManager.LayoutParams.FLAG_NEEDS_MENU_KEY;
 		// getWindow().setFlags(flags2, mask2);
 		act.getWindow().setFlags(0x08000000, 0x08000000);
-		//引起虚拟按键不正常
+		// 引起虚拟按键不正常
 		// --------------强制显示Menu虚拟按键----------------------------
 	}
 

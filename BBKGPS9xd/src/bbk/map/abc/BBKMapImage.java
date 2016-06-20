@@ -2,63 +2,29 @@ package bbk.map.abc;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory.Options;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Path;
-
-//import org.eclipse.swt.graphics.Color;
-//import org.eclipse.swt.graphics.GC;
-//import org.eclipse.swt.graphics.Image;
+import android.graphics.Rect;
+import android.graphics.RectF;
 
 public class BBKMapImage {
 
 	// =====================================================================================
 	public static Bitmap Map, Pic, Lgo;
 	private static Canvas mapgc;
-	public static Paint Reds;
-	public static Paint Blue;
-	public static Paint RedEI;
-	public static Paint BluEI;
+	public static Paint Reds, Blue;
+	public static Paint RedEI, BluEI;
 	public static Paint YlowA;
 
 	private static Config bmpCfg = Config.RGB_565;
-	Options bmpOpts = null;
 	private static int whiteColor = 0xFFFFFFFF;
-
-	// ------------------------------------------------------------------
-
-	// public static Image Map, Pic, Lgo;
-	// private static GC mapgc, cvsgc;
-	// private static Color Reds, Blue;
-	// ------------------------------------------------------------------
+	private static int mapTextS = 24, mapLineW = 3;
 
 	// =====================================================================================
-
-	public static void MapImageInt(final Canvas gc) {
-		// ------------------------------------------------------------------
-		// cvsgc = gc;
-		// ------------------------------------------------------------------
-	}
-
-	// public static void MapFlashPrint() {
-	// // cvsgc.drawImage(Map, 0, 0);
-	// //cvsgc.drawBitmap(Map, 0, 0, null);
-	// BBKMapBox.MapScrn(BBKMapBox.MapImg, Map);
-	// }
-
-	// public static void MapFlash() {
-	// // ------------------------------------------------------------------
-	// MapFlashPrint();
-	// // ------------------------------------------------------------------
-	// }
-
 	public static void PaintSet() {
-		// ------------------------------------------------------------------
-		// Reds = new Color(null, 255, 0, 0);
-		// Blue = new Color(null, 0, 0, 255);
 		// ------------------------------------------------------------------
 		Reds = colorSet(Color.RED, mapTextS, mapLineW, 255);
 		Blue = colorSet(Color.BLUE, mapTextS, mapLineW, 255);
@@ -68,12 +34,7 @@ public class BBKMapImage {
 		BluEI.setStyle(Paint.Style.STROKE);
 		YlowA = colorSet(Color.YELLOW, mapTextS, mapLineW, 180);
 		// ------------------------------------------------------------------
-		// mPaintRedE = colorSet(Color.BLUE, mapTextS, mapLineW, 255);
-		// mPaintRedE.setStyle(Paint.Style.STROKE);
-		// ------------------------------------------------------------------
 	}
-
-	static int mapTextS = 24, mapLineW = 3;
 
 	public static Paint colorSet(int color, int TextSize, int LineW, int Alpha) {
 		// ----------------------------------------------------
@@ -97,18 +58,6 @@ public class BBKMapImage {
 
 	public static void BitmapSet(int w, int h) {
 		// ------------------------------------------------------------------
-		// Lgo = SetLogPic();
-		// // ------------------------------------------------------------------
-		// Pic = new Image(null, 256, 256);
-		// Map = new Image(null, BBKMap.MapW, BBKMap.MapH);
-		// mapgc = new GC(Map);
-		// mapgc.setForeground(Reds);
-		// // ------------------------------------------------------------------
-		// BitmapClr();
-		// ------------------------------------------------------------------
-		// ------------------------------------------------------------------
-		// bmpCfg = Config.RGB_565;
-		// ------------------------------------------------------------------
 		Lgo = SetLogPic();
 		Pic = CreateBitmap(256, 256);
 		Map = CreateBitmap(w, h);
@@ -122,26 +71,15 @@ public class BBKMapImage {
 	}
 
 	public static void BitmapClr() {
-		// ------------------------------------------------------------------
-		// mapgc.fillRectangle(0, 0, Map.get.getBounds().width,
-		// Map.getBounds().height);
-		// ------------------------------------------------------------------
 		mapgc.drawColor(whiteColor);
-		// ------------------------------------------------------------------
 	}
 
-	// public static void BBKMapDrawImage(final Image p, int x, int y, boolean
-	// del) {
-	// // ----------------------------------------------------
-	// mapgc.drawImage(p, x, y);
-	// if (del)
-	// p.dispose();
-	// // ----------------------------------------------------
-	// }
-
-	public static void BBKMapDrawImage(Bitmap p, int x, int y, boolean del) {
+	public static void BBKMapDrawImage256(Bitmap p, int x, int y, float zoom, boolean del) {
 		// ----------------------------------------------------
-		mapgc.drawBitmap(p, x, y, null);
+		Rect src = new Rect(0, 0, 256, 256);
+		RectF dst = new RectF(x, y, x + 256 * zoom, y + 256 * zoom);
+		mapgc.drawBitmap(p, src, dst, null);
+		// mapgc.drawBitmap(p, x, y, null);
 		if (del)
 			p = null;
 		// ----------------------------------------------------
@@ -149,12 +87,10 @@ public class BBKMapImage {
 
 	// ==========================================================================================
 	public static void DrawPoint(int x, int y) {
-		// mapgc.drawPoint(x, y);
 		mapgc.drawPoint(x, y, Reds);
 	}
 
 	public static void DrawLine(int x, int y, int x1, int y1) {
-		// mapgc.drawLine(x, y, x1, y1);
 		mapgc.drawLine(x, y, x1, y1, Reds);
 	}
 
@@ -166,7 +102,6 @@ public class BBKMapImage {
 		mapgc.drawLine(x, y, x1, y1, BluEI);
 	}
 
-	// ---------------------------------------------------------------
 	public static void DrawCircleRedEI(int x, int y, int r) {
 		mapgc.drawCircle(x, y, r, RedEI);
 	}
@@ -175,19 +110,8 @@ public class BBKMapImage {
 		mapgc.drawCircle(x, y, r, BluEI);
 	}
 
-	// ---------------------------------------------------------------
-
 	public static void DrawText(String str, int x, int y) {
-		// mapgc.drawText(str, x, y);
 		mapgc.drawText(str, x, y, Blue);
-	}
-
-	public static void SetForegroundReds() {
-		// mapgc.setForeground(Reds);
-	}
-
-	public static void SetForegroundBlue() {
-		// mapgc.setForeground(Blue);
 	}
 
 	public static void DrawGPSArrow(double g, int x, int y, int n, int m, int r, boolean b) {
@@ -208,9 +132,6 @@ public class BBKMapImage {
 	}
 
 	// ==========================================================================================
-	// ==========================================================================================
-	// ==========================================================================================
-	// ==========================================================================================
 	public static Bitmap CreateBitmap(int w, int h) {
 		return Bitmap.createBitmap(w, h, bmpCfg);
 	}
@@ -227,17 +148,6 @@ public class BBKMapImage {
 		return Lgo;
 	}
 
-	// ==========================================================================================
-	// public static Image CreateBitmap(int w, int h) {
-	// return new Image(null, w, h);
-	// }
-	// public static void SetLogPic() {
-	// Lgo = new Image(null, 256, 256);
-	// GC lggc = new GC(Lgo);
-	// lggc.setForeground(Blue);
-	// lggc.drawString("BOBOKing SWT Map ...", 0, 0);
-	// lggc.dispose();
-	// }
 	// ==========================================================================================
 	public static void DrawLineP(int x, int y, int x1, int y1, Paint p) {
 		mapgc.drawLine(x, y, x1, y1, p);
@@ -259,8 +169,6 @@ public class BBKMapImage {
 	public static void DrawTextPath(Path pt) {
 		mapgc.drawPath(pt, YlowA);
 	}
-	// ==========================================================================================
-	// ==========================================================================================
 	// ==========================================================================================
 
 }

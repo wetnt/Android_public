@@ -11,7 +11,7 @@ import java.net.SocketAddress;
 import java.net.URL;
 import java.net.URLConnection;
 
-import bbk.zzz.debug.BBKDebug;
+import bbk.zzz.debug.bd;
 
 public class BBKHttpGet {
 
@@ -42,9 +42,9 @@ public class BBKHttpGet {
 		try {
 			// -------------------------------------------------------------------
 			if (debugKey) {
-				BBKDebug.d("BBKHttpGet.BBKHttpGetUrlNew.BackStrCode = " + strCode, false, false);
-				BBKDebug.d("BBKHttpGet.BBKHttpGetUrlNew.proxy.sort.out = " + proxy + "," + sort + "," + timeout, false, false);
-				BBKDebug.d("BBKHttpGet.BBKHttpGetUrlNew.strUrl == " + strUrl, false, false);
+				bd.d("BBKHttpGet.BBKHttpGetUrlNew.BackStrCode = " + strCode, false, false);
+				bd.d("BBKHttpGet.BBKHttpGetUrlNew.proxy.sort.out = " + proxy + "," + sort + "," + timeout, false, false);
+				bd.d("BBKHttpGet.BBKHttpGetUrlNew.strUrl == " + strUrl, false, false);
 			}
 			// -------------------------------------------------------------------
 			URL url = new URL(strUrl);
@@ -64,7 +64,7 @@ public class BBKHttpGet {
 			// -------------------------------------------------------------------
 			if (conn == null) {
 				if (debugKey)
-					BBKDebug.d("BBKHttpGet.BBKHttpGetUrlNew.conn == null", false, false);
+					bd.d("BBKHttpGet.BBKHttpGetUrlNew.conn == null", false, false);
 				return null;
 			}
 			// -------------------------------------------------------------------
@@ -93,7 +93,7 @@ public class BBKHttpGet {
 			conn = null;
 			// -------------------------------------------------------------------
 			if (debugKey)
-				BBKDebug.d("BBKHttpGet.BBKHttpGetUrlNew.strResult =" + allstr, false, false);
+				bd.d("BBKHttpGet.BBKHttpGetUrlNew.strResult =" + allstr, false, false);
 			// -------------------------------------------------------------------
 			return allstr;
 			// -------------------------------------------------------------------

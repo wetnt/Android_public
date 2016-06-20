@@ -12,7 +12,7 @@ import bbk.map.lay.BBKMapLay.Lay_type;
 import bbk.map.lay.BBKMapLay.line_type;
 import bbk.map.lay.BBKMapLay.p_point;
 import bbk.map.lay.BBKMapLay.poi_type;
-import bbk.zzz.debug.BBKDebug;
+import bbk.zzz.debug.bd;
 
 public class BBKMapLayJson {
 
@@ -32,7 +32,7 @@ public class BBKMapLayJson {
 		try {
 			JsonLay = new JSONObject(dataJson);
 		} catch (JSONException e1) {
-			BBKDebug.d("BBKMapLayJson.BBKMapLayFromJson = " + e1.toString(), false, false);
+			bd.d("BBKMapLayJson.BBKMapLayFromJson = " + e1.toString(), false, false);
 			return lay;
 		}
 		// ----------------------------------------------------------------------------
@@ -46,7 +46,7 @@ public class BBKMapLayJson {
 			lay.poly = BBKMapLayLineFromJSONObj(JsonLay.getJSONArray("polys"));
 			// ------------------------------------------------------------------------
 		} catch (JSONException e) {
-			BBKDebug.d("BBKMapLayJson.BBKMapLayFromJson = " + e.toString(), false, false);
+			bd.d("BBKMapLayJson.BBKMapLayFromJson = " + e.toString(), false, false);
 			// e.printStackTrace();
 		}
 		// ----------------------------------------------------------------------------
@@ -85,7 +85,7 @@ public class BBKMapLayJson {
 				jsonItem = null;
 				// ------------------------------------------------------------
 			} catch (JSONException e) {
-				BBKDebug.d("BBKMapLayJson.BBKMapLayPoisFromJSONObj = " + e.toString(), false, false);
+				bd.d("BBKMapLayJson.BBKMapLayPoisFromJSONObj = " + e.toString(), false, false);
 			}
 			// ------------------------------------------------------------
 		}
@@ -138,7 +138,7 @@ public class BBKMapLayJson {
 			lines = null;
 			// ------------------------------------------------------------
 		} catch (JSONException e) {
-			BBKDebug.d("BBKMapLayJson.BBKMapLayLineFromJSONObj = " + e.toString(), false, false);
+			bd.d("BBKMapLayJson.BBKMapLayLineFromJSONObj = " + e.toString(), false, false);
 		}
 		// ----------------------------------------------------------------------------
 		System.gc();
@@ -155,21 +155,21 @@ public class BBKMapLayJson {
 			JSONArray JsonPolys = BBKMapLinesToJson(lay.poly);
 			JsonLay.putOpt("polys", JsonPolys);
 		} catch (JSONException e) {
-			BBKDebug.d("BBKMapLayJson.BBKMapLayToJson.poly = " + e.toString(), false, false);
+			bd.d("BBKMapLayJson.BBKMapLayToJson.poly = " + e.toString(), false, false);
 		}
 		// ------------------------------------------------------------
 		try {
 			JSONArray JsonLines = BBKMapLinesToJson(lay.line);
 			JsonLay.putOpt("lines", JsonLines);
 		} catch (JSONException e) {
-			BBKDebug.d("BBKMapLayJson.BBKMapLayToJson.lines = " + e.toString(), false, false);
+			bd.d("BBKMapLayJson.BBKMapLayToJson.lines = " + e.toString(), false, false);
 		}
 		// ------------------------------------------------------------
 		try {
 			JSONArray JsonPois = BBKMapPoisToJson(lay.pois);
 			JsonLay.put("points", JsonPois);
 		} catch (JSONException e) {
-			BBKDebug.d("BBKMapLayJson.BBKMapLayToJson.lines.points = " + e.toString(), false, false);
+			bd.d("BBKMapLayJson.BBKMapLayToJson.lines.points = " + e.toString(), false, false);
 		}
 		// ------------------------------------------------------------
 		return JsonLay;
@@ -211,7 +211,7 @@ public class BBKMapLayJson {
 			return poi;
 			// --------------------------------------
 		} catch (JSONException e) {
-			BBKDebug.d("BBKMapLayJson.BBKMapPointToJson = " + e.toString(), false, false);
+			bd.d("BBKMapLayJson.BBKMapPointToJson = " + e.toString(), false, false);
 			return null;
 		}
 		// --------------------------------------
@@ -262,7 +262,7 @@ public class BBKMapLayJson {
 			return poi;
 			// --------------------------------------
 		} catch (JSONException e) {
-			BBKDebug.d("BBKMapLayJson.BBKMapPoiToJson = " + e.toString(), false, false);
+			bd.d("BBKMapLayJson.BBKMapPoiToJson = " + e.toString(), false, false);
 			return null;
 		}
 		// --------------------------------------

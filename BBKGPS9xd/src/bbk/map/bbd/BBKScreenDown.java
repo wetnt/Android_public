@@ -7,7 +7,7 @@ import bbk.map.abc.BBKMap.MapPoiWJ;
 import bbk.map.lay.BBKMapLay.Lay_type;
 import bbk.map.lay.BBKMapLay.line_type;
 import bbk.sys.abc.BBKMsgBox;
-import bbk.zzz.debug.BBKDebug;
+import bbk.zzz.debug.bd;
 
 public class BBKScreenDown {
 
@@ -47,7 +47,7 @@ public class BBKScreenDown {
 		// ---------------------------------------------
 		double cw = BBKSoft.myMaps.mapPt.w;
 		double cj = BBKSoft.myMaps.mapPt.j;
-		BBKDebug.d("BBKScreenDown.DownScreenMap() cw = " + cw + ", cj = " + cj, false, true);
+		bd.d("BBKScreenDown.DownScreenMap() cw = " + cw + ", cj = " + cj, false, true);
 		// ---------------------------------------------
 		int ax = 0, ay = 0;
 		int cx = BBKMap.MapW;
@@ -55,8 +55,8 @@ public class BBKScreenDown {
 		// ---------------------------------------------
 		MapPoiWJ awj = BBKMap.GetWJByPoint(ax, ay);
 		MapPoiWJ cwj = BBKMap.GetWJByPoint(cx, cy);
-		BBKDebug.d("BBKScreenDown.DownScreenMap() awj.w = " + awj.w + ", awj.j = " + awj.j, false, true);
-		BBKDebug.d("BBKScreenDown.DownScreenMap() cwj.w = " + cwj.w + ", cwj.j = " + cwj.j, false, true);
+		bd.d("BBKScreenDown.DownScreenMap() awj.w = " + awj.w + ", awj.j = " + awj.j, false, true);
+		bd.d("BBKScreenDown.DownScreenMap() cwj.w = " + cwj.w + ", cwj.j = " + cwj.j, false, true);
 		// ---------------------------------------------
 		int z0 = BBKSoft.myMaps.ZoomN;
 		int z1 = BBKSoft.myMaps.mapZoom.length;

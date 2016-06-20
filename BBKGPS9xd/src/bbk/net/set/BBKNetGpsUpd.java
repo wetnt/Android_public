@@ -7,7 +7,7 @@ import bbk.bbk.box.BBKSoft;
 import bbk.map.gps.BBKGpsMath.GPS;
 import bbk.net.abc.BBKHttpGet;
 import bbk.sys.abc.BBKMsgBox;
-import bbk.zzz.debug.BBKDebug;
+import bbk.zzz.debug.bd;
 
 public class BBKNetGpsUpd {
 
@@ -67,7 +67,7 @@ public class BBKNetGpsUpd {
 			// ------------------------------------------------------
 		}
 		// ------------------------------------------------------
-		BBKDebug.d("GpsBack= " + myjson, false, false);
+		bd.d("GpsBack= " + myjson, false, false);
 		ShowGps();
 		// ------------------------------------------------------
 	}
@@ -81,7 +81,7 @@ public class BBKNetGpsUpd {
 		myAsk += "&p=" + BBKSoft.myNetSet.UserPass;
 		myAsk += "&t=" + tkey;
 		myAsk += "&g=" + gpss;
-		BBKDebug.d(myAsk, false, false);
+		bd.d(myAsk, false, false);
 		return myAsk;
 	}
 

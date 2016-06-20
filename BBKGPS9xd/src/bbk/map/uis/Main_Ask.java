@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import bbk.bbk.box.BBKSoft;
 import bbk.sys.abc.BBKMsgBox;
@@ -29,6 +30,7 @@ public class Main_Ask extends BBKLayView {
 		LayoutInt(ctxt, R.layout.main_ask, w, h, 3, 0);
 		// ------------------------------------------------------------------------------------------
 		ListSet();
+		navi_button_set();
 		layshow(false);
 		// ------------------------------------------------------------------------------------------
 	}
@@ -40,9 +42,12 @@ public class Main_Ask extends BBKLayView {
 	private ImageButton ListAskMap, ListAskNav;
 	private static EditText ListAskStr, ListAskEnd;
 	// ------------------------------------------------------
+	private ImageButton navi_cars, navi_buss, navi_bike, navi_walk, navi_more, navi_plane;
+	// ------------------------------------------------------
 	private static ImageButton ListAskMore;
 	// ------------------------------------------------------
 	private static TextView ListAskBack;
+	private static ScrollView ListScrollView;
 	// ------------------------------------------------------
 	public static int askBackInfoStrInt = 0;
 	public static String askBackInfoStr = "";
@@ -68,6 +73,7 @@ public class Main_Ask extends BBKLayView {
 		// ---------------------------------------------------------------------
 		ListAskBack = (TextView) BBKLay.findViewById(R.id.ListAskBack);
 		ListAskList = (ListView) BBKLay.findViewById(R.id.ListAskList);
+		ListScrollView = (ScrollView) BBKLay.findViewById(R.id.ListScrollView);
 		// ------------------------------------------------------------------------------------------
 		ListAskTit.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -131,14 +137,7 @@ public class Main_Ask extends BBKLayView {
 		ListAskNav.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				// --------------------------------------------
-				askBackInfoStrInt = 0;
-				askBackInfoStr = "";
-				ListAskBack.setText(askBackInfoStr);
-				SetButtonEnable(false);
-				// --------------------------------------------
-				String str = ListAskStr.getText().toString();
-				String end = ListAskEnd.getText().toString();
-				AskNavi(str, end);
+				navi_clear_and_run();
 				// --------------------------------------------
 			}
 		});
@@ -151,6 +150,75 @@ public class Main_Ask extends BBKLayView {
 			}
 		});
 		// ===========================================================================================
+	}
+
+	private void navi_clear_and_run() {
+		// --------------------------------------------
+		askBackInfoStrInt = 0;
+		askBackInfoStr = "";
+		ListAskBack.setText(askBackInfoStr);
+		SetButtonEnable(false);
+		// --------------------------------------------
+		String str = ListAskStr.getText().toString();
+		String end = ListAskEnd.getText().toString();
+		AskNavi(str, end);
+		// --------------------------------------------
+	}
+
+	public static int Navi_Type_Google = 0;
+
+	// { "driving", "walking", "bicycling", "transit" };
+	private void navi_button_set() {
+		// ------------------------------------------------------------------------------------------
+		navi_cars = (ImageButton) BBKLay.findViewById(R.id.navi_cars);
+		navi_buss = (ImageButton) BBKLay.findViewById(R.id.navi_buss);
+		navi_bike = (ImageButton) BBKLay.findViewById(R.id.navi_bike);
+		navi_walk = (ImageButton) BBKLay.findViewById(R.id.navi_walk);
+		navi_more = (ImageButton) BBKLay.findViewById(R.id.navi_more);
+		navi_plane = (ImageButton) BBKLay.findViewById(R.id.navi_plane);
+		// ------------------------------------------------------------------------------------------
+		navi_cars.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Navi_Type_Google = 0;
+				navi_clear_and_run();
+			}
+		});
+		navi_buss.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Navi_Type_Google = 3;
+				navi_clear_and_run();
+			}
+		});
+		navi_bike.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Navi_Type_Google = 2;
+				navi_clear_and_run();
+			}
+		});
+		navi_walk.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Navi_Type_Google = 1;
+				navi_clear_and_run();
+			}
+		});
+		navi_more.setOnClickListener(new OnClickListener() {
+			// ---------------------------------------------------------------
+			public void onClick(View v) {
+				if (ListScrollView.getVisibility() == View.VISIBLE)
+					ListScrollView.setVisibility(View.GONE);
+				else
+					ListScrollView.setVisibility(View.VISIBLE);
+			}
+			// ---------------------------------------------------------------
+		});
+		navi_plane.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Navi_Type_Google = 3;
+				navi_clear_and_run();
+			}
+		});
+		// ------------------------------------------------------------------------------------------
+		// ------------------------------------------------------------------------------------------
 	}
 
 	public static void askBackInfoStrAdd(String add) {
@@ -209,7 +277,7 @@ public class Main_Ask extends BBKLayView {
 		}
 		// ----------------------------------------------------
 		// "driving", "walking", "bicycling", "transit"
-		BBKSoft.myGoog.NaviRunThead(strAsk, strEnd, 3, BBKSoft.myMaps.mapPt.w, BBKSoft.myMaps.mapPt.j);
+		BBKSoft.myGoog.NaviRunThead(strAsk, strEnd, Navi_Type_Google, BBKSoft.myMaps.mapPt.w, BBKSoft.myMaps.mapPt.j);
 		// ----------------------------------------------------
 	}
 
@@ -255,7 +323,7 @@ public class Main_Ask extends BBKLayView {
 	public void ListViewBack() {
 		BBKListView.ListViewLoad(//
 				BBKListView.BBKLayToArrayList(BBKSoft.myLays.layask, true, false, false), //
-				ListAskList			);
+				ListAskList);
 
 		// ListAskList.setAdapter(//
 		// new ArrayAdapter<String>(BBKSoft.bbkContext, //
@@ -271,14 +339,14 @@ public class Main_Ask extends BBKLayView {
 
 	}
 
-//	private List<String> getData() {
-//		List<String> data = new ArrayList<String>();
-//		data.add("测试数据1");
-//		data.add("测试数据2");
-//		data.add("测试数据3");
-//		data.add("测试数据4");
-//		return data;
-//	}
+	// private List<String> getData() {
+	// List<String> data = new ArrayList<String>();
+	// data.add("测试数据1");
+	// data.add("测试数据2");
+	// data.add("测试数据3");
+	// data.add("测试数据4");
+	// return data;
+	// }
 
 	// ====================================================================================
 	// ####################################################################################

@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import android.annotation.SuppressLint;
-import bbk.zzz.debug.BBKDebug;
+import bbk.zzz.debug.bd;
 
 @SuppressLint("SimpleDateFormat")
 public class BBKSYS {
@@ -43,7 +43,7 @@ public class BBKSYS {
 			fw.close();
 			return true;
 		} catch (IOException e) {
-			BBKDebug.d("BBKSYS.FileSave.ERROR " + e.toString(), false, true);
+			bd.d("BBKSYS.FileSave.ERROR " + e.toString(), false, true);
 			return false;
 		}
 		// -----------------------------------------------------------------------
@@ -178,7 +178,7 @@ public class BBKSYS {
 			bbtPathName = bbtf.getPath();
 			bbtf.delete();
 		} catch (IOException e) {
-			BBKDebug.d("BBKSYS.bbtName.createNewFile.ERROR = " + e.toString(), false, true);
+			bd.d("BBKSYS.bbtName.createNewFile.ERROR = " + e.toString(), false, true);
 		}// 测试创建文件
 			// ---------------------------------------------------------------------------------------
 		return "";

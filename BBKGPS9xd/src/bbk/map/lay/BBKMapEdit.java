@@ -4,7 +4,7 @@ import bbk.bbk.box.BBKSoft;
 import bbk.map.lay.BBKMapLay.Lay_type;
 import bbk.map.lay.BBKMapLay.line_type;
 import bbk.map.lay.BBKMapLay.poi_type;
-import bbk.zzz.debug.BBKDebug;
+import bbk.zzz.debug.bd;
 
 public class BBKMapEdit {
 
@@ -196,11 +196,11 @@ public class BBKMapEdit {
 
 	public static void layDebug() {
 		// ----------------------------------------
-		BBKDebug.d("----------layDebug---------------", false, false);
+		bd.d("----------layDebug---------------", false, false);
 		// ----------------------------------------
 		for (int i = 0; i < layes; i++) {
 			if (laypi[i] != -1 || layli[i] != -1 || layyi[i] != -1) {
-				BBKDebug.d(laypi[i] + " " + layli[i] + " " + laylp[i] + " " + layyi[i] + " " + layyp[i], false, false);
+				bd.d(laypi[i] + " " + layli[i] + " " + laylp[i] + " " + layyi[i] + " " + layyp[i], false, false);
 			}
 		}
 		// ----------------------------------------

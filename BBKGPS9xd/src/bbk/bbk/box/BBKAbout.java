@@ -17,9 +17,9 @@ public class BBKAbout {
 		SoftAbout += SoftTitle + " for Android!" + "\r\n" + "\r\n";
 		SoftAbout += "作者： 许晋平" + "\r\n";
 		SoftAbout += "昵称： BOBOKing  海云飞" + "\r\n";
-		SoftAbout += "邮箱：wetnt@sina.com" + "\r\n";
-		SoftAbout += "电话：13911969356" + "\r\n";
-		SoftAbout += "日期：2015.12.5";
+		SoftAbout += "邮箱： wetnt@sina.com" + "\r\n";
+		SoftAbout += "电话： 13911969356" + "\r\n";
+		SoftAbout += "日期： 2016.6.6";
 		// ------------------------------------------------------
 	}
 

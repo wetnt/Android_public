@@ -98,6 +98,7 @@ public class BBKACC {
 
 	private SensorEventListener AccListener = new SensorEventListener() {
 		// ---------------------------------------------------------------
+		@SuppressWarnings("deprecation")
 		public void onSensorChanged(SensorEvent e) {
 			if (e.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
 				// ---------------------------------------------------------------

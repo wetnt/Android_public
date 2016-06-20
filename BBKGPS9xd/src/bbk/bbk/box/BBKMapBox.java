@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import bbk.map.abc.BBKMapImage;
 import bbk.uis.view.BBKLayView;
-import bbk.zzz.debug.BBKDebug;
+import bbk.zzz.debug.bd;
 
 import com.example.bbkgps9xd.MainActivity;
 import com.example.bbkgps9xd.R;
@@ -19,12 +19,12 @@ public class BBKMapBox extends BBKLayView {
 	}
 
 	public void LayReInt() {
-		// ----------------------------------------------------		
+		// ----------------------------------------------------
 		FrameLayout MainLay = (FrameLayout) MainActivity.act.findViewById(R.id.MainBox);
 		screenW = MainLay.getWidth();
 		screenH = MainLay.getHeight();
-		// ----------------------------------------------------		
-		BBKDebug.d("WxH = " + screenW + "x" + screenH, true, true);
+		// ----------------------------------------------------
+		bd.d("WxH = " + screenW + "x" + screenH, true, true);
 		// ----------------------------------------------------
 	}
 
@@ -38,9 +38,6 @@ public class BBKMapBox extends BBKLayView {
 	public void BMBInt(Context context) {
 		// ----------------------------------------------------
 		LayReInt();
-		// ----------------------------------------------------
-		// screenS = this.getResources().getConfiguration().orientation;
-		// setRequesteOrientation(ActivityInfo.SCREEN_ORIENTATION_LADSCAPE);
 		// ----------------------------------------------------
 		MapImg = (ImageView) bbkAct.findViewById(R.id.ImgMap);
 		MapImg.setBackgroundColor(-1);
@@ -64,8 +61,5 @@ public class BBKMapBox extends BBKLayView {
 	public void MapScrn() {
 		MapImg.setImageBitmap(BBKMapImage.Map);
 	}
-	// ====================================================================================
-	// ====================================================================================
-	// =====================================================================================
 	// =====================================================================================
 }

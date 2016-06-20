@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 
 import android.content.Context;
 import android.os.Environment;
-import bbk.zzz.debug.BBKDebug;
+import bbk.zzz.debug.bd;
 
 public class BBKSdCard {
 
@@ -56,29 +56,30 @@ public class BBKSdCard {
 	private static boolean BBKSdCardSet() {
 		// ----------------------------------------------------
 		if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-			BBKDebug.d("BBKSdCard.BBKSdCardSet = SD Card 不可用", false, true);
+			bd.d("BBKSdCard.BBKSdCardSet = SD Card 不可用", false, true);
 			return false;
 		} else {
-			BBKDebug.d("BBKSdCard.BBKSdCardSet = SD Card 可用", false, true);
+			bd.d("BBKSdCard.BBKSdCardSet = SD Card 可用", false, true);
 		}
 		// ----------------------------------------------------
 		try {
 			SdPath = Environment.getExternalStorageDirectory().getCanonicalPath();
-			BBKDebug.d("BBKSdCard.BBKSdCardSet.getCanonicalPath = " + SdPath, false, true);
+			bd.d("BBKSdCard.BBKSdCardSet.getCanonicalPath = " + SdPath, false, true);
 		} catch (IOException e) {
-			BBKDebug.d("BBKSdCard.BBKSdCardSet.getCanonicalPath.err = " + e.toString(), false, true);
+			bd.d("BBKSdCard.BBKSdCardSet.getCanonicalPath.err = " + e.toString(), false, true);
 		}
 		// ----------------------------------------------------
 		return true;
 		// ----------------------------------------------------
 	}
 
+	@SuppressWarnings("unused")
 	private static boolean GetExtSdCardPath(String path) {
 		// ----------------------------------------------------
 		File fs = new File(path);
 		String ps = fs.getParent();
 		// ----------------------------------------------------
-		BBKDebug.d("BBKSdCard.getParent = " + ps, false, true);
+		bd.d("BBKSdCard.getParent = " + ps, false, true);
 		// ----------------------------------------------------
 		fs = new File(ps);
 		// ----------------------------------------------------
@@ -86,15 +87,15 @@ public class BBKSdCard {
 		for (int i = 0; i < files.length; i++) {// 遍历目录下所有的文件
 			// ----------------------------------------------------
 			ps = files[i].getPath();
-			BBKDebug.d("BBKSdCard.getParent = " + ps, false, true);
+			bd.d("BBKSdCard.getParent = " + ps, false, true);
 			if (CheckExtSdCardPaths(ps)) {
 				SdPath = ps;
-				BBKDebug.d("BBKSdCard.getParent = " + SdPath, false, true);
+				bd.d("BBKSdCard.getParent = " + SdPath, false, true);
 				return true;
 			}
 			if (i == files.length - 1) {
 				SdPath = ps;
-				BBKDebug.d("BBKSdCard.getParent = " + SdPath, false, true);
+				bd.d("BBKSdCard.getParent = " + SdPath, false, true);
 				return true;
 			}
 			// ----------------------------------------------------
@@ -124,7 +125,7 @@ public class BBKSdCard {
 		File FileDir = new File(DirPath);
 		if (!FileDir.exists()) {
 			FileDir.mkdirs();
-			BBKDebug.d("BBKSdCard.CheckMakeDir = " + DirPath, false, true);
+			bd.d("BBKSdCard.CheckMakeDir = " + DirPath, false, true);
 		}
 		// ----------------------------------------------------
 		FileDir = null;
@@ -166,7 +167,7 @@ public class BBKSdCard {
 			String lineStr;
 			while ((lineStr = inBr.readLine()) != null) {
 				// 获得命令执行后在控制台的输出信息
-				BBKDebug.d("BBKSdCard.getSDCardPath = " + lineStr, false, true);
+				bd.d("BBKSdCard.getSDCardPath = " + lineStr, false, true);
 				if (lineStr.contains("sdcard") && lineStr.contains(".android_secure")) {
 					String[] strArray = lineStr.split(" ");
 					if (strArray != null && strArray.length >= 5) {
@@ -177,13 +178,13 @@ public class BBKSdCard {
 				// 检查命令是否执行失败。
 				if (p.waitFor() != 0 && p.exitValue() == 1) {
 					// p.exitValue()==0表示正常结束，1：非正常结束
-					BBKDebug.d("BBKSdCard.getSDCardPath.159 = " + "命令执行失败!", false, true);
+					bd.d("BBKSdCard.getSDCardPath.159 = " + "命令执行失败!", false, true);
 				}
 			}
 			inBr.close();
 			in.close();
 		} catch (Exception e) {
-			BBKDebug.d("BBKSdCard.getSDCardPath.159 = " + e.toString(), false, true);
+			bd.d("BBKSdCard.getSDCardPath.159 = " + e.toString(), false, true);
 			return Environment.getExternalStorageDirectory().getPath();
 		}
 		return Environment.getExternalStorageDirectory().getPath();
@@ -224,7 +225,7 @@ public class BBKSdCard {
 			String columns[] = mount.split("\n");
 
 			for (int i = 0; i < columns.length; i++) {
-				BBKDebug.d(columns[i], false, false);
+				bd.d(columns[i], false, false);
 			}
 
 		} catch (FileNotFoundException e) {

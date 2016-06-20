@@ -1,7 +1,7 @@
 package bbk.sys.abc;
 
 import bbk.bbk.box.BBKSoft;
-import bbk.zzz.debug.BBKDebug;
+import bbk.zzz.debug.bd;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -50,8 +50,18 @@ public class BBKSavePathSelect {
 		// ------------------------------------------------------
 		editor.commit();// 提交修改
 		// ------------------------------------------------------
-		BBKDebug.d("run time = " + count, true, false);
-		BBKDebug.d(BBKSoft.PathSD, true, false);
+		bd.d("run time = " + count, true, false);
+		bd.d(BBKSoft.PathSD, true, false);
+		// ------------------------------------------------------
+	}
+
+	public static void SetSoftPathEmpty(Activity act) {
+		// ------------------------------------------------------
+		SharedPreferences preferences = act.getSharedPreferences("count", Context.MODE_PRIVATE);
+		// ------------------------------------------------------
+		Editor editor = preferences.edit();
+		editor.putString("SDPath", "");// 存入数据
+		editor.commit();// 提交修改
 		// ------------------------------------------------------
 	}
 
@@ -60,7 +70,7 @@ public class BBKSavePathSelect {
 		return items[x];
 	}
 
-	private static String[] items = { "选项1", "选项2", "选项3", "选项4" };
+	// private static String[] items = { "选项1", "选项2", "选项3", "选项4" };
 
 	// private static String itemStr = "";
 	// private static int itemIndex = -1;

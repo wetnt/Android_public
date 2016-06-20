@@ -81,6 +81,7 @@ public class BBKMagnetic {
 	// SensorManager.SENSOR_DELAY_GAME：如果利用传感器开发游戏，建议使用该值。
 	// SensorManager.SENSOR_DELAY_UI：如果使用传感器更新UI中的数据，建议使用该值。
 	// ========================================================================
+	@SuppressWarnings("deprecation")
 	public void SensorInt(final Context pthis) {
 		// ----------------------------------------------------
 		// 第一步：获得SensorManager对象,返回的就是一个硬件设备的控制器

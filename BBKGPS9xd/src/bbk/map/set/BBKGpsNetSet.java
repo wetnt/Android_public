@@ -21,7 +21,7 @@ import bbk.map.bbd.BBDHttp;
 import bbk.net.abc.BBKHttpGet;
 import bbk.sys.abc.BBKSYS;
 import bbk.uis.view.BBKLayView;
-import bbk.zzz.debug.BBKDebug;
+import bbk.zzz.debug.bd;
 
 public class BBKGpsNetSet extends BBKLayView {
 	// ====================================================================================
@@ -174,8 +174,8 @@ public class BBKGpsNetSet extends BBKLayView {
 	public boolean GetJsonValue() {
 		// ---------------------------------------------------------------------
 		String softStr = BBKSYS.FileRead(setpathname);
-		BBKDebug.d("BBKGpsNetSet.MySoftRead.pathname = " + setpathname, false, true);
-		BBKDebug.d("BBKGpsNetSet.MySoftRead.softStr = " + softStr, false, true);
+		bd.d("BBKGpsNetSet.MySoftRead.pathname = " + setpathname, false, true);
+		bd.d("BBKGpsNetSet.MySoftRead.softStr = " + softStr, false, true);
 		// ---------------------------------------------------------------------
 		if (softStr == null || softStr.length() < 10)
 			return false;
@@ -186,7 +186,7 @@ public class BBKGpsNetSet extends BBKLayView {
 			sets = new JSONObject(softStr);
 			// ----------------------------------------------
 		} catch (JSONException ex) {
-			BBKDebug.d("BBKGpsNetSet.SetJsonValue.JSON = " + setpathname, false, true);
+			bd.d("BBKGpsNetSet.SetJsonValue.JSON = " + setpathname, false, true);
 			return false;
 		}
 		// ---------------------------------------------------------------------
@@ -213,7 +213,7 @@ public class BBKGpsNetSet extends BBKLayView {
 
 	public boolean SetJsonValue() {
 		// ---------------------------------------------------------------------
-		BBKDebug.d("BBKGpsNetSet.MySoftSave.pathname = " + setpathname, false, true);
+		bd.d("BBKGpsNetSet.MySoftSave.pathname = " + setpathname, false, true);
 		// ----------------------------------------------------
 		try {
 			// ------------------------------------------------
@@ -237,11 +237,11 @@ public class BBKGpsNetSet extends BBKLayView {
 			sets.put("PrxyTime", BBKHttpGet.NetTimes);
 			// ------------------------------------------------
 			String sss = sets.toString();
-			BBKDebug.d("BBKGpsNetSet.SetJsonValue.JSON = " + sss, false, true);
+			bd.d("BBKGpsNetSet.SetJsonValue.JSON = " + sss, false, true);
 			BBKSYS.FileSave(setpathname, sss);
 			// ------------------------------------------------
 		} catch (JSONException ex) {
-			BBKDebug.d("BBKGpsNetSet.SetJsonValue.JSONO = " + ex.toString(), false, true);
+			bd.d("BBKGpsNetSet.SetJsonValue.JSONO = " + ex.toString(), false, true);
 			throw new RuntimeException(ex);
 		}
 		return true;

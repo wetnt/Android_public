@@ -21,14 +21,13 @@ import bbk.map.set.BBKGpsNetSet;
 import bbk.map.set.BBKMapZoomSet;
 import bbk.map.uis.BBKButMenu;
 import bbk.map.uis.Main_Track2;
-import bbk.map.uis.Map_Button;
+import bbk.map.uis.Map_Buttons;
 import bbk.map.uis.BBKMenuView;
 import bbk.map.uis.Main_List;
 import bbk.map.uis.Main_Ask;
 import bbk.map.uis.Main_AskHis;
 import bbk.map.uis.Main_Fav;
 import bbk.map.uis.Main_ScreenLight;
-import bbk.map.uis.Main_Track;
 import bbk.map.uis.Map_Measure;
 import bbk.map.uis.Map_Move;
 import bbk.net.abc.BBKNetCheck;
@@ -41,7 +40,7 @@ import bbk.sys.abc.BBKSavePathSelect;
 import bbk.sys.abc.BBKSdCard;
 import bbk.sys.abc.BBKSdCard2;
 import bbk.sys.abc.BBKTimer;
-import bbk.zzz.debug.BBKDebug;
+import bbk.zzz.debug.bd;
 
 public class BBKSoft {
 
@@ -65,7 +64,7 @@ public class BBKSoft {
 	// ----------------------------------------------------
 	public static BBKButMenu myMenu = new BBKButMenu();
 	public static BBKMenuView myMenux = new BBKMenuView();
-	public static Map_Button myBtns = new Map_Button();
+	public static Map_Buttons myBtns = new Map_Buttons();
 	public static BBKMsgBox myMsg = new BBKMsgBox();
 	// ----------------------------------------------------
 	public static BBKMapBox myBoxs = new BBKMapBox();
@@ -85,7 +84,7 @@ public class BBKSoft {
 	public static Main_AskHis myAsH = new Main_AskHis();
 	// ----------------------------------------------------
 	public static Main_Fav myFav = new Main_Fav();
-	//public static Main_Track myTrk = new Main_Track();
+	// public static Main_Track myTrk = new Main_Track();
 	public static Main_Track2 myTrk = new Main_Track2();
 	public static Main_List myList = new Main_List();
 	// ----------------------------------------------------
@@ -107,7 +106,7 @@ public class BBKSoft {
 		// ----------------------------------------------------
 		BBKAbout.BBKAboutSet();
 		BBKSoftPathSet();
-		BBKDebug.MyInt();
+		bd.MyInt();
 		// ----------------------------------------------------
 		BBKSYS.bbtName(PathBbts);
 		// ----------------------------------------------------
@@ -303,7 +302,7 @@ public class BBKSoft {
 		if (PathSD == "")
 			PathSD = BBKSdCard2.getNormalSDCardPath();// 默认SDcard
 		// ----------------------------------------------------
-		BBKDebug.d("PathSD = " + PathSD, false, false);
+		bd.d("PathSD = " + PathSD, false, false);
 		// ----------------------------------------------------
 		PathSoft = PathSD + "/!BBK/";
 		BBKSdCard.CheckMakeDir(PathSoft);
@@ -528,7 +527,7 @@ public class BBKSoft {
 			Bundle bundle = null;
 			if (data != null && (bundle = data.getExtras()) != null) {
 				// textView.setText("选择文件夹为：\r\n"+bundle.getString("file"));
-				BBKDebug.d("选择文件夹为：\r\n" + bundle.getString("file"), true, false);
+				bd.d("选择文件夹为：\r\n" + bundle.getString("file"), true, false);
 			}
 		}
 	}
