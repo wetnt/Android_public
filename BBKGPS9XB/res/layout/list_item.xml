@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight" >
+
+    <ImageView
+        android:id="@+id/Item_Image"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name"
+        android:padding="2dip"
+        />
+
+    <TextView
+        android:id="@+id/Item_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Item_Title"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_toRightOf="@+id/Item_Image"
+        android:gravity="center_vertical"
+        android:text="@+id/listitem_title"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/Item_Text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/Item_Image"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:text="@+id/item_content"
+        android:textSize="14sp" />
+
+</RelativeLayout>
