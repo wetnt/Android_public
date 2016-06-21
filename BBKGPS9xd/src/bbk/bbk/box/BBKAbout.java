@@ -1,4 +1,4 @@
-package bbk.bbk.box;
+ï»¿package bbk.bbk.box;
 
 import bbk.sys.abc.BBKMsgBox;
 
@@ -6,7 +6,7 @@ public class BBKAbout {
 
 	// ====================================================================================
 	public final static String SoftTitle = "BBK GPS V9X";
-	public final static String SoftYesOKs = "È·¶¨";
+	public final static String SoftYesOKs = "ç¡®å®š";
 	public final static String SoftCopyRitht = "@boboking.com";// "@www.boboking.com 2014";
 	public static String SoftAbout = "";
 
@@ -15,11 +15,11 @@ public class BBKAbout {
 		// ------------------------------------------------------
 		SoftAbout = "";
 		SoftAbout += SoftTitle + " for Android!" + "\r\n" + "\r\n";
-		SoftAbout += "×÷Õß£º Ğí½úÆ½" + "\r\n";
-		SoftAbout += "êÇ³Æ£º BOBOKing  º£ÔÆ·É" + "\r\n";
-		SoftAbout += "ÓÊÏä£º wetnt@sina.com" + "\r\n";
-		SoftAbout += "µç»°£º 13911969356" + "\r\n";
-		SoftAbout += "ÈÕÆÚ£º 2016.6.6";
+		SoftAbout += "ä½œè€…ï¼š è®¸æ™‹å¹³" + "\r\n";
+		SoftAbout += "æ˜µç§°ï¼š BOBOKing  æµ·äº‘é£" + "\r\n";
+		SoftAbout += "é‚®ç®±ï¼š wetnt@sina.com" + "\r\n";
+		SoftAbout += "ç”µè¯ï¼š 13911969356" + "\r\n";
+		SoftAbout += "æ—¥æœŸï¼š 2016.6.21";
 		// ------------------------------------------------------
 	}
 

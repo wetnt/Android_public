@@ -1,4 +1,4 @@
-package bbk.bbk.box;
+ï»¿package bbk.bbk.box;
 
 import android.annotation.SuppressLint;
 import android.graphics.Matrix;
@@ -15,9 +15,9 @@ import bbk.map.abc.BBKMapMath;
 public class BBKMapView {
 
 	// ------------------------------------------------------
-	private final int NONE = 0;// ³õÊ¼×´Ì¬
-	private final int DRAG = 1;// ÍÏ¶¯
-	private final int ZOOM = 2;// Ëõ·Å
+	private final int NONE = 0;// åˆå§‹çŠ¶æ€
+	private final int DRAG = 1;// æ‹–åŠ¨
+	private final int ZOOM = 2;// ç¼©æ”¾
 	private int mode = NONE;
 	// ------------------------------------------------------
 	private Matrix mapVwMatrix = new Matrix();
@@ -43,7 +43,7 @@ public class BBKMapView {
 				ImageView view = (ImageView) v;
 				// ====================================================================================
 				switch (event.getAction() & MotionEvent.ACTION_MASK) {
-				// ÉèÖÃÍÏÀ­Ä£Ê½
+				// è®¾ç½®æ‹–æ‹‰æ¨¡å¼
 				case MotionEvent.ACTION_DOWN:
 					// ------------------------------------------------------
 					mode = DRAG;
@@ -62,7 +62,7 @@ public class BBKMapView {
 					// ------------------------------------------------------
 					mode = NONE;
 					break;
-				// ÉèÖÃ¶àµã´¥ÃşÄ£Ê½
+				// è®¾ç½®å¤šç‚¹è§¦æ‘¸æ¨¡å¼
 				// ------------------------------------------------------
 				case MotionEvent.ACTION_POINTER_DOWN:
 					// ------------------------------------------------------
@@ -73,23 +73,23 @@ public class BBKMapView {
 						mode = ZOOM;
 					}
 					break;
-				// ÈôÎªDRAGÄ£Ê½£¬Ôòµã»÷ÒÆ¶¯Í¼Æ¬
+				// è‹¥ä¸ºDRAGæ¨¡å¼ï¼Œåˆ™ç‚¹å‡»ç§»åŠ¨å›¾ç‰‡
 				// ------------------------------------------------------
 				case MotionEvent.ACTION_MOVE:
 					// ------------------------------------------------------
 					// LabInf.setText("ACTION_MOVE");
 					if (mode == DRAG) {
 						mapVwMatrix.set(savedMatrix);
-						// ÉèÖÃÎ»ÒÆ
+						// è®¾ç½®ä½ç§»
 						mapVwMatrix.postTranslate(event.getX() - mapVwStart.x, event.getY() - mapVwStart.y);
 					}
-					// ÈôÎªZOOMÄ£Ê½£¬Ôò¶àµã´¥ÃşËõ·Å
+					// è‹¥ä¸ºZOOMæ¨¡å¼ï¼Œåˆ™å¤šç‚¹è§¦æ‘¸ç¼©æ”¾
 					else if (mode == ZOOM) {
 						newDist = spacing(event);
 						if (newDist > 10f) {
 							mapVwMatrix.set(savedMatrix);
 							mapscale = newDist / mapVwOldDist;
-							// ÉèÖÃËõ·Å±ÈÀıºÍÍ¼Æ¬ÖĞµãÎ»ÖÃ
+							// è®¾ç½®ç¼©æ”¾æ¯”ä¾‹å’Œå›¾ç‰‡ä¸­ç‚¹ä½ç½®
 							// ----------------------------------------------------
 							if (BBKMap.mapzm == 3 && mapscale < 1) {
 								mapscale = 1;
@@ -110,7 +110,7 @@ public class BBKMapView {
 			}
 
 			// ====================================================================================
-			private float spacing(MotionEvent event) {// ¼ÆËãÒÆ¶¯¾àÀë
+			private float spacing(MotionEvent event) {// è®¡ç®—ç§»åŠ¨è·ç¦»
 				// -----------------------------------------------------------
 				float x = event.getX(0) - event.getX(1);
 				float y = event.getY(0) - event.getY(1);
@@ -119,7 +119,7 @@ public class BBKMapView {
 				// -----------------------------------------------------------
 			}
 
-			private void midPoint(PointF point, MotionEvent event) {// ¼ÆËãÖĞµãÎ»ÖÃ
+			private void midPoint(PointF point, MotionEvent event) {// è®¡ç®—ä¸­ç‚¹ä½ç½®
 				float x = event.getX(0) + event.getX(1);
 				float y = event.getY(0) + event.getY(1);
 				point.set(x / 2, y / 2);
@@ -142,7 +142,7 @@ public class BBKMapView {
 
 	private void MouseUP(ImageView view, MotionEvent event) {
 		// ============================================================================
-		if (DoubleTapCheck()) {// ÅĞ¶ÏÖ´ĞĞÊÇ·ñË«»÷²Ù×÷
+		if (DoubleTapCheck()) {// åˆ¤æ–­æ‰§è¡Œæ˜¯å¦åŒå‡»æ“ä½œ
 			DoubleTapWork();
 			return;
 		}
@@ -172,9 +172,9 @@ public class BBKMapView {
 	// ====================================================================================
 	private void MouseWork(double mx, double my, int rz) {
 		// -----------------------------------------------------------------------------
-		if (Math.abs(mx) < 6 && Math.abs(my) < 6) {// Ìí¼Ó²âÁ¿ĞÂµã
+		if (Math.abs(mx) < 6 && Math.abs(my) < 6) {// æ·»åŠ æµ‹é‡æ–°ç‚¹
 			BBKSoft.MapTouch(pdx, pdy);
-		} else {// µØÍ¼ÍÏ¶¯
+		} else {// åœ°å›¾æ‹–åŠ¨
 			// ----------------------------------------------------------------------------
 			int z = BBKMap.mapzm;
 			double x = BBKMap.PixJXT + mx;
@@ -196,7 +196,7 @@ public class BBKMapView {
 	private long firClick, secClick;
 	private int doubleclicktimex = 400;
 
-	private boolean DoubleTapCheck() {// Ë«»÷ÊÂ¼ş
+	private boolean DoubleTapCheck() {// åŒå‡»äº‹ä»¶
 		secClick = System.currentTimeMillis();
 		if (secClick - firClick < doubleclicktimex) {
 			return true;
@@ -208,7 +208,7 @@ public class BBKMapView {
 
 	// ====================================================================================
 
-	private void DoubleTapWork() {// Ë«»÷ÊÂ¼ş
+	private void DoubleTapWork() {// åŒå‡»äº‹ä»¶
 		// ----------------------------------------------------------------------------
 		BBKSoft.myMaps.BBKViewCenterTemp(pdx, pdy);
 		handlerTimer.post(RunnableTimer);
@@ -222,29 +222,30 @@ public class BBKMapView {
 		}
 	};
 
-	private void MapZoomNewRun() {// µØÍ¼Ğı×ªËõ·ÅË¢ĞÂ
+	private void MapZoomNewRun() {// åœ°å›¾æ—‹è½¬ç¼©æ”¾åˆ·æ–°
 		// ----------------------------------------------------------------------------
-		float angle = 0;// BBK.myMaps.MapAngle;// µØÍ¼Ğı×ª½Ç¶È
-		// Ïà¶ÔÓÚµØÍ¼ÖĞĞÄµãµÄ×ø±êÎ»ÖÃXYÖµ
+		float angle = 0;// BBK.myMaps.MapAngle;// åœ°å›¾æ—‹è½¬è§’åº¦
+		// ç›¸å¯¹äºåœ°å›¾ä¸­å¿ƒç‚¹çš„åæ ‡ä½ç½®XYå€¼
 		int pcx = pdx - BBKMap.MapWx;
 		int pcy = pdy - BBKMap.MapHy;
 		// ----------------------------------------------------------------------------
-		MapPoiXY pc = new MapPoiXY(0, 0);// ×ø±êÔ­µã=µØÍ¼ÖĞĞÄ
-		MapPoiXY pz = new MapPoiXY(pcx, pcy);// ÒÔµØÍ¼ÖĞĞÄÎª×ø±êÔ­µãµÄË«»÷Î»ÖÃ
-		// ÒÔµØÍ¼ÖĞĞÄÎªÔ­µã£¬Ë«»÷Î»ÖÃ£¬ÄæÏòĞı×ªµØÍ¼Ğı×ª½Ç¶Èºó£¬»ñµÃµÄ×ø±êÖµ
+		MapPoiXY pc = new MapPoiXY(0, 0);// åæ ‡åŸç‚¹=åœ°å›¾ä¸­å¿ƒ
+		MapPoiXY pz = new MapPoiXY(pcx, pcy);// ä»¥åœ°å›¾ä¸­å¿ƒä¸ºåæ ‡åŸç‚¹çš„åŒå‡»ä½ç½®
+		// ä»¥åœ°å›¾ä¸­å¿ƒä¸ºåŸç‚¹ï¼ŒåŒå‡»ä½ç½®ï¼Œé€†å‘æ—‹è½¬åœ°å›¾æ—‹è½¬è§’åº¦åï¼Œè·å¾—çš„åæ ‡å€¼
 		MapPoiXY pm = BBKMapMath.PointRotate(pc, pz, -angle);
 		// ----------------------------------------------------------------------------
-		double px = BBKMap.PixJXT + pm.x;// Ä«¿¨ÍĞÍ¶Ó°ÏñËØÖµY
-		double py = BBKMap.PixWYT + pm.y;// Ä«¿¨ÍĞÍ¶Ó°ÏñËØÖµX
+		double px = BBKMap.PixJXT + pm.x;// å¢¨å¡æ‰˜æŠ•å½±åƒç´ å€¼Y
+		double py = BBKMap.PixWYT + pm.y;// å¢¨å¡æ‰˜æŠ•å½±åƒç´ å€¼X
 		// ----------------------------------------------------------------------------
 		int z = BBKMap.mapzm;
-		double w = BBKMapMath.GetLatByPixel(py, z);// Ë«»÷Î»ÖÃÎ³¶È
-		double j = BBKMapMath.GetLonByPixel(px, z);// Ë«»÷Î»ÖÃ¾«¶È
-		BBKSoft.myMaps.MapSetWJZ(w, j, 1);// ÒÔË«»÷Î»ÖÃÎªµØÍ¼ÖĞĞÄ£¬·Å´óµØÍ¼1¼¶
+		double w = BBKMapMath.GetLatByPixel(py, z);// åŒå‡»ä½ç½®çº¬åº¦
+		double j = BBKMapMath.GetLonByPixel(px, z);// åŒå‡»ä½ç½®ç²¾åº¦
+		BBKSoft.myMaps.MapSetWJZ(w, j, 1);// ä»¥åŒå‡»ä½ç½®ä¸ºåœ°å›¾ä¸­å¿ƒï¼Œæ”¾å¤§åœ°å›¾1çº§
 		// ----------------------------------------------------------------------------
 		BBKSoft.MapFlash(true);
 		// ----------------------------------------------------------------------------
 	}
+
 	// ====================================================================================
 	// ====================================================================================
 	// ====================================================================================

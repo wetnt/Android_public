@@ -1,4 +1,4 @@
-package bbk.map.bbd;
+ï»¿package bbk.map.bbd;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,12 +20,12 @@ public class BBDRead {
 			RandomAccessFile fin = null;
 			// --------------------------------------------------------
 			fbd = new File(Path + P.bbd);
-			if (!fbd.exists()) {// BBD´æÔÚ¼ì²â
+			if (!fbd.exists()) {// BBDå­˜åœ¨æ£€æµ‹
 				return null;
 			}
 			// --------------------------------------------------------
 			fin = new RandomAccessFile(Path + P.bbd, "r");
-			if (P.f + 8 > fbd.length()) {// ÎÄ¼şÍ·Æ«ÒÆ¼ì²â
+			if (P.f + 8 > fbd.length()) {// æ–‡ä»¶å¤´åç§»æ£€æµ‹
 				fin.close();
 				return null;
 			}
@@ -57,24 +57,24 @@ public class BBDRead {
 				// ----------------------------------------------------
 			}
 			// --------------------------------------------------------
-			if (s < 80000) {// ÎÄ¼ş³¤¶È¼ì²â
+			if (s < 80000) {// æ–‡ä»¶é•¿åº¦æ£€æµ‹
 				fin.close();
 				return null;
 			}
 			// --------------------------------------------------------
-			if (l < 100) {// ÎÄ¼ş³¤¶È¼ì²â
+			if (l < 100) {// æ–‡ä»¶é•¿åº¦æ£€æµ‹
 				fin.close();
 				return null;
 			}
 			// --------------------------------------------------------
-			if (s + l > fbd.length()) {// Æ«ÒÆ³¤¶È¼ì²â
+			if (s + l > fbd.length()) {// åç§»é•¿åº¦æ£€æµ‹
 				fin.close();
 				return null;
 			}
 			// --------------------------------------------------------
 			fin.seek(s);
 			// --------------------------------------------------------
-			try {// ÎÄ¼şÁ÷¶ÁÈ¡
+			try {// æ–‡ä»¶æµè¯»å–
 				fin.read(bd, 0, (int) l);
 			} catch (Exception e) {
 				fin.close();
@@ -109,7 +109,7 @@ public class BBDRead {
 	// ====================================================================================
 	public static long byteToLong(byte[] buffer) {
 		long l = 0;
-		// ×îµÍÎ»
+		// æœ€ä½ä½
 		long l0 = buffer[7] & 0xff;
 		long l1 = buffer[6] & 0xff;
 		long l2 = buffer[5] & 0xff;
@@ -117,9 +117,9 @@ public class BBDRead {
 		long l4 = buffer[3] & 0xff;
 		long l5 = buffer[2] & 0xff;
 		long l6 = buffer[1] & 0xff;
-		// ×î¸ßÎ»
+		// æœ€é«˜ä½
 		long l7 = buffer[0] & 0xff;
-		// l0²»±ä
+		// l0ä¸å˜
 		l1 <<= 8;
 		l2 <<= 16;
 		l3 <<= 24;

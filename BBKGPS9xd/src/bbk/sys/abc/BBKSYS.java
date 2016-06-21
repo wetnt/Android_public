@@ -1,4 +1,4 @@
-package bbk.sys.abc;
+ï»¿package bbk.sys.abc;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -179,7 +179,7 @@ public class BBKSYS {
 			bbtf.delete();
 		} catch (IOException e) {
 			bd.d("BBKSYS.bbtName.createNewFile.ERROR = " + e.toString(), false, true);
-		}// ²âÊÔ´´½¨ÎÄ¼ş
+		}// æµ‹è¯•åˆ›å»ºæ–‡ä»¶
 			// ---------------------------------------------------------------------------------------
 		return "";
 		// ---------------------------------------------------------------------------------------
@@ -213,7 +213,7 @@ public class BBKSYS {
 		try {
 			xmString = new String(sb.toString().getBytes("UTF-8"));
 			xmlUTF8 = URLEncoder.encode(xmString, "UTF-8");
-			System.out.println("utf-8 ±àÂë£º" + xmlUTF8);
+			System.out.println("utf-8 ç¼–ç ï¼š" + xmlUTF8);
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
@@ -281,8 +281,8 @@ public class BBKSYS {
 	// ===========================================================================================
 	public static class DFSX_type {
 		// --------------------------------------------
-		public int d = 0, f = 0;// ¶È·Ö
-		public double s = 0.0;// Ãë
+		public int d = 0, f = 0;// åº¦åˆ†
+		public double s = 0.0;// ç§’
 		public double ddd = 0.0;// DD.DDDDD
 
 		// --------------------------------------------
@@ -323,7 +323,7 @@ public class BBKSYS {
 			}
 
 			public boolean equals(Object obj) {
-				return true; // ¼òµ¥×ö·¨
+				return true; // ç®€å•åšæ³•
 			}
 		}
 
@@ -341,7 +341,7 @@ public class BBKSYS {
 			}
 
 			public boolean equals(Object obj) {
-				return true; // ¼òµ¥×ö·¨
+				return true; // ç®€å•åšæ³•
 			}
 		}
 

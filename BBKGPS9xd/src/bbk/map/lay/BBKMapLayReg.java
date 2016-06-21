@@ -1,4 +1,4 @@
-package bbk.map.lay;
+﻿package bbk.map.lay;
 
 import bbk.map.dat.BBKReg;
 import bbk.map.dat.BBKReg.RegWJ;

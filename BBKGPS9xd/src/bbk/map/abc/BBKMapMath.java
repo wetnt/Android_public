@@ -1,13 +1,13 @@
-package bbk.map.abc;
+ï»¿package bbk.map.abc;
 
 import bbk.map.abc.BBKMap.MapPoiXY;
 
 public class BBKMapMath {
 
-	// =================±ÈÀý³ß==============================================================
+	// =================æ¯”ä¾‹å°º==============================================================
 	public final static String BLCKMM[] = { "8000km(0)", "4000km(1)", "2000km(2)", "1000km(3)", "500km(4)", "250km(5)", "120km(6)", "60km(7)", "30km(8)", "15km(9)", "7.5km(10)", "3km(11)", "2km(12)", "800m(13)", "400m(14)", "200m(15)", "100m(16)", "50m(17)", "25m(18)", "12m(19)", "6m(20)", "3m(21)", "1m(22)", "0.5m(22)" };
 	public final static long BLCLONG[] = { 1, 1, 20000000, 10000000, 5000000, 2500000, 120000, 60000, 16000, 15500, 8000, 4000, 2000, 1000, 500, 250, 120, 53, 30, 15, 8, 4, 2, 1 };
-	// =================±ÈÀý³ß==============================================================
+	// =================æ¯”ä¾‹å°º==============================================================
 	public static double pow2n[] = new double[21];
 
 	public static void pow2nInt() {
@@ -18,24 +18,24 @@ public class BBKMapMath {
 		// ----------------------------------------------------
 	}
 
-	// =================Ä«¿¨ÍÐÍ¶Ó°¾­Î³µ½ÏñËØ»»Ëã===========
-	public static double GetPixelByLon(double dbLon, double nLayer) {// ¾­¶Èµ½ÏñËØXÖµ
+	// =================å¢¨å¡æ‰˜æŠ•å½±ç»çº¬åˆ°åƒç´ æ¢ç®—===========
+	public static double GetPixelByLon(double dbLon, double nLayer) {// ç»åº¦åˆ°åƒç´ Xå€¼
 		return (dbLon + 180) * Math.pow(2, nLayer + 8) / 360 * BBKMap.TileZoom;
 	}
 
-	public static double GetPixelByLat(double dbLat, double nLayer) {// Î³¶Èµ½ÏñËØYÖµ
+	public static double GetPixelByLat(double dbLat, double nLayer) {// çº¬åº¦åˆ°åƒç´ Yå€¼
 		double dbSinY = Math.sin(dbLat * Math.PI / 180);
 		double dbTemp = Math.log((1 + dbSinY) / (1 - dbSinY));
 		double dbRet = Math.pow(2, nLayer + 7) * (1 - dbTemp / (2 * Math.PI));
 		return dbRet * BBKMap.TileZoom;
 	}
 
-	// =================Ä«¿¨ÍÐÍ¶Ó°¾­Î³µ½ÏñËØ»»Ëã==========
-	public static double GetLonByPixel(double dbPixel, double nLayer) {// ÏñËØXµ½¾­¶È
+	// =================å¢¨å¡æ‰˜æŠ•å½±ç»çº¬åˆ°åƒç´ æ¢ç®—==========
+	public static double GetLonByPixel(double dbPixel, double nLayer) {// åƒç´ Xåˆ°ç»åº¦
 		return dbPixel / BBKMap.TileZoom * 360 / Math.pow(2, nLayer + 8) - 180;
 	}
 
-	public static double GetLatByPixel(double dbPixel, int nLayer) {// ÏñËØYµ½Î³¶È
+	public static double GetLatByPixel(double dbPixel, int nLayer) {// åƒç´ Yåˆ°çº¬åº¦
 		double dbTempY = 2 * Math.PI * (1 - dbPixel / BBKMap.TileZoom / Math.pow(2, nLayer + 7));
 		double dbTempZ = Math.pow(Math.E, dbTempY);
 		double dbRatio = (dbTempZ - 1) / (dbTempZ + 1);
@@ -43,8 +43,8 @@ public class BBKMapMath {
 		return dbRet;
 	}
 
-	// =================¼ÆËãÊ¸Á¿¼Ð½Ç======================================================================
-	// ÓÉÆðµãµ½Ä©µãµÄÊ¸Á¿£¬ÓëÕý±±·½ÏòµÄË³Ê±Õë¼Ð½Ç
+	// =================è®¡ç®—çŸ¢é‡å¤¹è§’======================================================================
+	// ç”±èµ·ç‚¹åˆ°æœ«ç‚¹çš„çŸ¢é‡ï¼Œä¸Žæ­£åŒ—æ–¹å‘çš„é¡ºæ—¶é’ˆå¤¹è§’
 	public static double GetCWAngleByPoint(point ptStart, point ptEnd) {
 		double dbRet = 0;
 		if (ptEnd.X == ptStart.X) {
@@ -64,7 +64,7 @@ public class BBKMapMath {
 		return dbRet;
 	}
 
-	// =================Pµã°üº¬¹ØÏµ¼ÆËãº¯Êý=============================================================
+	// =================Pç‚¹åŒ…å«å…³ç³»è®¡ç®—å‡½æ•°=============================================================
 	private static double PinA, PinB, Pinc, xinters;
 	private static int PinNum, PinM;
 	private static point PinPA, PinPB;
@@ -117,11 +117,11 @@ public class BBKMapMath {
 		// ================================================================
 	}
 
-	// ================= µØÇò»ù´¡ÐÅÏ¢ ==========================================
-	public static double EARTH_RADIUS = 6378137; // Ã×£¬µØÇò´ó¸Å°ë¾¶6371.004Ç§Ã×
+	// ================= åœ°çƒåŸºç¡€ä¿¡æ¯ ==========================================
+	public static double EARTH_RADIUS = 6378137; // ç±³ï¼Œåœ°çƒå¤§æ¦‚åŠå¾„6371.004åƒç±³
 
-	// =================Àï³Ì¼ÆËãº¯Êý==================================================================
-	public static double GetDistance(double lat1, double lng1, double lat2, double lng2) {// Êä³öÊÇ¹«Àï
+	// =================é‡Œç¨‹è®¡ç®—å‡½æ•°==================================================================
+	public static double GetDistance(double lat1, double lng1, double lat2, double lng2) {// è¾“å‡ºæ˜¯å…¬é‡Œ
 		double r1, r2, a, b, s;
 		// ----------------------------------------------------------------------
 		try {
@@ -141,7 +141,7 @@ public class BBKMapMath {
 		// ----------------------------------------------------------------------
 	}
 
-	// =================½Ç¶È×ª»¡¶Èº¯Êý========================================================
+	// =================è§’åº¦è½¬å¼§åº¦å‡½æ•°========================================================
 	public static double TempFxPI = Math.PI / 180.0;
 
 	public static double rad(double d) {
@@ -154,10 +154,10 @@ public class BBKMapMath {
 		return dbRet;
 	}
 
-	// =========Ò»¸ö×ø±êµã°´ÕÕÒ»¸öÖÐÐÄ½øÐÐÐý×ª£¬×¢Òâ£ºÔ­µãÎª×óÉÏ½Ç£¬×ø±ê·½ÏòÎªÓÒÏÂ======================
+	// =========ä¸€ä¸ªåæ ‡ç‚¹æŒ‰ç…§ä¸€ä¸ªä¸­å¿ƒè¿›è¡Œæ—‹è½¬ï¼Œæ³¨æ„ï¼šåŽŸç‚¹ä¸ºå·¦ä¸Šè§’ï¼Œåæ ‡æ–¹å‘ä¸ºå³ä¸‹======================
 	public static MapPoiXY PointRotate(MapPoiXY center, MapPoiXY p, double jaodu) {
 		// ----------------------------------------------------------
-		double angleHude = jaodu * Math.PI / 180;/* ½Ç¶È±ä³É»¡¶È */
+		double angleHude = jaodu * Math.PI / 180;/* è§’åº¦å˜æˆå¼§åº¦ */
 		double sina = Math.sin(angleHude);
 		double cosa = Math.cos(angleHude);
 		// ----------------------------------------------------------
@@ -168,20 +168,20 @@ public class BBKMapMath {
 		// ----------------------------------------------------------
 		return new MapPoiXY((int) x, (int) y);
 		// ----------------------------------------------------------
-		// ¶þÎ¬µÄºÜ¼òµ¥,
-		// ¼ÙÉèµã(x,y)ÈÆ(x0,y0)ÄæÊ±ÕëÐý×ªa½Çºó±ä³É(x',y')£¬Ôò
+		// äºŒç»´çš„å¾ˆç®€å•,
+		// å‡è®¾ç‚¹(x,y)ç»•(x0,y0)é€†æ—¶é’ˆæ—‹è½¬aè§’åŽå˜æˆ(x',y')ï¼Œåˆ™
 		// x'-x0=(x-x0)cosa-(y-y0)sina
 		// y'-y0=(x-x0)sina+(y-y0)cosa
 		// ----------------------------------------------------------
 	}
 
-	// =========Æ½Ãæ×ø±êÏµÁ½µã¼ä¾àÀë=================================================
+	// =========å¹³é¢åæ ‡ç³»ä¸¤ç‚¹é—´è·ç¦»=================================================
 	public static double PointDs(double x1, double y1, double x2, double y2) {
 		double ds = Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 		return ds;
 	}
 
-	// =========Æ½Ãæ×ø±êÏµµã========================================================
+	// =========å¹³é¢åæ ‡ç³»ç‚¹========================================================
 	public static class point {
 		double X;
 		double Y;
@@ -192,7 +192,7 @@ public class BBKMapMath {
 		}
 	}
 
-	// =========½Ç¶ÈÎÄ×Ö»»Ëã========================================================
+	// =========è§’åº¦æ–‡å­—æ¢ç®—========================================================
 	public static String OrientationToStr(float degree) {
 		// ----------------------------------------------------
 		while (degree > 180) {
@@ -203,21 +203,21 @@ public class BBKMapMath {
 		}
 		// ----------------------------------------------------
 		if (degree >= -5 && degree < 5) {
-			return "Õý±±";
+			return "æ­£åŒ—";
 		} else if (degree >= 5 && degree < 85) {
-			return "¶«±±";
+			return "ä¸œåŒ—";
 		} else if (degree >= 85 && degree <= 95) {
-			return "Õý¶«";
+			return "æ­£ä¸œ";
 		} else if (degree >= 95 && degree < 175) {
-			return "¶«ÄÏ";
+			return "ä¸œå—";
 		} else if ((degree >= 175 && degree <= 180) || (degree) >= -180 && degree < -175) {
-			return "ÕýÄÏ";
+			return "æ­£å—";
 		} else if (degree >= -175 && degree < -95) {
-			return "Î÷ÄÏ";
+			return "è¥¿å—";
 		} else if (degree >= -95 && degree < -85) {
-			return "ÕýÎ÷";
+			return "æ­£è¥¿";
 		} else if (degree >= -85 && degree < -5) {
-			return "Î÷±±";
+			return "è¥¿åŒ—";
 		}
 		// ----------------------------------------------------
 		return "XX";
@@ -250,7 +250,7 @@ public class BBKMapMath {
 
 	// =================Map_Max_X/Y_Check==============================================================
 
-	// ===============Ä«¿¨ÍÐÍ¶Ó°µÄ·¶Î§ÏÞ¶¨==================================
+	// ===============å¢¨å¡æ‰˜æŠ•å½±çš„èŒƒå›´é™å®š==================================
 	final static double LatLimit = 85;
 
 	public static double LatFormat(double maplat) {

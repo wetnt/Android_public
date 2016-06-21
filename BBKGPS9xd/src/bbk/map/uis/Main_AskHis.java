@@ -1,4 +1,4 @@
-package bbk.map.uis;
+ï»¿package bbk.map.uis;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -146,7 +146,7 @@ public class Main_AskHis extends BBKLayView {
 			public void onClick(View v) {
 				// --------------------------------------------
 				layshow(false);
-				BBKListView.ListInfoListRun(temp, ListId, BBKSoft.PathAsks, "²éÑ¯½á¹û£º");
+				BBKListView.ListInfoListRun(temp, ListId, BBKSoft.PathAsks, "æŸ¥è¯¢ç»“æžœï¼š");
 				BBKSoft.myList.layshow(true);
 				// --------------------------------------------
 			}
@@ -172,7 +172,7 @@ public class Main_AskHis extends BBKLayView {
 	// ====================================================================================
 	public void ListAskReNameDel() {
 		// --------------------------------------------------------------------------------
-		String Ask = "È·¶¨É¾³ý£¿\r\n" + BBKListView.GetTrackItemName(temp, ListId) + BBKMapLay.bbklayExtension;
+		String Ask = "ç¡®å®šåˆ é™¤ï¼Ÿ\r\n" + BBKListView.GetTrackItemName(temp, ListId) + BBKMapLay.bbklayExtension;
 		// --------------------------------------------------------------------------------
 		DialogInterface.OnClickListener YesLs = new DialogInterface.OnClickListener() {
 			@Override

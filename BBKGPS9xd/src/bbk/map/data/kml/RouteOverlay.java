@@ -1,4 +1,4 @@
-package bbk.map.data.kml;
+﻿package bbk.map.data.kml;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

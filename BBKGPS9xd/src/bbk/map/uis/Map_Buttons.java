@@ -1,4 +1,4 @@
-package bbk.map.uis;
+ï»¿package bbk.map.uis;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -189,59 +189,59 @@ public class Map_Buttons extends BBKLayView {
 		// ----------------------------------------------------------------------
 		MAPsss.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				BBKMsgBox.tShow("ÇĞ»»µØÍ¼£¡");
+				BBKMsgBox.tShow("åˆ‡æ¢åœ°å›¾ï¼");
 				BBKSoft.myMaps.MapTypeSet();
 				BBKSoft.MapFlash(true);
 			}
 		});
 		Author.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				BBKMsgBox.tShow("°æ±¾ĞÅÏ¢£¡");
+				BBKMsgBox.tShow("ç‰ˆæœ¬ä¿¡æ¯ï¼");
 				BBKAbout.SoftAboutShow();
 			}
 		});
 		Tripss.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				BBKMsgBox.tShow("¹ì¼£¼ÇÂ¼£¡");
+				BBKMsgBox.tShow("è½¨è¿¹è®°å½•ï¼");
 				BBKSoft.myTrk.layshow(true);
 			}
 		});
 		Logsss.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				BBKMsgBox.tShow("ĞĞ³ÌĞÅÏ¢£¡");
+				BBKMsgBox.tShow("è¡Œç¨‹ä¿¡æ¯ï¼");
 				BBKGpsReport.GpsInfoShow();
 			}
 		});
 		Clears.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				BBKMsgBox.tShow("Í¼²ãÇå¿Õ£¡");
+				BBKMsgBox.tShow("å›¾å±‚æ¸…ç©ºï¼");
 				BBKSoft.myLays.LayClears();
 				BBKSoft.MapFlash(false);
 			}
 		});
 		Exitss.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				BBKMsgBox.tShow("¹Ø±Õ³ÌĞò£¡");
+				BBKMsgBox.tShow("å…³é—­ç¨‹åºï¼");
 				BBKGpsReport.AlertDialogExit(bbkAct);
 			}
 		});
 		// ----------------------------------------------------------------------
 		Naviss.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				BBKMsgBox.tShow("µ¼º½Â·¾¶²éÑ¯ÖĞ...");
+				BBKMsgBox.tShow("å¯¼èˆªè·¯å¾„æŸ¥è¯¢ä¸­...");
 				Main_Ask.NavissLoadRun();
 			}
 		});
 		Listss.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				BBKMsgBox.tShow("µ¼º½ÁĞ±í£¡");
+				BBKMsgBox.tShow("å¯¼èˆªåˆ—è¡¨ï¼");
 				BBKSoft.myList.layshow(true);
 			}
 		});
 		Rulers.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				// --------------------------------------------
-				BBKMsgBox.tShow("µã»÷ÆÁÄ»Á¿Ëã¾àÀë£¡");
+				BBKMsgBox.tShow("ç‚¹å‡»å±å¹•é‡ç®—è·ç¦»ï¼");
 				BBKSoft.myMeasure.layshow(true);
 				BBKSoft.myLays.laymes.line.add(new line_type());
 				BBKSoft.myMeasure.MeasureLayShow = true;
@@ -251,21 +251,21 @@ public class Map_Buttons extends BBKLayView {
 		});
 		Locatn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				BBKMsgBox.tShow("×ÔÉíÎ»ÖÃ£¡");
+				BBKMsgBox.tShow("è‡ªèº«ä½ç½®ï¼");
 				BBKSoft.myMove.layshow(true);
 				BBKSoft.myMove.SetEditMapJW(BBKSoft.myMaps.mapPt.w, BBKSoft.myMaps.mapPt.j);
 			}
 		});
 		Favrit.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				BBKMsgBox.tShow("ÊÕ²ØµãĞÅÏ¢£¡");
+				BBKMsgBox.tShow("æ”¶è—ç‚¹ä¿¡æ¯ï¼");
 				BBKSoft.myFav.layshow(true);
 			}
 		});
 		Morexs.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				BBKMsgBox.tShow("¸ü¶à¹¦ÄÜ£¡");
-				bbkAct.openOptionsMenu();// °´¼üµ¯³ö²Ëµ¥
+				BBKMsgBox.tShow("æ›´å¤šåŠŸèƒ½ï¼");
+				bbkAct.openOptionsMenu();// æŒ‰é”®å¼¹å‡ºèœå•
 			}
 		});
 		// ----------------------------------------------------------------------
@@ -310,8 +310,8 @@ public class Map_Buttons extends BBKLayView {
 		});
 		DownCet.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				BBKMsgBox.tShow("µØÍ¼ÖĞĞÄ¿Õ¶´²¹³äÏÂÔØ£¡");
-				BBKSoft.myMaps.BBKDownCenterPic();// ²¹¶´
+				BBKMsgBox.tShow("åœ°å›¾ä¸­å¿ƒç©ºæ´è¡¥å……ä¸‹è½½ï¼");
+				BBKSoft.myMaps.BBKDownCenterPic();// è¡¥æ´
 			}
 		});
 		DownAll.setOnClickListener(new OnClickListener() {
@@ -331,7 +331,7 @@ public class Map_Buttons extends BBKLayView {
 	// private void MoreMenu_load4() {
 	// ----------------------------------------------------------------------
 	// =====================================================================
-	// if (s == "ÔØÈë×ÊÔ´") {
+	// if (s == "è½½å…¥èµ„æº") {
 	// // ---------------------------------------------
 	// Intent intent = new Intent(bbkAct, FileManager.class);
 	// bbkAct.startActivityForResult(intent, FILE_RESULT_CODE);
@@ -343,7 +343,7 @@ public class Map_Buttons extends BBKLayView {
 	// BBKGpsSYSTime();
 	// BBKSoft.myNetSet.layshow(true);
 	// BBKAbout.SoftAboutShow();
-	// BBKWebHome();//ÕıÔÚ¿ªÆôÖ÷Ò³£¡
+	// BBKWebHome();//æ­£åœ¨å¼€å¯ä¸»é¡µï¼
 	// =====================================================================
 	// }
 }

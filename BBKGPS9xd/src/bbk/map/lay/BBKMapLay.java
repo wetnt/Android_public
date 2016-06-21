@@ -1,4 +1,4 @@
-package bbk.map.lay;
+锘縫ackage bbk.map.lay;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -91,7 +91,7 @@ public class BBKMapLay {
 
 	public static class line_type {
 
-		public StringBuffer name = new StringBuffer("");// String非常耗费内存
+		public StringBuffer name = new StringBuffer("");// String闈炲父鑰楄垂鍐呭瓨
 		public List<p_point> p = new ArrayList<p_point>();
 		public boolean pv = false;
 

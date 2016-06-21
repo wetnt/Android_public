@@ -1,4 +1,4 @@
-package bbk.map.abc;
+﻿package bbk.map.abc;
 
 public class BBKMapRes {
 

@@ -1,4 +1,4 @@
-package bbk.map.gps;
+ï»¿package bbk.map.gps;
 
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -27,10 +27,10 @@ public class BBKGps {
 
 	// ====================================================================================
 	// ####################################################################################
-	// ##############################GPS¸üĞÂÉèÖÃ###########################################
+	// ##############################GPSæ›´æ–°è®¾ç½®###########################################
 	// ####################################################################################
 	// ====================================================================================
-	private void updateGPS(Location loc) {// ÊµÊ±¸üĞÂ
+	private void updateGPS(Location loc) {// å®æ—¶æ›´æ–°
 		if (loc != null) {
 			// -----------------------------------------------------------
 			gm.GpsUpdata(loc);
@@ -38,7 +38,7 @@ public class BBKGps {
 			// -----------------------------------------------------------
 		} else {
 			// -----------------------------------------------------------
-			gm.g.Y = false;// Ê§Ğ§Ê±´¥·¢
+			gm.g.Y = false;// å¤±æ•ˆæ—¶è§¦å‘
 			gm.g.r = 0;
 			gm.g.v = 0;
 			// -----------------------------------------------------------
@@ -47,7 +47,7 @@ public class BBKGps {
 
 	// ====================================================================================
 	// ####################################################################################
-	// ##############################GPS¿ª¹Ø###############################################
+	// ##############################GPSå¼€å…³###############################################
 	// ####################################################################################
 	// ====================================================================================
 	public boolean GpsInt(final Activity pthis) {
@@ -66,18 +66,18 @@ public class BBKGps {
 		String action = Settings.ACTION_LOCATION_SOURCE_SETTINGS;
 		// ---------------------------------------------------------------------
 		lm = (LocationManager) bbkAct.getSystemService(GpsSev);
-		boolean GpsIsOpen = lm.isProviderEnabled(provider);// ÅĞ¶ÏGPSÊÇ·ñÕı³£Æô¶¯
+		boolean GpsIsOpen = lm.isProviderEnabled(provider);// åˆ¤æ–­GPSæ˜¯å¦æ­£å¸¸å¯åŠ¨
 		// ----------------------------------------------------------------------
 		if (GpsIsOpen) {
-			ToastShow("GPS Æô¶¯£¡");
+			ToastShow("GPS å¯åŠ¨ï¼");
 		} else {
-			toggleGPS(bbkAct);// ×Ô¶¯¿ªÊ¼GPSÉèÖÃ¿ª¹Ø
-			ToastShow("×Ô¶¯¿ªÆôGPSÄ£¿é£¡");
+			toggleGPS(bbkAct);// è‡ªåŠ¨å¼€å§‹GPSè®¾ç½®å¼€å…³
+			ToastShow("è‡ªåŠ¨å¼€å¯GPSæ¨¡å—ï¼");
 		}
 		// ----------------------------------------------------------------------
 		GpsIsOpen = lm.isProviderEnabled(provider);
 		if (!GpsIsOpen) {
-			// ·µ»Ø¿ªÆôGPSµ¼º½ÉèÖÃ½çÃæ
+			// è¿”å›å¼€å¯GPSå¯¼èˆªè®¾ç½®ç•Œé¢
 			Intent intent = new Intent(action);
 			bbkAct.startActivityForResult(intent, 0);
 			return false;
@@ -91,20 +91,20 @@ public class BBKGps {
 
 	public void GpsOpen() {
 		// ------------------------------------------------------------------------------------------
-		String bestProvider = lm.getBestProvider(getCriteria(), true);// ÉèÖÃ²éÑ¯Ìõ¼ş
-		lg.onProviderEnabled(bestProvider);// Ä¬ÈÏ(LocationManager.GPS_PROVIDER);
+		String bestProvider = lm.getBestProvider(getCriteria(), true);// è®¾ç½®æŸ¥è¯¢æ¡ä»¶
+		lg.onProviderEnabled(bestProvider);// é»˜è®¤(LocationManager.GPS_PROVIDER);
 		// ------------------------------------------------------------------------------------------
-		lm.addGpsStatusListener(ls);// ¼àÌı×´Ì¬
-		lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 500, 0, lg);// °ó¶¨¼àÌı4²ÎÊı
+		lm.addGpsStatusListener(ls);// ç›‘å¬çŠ¶æ€
+		lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 500, 0, lg);// ç»‘å®šç›‘å¬4å‚æ•°
 		// ------------------------------------------------------------------------------------------
-		// ²ÎÊı1£¬Éè±¸£ºÓĞGPS_PROVIDERºÍNETWORK_PROVIDERÁ½ÖÖ
-		// ²ÎÊı2£¬Î»ÖÃĞÅÏ¢¸üĞÂÖÜÆÚ£¬µ¥Î»ºÁÃë
-		// ²ÎÊı3£¬Î»ÖÃ±ä»¯×îĞ¡¾àÀë£ºµ±Î»ÖÃ¾àÀë±ä»¯³¬¹ı´ËÖµÊ±£¬½«¸üĞÂÎ»ÖÃĞÅÏ¢
-		// ²ÎÊı4£¬¼àÌı
-		// ±¸×¢£º²ÎÊı2ºÍ3£¬Èç¹û²ÎÊı3²»Îª0£¬ÔòÒÔ²ÎÊı3Îª×¼£»²ÎÊı3Îª0£¬ÔòÍ¨¹ıÊ±¼äÀ´¶¨Ê±¸üĞÂ£»Á½ÕßÎª0£¬ÔòËæÊ±Ë¢ĞÂ
-		// 1Ãë¸üĞÂÒ»´Î£¬»ò×îĞ¡Î»ÒÆ±ä»¯³¬¹ı1Ã×¸üĞÂÒ»´Î£»----------------------------
-		// ×¢Òâ£º´Ë´¦¸üĞÂ×¼È·¶È·Ç³£µÍ£¬ÍÆ¼öÔÚserviceÀïÃæÆô¶¯Ò»¸öThread£¬
-		// ÔÚrunÖĞsleep(10000);È»ºóÖ´ĞĞhandler.sendMessage(),¸üĞÂÎ»ÖÃ
+		// å‚æ•°1ï¼Œè®¾å¤‡ï¼šæœ‰GPS_PROVIDERå’ŒNETWORK_PROVIDERä¸¤ç§
+		// å‚æ•°2ï¼Œä½ç½®ä¿¡æ¯æ›´æ–°å‘¨æœŸï¼Œå•ä½æ¯«ç§’
+		// å‚æ•°3ï¼Œä½ç½®å˜åŒ–æœ€å°è·ç¦»ï¼šå½“ä½ç½®è·ç¦»å˜åŒ–è¶…è¿‡æ­¤å€¼æ—¶ï¼Œå°†æ›´æ–°ä½ç½®ä¿¡æ¯
+		// å‚æ•°4ï¼Œç›‘å¬
+		// å¤‡æ³¨ï¼šå‚æ•°2å’Œ3ï¼Œå¦‚æœå‚æ•°3ä¸ä¸º0ï¼Œåˆ™ä»¥å‚æ•°3ä¸ºå‡†ï¼›å‚æ•°3ä¸º0ï¼Œåˆ™é€šè¿‡æ—¶é—´æ¥å®šæ—¶æ›´æ–°ï¼›ä¸¤è€…ä¸º0ï¼Œåˆ™éšæ—¶åˆ·æ–°
+		// 1ç§’æ›´æ–°ä¸€æ¬¡ï¼Œæˆ–æœ€å°ä½ç§»å˜åŒ–è¶…è¿‡1ç±³æ›´æ–°ä¸€æ¬¡ï¼›----------------------------
+		// æ³¨æ„ï¼šæ­¤å¤„æ›´æ–°å‡†ç¡®åº¦éå¸¸ä½ï¼Œæ¨èåœ¨serviceé‡Œé¢å¯åŠ¨ä¸€ä¸ªThreadï¼Œ
+		// åœ¨runä¸­sleep(10000);ç„¶åæ‰§è¡Œhandler.sendMessage(),æ›´æ–°ä½ç½®
 		// ------------------------------------------------------------------------------------------
 		GpsIsRun = true;
 		// ------------------------------------------------------------------------------------------
@@ -120,66 +120,66 @@ public class BBKGps {
 
 	// ====================================================================================
 	// ####################################################################################
-	// ##############################Î»ÖÃ¼àÌı##############################################
+	// ##############################ä½ç½®ç›‘å¬##############################################
 	// ####################################################################################
 	// ====================================================================================
 	private LocationListener lg = new LocationListener() {
-		public void onLocationChanged(Location location) {// Î»ÖÃĞÅÏ¢±ä»¯Ê±´¥·¢
+		public void onLocationChanged(Location location) {// ä½ç½®ä¿¡æ¯å˜åŒ–æ—¶è§¦å‘
 			updateGPS(location);
 		}
 
-		public void onStatusChanged(String provider, int status, Bundle extras) {// GPS×´Ì¬±ä»¯Ê±´¥·¢
+		public void onStatusChanged(String provider, int status, Bundle extras) {// GPSçŠ¶æ€å˜åŒ–æ—¶è§¦å‘
 			switch (status) {
 			case LocationProvider.AVAILABLE:
-				// BBKDebug.ddd("µ±Ç°GPS×´Ì¬Îª¿É¼û×´Ì¬");
+				// BBKDebug.ddd("å½“å‰GPSçŠ¶æ€ä¸ºå¯è§çŠ¶æ€");
 				break;
 			case LocationProvider.OUT_OF_SERVICE:
-				// BBKDebug.ddd("µ±Ç°GPS×´Ì¬Îª·şÎñÇøÍâ×´Ì¬");
+				// BBKDebug.ddd("å½“å‰GPSçŠ¶æ€ä¸ºæœåŠ¡åŒºå¤–çŠ¶æ€");
 				break;
 			case LocationProvider.TEMPORARILY_UNAVAILABLE:
-				// BBKDebug.ddd("µ±Ç°GPS×´Ì¬ÎªÔİÍ£·şÎñ×´Ì¬");
+				// BBKDebug.ddd("å½“å‰GPSçŠ¶æ€ä¸ºæš‚åœæœåŠ¡çŠ¶æ€");
 				break;
 			}
 		}
 
-		public void onProviderEnabled(String provider) {// GPS¿ªÆôÊ±´¥·¢
+		public void onProviderEnabled(String provider) {// GPSå¼€å¯æ—¶è§¦å‘
 			Location location = lm.getLastKnownLocation(provider);
 			updateGPS(location);
 		}
 
-		public void onProviderDisabled(String provider) {// GPS½ûÓÃÊ±´¥·¢
+		public void onProviderDisabled(String provider) {// GPSç¦ç”¨æ—¶è§¦å‘
 			updateGPS(null);
 		}
 	};
 	// ====================================================================================
 	// ####################################################################################
-	// ###########################GPS×´Ì¬¼àÌı##############################################
+	// ###########################GPSçŠ¶æ€ç›‘å¬##############################################
 	// ####################################################################################
 	// ====================================================================================
 	GpsStatus.Listener ls = new GpsStatus.Listener() {
 		public void onGpsStatusChanged(int event) {
 			switch (event) {
 			// ----------------------------------------------------
-			case GpsStatus.GPS_EVENT_FIRST_FIX:// µÚÒ»´Î¶¨Î»
-				// BBKDebug.ddd("µÚÒ»´Î¶¨Î»");
+			case GpsStatus.GPS_EVENT_FIRST_FIX:// ç¬¬ä¸€æ¬¡å®šä½
+				// BBKDebug.ddd("ç¬¬ä¸€æ¬¡å®šä½");
 				break;
 			// ----------------------------------------------------
-			case GpsStatus.GPS_EVENT_SATELLITE_STATUS:// ÎÀĞÇ×´Ì¬¸Ä±ä
-				// BBKDebug.ddd("ÎÀĞÇ×´Ì¬¸Ä±ä");
+			case GpsStatus.GPS_EVENT_SATELLITE_STATUS:// å«æ˜ŸçŠ¶æ€æ”¹å˜
+				// BBKDebug.ddd("å«æ˜ŸçŠ¶æ€æ”¹å˜");
 				// ----------------------------------------------------
-				GpsStatus status = lm.getGpsStatus(null); // È¡µ±Ç°×´Ì¬
+				GpsStatus status = lm.getGpsStatus(null); // å–å½“å‰çŠ¶æ€
 				gm.updateGpsStatus(event, status);
 				// ----------------------------------------------------
 				break;
 			// ----------------------------------------------------
-			case GpsStatus.GPS_EVENT_STARTED:// ¶¨Î»Æô¶¯
+			case GpsStatus.GPS_EVENT_STARTED:// å®šä½å¯åŠ¨
 				gm.GpsClose();
-				// BBKDebug.ddd("¶¨Î»Æô¶¯");
+				// BBKDebug.ddd("å®šä½å¯åŠ¨");
 				break;
 			// ----------------------------------------------------
-			case GpsStatus.GPS_EVENT_STOPPED:// ¶¨Î»½áÊø
+			case GpsStatus.GPS_EVENT_STOPPED:// å®šä½ç»“æŸ
 				gm.GpsClose();
-				// BBKDebug.ddd("¶¨Î»½áÊø");
+				// BBKDebug.ddd("å®šä½ç»“æŸ");
 				break;
 			// ----------------------------------------------------
 			}
@@ -189,22 +189,22 @@ public class BBKGps {
 
 	// ====================================================================================
 	// ####################################################################################
-	// ###########################GPS²éÑ¯Ìõ¼ş##############################################
+	// ###########################GPSæŸ¥è¯¢æ¡ä»¶##############################################
 	// ####################################################################################
 	// ====================================================================================
 	private Criteria getCriteria() {
 		Criteria criteria = new Criteria();
-		criteria.setAccuracy(Criteria.ACCURACY_FINE);// ¶¨Î»¾«È·¶È,Criteria.ACCURACY_COARSE±È½Ï´ÖÂÔ
-		criteria.setCostAllowed(false);// ÔËÓªÉÌÊÕ·Ñ
-		criteria.setSpeedRequired(true);// ËÙ¶È
-		criteria.setBearingRequired(true);// ·½Î»
-		criteria.setAltitudeRequired(true);// º£°Î
-		criteria.setPowerRequirement(Criteria.POWER_LOW);// µçÔ´
+		criteria.setAccuracy(Criteria.ACCURACY_FINE);// å®šä½ç²¾ç¡®åº¦,Criteria.ACCURACY_COARSEæ¯”è¾ƒç²—ç•¥
+		criteria.setCostAllowed(false);// è¿è¥å•†æ”¶è´¹
+		criteria.setSpeedRequired(true);// é€Ÿåº¦
+		criteria.setBearingRequired(true);// æ–¹ä½
+		criteria.setAltitudeRequired(true);// æµ·æ‹”
+		criteria.setPowerRequirement(Criteria.POWER_LOW);// ç”µæº
 		return criteria;
 	}
 
 	// ====================================================================================
-	// ###############################×Ô¶¯¿ªÆôÉèÖÃGPS¿ª¹Ø###################################
+	// ###############################è‡ªåŠ¨å¼€å¯è®¾ç½®GPSå¼€å…³###################################
 	// ====================================================================================
 	private void toggleGPS(Activity pthis) {
 		// ---------------------------------------------------------------------
@@ -225,7 +225,7 @@ public class BBKGps {
 	}
 
 	// ====================================================================================
-	// ###############################ÏûÏ¢ÏÔÊ¾#############################################
+	// ###############################æ¶ˆæ¯æ˜¾ç¤º#############################################
 	// ====================================================================================
 	public void ToastShow(String str) {
 		Toast.makeText(bbkAct, str, Toast.LENGTH_SHORT).show();

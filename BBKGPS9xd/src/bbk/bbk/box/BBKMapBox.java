@@ -1,4 +1,4 @@
-package bbk.bbk.box;
+Ôªøpackage bbk.bbk.box;
 
 import android.content.Context;
 import android.widget.FrameLayout;
@@ -28,7 +28,7 @@ public class BBKMapBox extends BBKLayView {
 		// ----------------------------------------------------
 	}
 
-	// =================–≈œ¢¥∞==============================================================
+	// =================‰ø°ÊÅØÁ™ó==============================================================
 	public ImageView MapImg;
 	public TextView LabTit, LabSpd, LabInf, LabBlc;
 	public TextView TxtCrs;

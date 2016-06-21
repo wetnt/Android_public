@@ -1,4 +1,4 @@
-package bbk.bbk.box;
+ï»¿package bbk.bbk.box;
 
 import com.example.bbkgps9xd.R;
 
@@ -108,10 +108,10 @@ public class BBKCompass extends BBKLayView {
 	public void PicIconSet() {
 		// -----------------------------------------------------------------
 		// vPaint = new Paint();
-		// vPaint.setStyle(Paint.Style.STROKE); // ¿ÕĞÄ
-		// vPaint.setAlpha(75); // BitmapÍ¸Ã÷¶È(0 ~ 100)
-		// canvas.drawBitmap ( vBitmap , 50, 100, null ); //ÎŞÍ¸Ã÷
-		// canvas.drawBitmap ( vBitmap , 50, 200, vPaint ); //ÓĞÍ¸Ã÷
+		// vPaint.setStyle(Paint.Style.STROKE); // ç©ºå¿ƒ
+		// vPaint.setAlpha(75); // Bitmapé€æ˜åº¦(0 ~ 100)
+		// canvas.drawBitmap ( vBitmap , 50, 100, null ); //æ— é€æ˜
+		// canvas.drawBitmap ( vBitmap , 50, 200, vPaint ); //æœ‰é€æ˜
 		// ------------------------------------------------------------------
 		// InputStream is =
 		// bbkAct.getResources().openRawResource(R.drawable.bbkcompassa);
@@ -171,17 +171,17 @@ public class BBKCompass extends BBKLayView {
 		// ----------------------------------------------------
 		Paint p = new Paint();
 		// ----------------------------------------------------
-		p.setColor(color); // ÉèÖÃµÄÑÕÉ«Color.RED
+		p.setColor(color); // è®¾ç½®çš„é¢œè‰²Color.RED
 		// ----------------------------------------------------
-		p.setAntiAlias(true);// È¥¾â³İ
-		p.setStyle(Paint.Style.FILL); // Paint.Style.STROKEÉèÖÃÎª¿ÕĞÄ
-		p.setStrokeWidth(LineW); // ÉèÖÃÍâ¿ò¿í¶È
-		p.setFilterBitmap(true); // ¶ÔÎ»Í¼¿¹¾â³İÂË²¨
-		p.setTextSize(TextSize); // ×ÖÌå³ß´ç
-		p.setSubpixelText(true); // ÎÄ×Ö¿¹¾â³İ
-		p.setTextAlign(Align.LEFT); // ×ÖÌå¶ÔÆë·½Ê½
+		p.setAntiAlias(true);// å»é”¯é½¿
+		p.setStyle(Paint.Style.FILL); // Paint.Style.STROKEè®¾ç½®ä¸ºç©ºå¿ƒ
+		p.setStrokeWidth(LineW); // è®¾ç½®å¤–æ¡†å®½åº¦
+		p.setFilterBitmap(true); // å¯¹ä½å›¾æŠ—é”¯é½¿æ»¤æ³¢
+		p.setTextSize(TextSize); // å­—ä½“å°ºå¯¸
+		p.setSubpixelText(true); // æ–‡å­—æŠ—é”¯é½¿
+		p.setTextAlign(Align.LEFT); // å­—ä½“å¯¹é½æ–¹å¼
 		// ----------------------------------------------------
-		p.setAlpha(Alpha);// Í¸Ã÷Í¨µÀ
+		p.setAlpha(Alpha);// é€æ˜é€šé“
 		// ----------------------------------------------------
 		return p;
 		// ----------------------------------------------------

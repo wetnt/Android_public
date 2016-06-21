@@ -1,4 +1,4 @@
-package bbk.map.data.kml;
+﻿package bbk.map.data.kml;
 
 public class Placemark {
 

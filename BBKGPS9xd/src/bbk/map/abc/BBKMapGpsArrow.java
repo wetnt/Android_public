@@ -1,18 +1,18 @@
-package bbk.map.abc;
+ï»¿package bbk.map.abc;
 
 import bbk.bbk.box.BBKSoft;
 import bbk.map.abc.BBKMap.MapPoiXY;
 
 public class BBKMapGpsArrow {
 
-	// =============================»æÖÆ¼ýÍ·============================================
+	// =============================ç»˜åˆ¶ç®­å¤´============================================
 	private static int gpsd = 10;
 	private static final int gpsn = 10;
 	private static double gpsw = 0, gpsj = 0, gpsf = 0, gpsr = 0;
 	private static MapPoiXY gpsp = new MapPoiXY(0, 0);
 	private static boolean gpsy = false;
 
-	public static void MapGpsArrow(int mapzm) {// »æÖÆ¼ýÍ·
+	public static void MapGpsArrow(int mapzm) {// ç»˜åˆ¶ç®­å¤´
 		// ---------------------------------------------------------------------
 		gpsw = BBKSoft.myGps.gm.g.w;
 		gpsj = BBKSoft.myGps.gm.g.j;

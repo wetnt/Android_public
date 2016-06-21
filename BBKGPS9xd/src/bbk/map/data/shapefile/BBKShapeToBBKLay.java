@@ -1,4 +1,4 @@
-package bbk.map.data.shapefile;
+﻿package bbk.map.data.shapefile;
 
 import java.io.FileInputStream;
 import java.io.IOException;

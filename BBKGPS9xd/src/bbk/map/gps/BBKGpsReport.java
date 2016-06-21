@@ -1,4 +1,4 @@
-package bbk.map.gps;
+ï»¿package bbk.map.gps;
 
 import java.text.SimpleDateFormat;
 
@@ -17,14 +17,14 @@ public class BBKGpsReport {
 
 	public static String Gps_Statistics() {
 		// ------------------------------------------------------------------
-		GpsInfos = "ĞĞ³ÌĞÅÏ¢Í³¼Æ >>" + lrn + lrn;
-		GpsInfos += "ÆğÊ¼£º" + gpsTmFt.format(BBKSoft.myGps.gm.g.ts) + lrn;
-		GpsInfos += "µ±Ç°£º" + gpsTmFt.format(BBKSoft.myGps.gm.g.t) + lrn;
-		GpsInfos += "ºÄÊ±£º" + BBKSoft.myGps.gm.g.tls + " " + lrn;
+		GpsInfos = "è¡Œç¨‹ä¿¡æ¯ç»Ÿè®¡ >>" + lrn + lrn;
+		GpsInfos += "èµ·å§‹ï¼š" + gpsTmFt.format(BBKSoft.myGps.gm.g.ts) + lrn;
+		GpsInfos += "å½“å‰ï¼š" + gpsTmFt.format(BBKSoft.myGps.gm.g.t) + lrn;
+		GpsInfos += "è€—æ—¶ï¼š" + BBKSoft.myGps.gm.g.tls + " " + lrn;
 		GpsInfos += lrn;
-		GpsInfos += "Àï³Ì£º" + BBKSoft.myGps.gm.g.l + " km" + lrn;
-		GpsInfos += "¾ùËÙ£º" + BBKSoft.myGps.gm.g.va + " km/h" + lrn;
-		GpsInfos += "×î´ó£º" + BBKSoft.myGps.gm.g.vm + " km/h" + lrn;
+		GpsInfos += "é‡Œç¨‹ï¼š" + BBKSoft.myGps.gm.g.l + " km" + lrn;
+		GpsInfos += "å‡é€Ÿï¼š" + BBKSoft.myGps.gm.g.va + " km/h" + lrn;
+		GpsInfos += "æœ€å¤§ï¼š" + BBKSoft.myGps.gm.g.vm + " km/h" + lrn;
 		GpsInfos += lrn;
 		// ------------------------------------------------------------------
 		return GpsInfos;
@@ -47,7 +47,7 @@ public class BBKGpsReport {
 			return;
 		}
 		// --------------------------------------------------------------------------------
-		String Ask = BBKGpsReport.Gps_Statistics() + "ÊÇ·ñ¹Ø±Õ£¿ \r\n";
+		String Ask = BBKGpsReport.Gps_Statistics() + "æ˜¯å¦å…³é—­ï¼Ÿ \r\n";
 		DialogInterface.OnClickListener YesLs = new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {

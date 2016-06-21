@@ -1,4 +1,4 @@
-package bbk.hrd.abc;
+ï»¿package bbk.hrd.abc;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -12,7 +12,7 @@ public class BBKACC {
 
 	// ====================================================================================
 	// ####################################################################################
-	// #############################Õğ¶¯¿ª¹Ø################################################
+	// #############################éœ‡åŠ¨å¼€å…³################################################
 	// ####################################################################################
 	// ====================================================================================
 	public void Acc_Click() {
@@ -34,9 +34,9 @@ public class BBKACC {
 		}
 		// ----------------------------------
 		if (AccIsRun) {
-			BBKMsgBox.tShow("ACC ÒÑ¿ªÆô£¡");
+			BBKMsgBox.tShow("ACC å·²å¼€å¯ï¼");
 		} else {
-			BBKMsgBox.tShow("ACC ÒÑ¹Ø±Õ£¡");
+			BBKMsgBox.tShow("ACC å·²å…³é—­ï¼");
 		}
 		// ----------------------------------
 	}
@@ -53,7 +53,7 @@ public class BBKACC {
 	// ---------------------------------------------------------------
 	// private Activity bbkAct;
 	// ---------------------------------------------------------------
-	private Sensor AccSensor;// ´«¸ĞÆ÷
+	private Sensor AccSensor;// ä¼ æ„Ÿå™¨
 	private SensorManager sensorManager;
 	private int AccRate = SensorManager.SENSOR_DELAY_NORMAL;
 	public boolean AccIsRun = false;
@@ -63,16 +63,16 @@ public class BBKACC {
 	public void ACCInt(final Context ctxt) {
 		// ---------------------------------------------------------------
 		String Service = Context.SENSOR_SERVICE;
-		sensorManager = (SensorManager) ctxt.getSystemService(Service);// »ñµÃ´«¸ĞÆ÷¹ÜÀíÆ÷
+		sensorManager = (SensorManager) ctxt.getSystemService(Service);// è·å¾—ä¼ æ„Ÿå™¨ç®¡ç†å™¨
 		// ---------------------------------------------------------------
 		if (sensorManager != null) {
-			AccSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);// »ñµÃÖØÁ¦´«¸ĞÆ÷
+			AccSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);// è·å¾—é‡åŠ›ä¼ æ„Ÿå™¨
 		}
 		// ---------------------------------------------------------------
 		if (AccSensor != null) {
-			// »¹ÓĞSENSOR_DELAY_UI¡¢SENSOR_DELAY_FASTEST¡¢SENSOR_DELAY_GAMEµÈ£¬
-			// ¸ù¾İ²»Í¬Ó¦ÓÃ£¬ĞèÒªµÄ·´Ó¦ËÙÂÊ²»Í¬£¬¾ßÌå¸ù¾İÊµ¼ÊÇé¿öÉè¶¨
-			sensorManager.registerListener(AccListener, AccSensor, AccRate);// ×¢²á
+			// è¿˜æœ‰SENSOR_DELAY_UIã€SENSOR_DELAY_FASTESTã€SENSOR_DELAY_GAMEç­‰ï¼Œ
+			// æ ¹æ®ä¸åŒåº”ç”¨ï¼Œéœ€è¦çš„ååº”é€Ÿç‡ä¸åŒï¼Œå…·ä½“æ ¹æ®å®é™…æƒ…å†µè®¾å®š
+			sensorManager.registerListener(AccListener, AccSensor, AccRate);// æ³¨å†Œ
 		}
 		// ---------------------------------------------------------------
 		// ACC_Start();
@@ -84,7 +84,7 @@ public class BBKACC {
 		if (AccSensor == null)
 			return;
 		// ---------------------------------------------------------------
-		sensorManager.registerListener(AccListener, AccSensor, AccRate);// ×¢²á
+		sensorManager.registerListener(AccListener, AccSensor, AccRate);// æ³¨å†Œ
 		AccIsRun = true;
 		// ---------------------------------------------------------------
 	}
@@ -102,7 +102,7 @@ public class BBKACC {
 		public void onSensorChanged(SensorEvent e) {
 			if (e.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
 				// ---------------------------------------------------------------
-				// event.values; //float[]±£´æÁËx,y,z
+				// event.values; //float[]ä¿å­˜äº†x,y,z
 				// ---------------------------------------------------------------
 				float x = e.values[SensorManager.DATA_X];
 				float y = e.values[SensorManager.DATA_Y];
@@ -130,7 +130,7 @@ public class BBKACC {
 	// ---------------------------------------------------------------
 	// ---------------------------------------------------------------
 	// ---------------------------------------------------------------
-	// Ò¡»Î¼àÌı½Ó¿Ú
+	// æ‘‡æ™ƒç›‘å¬æ¥å£
 	public interface OnShakeListener {
 		// ---------------------------------------------------------------
 		public void onShake();

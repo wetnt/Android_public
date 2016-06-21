@@ -1,4 +1,4 @@
-package bbk.map.bbd;
+ï»¿package bbk.map.bbd;
 
 import android.os.Handler;
 import bbk.bbk.box.BBKSoft;
@@ -15,7 +15,7 @@ public class BBKScreenDown {
 		// ----------------------------------------------------
 		int mz = BBKMap.mapzm;
 		if (mz < 14) {
-			BBKMsgBox.tShow(mz + "¼¶±ðÌ«´ó£¬ÏÂÔØÊý¾ÝÁ¿¹ý´ó£¡\r\n Çë·Å´óµØÍ¼µ½14¼¶±ðÒÔÉÏ£¡");
+			BBKMsgBox.tShow(mz + "çº§åˆ«å¤ªå¤§ï¼Œä¸‹è½½æ•°æ®é‡è¿‡å¤§ï¼\r\n è¯·æ”¾å¤§åœ°å›¾åˆ°14çº§åˆ«ä»¥ä¸Šï¼");
 			return;
 		}
 		// ----------------------------------------------------

@@ -1,4 +1,4 @@
-package bbk.map.uis;
+ï»¿package bbk.map.uis;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -68,7 +68,7 @@ public class Main_Track2 extends BBKLayView {
 	public void TrackListTitleSet() {
 		// ------------------------------------------------------------------------------------------
 		TrackListAllBtn = (Button) BBKLay.findViewById(R.id.TrackListAllBtn);
-		TrackListAllBtn.setText("¹ì¼£ÁÐ±í");
+		TrackListAllBtn.setText("è½¨è¿¹åˆ—è¡¨");
 		TrackListAllExt = (ImageButton) BBKLay.findViewById(R.id.TrackListAllExt);
 		// ------------------------------------------------------------------------------------------
 		TrackListAllSave = (ImageButton) BBKLay.findViewById(R.id.TrackListAllSave);
@@ -164,7 +164,7 @@ public class Main_Track2 extends BBKLayView {
 		TrackListAllView.setOnItemLongClickListener(new OnItemLongClickListener() {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-				return false;// false¼ÌÐø´«µÝ;// trueÖÕÖ¹´«µÝ
+				return false;// falseç»§ç»­ä¼ é€’;// trueç»ˆæ­¢ä¼ é€’
 			}
 		});
 		// --------------------------------------------------------------------------------
@@ -206,7 +206,7 @@ public class Main_Track2 extends BBKLayView {
 
 	public void ListItemDel() {
 		// --------------------------------------------------------------------------------
-		String Ask = "È·¶¨É¾³ý£¿\r\n" + BBKListView.GetTrackItemName(temp, ListId) + BBKMapLay.bbklayExtension;
+		String Ask = "ç¡®å®šåˆ é™¤ï¼Ÿ\r\n" + BBKListView.GetTrackItemName(temp, ListId) + BBKMapLay.bbklayExtension;
 		// --------------------------------------------------------------------------------
 		DialogInterface.OnClickListener YesLs = new DialogInterface.OnClickListener() {
 			@Override

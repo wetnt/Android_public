@@ -1,4 +1,4 @@
-package bbk.map.lay;
+﻿package bbk.map.lay;
 
 import bbk.bbk.box.BBKSoft;
 import bbk.map.abc.BBKMapImage;

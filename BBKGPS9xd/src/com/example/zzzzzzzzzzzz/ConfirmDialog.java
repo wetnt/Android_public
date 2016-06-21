@@ -1,4 +1,4 @@
-package com.example.zzzzzzzzzzzz;
+ï»¿package com.example.zzzzzzzzzzzz;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -20,12 +20,12 @@ public class ConfirmDialog {
 	}
 
 	public ConfirmDialog(Activity context, String title, String msg) {
-		// ÏÔÊ¾Dialog;
+		// æ˜¾ç¤ºDialog;
 		AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
-		dialogBuilder.setPositiveButton("È·¶¨", new DialogButtonOnClick(1));
-		dialogBuilder.setNegativeButton("È¡Ïû", new DialogButtonOnClick(0));
+		dialogBuilder.setPositiveButton("ç¡®å®š", new DialogButtonOnClick(1));
+		dialogBuilder.setNegativeButton("å–æ¶ˆ", new DialogButtonOnClick(0));
 		dialogBuilder.setTitle(title).setMessage(msg).create().show();
-		// ÏµÍ³Ïß³Ì»á×èÈû
+		// ç³»ç»Ÿçº¿ç¨‹ä¼šé˜»å¡
 		try {
 			Looper.loop();
 		} catch (Exception e) {
@@ -50,8 +50,8 @@ public class ConfirmDialog {
 		}
 
 		/**
-		 * ÓÃ»§µã»÷È·¶¨»òÈ¡Ïû°´Å¥ºó,ÉèÖÃµã»÷°´Å¥,·¢ËÍÏûÏ¢; mHandlerÊÕµ½ÏûÏ¢ºóÅ×³öRuntimeException()Òì³£;
-		 * ×èÈû»áÏûÊ§,Ö÷Ïß³Ì¼ÌĞøÖ´ĞĞ
+		 * ç”¨æˆ·ç‚¹å‡»ç¡®å®šæˆ–å–æ¶ˆæŒ‰é’®å,è®¾ç½®ç‚¹å‡»æŒ‰é’®,å‘é€æ¶ˆæ¯; mHandleræ”¶åˆ°æ¶ˆæ¯åæŠ›å‡ºRuntimeException()å¼‚å¸¸;
+		 * é˜»å¡ä¼šæ¶ˆå¤±,ä¸»çº¿ç¨‹ç»§ç»­æ‰§è¡Œ
 		 */
 		public void onClick(DialogInterface dialog, int which) {
 			ConfirmDialog.this.dialogResult = type;

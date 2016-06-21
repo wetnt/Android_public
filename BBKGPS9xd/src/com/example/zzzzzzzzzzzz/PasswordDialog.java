@@ -1,4 +1,4 @@
-package com.example.zzzzzzzzzzzz;
+Ôªøpackage com.example.zzzzzzzzzzzz;
 
 import com.example.bbkgps9xd.R;
 
@@ -20,62 +20,62 @@ public class PasswordDialog extends Dialog {
 
 	public PasswordDialog(Activity context, String mailName, boolean retry) {
 		super(context);
-//		setOwnerActivity(context);
-//		onCreate();
-//		TextView promptLbl = (TextView) findViewById(R.id.promptLbl);
-//		promptLbl.setText("«Î ‰»Î√‹¬Î/n" + mailName);
+		// setOwnerActivity(context);
+		// onCreate();
+		// TextView promptLbl = (TextView) findViewById(R.id.promptLbl);
+		// promptLbl.setText("ËØ∑ËæìÂÖ•ÂØÜÁ†Å/n" + mailName);
 	}
 
-//	public int getDialogResult() {
-//		return dialogResult;
-//	}
-//
-//	public void setDialogResult(int dialogResult) {
-//		this.dialogResult = dialogResult;
-//	}
-//
-//	/** Called when the activity is first created. */
-//
-//	public void onCreate() {
-//		setContentView(R.layout.password_dialog);
-//		findViewById(R.id.cancelBtn).setOnClickListener(new android.view.View.OnClickListener() {
-//
-//			@Override
-//			public void onClick(View paramView) {
-//				endDialog(DialogResult.CANCEL);
-//			}
-//		});
-//		findViewById(R.id.okBtn).setOnClickListener(new android.view.View.OnClickListener() {
-//
-//			@Override
-//			public void onClick(View paramView) {
-//				endDialog(DialogResult.OK);
-//			}
-//		});
-//	}
-//
-//	public void endDialog(int result) {
-//		dismiss();
-//		setDialogResult(result);
-//		Message m = mHandler.obtainMessage();
-//		mHandler.sendMessage(m);
-//	}
-//
-//	public int showDialog() {
-//		mHandler = new Handler() {
-//			@Override
-//			public void handleMessage(Message mesg) {
-//				throw new RuntimeException();
-//			}
-//		};
-//		super.show();
-//		try {
-//			Looper.getMainLooper().loop();
-//		} catch (RuntimeException e2) {
-//		}
-//		return dialogResult;
-//	}
-	
-	
+	// public int getDialogResult() {
+	// return dialogResult;
+	// }
+	//
+	// public void setDialogResult(int dialogResult) {
+	// this.dialogResult = dialogResult;
+	// }
+	//
+	// /** Called when the activity is first created. */
+	//
+	// public void onCreate() {
+	// setContentView(R.layout.password_dialog);
+	// findViewById(R.id.cancelBtn).setOnClickListener(new
+	// android.view.View.OnClickListener() {
+	//
+	// @Override
+	// public void onClick(View paramView) {
+	// endDialog(DialogResult.CANCEL);
+	// }
+	// });
+	// findViewById(R.id.okBtn).setOnClickListener(new
+	// android.view.View.OnClickListener() {
+	//
+	// @Override
+	// public void onClick(View paramView) {
+	// endDialog(DialogResult.OK);
+	// }
+	// });
+	// }
+	//
+	// public void endDialog(int result) {
+	// dismiss();
+	// setDialogResult(result);
+	// Message m = mHandler.obtainMessage();
+	// mHandler.sendMessage(m);
+	// }
+	//
+	// public int showDialog() {
+	// mHandler = new Handler() {
+	// @Override
+	// public void handleMessage(Message mesg) {
+	// throw new RuntimeException();
+	// }
+	// };
+	// super.show();
+	// try {
+	// Looper.getMainLooper().loop();
+	// } catch (RuntimeException e2) {
+	// }
+	// return dialogResult;
+	// }
 
 }

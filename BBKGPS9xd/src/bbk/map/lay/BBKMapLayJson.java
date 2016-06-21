@@ -1,4 +1,4 @@
-package bbk.map.lay;
+锘縫ackage bbk.map.lay;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,7 +19,7 @@ public class BBKMapLayJson {
 	// =================================================================================
 	// http://blog.sina.com.cn/s/blog_7ffb8dd501013q5c.html
 	// http://blog.csdn.net/liugenghao3048/article/details/8814807
-	// 文件存储_解析JSON文档
+	// 鏂囦欢瀛樺偍_瑙ｆ瀽JSON鏂囨。
 	// =============================================================================
 	public static Lay_type BBKMapLayFromJson(String dataJson) {
 		// ----------------------------------------------------------------------------

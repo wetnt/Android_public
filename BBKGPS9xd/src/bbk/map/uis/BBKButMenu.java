@@ -1,4 +1,4 @@
-package bbk.map.uis;
+ï»¿package bbk.map.uis;
 
 import com.example.bbkgps9xd.R;
 
@@ -33,41 +33,41 @@ public class BBKButMenu {
 		// ------------------------------------------------------------------------------------------
 		bbkAct = (Activity) context;
 		// -------------------------------------------------------
-		// menu.add·½·¨µÄ²ÎÊı£º
-		// µÚÒ»¸öintÀàĞÍµÄgroup ID²ÎÊı£¬´ú±íµÄÊÇ×é¸ÅÄî¡£
-		// µÚ¶ş¸öintÀàĞÍµÄitem ID²ÎÊı£¬´ú±íµÄÊÇÏîÄ¿±àºÅ¡£
-		// µÚÈı¸öintÀàĞÍµÄorder ID²ÎÊı£¬´ú±íµÄÊÇ²Ëµ¥ÏîµÄÏÔÊ¾Ë³Ğò¡£
-		// µÚËÄ¸öStringÀàĞÍµÄtitle²ÎÊı£¬±íÊ¾Ñ¡ÏîÖĞÏÔÊ¾µÄÎÄ×Ö¡£
+		// menu.addæ–¹æ³•çš„å‚æ•°ï¼š
+		// ç¬¬ä¸€ä¸ªintç±»å‹çš„group IDå‚æ•°ï¼Œä»£è¡¨çš„æ˜¯ç»„æ¦‚å¿µã€‚
+		// ç¬¬äºŒä¸ªintç±»å‹çš„item IDå‚æ•°ï¼Œä»£è¡¨çš„æ˜¯é¡¹ç›®ç¼–å·ã€‚
+		// ç¬¬ä¸‰ä¸ªintç±»å‹çš„order IDå‚æ•°ï¼Œä»£è¡¨çš„æ˜¯èœå•é¡¹çš„æ˜¾ç¤ºé¡ºåºã€‚
+		// ç¬¬å››ä¸ªStringç±»å‹çš„titleå‚æ•°ï¼Œè¡¨ç¤ºé€‰é¡¹ä¸­æ˜¾ç¤ºçš„æ–‡å­—ã€‚
 		// -------------------------------------------------------
-		MenuItemAdd(0, menu, "ÊÕ²Ø", R.drawable.menu_bookmark);
-		MenuItemAdd(0, menu, "²éÑ¯", R.drawable.menu_search);
-		MenuItemAdd(0, menu, "¹ì¼£", R.drawable.menu_refreshtimer);
-		MenuItemAdd(0, menu, "ÁĞ±í", R.drawable.menu_select_all);
-		MenuItemAdd(0, menu, "ÍË³ö", R.drawable.menu_quit);
+		MenuItemAdd(0, menu, "æ”¶è—", R.drawable.menu_bookmark);
+		MenuItemAdd(0, menu, "æŸ¥è¯¢", R.drawable.menu_search);
+		MenuItemAdd(0, menu, "è½¨è¿¹", R.drawable.menu_refreshtimer);
+		MenuItemAdd(0, menu, "åˆ—è¡¨", R.drawable.menu_select_all);
+		MenuItemAdd(0, menu, "é€€å‡º", R.drawable.menu_quit);
 		// ---------------------------------------------
-		MenuItemAdd(1, menu, "GPS-¿ª¹Ø", R.drawable.menu_checkupdate);
-		MenuItemAdd(1, menu, "GPS-Ğ£Ê±", R.drawable.menu_refreshtimer);
-		MenuItemAdd(1, menu, "Àï³ÌĞÅÏ¢", R.drawable.menu_pagefind);
+		MenuItemAdd(1, menu, "GPS-å¼€å…³", R.drawable.menu_checkupdate);
+		MenuItemAdd(1, menu, "GPS-æ ¡æ—¶", R.drawable.menu_refreshtimer);
+		MenuItemAdd(1, menu, "é‡Œç¨‹ä¿¡æ¯", R.drawable.menu_pagefind);
 		// ---------------------------------------------
-		MenuItemAdd(2, menu, "ÇĞ»»µØÍ¼", R.drawable.menu_syssettings);
-		MenuItemAdd(2, menu, "Í¼²ãÇå¿Õ", R.drawable.menu_delete);
-		MenuItemAdd(2, menu, "¾­Î³¶¨Î»", R.drawable.menu_outfullscreen);
-		MenuItemAdd(2, menu, "ÊÖ»æ²â¾à", R.drawable.menu_edit);
-		MenuItemAdd(2, menu, "²éÑ¯ÀúÊ·", R.drawable.menu_attr);
-		MenuItemAdd(2, menu, "ÔØÈë×ÊÔ´", R.drawable.menu_open_in_newwindow);
+		MenuItemAdd(2, menu, "åˆ‡æ¢åœ°å›¾", R.drawable.menu_syssettings);
+		MenuItemAdd(2, menu, "å›¾å±‚æ¸…ç©º", R.drawable.menu_delete);
+		MenuItemAdd(2, menu, "ç»çº¬å®šä½", R.drawable.menu_outfullscreen);
+		MenuItemAdd(2, menu, "æ‰‹ç»˜æµ‹è·", R.drawable.menu_edit);
+		MenuItemAdd(2, menu, "æŸ¥è¯¢å†å²", R.drawable.menu_attr);
+		MenuItemAdd(2, menu, "è½½å…¥èµ„æº", R.drawable.menu_open_in_newwindow);
 		// ---------------------------------------------
-		MenuItemAdd(3, menu, "ÆÁÄ»ÁÁ¶È", R.drawable.menu_day);
-		MenuItemAdd(3, menu, "´æ´¢ÉèÖÃ", R.drawable.menu_debug);
-		MenuItemAdd(3, menu, "µØÍ¼ÉèÖÃ", R.drawable.menu_syssettings);
-		MenuItemAdd(3, menu, "ÍøÂçÉèÖÃ", R.drawable.menu_debug);
+		MenuItemAdd(3, menu, "å±å¹•äº®åº¦", R.drawable.menu_day);
+		MenuItemAdd(3, menu, "å­˜å‚¨è®¾ç½®", R.drawable.menu_debug);
+		MenuItemAdd(3, menu, "åœ°å›¾è®¾ç½®", R.drawable.menu_syssettings);
+		MenuItemAdd(3, menu, "ç½‘ç»œè®¾ç½®", R.drawable.menu_debug);
 		// ---------------------------------------------
-		MenuItemAdd(4, menu, "µØÍ¼»ğĞÇ¿ª¹Ø", R.drawable.menu_downmanager);
-		MenuItemAdd(4, menu, "µØÍ¼ÏÂÔØ¿ª¹Ø", R.drawable.menu_downmanager);
-		MenuItemAdd(4, menu, "µØÍ¼ÖĞĞÄ²¹¶´", R.drawable.menu_zoommode);
-		MenuItemAdd(4, menu, "µØÍ¼È«ÆÁÏÂÔØ", R.drawable.menu_download_image);
+		MenuItemAdd(4, menu, "åœ°å›¾ç«æ˜Ÿå¼€å…³", R.drawable.menu_downmanager);
+		MenuItemAdd(4, menu, "åœ°å›¾ä¸‹è½½å¼€å…³", R.drawable.menu_downmanager);
+		MenuItemAdd(4, menu, "åœ°å›¾ä¸­å¿ƒè¡¥æ´", R.drawable.menu_zoommode);
+		MenuItemAdd(4, menu, "åœ°å›¾å…¨å±ä¸‹è½½", R.drawable.menu_download_image);
 		// ---------------------------------------------
-		MenuItemAdd(5, menu, "BBKGPS.¹ØÓÚ", R.drawable.menu_input_pick_inputmethod);
-		MenuItemAdd(5, menu, "BBKGPS.Ö÷Ò³", R.drawable.menu_debug);
+		MenuItemAdd(5, menu, "BBKGPS.å…³äº", R.drawable.menu_input_pick_inputmethod);
+		MenuItemAdd(5, menu, "BBKGPS.ä¸»é¡µ", R.drawable.menu_debug);
 		// ---------------------------------------------
 		return menu;
 		// ---------------------------------------------
@@ -77,102 +77,102 @@ public class BBKButMenu {
 		// ---------------------------------------------
 		String s = item.getTitle().toString();
 		// ===============================================================
-		if (s == "ÊÕ²Ø")
+		if (s == "æ”¶è—")
 			BBKSoft.myFav.layshow(true);
 		// ---------------------------------------------
-		if (s == "²éÑ¯")
+		if (s == "æŸ¥è¯¢")
 			BBKSoft.myAsk.layshow(true);
-		if (s == "²éÑ¯ÀúÊ·")
+		if (s == "æŸ¥è¯¢å†å²")
 			BBKSoft.myAsH.layshow(true);
 		// ---------------------------------------------
-		if (s == "¹ì¼£")
+		if (s == "è½¨è¿¹")
 			BBKSoft.myTrk.layshow(true);
 		// ---------------------------------------------
-		if (s == "ÍË³ö")
+		if (s == "é€€å‡º")
 			BBKGpsReport.AlertDialogExit(bbkAct);
 		// ---------------------------------------------
-		if (s == "ÁĞ±í") {
+		if (s == "åˆ—è¡¨") {
 			BBKSoft.myList.layshow(true);
 		}
 		// ---------------------------------------------
-		if (s == "¾­Î³¶¨Î»") {
+		if (s == "ç»çº¬å®šä½") {
 			BBKSoft.myMove.layshow(true);
 			BBKSoft.myMove.SetEditMapJW(BBKSoft.myMaps.mapPt.w, BBKSoft.myMaps.mapPt.j);
 		}
 		// ---------------------------------------------
-		if (s == "ÇĞ»»µØÍ¼") {
-			BBKMsgBox.tShow("ÇĞ»»µØÍ¼£¡");
+		if (s == "åˆ‡æ¢åœ°å›¾") {
+			BBKMsgBox.tShow("åˆ‡æ¢åœ°å›¾ï¼");
 			BBKSoft.myMaps.MapTypeSet();
 			BBKSoft.MapFlash(true);
 		}
 		// ---------------------------------------------
-		if (s == "Í¼²ãÇå¿Õ") {
-			BBKMsgBox.tShow("Í¼²ãÇå¿Õ£¡");
+		if (s == "å›¾å±‚æ¸…ç©º") {
+			BBKMsgBox.tShow("å›¾å±‚æ¸…ç©ºï¼");
 			BBKSoft.myLays.LayClears();
 			BBKSoft.MapFlash(false);
 		}
 		// ---------------------------------------------
-		if (s == "ÊÖ»æ²â¾à") {
-			BBKMsgBox.tShow("µã»÷ÆÁÄ»Á¿Ëã¾àÀë£¡");
+		if (s == "æ‰‹ç»˜æµ‹è·") {
+			BBKMsgBox.tShow("ç‚¹å‡»å±å¹•é‡ç®—è·ç¦»ï¼");
 			BBKSoft.myMeasure.layshow(true);
 			BBKSoft.myLays.laymes.line.add(new line_type());
 			BBKSoft.myMeasure.MeasureLayShow = true;
 			BBKSoft.myMeasure.LineMeasureShow();
 		}
 		// ---------------------------------------------
-		if (s == "ÆÁÄ»ÁÁ¶È")
+		if (s == "å±å¹•äº®åº¦")
 			BBKSoft.myLight.layshowe();
 		// ---------------------------------------------
-		if (s == "GPS-¿ª¹Ø")
+		if (s == "GPS-å¼€å…³")
 			BBKSoft.GPSOpenCloseRun();
-		if (s == "GPS-Ğ£Ê±")
+		if (s == "GPS-æ ¡æ—¶")
 			BBKGpsSYSTime();
-		if (s == "Àï³ÌĞÅÏ¢")
+		if (s == "é‡Œç¨‹ä¿¡æ¯")
 			BBKGpsReport.GpsInfoShow();
 		// ---------------------------------------------
-		if (s == "µØÍ¼ÉèÖÃ") {
+		if (s == "åœ°å›¾è®¾ç½®") {
 			BBKSoft.myZoomSet.layshow(true);
 			BBKSoft.myZoomSet.SetLoad();
 		}
 		// ---------------------------------------------
-		if (s == "ÍøÂçÉèÖÃ") {
+		if (s == "ç½‘ç»œè®¾ç½®") {
 			BBKSoft.myNetSet.layshow(true);
 		}
 		// ---------------------------------------------
-		if (s == "´æ´¢ÉèÖÃ") {
+		if (s == "å­˜å‚¨è®¾ç½®") {
 			BBKSavePathSelect.SetSoftPathEmpty(bbkAct);
-			bd.d("ÇëÖØĞÂ¿ªÆôÈí¼ş£¡", true, false);
+			bd.d("è¯·é‡æ–°å¼€å¯è½¯ä»¶ï¼", true, false);
 		}
 		// ---------------------------------------------
-		if (s == "µØÍ¼»ğĞÇ¿ª¹Ø") {
+		if (s == "åœ°å›¾ç«æ˜Ÿå¼€å…³") {
 			BBKRegKey();
 			BBKSoft.MapFlash(true);
 		}
 		// ---------------------------------------------
-		if (s == "µØÍ¼ÏÂÔØ¿ª¹Ø") {
+		if (s == "åœ°å›¾ä¸‹è½½å¼€å…³") {
 			BBKDownKey();
 			BBKSoft.MapFlash(true);
 		}
 		// ---------------------------------------------
-		if (s == "µØÍ¼ÖĞĞÄ²¹¶´") {
-			BBKMsgBox.tShow("µØÍ¼ÖĞĞÄ¿Õ¶´²¹³äÏÂÔØ£¡");
-			BBKSoft.myMaps.BBKDownCenterPic();// ²¹¶´
+		if (s == "åœ°å›¾ä¸­å¿ƒè¡¥æ´") {
+			BBKMsgBox.tShow("åœ°å›¾ä¸­å¿ƒç©ºæ´è¡¥å……ä¸‹è½½ï¼");
+			BBKSoft.myMaps.BBKDownCenterPic();// è¡¥æ´
 		}
 		// ---------------------------------------------
-		if (s == "µØÍ¼È«ÆÁÏÂÔØ") {
+		if (s == "åœ°å›¾å…¨å±ä¸‹è½½") {
 			BBKSoft.myZoomSet.BBKScreenDown();
 		}
 		// =====================================================================
-		if (s == "BBKGPS.¹ØÓÚ") {
+		if (s == "BBKGPS.å…³äº") {
 			BBKAbout.SoftAboutShow();
 		}
 		// ---------------------------------------------
-		if (s == "BBKGPS.Ö÷Ò³") {
-			BBKMsgBox.tShow("ÕıÔÚ¿ªÆôÖ÷Ò³£¡");
+		if (s == "BBKGPS.ä¸»é¡µ") {
+			BBKMsgBox.tShow("æ­£åœ¨å¼€å¯ä¸»é¡µï¼");
 			BBKWebHome();
 		}
 		// =====================================================================
-		if (s == "ÔØÈë×ÊÔ´") {
+		if (s == "è½½å…¥èµ„æº") {
 			// ---------------------------------------------
 			Intent intent = new Intent(bbkAct, FileManager.class);
 			bbkAct.startActivityForResult(intent, FILE_RESULT_CODE);

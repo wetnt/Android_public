@@ -1,4 +1,4 @@
-package bbk.map.lay;
+ï»¿package bbk.map.lay;
 
 import android.graphics.Paint;
 import android.graphics.Path;
@@ -15,12 +15,12 @@ public class BBKMapLayShow {
 	// ==========================================================================================
 	// public static int lineR = 2;//
 	// ------------------------------------------------------------
-	public static int poiCircleRadius = 3;// POIÔ­µã°ë¾¶
-	public static int maxNameLength = 12; // poiÃû³ÆÏÔÊ¾³¤¶ÈÏŞÖµ
+	public static int poiCircleRadius = 3;// POIåŸç‚¹åŠå¾„
+	public static int maxNameLength = 12; // poiåç§°æ˜¾ç¤ºé•¿åº¦é™å€¼
 	// ------------------------------------------------------------
-	public static int maxLineLength = 100;// ³éÏ¡ÏŞÖµ¸ßÓÚ´ËÖµÔò³éÏ¡
-	public static int sampleMapZoom = 16;// ³éÏ¡µØÍ¼¼¶±ğÏŞÖµ
-	public static int sampleInterval = 8;// ³éÏ¡¼ä¸ô²ÉÑùÖµ
+	public static int maxLineLength = 100;// æŠ½ç¨€é™å€¼é«˜äºæ­¤å€¼åˆ™æŠ½ç¨€
+	public static int sampleMapZoom = 16;// æŠ½ç¨€åœ°å›¾çº§åˆ«é™å€¼
+	public static int sampleInterval = 8;// æŠ½ç¨€é—´éš”é‡‡æ ·å€¼
 
 	// ------------------------------------------------------------
 

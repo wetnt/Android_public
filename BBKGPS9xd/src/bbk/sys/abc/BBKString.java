@@ -1,4 +1,4 @@
-package bbk.sys.abc;
+﻿package bbk.sys.abc;
 
 import java.util.ArrayList;
 
@@ -34,14 +34,14 @@ public class BBKString {
 		return s;
 	}
 
-	// ArrayList<String> ת String[]
+	// ArrayList<String> 转 String[]
 	String[] trans(ArrayList<String> als) {
 		String[] sa = new String[als.size()];
 		als.toArray(sa);
 		return sa;
 	}
 
-	// String[] ת ArrayList<String>
+	// String[] 转 ArrayList<String>
 	ArrayList<String> trans(String[] sa) {
 		ArrayList<String> als = new ArrayList<String>(0);
 		for (int i = 0; i < sa.length; i++) {

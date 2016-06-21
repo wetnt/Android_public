@@ -1,4 +1,4 @@
-package bbk.map.bbd;
+ï»¿package bbk.map.bbd;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -105,7 +105,7 @@ public class BBD {
 	}
 
 	// ====================================================================================
-	private List<String> getFileDirs(String filePath) {// ¶àÄ¿Â¼Â·¾¶»ñÈ¡
+	private List<String> getFileDirs(String filePath) {// å¤šç›®å½•è·¯å¾„è·å–
 		// ----------------------------------------------
 		List<String> ret = new ArrayList<String>();
 		ret.add(filePath);
@@ -136,7 +136,7 @@ public class BBD {
 	// public final static String picExtension = ".png";
 	// public final static String bbdExtension = ".bbd";
 
-	// Pµã¶¨Òå==========================================================
+	// Pç‚¹å®šä¹‰==========================================================
 	public static class Pt {
 		// ----------------------------------------------------------
 		private final static String picExtension = ".png";

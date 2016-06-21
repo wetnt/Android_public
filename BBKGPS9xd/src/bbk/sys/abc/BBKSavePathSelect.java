@@ -1,4 +1,4 @@
-package bbk.sys.abc;
+ï»¿package bbk.sys.abc;
 
 import bbk.bbk.box.BBKSoft;
 import bbk.zzz.debug.bd;
@@ -11,23 +11,23 @@ public class BBKSavePathSelect {
 
 	public static void GetRunCount(Activity act, String[] items) {
 		// ------------------------------------------------------
-		// SharedPreferencesµÄËÄÖÖ²Ù×÷Ä£Ê½:
+		// SharedPreferencesçš„å››ç§æ“ä½œæ¨¡å¼:
 		// Context.MODE_PRIVATE
-		// ÎªÄ¬ÈÏ²Ù×÷Ä£Ê½,´ú±í¸ÃÎÄ¼şÊÇË½ÓĞÊı¾İ,Ö»ÄÜ±»Ó¦ÓÃ±¾Éí·ÃÎÊ,ÔÚ¸ÃÄ£Ê½ÏÂ,Ğ´ÈëµÄÄÚÈİ»á¸²¸ÇÔ­ÎÄ¼şµÄÄÚÈİ
-		// Context.MODE_APPEND Ä£Ê½»á¼ì²éÎÄ¼şÊÇ·ñ´æÔÚ,´æÔÚ¾ÍÍùÎÄ¼ş×·¼ÓÄÚÈİ,·ñÔò¾Í´´½¨ĞÂÎÄ¼ş.
-		// Context.MODE_WORLD_READABLE ºÍ Context.MODE_WORLD_WRITEABLE
-		// ÓÃÀ´¿ØÖÆÆäËûÓ¦ÓÃÊÇ·ñÓĞÈ¨ÏŞ¶ÁĞ´¸ÃÎÄ¼ş.
-		// MODE_WORLD_READABLE ±íÊ¾µ±Ç°ÎÄ¼ş¿ÉÒÔ±»ÆäËûÓ¦ÓÃ¶ÁÈ¡.
-		// MODE_WORLD_WRITEABLE ±íÊ¾µ±Ç°ÎÄ¼ş¿ÉÒÔ±»ÆäËûÓ¦ÓÃĞ´Èë.
+		// ä¸ºé»˜è®¤æ“ä½œæ¨¡å¼,ä»£è¡¨è¯¥æ–‡ä»¶æ˜¯ç§æœ‰æ•°æ®,åªèƒ½è¢«åº”ç”¨æœ¬èº«è®¿é—®,åœ¨è¯¥æ¨¡å¼ä¸‹,å†™å…¥çš„å†…å®¹ä¼šè¦†ç›–åŸæ–‡ä»¶çš„å†…å®¹
+		// Context.MODE_APPEND æ¨¡å¼ä¼šæ£€æŸ¥æ–‡ä»¶æ˜¯å¦å­˜åœ¨,å­˜åœ¨å°±å¾€æ–‡ä»¶è¿½åŠ å†…å®¹,å¦åˆ™å°±åˆ›å»ºæ–°æ–‡ä»¶.
+		// Context.MODE_WORLD_READABLE å’Œ Context.MODE_WORLD_WRITEABLE
+		// ç”¨æ¥æ§åˆ¶å…¶ä»–åº”ç”¨æ˜¯å¦æœ‰æƒé™è¯»å†™è¯¥æ–‡ä»¶.
+		// MODE_WORLD_READABLE è¡¨ç¤ºå½“å‰æ–‡ä»¶å¯ä»¥è¢«å…¶ä»–åº”ç”¨è¯»å–.
+		// MODE_WORLD_WRITEABLE è¡¨ç¤ºå½“å‰æ–‡ä»¶å¯ä»¥è¢«å…¶ä»–åº”ç”¨å†™å…¥.
 		// ------------------------------------------------------
 		SharedPreferences preferences = act.getSharedPreferences("count", Context.MODE_PRIVATE);
 		// ------------------------------------------------------
 		int count = preferences.getInt("count", 0);
-		// ÅĞ¶Ï³ÌĞòÓëµÚ¼¸´ÎÔËĞĞ£¬Èç¹ûÊÇµÚÒ»´ÎÔËĞĞÔòÌø×ªµ½Òıµ¼Ò³Ãæ
+		// åˆ¤æ–­ç¨‹åºä¸ç¬¬å‡ æ¬¡è¿è¡Œï¼Œå¦‚æœæ˜¯ç¬¬ä¸€æ¬¡è¿è¡Œåˆ™è·³è½¬åˆ°å¼•å¯¼é¡µé¢
 		if (count == 0) {
 		}
 		Editor editor = preferences.edit();
-		editor.putInt("count", ++count);// ´æÈëÊı¾İ
+		editor.putInt("count", ++count);// å­˜å…¥æ•°æ®
 		// ------------------------------------------------------
 		String RunPath = preferences.getString("SDPath", "");
 		boolean isInGetSdPath = false;
@@ -45,10 +45,10 @@ public class BBKSavePathSelect {
 			RunPath = RunPath.split(" ")[0];
 		}
 		// ------------------------------------------------------
-		editor.putString("SDPath", RunPath);// ´æÈëÊı¾İ
+		editor.putString("SDPath", RunPath);// å­˜å…¥æ•°æ®
 		BBKSoft.PathSD = RunPath;
 		// ------------------------------------------------------
-		editor.commit();// Ìá½»ĞŞ¸Ä
+		editor.commit();// æäº¤ä¿®æ”¹
 		// ------------------------------------------------------
 		bd.d("run time = " + count, true, false);
 		bd.d(BBKSoft.PathSD, true, false);
@@ -60,17 +60,17 @@ public class BBKSavePathSelect {
 		SharedPreferences preferences = act.getSharedPreferences("count", Context.MODE_PRIVATE);
 		// ------------------------------------------------------
 		Editor editor = preferences.edit();
-		editor.putString("SDPath", "");// ´æÈëÊı¾İ
-		editor.commit();// Ìá½»ĞŞ¸Ä
+		editor.putString("SDPath", "");// å­˜å…¥æ•°æ®
+		editor.commit();// æäº¤ä¿®æ”¹
 		// ------------------------------------------------------
 	}
 
 	private static String Dialog_SavePathSelect(Activity act, String[] items) {
-		int x = SynSelectDialog.showComfirmDialogSelect(act, "ÇëÑ¡ÔñµØÍ¼´æ´¢Î»ÖÃ", items);
+		int x = SynSelectDialog.showComfirmDialogSelect(act, "è¯·é€‰æ‹©åœ°å›¾å­˜å‚¨ä½ç½®", items);
 		return items[x];
 	}
 
-	// private static String[] items = { "Ñ¡Ïî1", "Ñ¡Ïî2", "Ñ¡Ïî3", "Ñ¡Ïî4" };
+	// private static String[] items = { "é€‰é¡¹1", "é€‰é¡¹2", "é€‰é¡¹3", "é€‰é¡¹4" };
 
 	// private static String itemStr = "";
 	// private static int itemIndex = -1;
@@ -94,12 +94,12 @@ public class BBKSavePathSelect {
 	// }//
 	// )//
 	// // .setView(img)
-	// // .setNegativeButton("È¡Ïû", null)//
+	// // .setNegativeButton("å–æ¶ˆ", null)//
 	// .show();
 	// // ------------------------------------------------------
 	// }
 	//
-	// public interface CallBackInterface {// ¶¨Òå»Øµ÷½Ó¿Ú
+	// public interface CallBackInterface {// å®šä¹‰å›è°ƒæ¥å£
 	// public void doSome();
 	//
 	// public void exectueMethod();

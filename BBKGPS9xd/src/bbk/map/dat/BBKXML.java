@@ -1,4 +1,4 @@
-package bbk.map.dat;
+﻿package bbk.map.dat;
 
 import java.io.IOException;
 import java.io.StringReader;

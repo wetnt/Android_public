@@ -1,4 +1,4 @@
-package bbk.map.bbd;
+﻿package bbk.map.bbd;
 
 public class BBDHead {
 	// =====================================================================================

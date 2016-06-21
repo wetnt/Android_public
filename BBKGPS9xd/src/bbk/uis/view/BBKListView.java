@@ -1,4 +1,4 @@
-package bbk.uis.view;
+锘縫ackage bbk.uis.view;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -36,12 +36,12 @@ public class BBKListView {
 	// ==============================================================================================
 	public static void ListViewLoad(ArrayList<HashMap<String, Object>> list, ListView listview) {
 		// -----------------------------------------------------------------------------
-		SimpleAdapter adapter = new SimpleAdapter(// 数据装载
-				BBKSoft.bbkContext,// 目标
-				list,// 数据
-				R.layout.list_item,// 样式
-				fromItem,// 对应输入
-				toItem // 对应输出
+		SimpleAdapter adapter = new SimpleAdapter(// 鏁版嵁瑁呰浇
+				BBKSoft.bbkContext,// 鐩爣
+				list,// 鏁版嵁
+				R.layout.list_item,// 鏍峰紡
+				fromItem,// 瀵瑰簲杈撳叆
+				toItem // 瀵瑰簲杈撳嚭
 		);
 		// -----------------------------------------------------------------------------
 		listview.setAdapter(adapter);
@@ -176,10 +176,10 @@ public class BBKListView {
 
 	// ====================================================================================
 	// ####################################################################################
-	// ###############################数据设置#############################################
+	// ###############################鏁版嵁璁剧疆#############################################
 	// ####################################################################################
 	// ====================================================================================
-	public static ArrayList<HashMap<String, Object>> TrackListAlSchSelect(String str, ArrayList<HashMap<String, Object>> lt) {// 过滤算法
+	public static ArrayList<HashMap<String, Object>> TrackListAlSchSelect(String str, ArrayList<HashMap<String, Object>> lt) {// 杩囨护绠楁硶
 		// ------------------------------------------------------------------------------------------
 		ArrayList<HashMap<String, Object>> lout = new ArrayList<HashMap<String, Object>>();
 		HashMap<String, Object> map = new HashMap<String, Object>();
@@ -188,7 +188,7 @@ public class BBKListView {
 		if (lt == null)
 			return lout;
 		// ------------------------------------------------------------------------------------------
-		// 生成动态数组，加入数据
+		// 鐢熸垚鍔ㄦ�佹暟缁勶紝鍔犲叆鏁版嵁
 		for (int i = 0; i < lt.size(); i++) {
 			// --------------------------------------------
 			map = lt.get(i);
@@ -252,7 +252,7 @@ public class BBKListView {
 							strFileSize = filesize / 100 + " KB";
 							map.put(fromItem[0], file.getName().replace(ext, ""));
 							map.put(fromItem[1], strFileSize);
-							map.put(fromItem[2], null);// R.drawable.ic_launcher);图像资源的ID
+							map.put(fromItem[2], null);// R.drawable.ic_launcher);鍥惧儚璧勬簮鐨処D
 							// -----------------------------------------------------------------
 							listItem.add(map);
 							// -----------------------------------------------------------------

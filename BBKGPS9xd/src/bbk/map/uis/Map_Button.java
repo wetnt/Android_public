@@ -1,4 +1,4 @@
-package bbk.map.uis;
+ï»¿package bbk.map.uis;
 
 import android.app.Activity;
 import android.content.Context;
@@ -190,7 +190,7 @@ public class Map_Button extends BBKLayView {
 		// ----------------------------------------------------------------------
 		MAPsss.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				BBKMsgBox.tShow("ÇĞ»»µØÍ¼£¡");
+				BBKMsgBox.tShow("åˆ‡æ¢åœ°å›¾ï¼");
 				BBKSoft.myMaps.MapTypeSet();
 				BBKSoft.MapFlash(true);
 			}
@@ -211,7 +211,7 @@ public class Map_Button extends BBKLayView {
 		});
 		Clears.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				BBKMsgBox.tShow("Í¼²ãÇå¿Õ£¡");
+				BBKMsgBox.tShow("å›¾å±‚æ¸…ç©ºï¼");
 				BBKSoft.myLays.LayClears();
 				BBKSoft.MapFlash(false);
 			}
@@ -235,7 +235,7 @@ public class Map_Button extends BBKLayView {
 		Rulers.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				// --------------------------------------------
-				BBKMsgBox.tShow("µã»÷ÆÁÄ»Á¿Ëã¾àÀë£¡");
+				BBKMsgBox.tShow("ç‚¹å‡»å±å¹•é‡ç®—è·ç¦»ï¼");
 				BBKSoft.myMeasure.layshow(true);
 				BBKSoft.myLays.laymes.line.add(new line_type());
 				BBKSoft.myMeasure.MeasureLayShow = true;
@@ -256,7 +256,7 @@ public class Map_Button extends BBKLayView {
 		});
 		Morexs.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				bbkAct.openOptionsMenu();// °´¼üµ¯³ö²Ëµ¥
+				bbkAct.openOptionsMenu();// æŒ‰é”®å¼¹å‡ºèœå•
 			}
 		});
 		// ----------------------------------------------------------------------
@@ -301,8 +301,8 @@ public class Map_Button extends BBKLayView {
 		});
 		DownCet.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				BBKMsgBox.tShow("µØÍ¼ÖĞĞÄ¿Õ¶´²¹³äÏÂÔØ£¡");
-				BBKSoft.myMaps.BBKDownCenterPic();// ²¹¶´
+				BBKMsgBox.tShow("åœ°å›¾ä¸­å¿ƒç©ºæ´è¡¥å……ä¸‹è½½ï¼");
+				BBKSoft.myMaps.BBKDownCenterPic();// è¡¥æ´
 			}
 		});
 		DownAll.setOnClickListener(new OnClickListener() {
@@ -322,7 +322,7 @@ public class Map_Button extends BBKLayView {
 	// private void MoreMenu_load4() {
 	// ----------------------------------------------------------------------
 	// =====================================================================
-	// if (s == "ÔØÈë×ÊÔ´") {
+	// if (s == "è½½å…¥èµ„æº") {
 	// // ---------------------------------------------
 	// Intent intent = new Intent(bbkAct, FileManager.class);
 	// bbkAct.startActivityForResult(intent, FILE_RESULT_CODE);
@@ -334,7 +334,7 @@ public class Map_Button extends BBKLayView {
 	// BBKGpsSYSTime();
 	// BBKSoft.myNetSet.layshow(true);
 	// BBKAbout.SoftAboutShow();
-	// BBKWebHome();//ÕıÔÚ¿ªÆôÖ÷Ò³£¡
+	// BBKWebHome();//æ­£åœ¨å¼€å¯ä¸»é¡µï¼
 	// =====================================================================
 	// }
 }

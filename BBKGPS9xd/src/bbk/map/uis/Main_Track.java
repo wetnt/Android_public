@@ -1,4 +1,4 @@
-package bbk.map.uis;
+ï»¿package bbk.map.uis;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -65,7 +65,7 @@ public class Main_Track extends BBKLayView {
 	public void TrackListTitleSet() {
 		// ------------------------------------------------------------------------------------------
 		TrackListAllBtn = (Button) BBKLay.findViewById(R.id.TrackListAllBtn);
-		TrackListAllBtn.setText("¹ì¼£ÁÐ±í");
+		TrackListAllBtn.setText("è½¨è¿¹åˆ—è¡¨");
 		TrackListAllExt = (ImageButton) BBKLay.findViewById(R.id.TrackListAllExt);
 		// ------------------------------------------------------------------------------------------
 		TrackListAllSave = (ImageButton) BBKLay.findViewById(R.id.TrackListAllSave);
@@ -118,7 +118,7 @@ public class Main_Track extends BBKLayView {
 			public void onClick(View v) {
 				// --------------------------------------------
 				layshow(false);
-				BBKListView.ListInfoListRun(temp, ListId, BBKSoft.PathBbjs, "¹ì¼£: ");
+				BBKListView.ListInfoListRun(temp, ListId, BBKSoft.PathBbjs, "è½¨è¿¹: ");
 				BBKSoft.myList.layshow(true);
 				// --------------------------------------------
 			}
@@ -127,7 +127,7 @@ public class Main_Track extends BBKLayView {
 			public void onClick(View v) {
 				// --------------------------------------------
 				layshow(false);
-				BBKListView.ListInfoListRun(temp, ListId, BBKSoft.PathBbjs, "¹ì¼£: ");
+				BBKListView.ListInfoListRun(temp, ListId, BBKSoft.PathBbjs, "è½¨è¿¹: ");
 				// --------------------------------------------
 			}
 		});
@@ -171,7 +171,7 @@ public class Main_Track extends BBKLayView {
 				// TrackListAllInt = arg2;
 				// BBKDebug.ddd(TrackListAllInt);
 				// BBKPTListPoiEdit(arg0, arg1, arg2, arg3);
-				return false;// false¼ÌÐø´«µÝ;// trueÖÕÖ¹´«µÝ
+				return false;// falseç»§ç»­ä¼ é€’;// trueç»ˆæ­¢ä¼ é€’
 				// --------------------------------------------
 			}
 		});
@@ -194,7 +194,7 @@ public class Main_Track extends BBKLayView {
 
 	public void ListItemDel() {
 		// --------------------------------------------------------------------------------
-		String Ask = "È·¶¨É¾³ý£¿\r\n" + BBKListView.GetTrackItemName(temp, ListId) + BBKMapLay.bbklayExtension;
+		String Ask = "ç¡®å®šåˆ é™¤ï¼Ÿ\r\n" + BBKListView.GetTrackItemName(temp, ListId) + BBKMapLay.bbklayExtension;
 		// --------------------------------------------------------------------------------
 		DialogInterface.OnClickListener YesLs = new DialogInterface.OnClickListener() {
 			@Override

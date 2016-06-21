@@ -1,4 +1,4 @@
-package bbk.map.set;
+ï»¿package bbk.map.set;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -95,7 +95,7 @@ public class BBKGpsNetSet extends BBKLayView {
 		setpathname = BBKSoft.PathSets + "BBKMapNets.txt";
 		SetLoad();
 		// ==================================================================================
-		TwinkHandler.postDelayed(TwinkRunnable, GpsUpdTm * 1000); // ¿ªÊ¼Timer
+		TwinkHandler.postDelayed(TwinkRunnable, GpsUpdTm * 1000); // å¼€å§‹Timer
 		// ==================================================================================
 	}
 
@@ -261,8 +261,8 @@ public class BBKGpsNetSet extends BBKLayView {
 	public String UserIDid = "0", UsePhone = "";
 	// ===============================================================
 	public boolean GpsUpdRunKey = false, GpsGetRunKey = false;
-	public int GpsUpdTm = 5;// 5s¼ä¸ôÉÏ´«
-	public int GpsGetTm = 5;// 5s¼ä¸ôÉÏ´«
+	public int GpsUpdTm = 5;// 5sé—´éš”ä¸Šä¼ 
+	public int GpsGetTm = 5;// 5sé—´éš”ä¸Šä¼ 
 	public String GpsUpdTs = GpsUpdTm + "";
 	public String GpsGetTs = GpsGetTm + "";
 	// ---------------------------------------------------------------
@@ -415,8 +415,8 @@ public class BBKGpsNetSet extends BBKLayView {
 	}
 
 	// TwinkHandler.postDelayed(TwinkRunnable,BBKSoft.myNetSet.GpsUpNetTime); //
-	// ¿ªÊ¼Timer
-	// TwinkHandler.removeCallbacks(TwinkRunnable); //Í£Ö¹Timer
+	// å¼€å§‹Timer
+	// TwinkHandler.removeCallbacks(TwinkRunnable); //åœæ­¢Timer
 	// ====================================================================================
 	// ####################################################################################
 	// ####################################################################################
@@ -424,13 +424,13 @@ public class BBKGpsNetSet extends BBKLayView {
 	// ====================================================================================
 
 	// private Timer TwinkTimer = new Timer();
-	// private TimerWork myTask = new TimerWork();// ³õÊ¼»¯ÎÒÃÇµÄÈÎÎñ
+	// private TimerWork myTask = new TimerWork();// åˆå§‹åŒ–æˆ‘ä»¬çš„ä»»åŠ¡
 	//
 	// private void TimerStart() {
 	// TwinkTimer.schedule(myTask, 0, BBKSoft.myNetSet.GpsUpNetTime);
 	// // timer.schedule(myTask, 500, 3000);//
-	// // ÔÚ5ÃëºóÖ´ĞĞ´ËÈÎÎñ,Ã¿´Î¼ä¸ô60Ãë,Èç¹û´«µİÒ»¸öData²ÎÊı,¾Í¿ÉÒÔÔÚÄ³¸ö¹Ì¶¨µÄÊ±¼äÖ´ĞĞÕâ¸öÈÎÎñ.
-	// // timer.cancel();// Ê¹ÓÃÕâ¸ö·½·¨ÍË³öÈÎÎñ
+	// // åœ¨5ç§’åæ‰§è¡Œæ­¤ä»»åŠ¡,æ¯æ¬¡é—´éš”60ç§’,å¦‚æœä¼ é€’ä¸€ä¸ªDataå‚æ•°,å°±å¯ä»¥åœ¨æŸä¸ªå›ºå®šçš„æ—¶é—´æ‰§è¡Œè¿™ä¸ªä»»åŠ¡.
+	// // timer.cancel();// ä½¿ç”¨è¿™ä¸ªæ–¹æ³•é€€å‡ºä»»åŠ¡
 	// }
 	//
 	// private class TimerWork extends TimerTask {

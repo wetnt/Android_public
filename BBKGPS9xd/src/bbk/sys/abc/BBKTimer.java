@@ -1,4 +1,4 @@
-package bbk.sys.abc;
+ï»¿package bbk.sys.abc;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -16,18 +16,18 @@ public class BBKTimer {
 
 	// ============================================================
 	Timer timer = new Timer();
-	TimerWork myTask = new TimerWork();// ³õÊ¼»¯ÎÒÃÇµÄÈÎÎñ
+	TimerWork myTask = new TimerWork();// åˆå§‹åŒ–æˆ‘ä»¬çš„ä»»åŠ¡
 
 	// ============================================================
 	public void TimerStart() {
 		timer.schedule(myTask, 0, 1000);
 		// timer.schedule(myTask, 500, 3000);//
-		// ÔÚ5ÃëºóÖ´ĞĞ´ËÈÎÎñ,Ã¿´Î¼ä¸ô60Ãë,Èç¹û´«µİÒ»¸öData²ÎÊı,¾Í¿ÉÒÔÔÚÄ³¸ö¹Ì¶¨µÄÊ±¼äÖ´ĞĞÕâ¸öÈÎÎñ.
-		// timer.cancel();// Ê¹ÓÃÕâ¸ö·½·¨ÍË³öÈÎÎñ
+		// åœ¨5ç§’åæ‰§è¡Œæ­¤ä»»åŠ¡,æ¯æ¬¡é—´éš”60ç§’,å¦‚æœä¼ é€’ä¸€ä¸ªDataå‚æ•°,å°±å¯ä»¥åœ¨æŸä¸ªå›ºå®šçš„æ—¶é—´æ‰§è¡Œè¿™ä¸ªä»»åŠ¡.
+		// timer.cancel();// ä½¿ç”¨è¿™ä¸ªæ–¹æ³•é€€å‡ºä»»åŠ¡
 	}
 
 	public void TimerStop() {
-		timer.cancel();// Ê¹ÓÃÕâ¸ö·½·¨ÍË³öÈÎÎñ
+		timer.cancel();// ä½¿ç”¨è¿™ä¸ªæ–¹æ³•é€€å‡ºä»»åŠ¡
 	}
 
 	// ============================================================

@@ -1,4 +1,4 @@
-package bbk.map.data.shapefile;
+ï»¿package bbk.map.data.shapefile;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -104,7 +104,7 @@ public class BBKShape {
 
 	public static class ESRI_MBR {
 		// ---------------------------------------------
-		// ×îĞ¡Íâ½Ó¾ØĞÎ (minimum bounding rectangle, MBR)
+		// æœ€å°å¤–æ¥çŸ©å½¢ (minimum bounding rectangle, MBR)
 		public double left;
 		public double bottom;
 		public double right;
@@ -112,7 +112,7 @@ public class BBKShape {
 		// ---------------------------------------------
 	}
 
-	public static ESRI_MBR ESRI_MBR_Read() {// »ñµÃÍ¼ĞÎÍâ±ß¿ò
+	public static ESRI_MBR ESRI_MBR_Read() {// è·å¾—å›¾å½¢å¤–è¾¹æ¡†
 		// ---------------------------------------------
 		ESRI_MBR m = new ESRI_MBR();
 		// ---------------------------------------------
@@ -128,27 +128,27 @@ public class BBKShape {
 	@SuppressWarnings("unused")
 	public static int Shape_Header_Read() {
 		// -------------------------------------------------------------
-		// Ö÷ÎÄ¼şÍ·100×Ö½Ú³¤¡£
-		// ±í1ÏÔÊ¾´øÓĞ×Ö½ÚÎ»ÖÃ£¬Öµ£¬ÀàĞÍºÍ×Ö½ÚË³ĞòµÄÎÄ¼şÍ·ÖĞµÄÓò¡£
+		// ä¸»æ–‡ä»¶å¤´100å­—èŠ‚é•¿ã€‚
+		// è¡¨1æ˜¾ç¤ºå¸¦æœ‰å­—èŠ‚ä½ç½®ï¼Œå€¼ï¼Œç±»å‹å’Œå­—èŠ‚é¡ºåºçš„æ–‡ä»¶å¤´ä¸­çš„åŸŸã€‚
 		// int head = 100;
 		// -------------------------------------------------------------
-		int fileKeyCode = ReadInt32(1);// 0×Ö½Ú ´úÂë 9994 ÕûÊı ´ó
+		int fileKeyCode = ReadInt32(1);// 0å­—èŠ‚ ä»£ç  9994 æ•´æ•° å¤§
 		bufpNext(24 - 4);
-		int fileLength = ReadInt32(1);// 24×Ö½Ú ÎÄ¼ş³¤¶È ÕûÊı ´ó
-		int fileVison = ReadInt32(0);// 28×Ö½Ú °æ±¾ 1000ÕûÊı Ğ¡
-		int shapetype = ReadInt32(0);// 32×Ö½Ú ÀàĞÍÕûÊı Ğ¡
+		int fileLength = ReadInt32(1);// 24å­—èŠ‚ æ–‡ä»¶é•¿åº¦ æ•´æ•° å¤§
+		int fileVison = ReadInt32(0);// 28å­—èŠ‚ ç‰ˆæœ¬ 1000æ•´æ•° å°
+		int shapetype = ReadInt32(0);// 32å­—èŠ‚ ç±»å‹æ•´æ•° å°
 		// -------------------------------------------------------------
-		ESRI_MBR mbx = ESRI_MBR_Read();// ¶Á³öÕû¸öshpÍ¼²ãµÄ±ß½çºÏ
-		// 36×Ö½Ú ±ß½çºĞ Xmin Ë«¾«¶È Ğ¡
-		// 44×Ö½Ú ±ß½çºĞ Ymin Ë«¾«¶È Ğ¡
-		// 52×Ö½Ú ±ß½çºĞ Xmax Ë«¾«¶È Ğ¡
-		// 60×Ö½Ú ±ß½çºĞ Ymax Ë«¾«¶È Ğ¡
+		ESRI_MBR mbx = ESRI_MBR_Read();// è¯»å‡ºæ•´ä¸ªshpå›¾å±‚çš„è¾¹ç•Œåˆ
+		// 36å­—èŠ‚ è¾¹ç•Œç›’ Xmin åŒç²¾åº¦ å°
+		// 44å­—èŠ‚ è¾¹ç•Œç›’ Ymin åŒç²¾åº¦ å°
+		// 52å­—èŠ‚ è¾¹ç•Œç›’ Xmax åŒç²¾åº¦ å°
+		// 60å­—èŠ‚ è¾¹ç•Œç›’ Ymax åŒç²¾åº¦ å°
 		// -------------------------------------------------------------
-		// shpÖĞÉĞÎ´Ê¹ÓÃµÄ±ß½çºĞ
-		// 68×Ö½Ú* ±ß½çºĞ Zmin Ë«¾«¶È Ğ¡
-		// 76×Ö½Ú* ±ß½çºĞ Zmax Ë«¾«¶È Ğ¡
-		// 84×Ö½Ú* ±ß½çºĞ Mmin Ë«¾«¶È Ğ¡
-		// 92×Ö½Ú* ±ß½çºĞ Mmax Ë«¾«¶È Ğ¡
+		// shpä¸­å°šæœªä½¿ç”¨çš„è¾¹ç•Œç›’
+		// 68å­—èŠ‚* è¾¹ç•Œç›’ Zmin åŒç²¾åº¦ å°
+		// 76å­—èŠ‚* è¾¹ç•Œç›’ Zmax åŒç²¾åº¦ å°
+		// 84å­—èŠ‚* è¾¹ç•Œç›’ Mmin åŒç²¾åº¦ å°
+		// 92å­—èŠ‚* è¾¹ç•Œç›’ Mmax åŒç²¾åº¦ å°
 		// -------------------------------------------------------------
 		return shapetype;
 		// =============================================================
@@ -345,17 +345,17 @@ public class BBKShape {
 		// ----------------------------------------------------------
 		ESRI_POLYLINE shapePolyline = new ESRI_POLYLINE();
 		// ----------------------------------------------------------
-		bufpNext(8);// ¼ÇÂ¼Í·8¸ö×Ö½Ú
-		int stype = ReadInt32(0);// Ò»¸öint(4¸ö×Ö½Ú)µÄshapetype
+		bufpNext(8);// è®°å½•å¤´8ä¸ªå­—èŠ‚
+		int stype = ReadInt32(0);// ä¸€ä¸ªint(4ä¸ªå­—èŠ‚)çš„shapetype
 		// ----------------------------------------------------------
-		ESRI_MBR mbx = ESRI_MBR_Read();// »ñµÃÍ¼ĞÎÍâ±ß¿ò
+		ESRI_MBR mbx = ESRI_MBR_Read();// è·å¾—å›¾å½¢å¤–è¾¹æ¡†
 		// BBKDebug.ddd( "Left====" + left);
 		// BBKDebug.ddd( "Bottom====" + bottom);
 		// BBKDebug.ddd( "Right====" + right);
 		// BBKDebug.ddd( "Top====" + top);
 		// ----------------------------------------------------------
-		int partcount = ReadInt32(0);// Ïß¶ÎÊı
-		int pointcount = ReadInt32(0);// Ïß¶ÎµãÊıÄ¿
+		int partcount = ReadInt32(0);// çº¿æ®µæ•°
+		int pointcount = ReadInt32(0);// çº¿æ®µç‚¹æ•°ç›®
 		if (partcount > 100000000 || partcount < 0) {
 			// BBKDebug.ddd("partcount====" + partcount);
 			return null;
@@ -371,7 +371,7 @@ public class BBKShape {
 		double[] ypoints = new double[pointcount];
 		double[] zpoints = new double[pointcount];
 		// ----------------------------------------------------------
-		// ½Úµã¿ªÊ¼Î»ÖÃ
+		// èŠ‚ç‚¹å¼€å§‹ä½ç½®
 		for (int j = 0; j < partcount; j++) {
 			parts[j] = ReadInt32(0);
 		}
@@ -389,7 +389,7 @@ public class BBKShape {
 		// ----------------------------------------------------------
 		parts[partcount - 1] = pointcount - parts[partcount - 1];
 		// ----------------------------------------------------------
-		for (int j = 0; j < pointcount; j++) {// ¶Á×ø±ê
+		for (int j = 0; j < pointcount; j++) {// è¯»åæ ‡
 			xpoints[j] = ReadDouble(0);
 			ypoints[j] = ReadDouble(0);
 			zpoints[j] = 0;
@@ -435,13 +435,13 @@ public class BBKShape {
 		// -------------------------------------------------------------
 		ESRI_POLYGON shapePolygon = new ESRI_POLYGON();
 		// -------------------------------------------------------------
-		bufpNext(8);// ¼ÇÂ¼Í·8¸ö×Ö½Ú
-		int shapetype = ReadInt32(0); // ºÍÒ»¸öint(4¸ö×Ö½Ú)µÄshapetype
+		bufpNext(8);// è®°å½•å¤´8ä¸ªå­—èŠ‚
+		int shapetype = ReadInt32(0); // å’Œä¸€ä¸ªint(4ä¸ªå­—èŠ‚)çš„shapetype
 		// -------------------------------------------------------------
-		ESRI_MBR mbx = ESRI_MBR_Read();// »ñµÃÍ¼ĞÎÍâ±ß¿ò
+		ESRI_MBR mbx = ESRI_MBR_Read();// è·å¾—å›¾å½¢å¤–è¾¹æ¡†
 		// -------------------------------------------------------------
-		int partcount = ReadInt32(0);// Ïß¶ÎÊı
-		int pointcount = ReadInt32(0);// Ïß¶ÎµãÊıÄ¿
+		int partcount = ReadInt32(0);// çº¿æ®µæ•°
+		int pointcount = ReadInt32(0);// çº¿æ®µç‚¹æ•°ç›®
 		if (partcount > 100000000 || partcount < 0) {
 			// BBKDebug.ddd("partcount====" + partcount);
 			return null;
@@ -476,7 +476,7 @@ public class BBKShape {
 		// -------------------------------------------------------------
 		parts[partcount - 1] = pointcount - parts[partcount - 1];
 		// -------------------------------------------------------------
-		for (int j = 0; j < pointcount; j++) {// ¶Á×ø±ê
+		for (int j = 0; j < pointcount; j++) {// è¯»åæ ‡
 			xpoints[j] = ReadDouble(0);
 			ypoints[j] = ReadDouble(0);
 			zpoints[j] = 0;
@@ -532,11 +532,11 @@ public class BBKShape {
 	@SuppressWarnings("unused")
 	public static ESRI_POLYLINE Shape_Polyline_ForRead13(int i) {
 		// ----------------------------------------------------------
-		bufpNext(8);// ¼ÇÂ¼Í·8¸ö×Ö½Ú
+		bufpNext(8);// è®°å½•å¤´8ä¸ªå­—èŠ‚
 		// ----------------------------------------------------------
-		int stype = ReadInt32(0);// Ò»¸öint(4¸ö×Ö½Ú)µÄshapetype
+		int stype = ReadInt32(0);// ä¸€ä¸ªint(4ä¸ªå­—èŠ‚)çš„shapetype
 		// ----------------------------------------------------------
-		ESRI_MBR mbx = ESRI_MBR_Read();// »ñµÃÍ¼ĞÎÍâ±ß¿ò
+		ESRI_MBR mbx = ESRI_MBR_Read();// è·å¾—å›¾å½¢å¤–è¾¹æ¡†
 		// ----------------------------------------------------------
 		int NumParts = ReadInt32(0);
 		int NumPoints = ReadInt32(0);
@@ -592,16 +592,16 @@ public class BBKShape {
 	// ===================================================================================
 	// ===================================================================================
 	// ===================================================================================
-	public static int ShapeShxCount(InputStream shxfile) {// ´ò¿ª.shxÎÄ¼ş
+	public static int ShapeShxCount(InputStream shxfile) {// æ‰“å¼€.shxæ–‡ä»¶
 		// -------------------------------------------------------------
 		if (shxfile == null)
 			return -1;
 		// -------------------------------------------------------------
 		try {
 			// -------------------------------------------------------------
-			int lenght = shxfile.available();// ÎÄ¼ş´óĞ¡
+			int lenght = shxfile.available();// æ–‡ä»¶å¤§å°
 			BBKDebug.d("shxfile.lenght = " + lenght, false, false);
-			return (int) (lenght - 100) / 8; // ×Ü¼ÇÂ¼Êı
+			return (int) (lenght - 100) / 8; // æ€»è®°å½•æ•°
 			// -------------------------------------------------------------
 		} catch (IOException e1) {
 			return -1;
@@ -613,7 +613,7 @@ public class BBKShape {
 	static byte[] buffer = new byte[1];
 	private static int bufposition = 0;
 
-	public static boolean ShapebufferLoad(InputStream shpfile) {// ´ò¿ª.shpÎÄ¼ş
+	public static boolean ShapebufferLoad(InputStream shpfile) {// æ‰“å¼€.shpæ–‡ä»¶
 		// --------------------------------------------------------
 		if (shpfile == null)
 			return false;
@@ -653,7 +653,7 @@ public class BBKShape {
 		int poi = bufposition;
 		long reg = 0;
 		// --------------------------------------------------------
-		if (type == 1) {// 1Ë«¾«¶È´ó 0Ë«¾«¶ÈĞ¡
+		if (type == 1) {// 1åŒç²¾åº¦å¤§ 0åŒç²¾åº¦å°
 			// ----------------------------------------------------
 			reg = ((long) buffer[poi + 0] << 56) + ((long) (buffer[poi + 1] & 255) << 48) + ((long) (buffer[poi + 2] & 255) << 40) + ((long) (buffer[poi + 3] & 255) << 32) + ((long) (buffer[poi + 4] & 255) << 24) + ((buffer[poi + 5] & 255) << 16) + ((buffer[poi + 6] & 255) << 8) + ((buffer[poi + 7] & 255) << 0);
 			// ----------------------------------------------------
@@ -673,7 +673,7 @@ public class BBKShape {
 		int poi = bufposition;
 		int reg = 0;
 		// --------------------------------------------------------
-		if (type == 1) {// 1ÕûÊı´ó 0ÕûÊıĞ¡
+		if (type == 1) {// 1æ•´æ•°å¤§ 0æ•´æ•°å°
 			// --------------------------------------------------------
 			reg = ((buffer[poi + 0] & 255) << 24) + ((buffer[poi + 1] & 255) << 16) + ((buffer[poi + 2] & 255) << 8) + ((buffer[poi + 3] & 255) << 0);
 			// --------------------------------------------------------

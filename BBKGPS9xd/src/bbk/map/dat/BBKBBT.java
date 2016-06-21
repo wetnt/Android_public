@@ -1,4 +1,4 @@
-package bbk.map.dat;
+ï»¿package bbk.map.dat;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -57,7 +57,7 @@ public class BBKBBT {
 	}
 
 	// =========================================================================================
-	private static final String bbtchar = ","; // ¼ÇÂ¼·Ö¸ô·û
+	private static final String bbtchar = ","; // è®°å½•åˆ†éš”ç¬¦
 
 	// =========================================================================================
 	private static poi_type StrToPoi_type(String bbtItemLine) {
