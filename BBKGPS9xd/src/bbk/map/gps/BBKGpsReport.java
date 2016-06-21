@@ -20,7 +20,7 @@ public class BBKGpsReport {
 		GpsInfos = "行程信息统计 >>" + lrn + lrn;
 		GpsInfos += "起始：" + gpsTmFt.format(BBKSoft.myGps.gm.g.ts) + lrn;
 		GpsInfos += "当前：" + gpsTmFt.format(BBKSoft.myGps.gm.g.t) + lrn;
-		GpsInfos += "耗时：" + BBKSoft.myGps.gm.g.tr + " " + lrn;
+		GpsInfos += "耗时：" + BBKSoft.myGps.gm.g.tls + " " + lrn;
 		GpsInfos += lrn;
 		GpsInfos += "里程：" + BBKSoft.myGps.gm.g.l + " km" + lrn;
 		GpsInfos += "均速：" + BBKSoft.myGps.gm.g.va + " km/h" + lrn;

@@ -45,9 +45,10 @@ public class BBKGpsMath {
 		// -----------------------------------------
 		public boolean Y, R;
 		// -----------------------------------------
-		public Date t, ts;// GPS时间/启动时间
+		public Date t;// GPS时间
+		public Date ts;// 启动时间
 		public double tl;// 持续时间
-		public String tr;// 持续时间字符形式
+		public String tls;// 持续时间字符形式
 		// -----------------------------------------
 		public double r;// 精度
 		// -----------------------------------------
@@ -65,7 +66,7 @@ public class BBKGpsMath {
 		public String i;// 信息
 		public String vs;// 速度
 		// -----------------------------------------
-		public int m;// 卫星数目
+		public int s;// 卫星数目
 		public int u;// 参与解算卫星数目
 		public int snr;// 卫星平均信号值
 		public int usr;// 参与解算卫星数目
@@ -77,7 +78,7 @@ public class BBKGpsMath {
 		g.Y = false;
 		g.R = false;
 		// ----------------------------------------------------
-		g.t = new Date(0);
+		g.t = new Date(System.currentTimeMillis());
 		g.ts = new Date(System.currentTimeMillis());
 		g.r = 0;
 		// ----------------------------------------------------
@@ -106,12 +107,10 @@ public class BBKGpsMath {
 	public void GpsInfos(double mapw, double mapj, float compass, boolean more) {
 		// ----------------------------------------------------
 		g.a = gpsTmFt.format(g.t);
-		g.a += " " + (int) g.r + "A" + g.u + "/" + g.m;
-		if (g.Y) {
-			g.a += "=" + g.usr;
-		} else {
-			g.a += "=" + g.snr;
-		}
+		g.a += " " + (int) g.r;
+		g.a += g.Y ? "A" : "N";
+		g.a += g.u + "/" + g.s;
+		g.a += "=" + (g.Y ? g.usr : g.snr);
 		g.a += " " + g.l + "km";
 		g.a += " " + (int) g.h + "m";
 		g.a += " F" + compass + "/" + (int) g.f;
@@ -125,7 +124,7 @@ public class BBKGpsMath {
 			g.i += " " + (int) compass;
 			g.i += "/" + (int) g.f + "\r\n";
 			g.i += "s=" + g.l + " km";
-			g.i += "/" + g.tr + " " + "\r\n";
+			g.i += "/" + g.tls + " " + "\r\n";
 			g.i += "v=" + g.va + " / " + g.vm + " km/h" + "\r\n";
 		}
 		// ---------------------------------------------------------------------
@@ -137,13 +136,13 @@ public class BBKGpsMath {
 			g.vm = g.v;
 		}
 		// -------------------------------------------------------------------
-		if (g.ts.getTime() > g.t.getTime())
+		if (g.Y && g.ts.getTime() > g.t.getTime())
 			g.ts = new Date(g.t.getTime());
 		// -------------------------------------------------------------------
 		g.tl = (g.t.getTime() - g.ts.getTime()) / 3600000f;
 		// -------------------------------------------------------------------
 		g.va = g.l / g.tl;
-		g.tr = getDFM(g.tl);
+		g.tls = getDFM(g.tl);
 		g.tl = getDouble(g.tl, 1000);
 		g.va = getDouble(g.va, 1000);
 		// -----------------------------------------------------------------------
@@ -184,7 +183,7 @@ public class BBKGpsMath {
 	public void updateGpsStatus(int event, GpsStatus status) {
 		if (status == null) {
 			// -----------------------------------------------------------------------
-			g.m = 0;// 卫星数目
+			g.s = 0;// 卫星数目
 			g.u = 0;// 参与解算卫星数目
 			g.snr = 0;// 卫星平均信号值
 			g.usr = 0;// 参与解算卫星数目
@@ -207,18 +206,10 @@ public class BBKGpsMath {
 				GpsCount++;
 			}
 			// -----------------------------------------------------------------------
-			g.m = numSatelliteList.size();
-			if (g.m != 0) {
-				g.snr = GpsAllSnr / g.m;
-			} else {
-				g.snr = 0;
-			}
+			g.s = numSatelliteList.size();
 			g.u = GpsUseds;
-			if (g.u != 0) {
-				g.usr = GpsUseSnr / g.u;
-			} else {
-				g.usr = 0;
-			}
+			g.snr = g.s == 0 ? 0 : GpsAllSnr / g.s;
+			g.usr = g.u == 0 ? 0 : GpsUseSnr / g.u;
 			// -----------------------------------------------------------------------
 		}
 		// -----------------------------------------------------------
