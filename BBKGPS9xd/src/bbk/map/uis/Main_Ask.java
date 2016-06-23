@@ -1,4 +1,4 @@
-package bbk.map.uis;
+ï»¿package bbk.map.uis;
 
 import com.example.bbkgps9xd.R;
 
@@ -341,10 +341,10 @@ public class Main_Ask extends BBKLayView {
 
 	// private List<String> getData() {
 	// List<String> data = new ArrayList<String>();
-	// data.add("²âÊÔÊı¾İ1");
-	// data.add("²âÊÔÊı¾İ2");
-	// data.add("²âÊÔÊı¾İ3");
-	// data.add("²âÊÔÊı¾İ4");
+	// data.add("æµ‹è¯•æ•°æ®1");
+	// data.add("æµ‹è¯•æ•°æ®2");
+	// data.add("æµ‹è¯•æ•°æ®3");
+	// data.add("æµ‹è¯•æ•°æ®4");
 	// return data;
 	// }
 

@@ -1,4 +1,4 @@
-package bbk.net.abc;
+锘縫ackage bbk.net.abc;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,7 +17,7 @@ public class BBKHttpGet {
 
 	// ===============================================================
 	// http://blog.csdn.net/longerandlonger/article/details/7255357
-	// Java异步HTTP请求
+	// Java寮傛HTTP璇锋眰
 	// ===============================================================
 	public static String NetProxy = "";
 	public static int NetPorts = 0;
@@ -29,7 +29,7 @@ public class BBKHttpGet {
 
 	// ===============================================================
 	// see81192154:
-	// 此过程必须放在新线程中：
+	// 姝よ繃绋嬪繀椤绘斁鍦ㄦ柊绾跨▼涓細
 	// new Thread() {
 	// public void run() {
 	// // -----------------------------
@@ -37,7 +37,7 @@ public class BBKHttpGet {
 	// }
 	// }.start();
 	private static String BBKHttpGetUrlNew(String strUrl, String strCode, String proxy, int sort, int timeout, boolean debugKey)
-	// 此过程必须放在新线程中：see81192154:
+	// 姝よ繃绋嬪繀椤绘斁鍦ㄦ柊绾跨▼涓細see81192154:
 	{
 		try {
 			// -------------------------------------------------------------------
@@ -72,7 +72,7 @@ public class BBKHttpGet {
 			conn.setDefaultUseCaches(true);
 			conn.setReadTimeout(timeout * 1000);
 			conn.setDoInput(true);
-			conn.connect(); // 此过程必须放在新线程中：see81192154:
+			conn.connect(); // 姝よ繃绋嬪繀椤绘斁鍦ㄦ柊绾跨▼涓細see81192154:
 			// -------------------------------------------------------------------
 			try {
 				Thread.sleep(200);

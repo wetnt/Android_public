@@ -1,4 +1,4 @@
-package bbk.map.ask;
+ï»¿package bbk.map.ask;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -41,21 +41,21 @@ public class BBKBaiDu {
 	// ====================================================================================
 
 	// -------------------------------------
-	// http://api.map.baidu.com/place/search?&query=ÈÙÉÏ¾Ó&region=±±¾©&output=xml&key=9e51c2207bdffb09195c6ca8713977d1
-	// http://api.map.baidu.com/place/search?&query=ÈÙÉÏ¾Ó&location=39.915,116.404&radius=28000&output=xml&key=9e51c2207bdffb09195c6ca8713977d1
+	// http://api.map.baidu.com/place/search?&query=è£ä¸Šå±…&region=åŒ—äº¬&output=xml&key=9e51c2207bdffb09195c6ca8713977d1
+	// http://api.map.baidu.com/place/search?&query=è£ä¸Šå±…&location=39.915,116.404&radius=28000&output=xml&key=9e51c2207bdffb09195c6ca8713977d1
 	public final String GgUrl = "http://api.map.baidu.com/place/search?key=9e51c2207bdffb09195c6ca8713977d1&output=json&query=";// &output=xml&query=";
 	public final String gbCode = "UTF-8";// "GB2312";
 
 	// -------------------------------------
 	// http://api.map.baidu.com/direction/v1/routematrix?
-	// output=json&origins=Ìì°²ÃÅ|Äñ³²
-	// &destinations=±±¾©ÓÊµç´óÑ§|ÉÏº£ÄÏ¾©Â·
+	// output=json&origins=å¤©å®‰é—¨|é¸Ÿå·¢
+	// &destinations=åŒ—äº¬é‚®ç”µå¤§å­¦|ä¸Šæµ·å—äº¬è·¯
 	// &ak=E4805d16520de693a3fe707cdc962045
 	// -------------------------------------
 	// http://api.map.baidu.com/direction/v1?
-	// mode=transit&origin=ÉÏµØÎå½Ö
-	// &destination=±±¾©´óÑ§
-	// &region=±±¾©
+	// mode=transit&origin=ä¸Šåœ°äº”è¡—
+	// &destination=åŒ—äº¬å¤§å­¦
+	// &region=åŒ—äº¬
 	// &output=json
 	// &ak=E4805d16520de693a3fe707cdc962045
 	// -------------------------------------
@@ -63,7 +63,7 @@ public class BBKBaiDu {
 	// ====================================================================================
 	private boolean BaiDuiAskRun(String str, double cw, double cj) {
 		// ------------------------------------------------------
-		// ½Ó¿ÚÎª»ğĞÇ×ø±ê£¬²éÑ¯Ê±ĞèÒª°ÑÕæÊµ×ø±ê¸ÄÎª»ğĞÇ×ø±ê
+		// æ¥å£ä¸ºç«æ˜Ÿåæ ‡ï¼ŒæŸ¥è¯¢æ—¶éœ€è¦æŠŠçœŸå®åæ ‡æ”¹ä¸ºç«æ˜Ÿåæ ‡
 		String tp = BBKReg.Str_WJ_TF(str);
 		try {
 			tp = URLEncoder.encode(tp, "UTF-8");
@@ -95,7 +95,7 @@ public class BBKBaiDu {
 	private Runnable RunnableAsk = new Runnable() {
 		public void run() {
 			// ------------------------------------------------------
-			BBKSoft.myAsk.AskInfoListShowRun("²éÑ¯: " + AskStr);
+			BBKSoft.myAsk.AskInfoListShowRun("æŸ¥è¯¢: " + AskStr);
 			// ------------------------------------------------------
 		}
 	};
@@ -273,12 +273,12 @@ public class BBKBaiDu {
 		double jd = wj.j - 0.00645157;
 		return new RegWJ(wd, jd);
 		// --------------------------------------------------------------------
-		// °Ù¶È·µ»Ø£º39.985226 116.345018
-		// »ğĞÇĞŞÕı£º39.98397491 116.33896157 //³õ²½ĞŞÕı
-		// »ğĞÇĞŞÕı£º39.98396487 116.33891994 //¾«ĞŞ
-		// °Ù¶ÈĞŞÕı£º-0.00561491 -0.00645157
-		// °Ù¶È¾«ĞŞ£º-0.00560487 -0.00640994
-		// ÕæÊÇ×ø±ê£º39.97836,116.33251
+		// ç™¾åº¦è¿”å›ï¼š39.985226 116.345018
+		// ç«æ˜Ÿä¿®æ­£ï¼š39.98397491 116.33896157 //åˆæ­¥ä¿®æ­£
+		// ç«æ˜Ÿä¿®æ­£ï¼š39.98396487 116.33891994 //ç²¾ä¿®
+		// ç™¾åº¦ä¿®æ­£ï¼š-0.00561491 -0.00645157
+		// ç™¾åº¦ç²¾ä¿®ï¼š-0.00560487 -0.00640994
+		// çœŸæ˜¯åæ ‡ï¼š39.97836,116.33251
 		// --------------------------------------------------------------------
 		// --------------------------------------------------------------------
 		// wj = BBKMapReg.F2T(wd, jd);

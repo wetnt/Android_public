@@ -1,4 +1,4 @@
-package bbk.net.set;
+ï»¿package bbk.net.set;
 
 import java.util.Date;
 
@@ -93,7 +93,7 @@ public class BBKNetGpsUpd {
 
 	private long GpsAddLastTime = 0;
 	private long GpsAddSqlsTime = 5 * 1000;// 5s
-	private long GpsUpClearTime = 60 * 1000;// 1·ÖÖÓ
+	private long GpsUpClearTime = 60 * 1000;// 1åˆ†é’Ÿ
 
 	public boolean AddGps(GPS g) {
 		// ---------------------------------------------

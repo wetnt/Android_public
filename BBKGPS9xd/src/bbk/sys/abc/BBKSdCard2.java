@@ -1,4 +1,4 @@
-package bbk.sys.abc;
+ï»¿package bbk.sys.abc;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -20,10 +20,10 @@ public class BBKSdCard2 {
 
 	// public static void Test() {
 	//
-	// String PhoneCard = BBKSdCard2.getPhoneCardPath();// ÊÖ»úÄÚ²¿
-	// String SDCard = BBKSdCard2.getSDCardPath();// ÊÖ»úÄÚÖÃSDcard
-	// String NormalSDCard = BBKSdCard2.getNormalSDCardPath();// Ä¬ÈÏSDcard
-	// String SDCardPathEx = BBKSdCard2.getSDCardPathEx();// ËùÓĞcard
+	// String PhoneCard = BBKSdCard2.getPhoneCardPath();// æ‰‹æœºå†…éƒ¨
+	// String SDCard = BBKSdCard2.getSDCardPath();// æ‰‹æœºå†…ç½®SDcard
+	// String NormalSDCard = BBKSdCard2.getNormalSDCardPath();// é»˜è®¤SDcard
+	// String SDCardPathEx = BBKSdCard2.getSDCardPathEx();// æ‰€æœ‰card
 	//
 	// long PhoneCardSize = BBKSdCard2.getAvailableSize(PhoneCard);
 	// long SDCardSize = BBKSdCard2.getAvailableSize(SDCard);
@@ -48,10 +48,10 @@ public class BBKSdCard2 {
 		bd.d("GetAllSdPath", false, false);
 		// ---------------------------------------------------------------------
 		PathList.clear();
-		getSDCardPathExternal(PathList);// ËùÓĞcard
-		StringArrayAdd(PathList, BBKSdCard2.getPhoneCardPath());// ÊÖ»úÄÚ²¿
-		StringArrayAdd(PathList, BBKSdCard2.getSDCardPath());// ÊÖ»úÄÚÖÃSDcard
-		StringArrayAdd(PathList, BBKSdCard2.getNormalSDCardPath());// Ä¬ÈÏSDcard
+		getSDCardPathExternal(PathList);// æ‰€æœ‰card
+		StringArrayAdd(PathList, BBKSdCard2.getPhoneCardPath());// æ‰‹æœºå†…éƒ¨
+		StringArrayAdd(PathList, BBKSdCard2.getSDCardPath());// æ‰‹æœºå†…ç½®SDcard
+		StringArrayAdd(PathList, BBKSdCard2.getNormalSDCardPath());// é»˜è®¤SDcard
 		Collections.sort(PathList);
 		// ---------------------------------------------------------------------
 		PathListMB = new String[PathList.size()];
@@ -65,7 +65,7 @@ public class BBKSdCard2 {
 		// ---------------------------------------------------------------------
 	}
 
-	// ²é¿´ËùÓĞµÄsdÂ·¾¶
+	// æŸ¥çœ‹æ‰€æœ‰çš„sdè·¯å¾„
 	private static void getSDCardPathExternal(ArrayList<String> list) {
 		try {
 			Runtime runtime = Runtime.getRuntime();
@@ -119,14 +119,14 @@ public class BBKSdCard2 {
 		}
 	}
 
-	// »ñÈ¡×îºóÒ»¸öSDcard
+	// è·å–æœ€åä¸€ä¸ªSDcard
 	public static String SdPathAll[];
 
 	public static String getLastSdCardPath() {
 		// -------------------------------------------------------
 		String SDCardPath = "";
 		// -------------------------------------------------------
-		String SDCardPathEx = BBKSdCard2.getSDCardPathEx();// ËùÓĞcard
+		String SDCardPathEx = BBKSdCard2.getSDCardPathEx();// æ‰€æœ‰card
 		SdPathAll = SDCardPathEx.split("\n");
 		// -------------------------------------------------------
 		for (int i = 0; i < SdPathAll.length; i++) {
@@ -140,31 +140,31 @@ public class BBKSdCard2 {
 		// -------------------------------------------------------
 	}
 
-	// »ñÈ¡ÊÖ»ú×ÔÉíÄÚ´æÂ·¾¶
+	// è·å–æ‰‹æœºè‡ªèº«å†…å­˜è·¯å¾„
 	public static String getPhoneCardPath() {
 		return Environment.getDataDirectory().getPath();
 
 	}
 
-	// »ñÈ¡sd¿¨Â·¾¶ Ë«sd¿¨Ê±£¬¸ù¾İ¡±ÉèÖÃ¡°ÀïÃæµÄÊı¾İ´æ´¢Î»ÖÃÑ¡Ôñ£¬»ñµÃµÄÊÇÄÚÖÃsd¿¨»òÍâÖÃsd¿¨
+	// è·å–sdå¡è·¯å¾„ åŒsdå¡æ—¶ï¼Œæ ¹æ®â€è®¾ç½®â€œé‡Œé¢çš„æ•°æ®å­˜å‚¨ä½ç½®é€‰æ‹©ï¼Œè·å¾—çš„æ˜¯å†…ç½®sdå¡æˆ–å¤–ç½®sdå¡
 	public static String getNormalSDCardPath() {
 		return Environment.getExternalStorageDirectory().getPath();
 	}
 
-	// »ñÈ¡sd¿¨Â·¾¶ Ë«sd¿¨Ê±£¬»ñµÃµÄÊÇÍâÖÃsd¿¨
+	// è·å–sdå¡è·¯å¾„ åŒsdå¡æ—¶ï¼Œè·å¾—çš„æ˜¯å¤–ç½®sdå¡
 	public static String getSDCardPath() {
 		String cmd = "cat /proc/mounts";
-		Runtime run = Runtime.getRuntime();// ·µ»ØÓëµ±Ç° Java Ó¦ÓÃ³ÌĞòÏà¹ØµÄÔËĞĞÊ±¶ÔÏó
+		Runtime run = Runtime.getRuntime();// è¿”å›ä¸å½“å‰ Java åº”ç”¨ç¨‹åºç›¸å…³çš„è¿è¡Œæ—¶å¯¹è±¡
 		BufferedInputStream in = null;
 		BufferedReader inBr = null;
 		try {
-			Process p = run.exec(cmd);// Æô¶¯ÁíÒ»¸ö½ø³ÌÀ´Ö´ĞĞÃüÁî
+			Process p = run.exec(cmd);// å¯åŠ¨å¦ä¸€ä¸ªè¿›ç¨‹æ¥æ‰§è¡Œå‘½ä»¤
 			in = new BufferedInputStream(p.getInputStream());
 			inBr = new BufferedReader(new InputStreamReader(in));
 
 			String lineStr;
 			while ((lineStr = inBr.readLine()) != null) {
-				// »ñµÃÃüÁîÖ´ĞĞºóÔÚ¿ØÖÆÌ¨µÄÊä³öĞÅÏ¢
+				// è·å¾—å‘½ä»¤æ‰§è¡Œååœ¨æ§åˆ¶å°çš„è¾“å‡ºä¿¡æ¯
 				Log.i("CommonUtil:getSDCardPath", lineStr);
 				if (lineStr.contains("sdcard") && lineStr.contains(".android_secure")) {
 					String[] strArray = lineStr.split(" ");
@@ -173,10 +173,10 @@ public class BBKSdCard2 {
 						return result;
 					}
 				}
-				// ¼ì²éÃüÁîÊÇ·ñÖ´ĞĞÊ§°Ü¡£
+				// æ£€æŸ¥å‘½ä»¤æ˜¯å¦æ‰§è¡Œå¤±è´¥ã€‚
 				if (p.waitFor() != 0 && p.exitValue() == 1) {
-					// p.exitValue()==0±íÊ¾Õı³£½áÊø£¬1£º·ÇÕı³£½áÊø
-					Log.e("CommonUtil:getSDCardPath", "ÃüÁîÖ´ĞĞÊ§°Ü!");
+					// p.exitValue()==0è¡¨ç¤ºæ­£å¸¸ç»“æŸï¼Œ1ï¼šéæ­£å¸¸ç»“æŸ
+					Log.e("CommonUtil:getSDCardPath", "å‘½ä»¤æ‰§è¡Œå¤±è´¥!");
 				}
 			}
 		} catch (Exception e) {
@@ -201,7 +201,7 @@ public class BBKSdCard2 {
 		return Environment.getExternalStorageDirectory().getPath();
 	}
 
-	// ²é¿´ËùÓĞµÄsdÂ·¾¶
+	// æŸ¥çœ‹æ‰€æœ‰çš„sdè·¯å¾„
 	public static String getSDCardPathEx() {
 		String mount = new String();
 		try {
@@ -236,7 +236,7 @@ public class BBKSdCard2 {
 		return mount;
 	}
 
-	// »ñÈ¡µ±Ç°Â·¾¶£¬¿ÉÓÃ¿Õ¼ä
+	// è·å–å½“å‰è·¯å¾„ï¼Œå¯ç”¨ç©ºé—´
 	public static long getAvailableSize(String path) {
 		try {
 			File base = new File(path);

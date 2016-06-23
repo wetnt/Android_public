@@ -1,4 +1,4 @@
-package bbk.sys.file;
+ï»¿package bbk.sys.file;
 
 import java.io.File;
 import java.util.List;
@@ -62,10 +62,10 @@ public class FileAdapter extends BaseAdapter {
 
 		File f = new File(paths.get(position).toString());
 		if (items.get(position).toString().equals("b1")) {
-			holder.text.setText("·µ»Ø¸ùÄ¿Â¼..");
+			holder.text.setText("è¿”å›žæ ¹ç›®å½•..");
 			holder.icon.setImageBitmap(mIcon1);
 		} else if (items.get(position).toString().equals("b2")) {
-			holder.text.setText("·µ»ØÉÏÒ»²ã..");
+			holder.text.setText("è¿”å›žä¸Šä¸€å±‚..");
 			holder.icon.setImageBitmap(mIcon2);
 		} else {
 			holder.text.setText(f.getName());

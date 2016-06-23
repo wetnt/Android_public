@@ -1,4 +1,4 @@
-package bbk.sys.file;
+锘縫ackage bbk.sys.file;
 
 import com.example.bbkgps9xd.R;
 
@@ -34,7 +34,7 @@ public class FileSdcardfile extends Activity {
 		if (FILE_RESULT_CODE == requestCode) {
 			Bundle bundle = null;
 			if (data != null && (bundle = data.getExtras()) != null) {
-				textView.setText("选择文件夹为：\r\n" + bundle.getString("file"));
+				textView.setText("閫夋嫨鏂囦欢澶逛负锛歕r\n" + bundle.getString("file"));
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-package bbk.map.uis;
+ï»¿package bbk.map.uis;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -113,7 +113,7 @@ public class Main_List extends BBKLayView {
 				ListLayEdit.setText("");
 				// --------------------------------------------
 				String str = ListLaySearch.getText().toString();
-				temp = BBKListView.TrackListAlSchSelect(str, list);// ¹ýÂËËã·¨
+				temp = BBKListView.TrackListAlSchSelect(str, list);// è¿‡æ»¤ç®—æ³•
 				BBKListView.ListViewLoad(temp, ListLayView);
 				// --------------------------------------------
 			}

@@ -1,4 +1,4 @@
-package bbk.hrd.abc;
+ï»¿package bbk.hrd.abc;
 
 import android.app.Activity;
 import android.content.res.Configuration;
@@ -12,47 +12,47 @@ public class BBKScreen {
 
 	// ====================================================================================
 	// ####################################################################################
-	// ##############################³ÌĞò½çÃæÉèÖÃ##########################################
+	// ##############################ç¨‹åºç•Œé¢è®¾ç½®##########################################
 	// ####################################################################################
 	// ====================================================================================
-	public static final int FLAG_HOMEKEY_DISPATCHED = 0x80000000; // ĞèÒª×Ô¼º¶¨Òå±êÖ¾
+	public static final int FLAG_HOMEKEY_DISPATCHED = 0x80000000; // éœ€è¦è‡ªå·±å®šä¹‰æ ‡å¿—
 
 	public static void BBKActivitySet_Hide_Sys_Title(Activity act) {
-		// --------------------È«ÆÁÔËĞĞ--------------------------------
-		// Ïû³ı±êÌâÀ¸¡¢²Ëµ¥À¸£¬È«ÆÁÔËĞĞ£¬ÒşÈ¥µç³ØµÈÍ¼±êºÍÒ»ÇĞĞŞÊÎ²¿·Ö£¨×´Ì¬À¸²¿·Ö£©
+		// --------------------å…¨å±è¿è¡Œ--------------------------------
+		// æ¶ˆé™¤æ ‡é¢˜æ ã€èœå•æ ï¼Œå…¨å±è¿è¡Œï¼Œéšå»ç”µæ± ç­‰å›¾æ ‡å’Œä¸€åˆ‡ä¿®é¥°éƒ¨åˆ†ï¼ˆçŠ¶æ€æ éƒ¨åˆ†ï¼‰
 		int flags = WindowManager.LayoutParams.FLAG_FULLSCREEN;
 		int mask = WindowManager.LayoutParams.FLAG_FULLSCREEN;
-		act.getWindow().setFlags(flags, mask);// ÏµÍ³±êÌâÀ¸
-		// --------------ÒşÈ¥±êÌâÀ¸--------------------------------------
+		act.getWindow().setFlags(flags, mask);// ç³»ç»Ÿæ ‡é¢˜æ 
+		// --------------éšå»æ ‡é¢˜æ --------------------------------------
 	}
 
 	public static void BBKActivitySet_Hide_Self_Title(Activity act) {
-		// --------------ÒşÈ¥±êÌâÀ¸--------------------------------------
-		act.requestWindowFeature(Window.FEATURE_NO_TITLE);// ³ÌĞò×Ô¼º±êÌâÀ¸
-		act.requestWindowFeature(8); // È«ÆÁ¿¹¾â³İ
-		// --------------ÒşÈ¥±êÌâÀ¸--------------------------------------
+		// --------------éšå»æ ‡é¢˜æ --------------------------------------
+		act.requestWindowFeature(Window.FEATURE_NO_TITLE);// ç¨‹åºè‡ªå·±æ ‡é¢˜æ 
+		act.requestWindowFeature(8); // å…¨å±æŠ—é”¯é½¿
+		// --------------éšå»æ ‡é¢˜æ --------------------------------------
 	}
 
-	public static void BBKActivitySet_Hide_Home_Button(Activity act) {// ÆÁ±ÎHome°´¼ü
-		// --------------ÆÁ±ÎHome°´¼ü--------------------------------------
+	public static void BBKActivitySet_Hide_Home_Button(Activity act) {// å±è”½HomeæŒ‰é”®
+		// --------------å±è”½HomeæŒ‰é”®--------------------------------------
 		act.getWindow().setFlags(FLAG_HOMEKEY_DISPATCHED, FLAG_HOMEKEY_DISPATCHED);
-		// ²»Í¬»úĞÍ»áËÀ»ú£¬ÆúÖ®²»ÓÃ
-		// --------------ÒşÈ¥±êÌâÀ¸--------------------------------------
+		// ä¸åŒæœºå‹ä¼šæ­»æœºï¼Œå¼ƒä¹‹ä¸ç”¨
+		// --------------éšå»æ ‡é¢˜æ --------------------------------------
 	}
 
-	public static void BBKActivitySet_Show_Sys_Menu(Activity act) {// Ç¿ÖÆÏÔÊ¾MenuĞéÄâ°´¼ü£¡
-		// --------------Ç¿ÖÆÏÔÊ¾MenuĞéÄâ°´¼ü----------------------------
+	public static void BBKActivitySet_Show_Sys_Menu(Activity act) {// å¼ºåˆ¶æ˜¾ç¤ºMenuè™šæ‹ŸæŒ‰é”®ï¼
+		// --------------å¼ºåˆ¶æ˜¾ç¤ºMenuè™šæ‹ŸæŒ‰é”®----------------------------
 		// int flags2 = WindowManager.LayoutParams.FLAG_NEEDS_MENU_KEY;
 		// int mask2 =WindowManager.LayoutParams.FLAG_NEEDS_MENU_KEY;
 		// getWindow().setFlags(flags2, mask2);
 		act.getWindow().setFlags(0x08000000, 0x08000000);
-		// ÒıÆğĞéÄâ°´¼ü²»Õı³£
-		// --------------Ç¿ÖÆÏÔÊ¾MenuĞéÄâ°´¼ü----------------------------
+		// å¼•èµ·è™šæ‹ŸæŒ‰é”®ä¸æ­£å¸¸
+		// --------------å¼ºåˆ¶æ˜¾ç¤ºMenuè™šæ‹ŸæŒ‰é”®----------------------------
 	}
 
 	// ====================================================================================
 	// ####################################################################################
-	// #############################°´¼üÉèÖÃ###############################################
+	// #############################æŒ‰é”®è®¾ç½®###############################################
 	// ####################################################################################
 	// ====================================================================================
 	public static boolean onKeyDown(String PageName, int keyCode, KeyEvent event) {
@@ -63,7 +63,7 @@ public class BBKScreen {
 			// }
 		}
 		// ------------------------------------------------------------------
-		// TabHostÖĞ°´back¼ü²»ÍË³ö³ÌĞò£¬¶øÊÇ×îĞ¡»¯³ÌĞòµÄ½â¾ö°ì·¨
+		// TabHostä¸­æŒ‰backé”®ä¸é€€å‡ºç¨‹åºï¼Œè€Œæ˜¯æœ€å°åŒ–ç¨‹åºçš„è§£å†³åŠæ³•
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			// ------------------------------------------------------------------
 			// Intent i = new Intent(Intent.ACTION_MAIN);
@@ -75,13 +75,13 @@ public class BBKScreen {
 		// ------------------------------------------------------------------
 		// return onKeyDown(keyCode, event);
 		// ====================================================================================
-		// ÆÁ±Îhome¼üºÍ±ğµÄ¼ü²»Ò»Ñù
+		// å±è”½homeé”®å’Œåˆ«çš„é”®ä¸ä¸€æ ·
 		// public void onAttachedToWindow() {
 		// this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD);
 		// super.onAttachedToWindow();
 		// }
 		// ====================================================================================
-		// ÆÁ±ÎÆäËûÊµÌå°´¼ü
+		// å±è”½å…¶ä»–å®ä½“æŒ‰é”®
 		switch (keyCode) {
 		case KeyEvent.KEYCODE_HOME:
 			return true;
@@ -105,7 +105,7 @@ public class BBKScreen {
 
 	// ====================================================================================
 	// ####################################################################################
-	// #############################²Ëµ¥ÉèÖÃ###############################################
+	// #############################èœå•è®¾ç½®###############################################
 	// ####################################################################################
 	// ====================================================================================
 	// public static boolean onCreateOptionsMenu(Menu menu) {
@@ -115,7 +115,7 @@ public class BBKScreen {
 	// return super.onCreateOptionsMenu(menu);
 	// // ---------------------------------------------
 	// // super.onPrepareOptionsMenu(menu);
-	// // menu.add("menu");// ±ØĞë´´½¨Ò»Ïî
+	// // menu.add("menu");// å¿…é¡»åˆ›å»ºä¸€é¡¹
 	// // myMenu.onCreateMenu(this, menu);
 	// // return super.onCreateOptionsMenu(menu);
 	// // ---------------------------------------------
@@ -130,36 +130,36 @@ public class BBKScreen {
 
 	// ====================================================================================
 	// ####################################################################################
-	// ##########################Éè±¸ÅäÖÃ·¢Éú±ä»¯Ê±»Øµ÷#####################################
+	// ##########################è®¾å¤‡é…ç½®å‘ç”Ÿå˜åŒ–æ—¶å›è°ƒ#####################################
 	// ####################################################################################
 	// ====================================================================================
 	public static int ScreenOrient = 1, HardKeyBoard = 1;
 
-	// ¿ò¼Ü»Øµ÷º¯Êı onConfigurationChanged ³ö×Ô android.content.res.Configuration °ü¡£
-	// ²ÎÊı newConfig - ĞÂÉè±¸µÄÅä±¸¡£
-	// µ±Éè±¸ÅäÖÃĞÅÏ¢ÓĞ¸Ä¶¯£¨±ÈÈçÆÁÄ»·½ÏòµÄ¸Ä±ä£¬ÊµÌå¼üÅÌµÄÍÆ¿ª»òºÏÉÏµÈ£©Ê±£¬²¢ÇÒÈç¹û´ËÊ±ÓĞ Activity ÕıÔÚÔËĞĞ£¬ÏµÍ³»áµ÷ÓÃÕâ¸öº¯Êı¡£
-	// ×¢Òâ£ºonConfigurationChangedÖ»»áÏìÓ¦Ó¦ÓÃ³ÌĞòÔÚAnroidMainifest.xmlÖĞÍ¨¹ıandroid:configChanges="ÅäÖÃÀàĞÍ"Ö¸¶¨µÄÅäÖÃÀàĞÍµÄ¸Ä¶¯£»
-	// ¶ø¶ÔÓÚÆäËûÅäÖÃµÄ¸ü¸Ä£¬ÔòÏµÍ³»áÏÈÏú»Ùµ±Ç°ÆÁÄ»µÄ ActivityÈ»ºóÖØĞÂ¿ªÆôÒ»¸öĞÂµÄÊÊÓ¦ÆÁÄ»¸Ä±äµÄ Activity ÊµÀı¡£
+	// æ¡†æ¶å›è°ƒå‡½æ•° onConfigurationChanged å‡ºè‡ª android.content.res.Configuration åŒ…ã€‚
+	// å‚æ•° newConfig - æ–°è®¾å¤‡çš„é…å¤‡ã€‚
+	// å½“è®¾å¤‡é…ç½®ä¿¡æ¯æœ‰æ”¹åŠ¨ï¼ˆæ¯”å¦‚å±å¹•æ–¹å‘çš„æ”¹å˜ï¼Œå®ä½“é”®ç›˜çš„æ¨å¼€æˆ–åˆä¸Šç­‰ï¼‰æ—¶ï¼Œå¹¶ä¸”å¦‚æœæ­¤æ—¶æœ‰ Activity æ­£åœ¨è¿è¡Œï¼Œç³»ç»Ÿä¼šè°ƒç”¨è¿™ä¸ªå‡½æ•°ã€‚
+	// æ³¨æ„ï¼šonConfigurationChangedåªä¼šå“åº”åº”ç”¨ç¨‹åºåœ¨AnroidMainifest.xmlä¸­é€šè¿‡android:configChanges="é…ç½®ç±»å‹"æŒ‡å®šçš„é…ç½®ç±»å‹çš„æ”¹åŠ¨ï¼›
+	// è€Œå¯¹äºå…¶ä»–é…ç½®çš„æ›´æ”¹ï¼Œåˆ™ç³»ç»Ÿä¼šå…ˆé”€æ¯å½“å‰å±å¹•çš„ Activityç„¶åé‡æ–°å¼€å¯ä¸€ä¸ªæ–°çš„é€‚åº”å±å¹•æ”¹å˜çš„ Activity å®ä¾‹ã€‚
 	// @Override
 	public static void onConfigurationChanged(Activity act, Configuration newConfig) {
 		// -----------------------------------------------------------------------
-		// Ò»¶¨ÒªÏÈµ÷ÓÃ¸¸ÀàµÄÍ¬Ãûº¯Êı£¬ÈÃ¿ò¼ÜÄ¬ÈÏº¯ÊıÏÈ´¦Àí
-		// ÏÂÃæÕâ¾äÒ»¶¨²»ÄÜÊ¡È¥£¬·ñÔò½«Òı·¢£ºandroid.app.SuperNotCalledException Òì³£¡£
+		// ä¸€å®šè¦å…ˆè°ƒç”¨çˆ¶ç±»çš„åŒåå‡½æ•°ï¼Œè®©æ¡†æ¶é»˜è®¤å‡½æ•°å…ˆå¤„ç†
+		// ä¸‹é¢è¿™å¥ä¸€å®šä¸èƒ½çœå»ï¼Œå¦åˆ™å°†å¼•å‘ï¼šandroid.app.SuperNotCalledException å¼‚å¸¸ã€‚
 		// super.onConfigurationChanged(newConfig);
 		act.onConfigurationChanged(newConfig);
 		// -----------------------------------------------------------------------
-		// ¼ì²âÆÁÄ»µÄ·½Ïò£º×İÏò»òºáÏò
+		// æ£€æµ‹å±å¹•çš„æ–¹å‘ï¼šçºµå‘æˆ–æ¨ªå‘
 		// ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
 		// ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
 		ScreenOrient = act.getResources().getConfiguration().orientation;
-		if (ScreenOrient == Configuration.ORIENTATION_PORTRAIT) {// ÊúÆÁ(portraitÈËÏñ)=1
-		} else if (ScreenOrient == Configuration.ORIENTATION_LANDSCAPE) {// ºáÆÁ(landscape·ç¾°)=2
+		if (ScreenOrient == Configuration.ORIENTATION_PORTRAIT) {// ç«–å±(portraitäººåƒ)=1
+		} else if (ScreenOrient == Configuration.ORIENTATION_LANDSCAPE) {// æ¨ªå±(landscapeé£æ™¯)=2
 		}
 		// -----------------------------------------------------------------------
-		// ¼ì²âÊµÌå¼üÅÌµÄ×´Ì¬£ºÍÆ³ö»òÕßºÏÉÏ
+		// æ£€æµ‹å®ä½“é”®ç›˜çš„çŠ¶æ€ï¼šæ¨å‡ºæˆ–è€…åˆä¸Š
 		HardKeyBoard = newConfig.hardKeyboardHidden;
-		if (HardKeyBoard == Configuration.HARDKEYBOARDHIDDEN_NO) {// ÊµÌå¼üÅÌ´¦ÓÚÍÆ³ö×´Ì¬=1
-		} else if (HardKeyBoard == Configuration.HARDKEYBOARDHIDDEN_YES) {// ÊµÌå¼üÅÌ´¦ÓÚºÏÉÏ×´Ì¬=2
+		if (HardKeyBoard == Configuration.HARDKEYBOARDHIDDEN_NO) {// å®ä½“é”®ç›˜å¤„äºæ¨å‡ºçŠ¶æ€=1
+		} else if (HardKeyBoard == Configuration.HARDKEYBOARDHIDDEN_YES) {// å®ä½“é”®ç›˜å¤„äºåˆä¸ŠçŠ¶æ€=2
 		}
 		// -----------------------------------------------------------------------
 		ScreenOrient = act.getResources().getConfiguration().orientation;
@@ -174,7 +174,7 @@ public class BBKScreen {
 	// ========================================================================
 	// ========================================================================
 	/**
-	 * »ñÈ¡±êÌâÀ¸µÄ¸ß¶È
+	 * è·å–æ ‡é¢˜æ çš„é«˜åº¦
 	 * 
 	 * @param activity
 	 * @return
@@ -191,7 +191,7 @@ public class BBKScreen {
 
 	/**
 	 * 
-	 * »ñÈ¡×´Ì¬À¸¸ß¶È
+	 * è·å–çŠ¶æ€æ é«˜åº¦
 	 * 
 	 * @param activity
 	 * @return
@@ -203,10 +203,10 @@ public class BBKScreen {
 	}
 
 	/**
-	 * »ñÈ¡ÆÁÄ»¿í¸ß
+	 * è·å–å±å¹•å®½é«˜
 	 * 
 	 * @param activity
-	 * @return int[0] ¿í£¬int[1]¸ß
+	 * @return int[0] å®½ï¼Œint[1]é«˜
 	 */
 	public static int[] getScreenWidthAndSizeInPx(Activity activity) {
 		DisplayMetrics displayMetrics = new DisplayMetrics();

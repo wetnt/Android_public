@@ -1,4 +1,4 @@
-package bbk.map.set;
+ï»¿package bbk.map.set;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -83,11 +83,11 @@ public class BBKMapZoomSet extends BBKLayView {
 	// ####################################################################################
 	// ====================================================================================
 
-	ToggleButton MapDownTgbtn;// ÏÂÔØ¿ª¹Ø
-	Button MapDownCenter;// ÖĞĞÄ²¹¶´
-	Button MapDownRectangle;// Ö¸¶¨·¶Î§ÏÂÔØ
-	Button MapDownScreen;// È«ÆÁ·¶Î§ÏÂÔØ
-	EditText MapDownZXJ, MapDownYSJ;// ×óÏÂ½Ç¡¢ÓÒÉÏ½Ç
+	ToggleButton MapDownTgbtn;// ä¸‹è½½å¼€å…³
+	Button MapDownCenter;// ä¸­å¿ƒè¡¥æ´
+	Button MapDownRectangle;// æŒ‡å®šèŒƒå›´ä¸‹è½½
+	Button MapDownScreen;// å…¨å±èŒƒå›´ä¸‹è½½
+	EditText MapDownZXJ, MapDownYSJ;// å·¦ä¸‹è§’ã€å³ä¸Šè§’
 
 	private void MapDownListViewSet() {
 		// ---------------------------------------------------------------------
@@ -112,8 +112,8 @@ public class BBKMapZoomSet extends BBKLayView {
 		MapDownCenter.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				// --------------------------------------------
-				BBKMsgBox.tShow("µØÍ¼ÖĞĞÄ¿Õ¶´²¹³äÏÂÔØ£¡");
-				BBKSoft.myMaps.BBKDownCenterPic();// ²¹¶´
+				BBKMsgBox.tShow("åœ°å›¾ä¸­å¿ƒç©ºæ´è¡¥å……ä¸‹è½½ï¼");
+				BBKSoft.myMaps.BBKDownCenterPic();// è¡¥æ´
 				// --------------------------------------------
 			}
 		});
@@ -135,20 +135,20 @@ public class BBKMapZoomSet extends BBKLayView {
 
 	// ====================================================================================
 	public void BBKScreenDown() {
-		// BBKSoft.myMsg.tShow("È«ÆÁµØÍ¼ÅúÁ¿ÏÂÔØÇëÎğ²Ù×÷£¡");
+		// BBKSoft.myMsg.tShow("å…¨å±åœ°å›¾æ‰¹é‡ä¸‹è½½è¯·å‹¿æ“ä½œï¼");
 		String Ask = "";
-		Ask += "    È«ÆÁµØÍ¼ÅúÁ¿ÏÂÔØËµÃ÷£º\r\n";
+		Ask += "    å…¨å±åœ°å›¾æ‰¹é‡ä¸‹è½½è¯´æ˜ï¼š\r\n";
 		Ask += "	\r\n";
-		Ask += "    ¼´½«¿ªÊ¼×Ô¶¯ÅúÁ¿ÏÂÔØ£¬µ±Ç°ÆÁÄ»·¶Î§ÄÚ¡¢ËùÓĞ·Å´ó²ã¼¶µÄµØÍ¼£¬ÏÂÔØËùĞèÊ±¼äÓëÆÁÄ»·¶Î§£¬ÒÔ¼°ÍøÂçËÙ¶È¶¼ÓĞ¹Ø£¡\r\n";
-		Ask += "    ×¢Òâ£ºÏÂÔØÊ±ºò²»Òª½øĞĞÈÎºÎ²Ù×÷£¡\r\n";
+		Ask += "    å³å°†å¼€å§‹è‡ªåŠ¨æ‰¹é‡ä¸‹è½½ï¼Œå½“å‰å±å¹•èŒƒå›´å†…ã€æ‰€æœ‰æ”¾å¤§å±‚çº§çš„åœ°å›¾ï¼Œä¸‹è½½æ‰€éœ€æ—¶é—´ä¸å±å¹•èŒƒå›´ï¼Œä»¥åŠç½‘ç»œé€Ÿåº¦éƒ½æœ‰å…³ï¼\r\n";
+		Ask += "    æ³¨æ„ï¼šä¸‹è½½æ—¶å€™ä¸è¦è¿›è¡Œä»»ä½•æ“ä½œï¼\r\n";
 		Ask += "	\r\n";
-		Ask += "    ÊÇ·ñ¿ªÊ¼ÏÂÔØ£¿\r\n";
+		Ask += "    æ˜¯å¦å¼€å§‹ä¸‹è½½ï¼Ÿ\r\n";
 		// ---------------------------------------------
 		DialogInterface.OnClickListener YesLs = new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				switch (which) {
-				case DialogInterface.BUTTON_POSITIVE:// -1È·¶¨µÄ
+				case DialogInterface.BUTTON_POSITIVE:// -1ç¡®å®šçš„
 					// --------------------------------------------
 					if (!BBKNetCheck.HttpTest(bbkAct))
 						return;
@@ -158,9 +158,9 @@ public class BBKMapZoomSet extends BBKLayView {
 					BBKScreenDown.DownScreenMapThead();
 					// ---------------------------------------------
 					break;
-				case DialogInterface.BUTTON_NEGATIVE:// -2·ñ¶¨µÄ
+				case DialogInterface.BUTTON_NEGATIVE:// -2å¦å®šçš„
 					break;
-				case DialogInterface.BUTTON_NEUTRAL:// -3ÖĞĞÔµÄ
+				case DialogInterface.BUTTON_NEUTRAL:// -3ä¸­æ€§çš„
 					break;
 				}
 			}
@@ -307,12 +307,12 @@ public class BBKMapZoomSet extends BBKLayView {
 		// ---------------------------------------------------------------------
 		MapTypeCek[0].setEnabled(false);
 		MapTypeCek[0].setChecked(true);
-		MapTypeCek[0].setText(0 + " ³ÇÊĞµØÍ¼");
-		MapTypeCek[1].setText(1 + " ÎÀĞÇµØÍ¼");
-		MapTypeCek[2].setText(2 + " µØĞÎµØÍ¼");
-		MapTypeCek[3].setText(3 + " ×Ô¶¨ÒåÍ¼");
-		MapTypeCek[4].setText(4 + " ×Ô¶¨ÒåÍ¼");
-		MapTypeCek[5].setText(5 + " ×Ô¶¨ÒåÍ¼");
+		MapTypeCek[0].setText(0 + " åŸå¸‚åœ°å›¾");
+		MapTypeCek[1].setText(1 + " å«æ˜Ÿåœ°å›¾");
+		MapTypeCek[2].setText(2 + " åœ°å½¢åœ°å›¾");
+		MapTypeCek[3].setText(3 + " è‡ªå®šä¹‰å›¾");
+		MapTypeCek[4].setText(4 + " è‡ªå®šä¹‰å›¾");
+		MapTypeCek[5].setText(5 + " è‡ªå®šä¹‰å›¾");
 		// ---------------------------------------------------------------------
 		MapTypeTxt[0].setEnabled(false);
 		MapTypeTxt[1].setEnabled(false);

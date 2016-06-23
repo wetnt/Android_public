@@ -1,4 +1,4 @@
-package bbk.net.abc;
+ï»¿package bbk.net.abc;
 
 import android.app.Service;
 import android.content.Context;
@@ -11,9 +11,9 @@ import android.widget.Toast;
 
 public class BBKNetCheck {
 
-	// ===============¼ì²âÍøÂçÊÇ·ñ´æÔÚ======================================================
+	// ===============æ£€æµ‹ç½‘ç»œæ˜¯å¦å­˜åœ¨======================================================
 	/**
-	 * ¼ì²âÍøÂçÊÇ·ñ´æÔÚ
+	 * æ£€æµ‹ç½‘ç»œæ˜¯å¦å­˜åœ¨
 	 */
 	public static boolean HttpTest(Context mActivity) {
 		if (!isNetworkAvailable(mActivity)) {
@@ -30,7 +30,7 @@ public class BBKNetCheck {
 		// ---------------------------------------------
 		TextView tv = new TextView(mActivity);
 		// ---------------------------------------------
-		tv.setText(" - Çë¿ªÆôÍøÂ·Á¬½Ó£¡ - ");
+		tv.setText(" - è¯·å¼€å¯ç½‘è·¯è¿æ¥ï¼ - ");
 		// ---------------------------------------------
 		tv.setBackgroundColor(Color.RED);
 		tv.setTextSize(24);

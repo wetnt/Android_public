@@ -1,4 +1,4 @@
-package bbk.map.uis;
+ï»¿package bbk.map.uis;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,23 +21,23 @@ import android.widget.AdapterView.OnItemClickListener;
 public class BBKMenuView {
 
 	// =============================================================
-	private boolean isMore = false;// menu²Ëµ¥·­Ò³¿ØÖÆ
-	AlertDialog menuDialog;// menu²Ëµ¥Dialog
+	private boolean isMore = false;// menuèœå•ç¿»é¡µæ§åˆ¶
+	AlertDialog menuDialog;// menuèœå•Dialog
 	GridView menuGrid;
 	View menuView;
 	private Activity bbkAct;
 
 	// =============================================================
-	private final int ITEM_SEARCH = 0;// ËÑË÷
-	private final int ITEM_FILE_MANAGER = 1;// ÎÄ¼ş¹ÜÀí
-	private final int ITEM_DOWN_MANAGER = 2;// ÏÂÔØ¹ÜÀí
-	private final int ITEM_FULLSCREEN = 3;// È«ÆÁ
-	private final int ITEM_MORE = 11;// ²Ëµ¥
+	private final int ITEM_SEARCH = 0;// æœç´¢
+	private final int ITEM_FILE_MANAGER = 1;// æ–‡ä»¶ç®¡ç†
+	private final int ITEM_DOWN_MANAGER = 2;// ä¸‹è½½ç®¡ç†
+	private final int ITEM_FULLSCREEN = 3;// å…¨å±
+	private final int ITEM_MORE = 11;// èœå•
 
 	int[] menu_image_array = { R.drawable.menu_search, R.drawable.menu_filemanager, R.drawable.menu_downmanager, R.drawable.menu_fullscreen, R.drawable.menu_inputurl, R.drawable.menu_bookmark, R.drawable.menu_bookmark_sync_import, R.drawable.menu_sharepage, R.drawable.menu_quit, R.drawable.menu_nightmode, R.drawable.menu_refresh, R.drawable.menu_more };
-	String[] menu_name_array = { "ËÑË÷", "ÎÄ¼ş¹ÜÀí", "ÏÂÔØ¹ÜÀí", "È«ÆÁ", "ÍøÖ·", "ÊéÇ©", "¼ÓÈëÊéÇ©", "·ÖÏíÒ³Ãæ", "ÍË³ö", "Ò¹¼äÄ£Ê½", "Ë¢ĞÂ", "¸ü¶à" };
+	String[] menu_name_array = { "æœç´¢", "æ–‡ä»¶ç®¡ç†", "ä¸‹è½½ç®¡ç†", "å…¨å±", "ç½‘å€", "ä¹¦ç­¾", "åŠ å…¥ä¹¦ç­¾", "åˆ†äº«é¡µé¢", "é€€å‡º", "å¤œé—´æ¨¡å¼", "åˆ·æ–°", "æ›´å¤š" };
 	int[] menu_image_array2 = { R.drawable.menu_auto_landscape, R.drawable.menu_penselectmodel, R.drawable.menu_page_attr, R.drawable.menu_novel_mode, R.drawable.menu_page_updown, R.drawable.menu_checkupdate, R.drawable.menu_checknet, R.drawable.menu_refreshtimer, R.drawable.menu_syssettings, R.drawable.menu_help, R.drawable.menu_about, R.drawable.menu_return };
-	String[] menu_name_array2 = { "×Ô¶¯ºáÆÁ", "±ÊÑ¡Ä£Ê½", "ÔÄ¶ÁÄ£Ê½", "ä¯ÀÀÄ£Ê½", "¿ì½İ·­Ò³", "¼ì²é¸üĞÂ", "¼ì²éÍøÂç", "¶¨Ê±Ë¢ĞÂ", "ÉèÖÃ", "°ïÖú", "¹ØÓÚ", "·µ»Ø" };
+	String[] menu_name_array2 = { "è‡ªåŠ¨æ¨ªå±", "ç¬”é€‰æ¨¡å¼", "é˜…è¯»æ¨¡å¼", "æµè§ˆæ¨¡å¼", "å¿«æ·ç¿»é¡µ", "æ£€æŸ¥æ›´æ–°", "æ£€æŸ¥ç½‘ç»œ", "å®šæ—¶åˆ·æ–°", "è®¾ç½®", "å¸®åŠ©", "å…³äº", "è¿”å›" };
 
 	public void onCreateMenu(Context context, Menu menu) {
 		// ---------------------------------------------
@@ -45,12 +45,12 @@ public class BBKMenuView {
 		// ---------------------------------------------
 		menuView = View.inflate(bbkAct, R.layout.menu_gridview, null);
 		// ---------------------------------------------
-		// ´´½¨AlertDialog
+		// åˆ›å»ºAlertDialog
 		menuDialog = new AlertDialog.Builder(context).create();
 		menuDialog.setView(menuView);
 		menuDialog.setOnKeyListener(new OnKeyListener() {
 			public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
-				if (keyCode == KeyEvent.KEYCODE_MENU)// ¼àÌı°´¼ü
+				if (keyCode == KeyEvent.KEYCODE_MENU)// ç›‘å¬æŒ‰é”®
 					dialog.dismiss();
 				return false;
 			}
@@ -59,27 +59,27 @@ public class BBKMenuView {
 		menuGrid = (GridView) menuView.findViewById(R.id.gridview);
 		menuGrid.setAdapter(getMenuAdapter(menu_name_array, menu_image_array));
 		// ---------------------------------------------
-		/** ¼àÌımenuÑ¡Ïî **/
+		/** ç›‘å¬menué€‰é¡¹ **/
 		menuGrid.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				switch (arg2) {
-				case ITEM_SEARCH:// ËÑË÷
+				case ITEM_SEARCH:// æœç´¢
 					break;
-				case ITEM_FILE_MANAGER:// ÎÄ¼ş¹ÜÀí
+				case ITEM_FILE_MANAGER:// æ–‡ä»¶ç®¡ç†
 					break;
-				case ITEM_DOWN_MANAGER:// ÏÂÔØ¹ÜÀí
+				case ITEM_DOWN_MANAGER:// ä¸‹è½½ç®¡ç†
 					break;
-				case ITEM_FULLSCREEN:// È«ÆÁ
+				case ITEM_FULLSCREEN:// å…¨å±
 					break;
-				case ITEM_MORE:// ·­Ò³
+				case ITEM_MORE:// ç¿»é¡µ
 					if (isMore) {
 						menuGrid.setAdapter(getMenuAdapter(menu_name_array2, menu_image_array2));
 						isMore = false;
-					} else {// Ê×Ò³
+					} else {// é¦–é¡µ
 						menuGrid.setAdapter(getMenuAdapter(menu_name_array, menu_image_array));
 						isMore = true;
 					}
-					menuGrid.invalidate();// ¸üĞÂmenu
+					menuGrid.invalidate();// æ›´æ–°menu
 					menuGrid.setSelection(ITEM_MORE);
 					break;
 				}
@@ -112,7 +112,7 @@ public class BBKMenuView {
 	// } else {
 	// menuDialog.show();
 	// }
-	// return false;// ·µ»ØÎªtrue ÔòÏÔÊ¾ÏµÍ³menu
+	// return false;// è¿”å›ä¸ºtrue åˆ™æ˜¾ç¤ºç³»ç»Ÿmenu
 	// }
 
 }

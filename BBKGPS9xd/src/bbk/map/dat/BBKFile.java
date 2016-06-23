@@ -1,4 +1,4 @@
-package bbk.map.dat;
+锘縫ackage bbk.map.dat;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -60,7 +60,7 @@ public class BBKFile {
 			// -----------------------------------------------------
 		} else {
 			// -----------------------------------------------------
-			String t = "	真抱歉，\"" + Exte + "\" 此格式不支持！\r\n\r\n" + pathname;
+			String t = "	鐪熸姳姝夛紝\"" + Exte + "\" 姝ゆ牸寮忎笉鏀寔锛乗r\n\r\n" + pathname;
 			BBKMsgBox.tShow(t);
 			// -----------------------------------------------------
 		}

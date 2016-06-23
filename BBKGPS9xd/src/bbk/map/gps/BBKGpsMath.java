@@ -1,4 +1,4 @@
-package bbk.map.gps;
+ï»¿package bbk.map.gps;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,13 +17,13 @@ public class BBKGpsMath {
 		// -------------------------------------------------------------------
 		g.Y = loc.hasAccuracy();// loc.hasAltitude()/loc.hasBearing()/loc.hasSpeed();
 		// -------------------------------------------------------------------
-		g.t = new Date(loc.getTime());// Ê±¼ä
-		g.r = loc.getAccuracy();// ¾«¶È
-		g.w = getDouble(loc.getLatitude(), 100000);// Î³¶È
-		g.j = getDouble(loc.getLongitude(), 100000);// ¾­¶È
-		g.h = getDouble(loc.getAltitude(), 10);// º£°Î
-		g.f = getDouble(loc.getBearing(), 10);// ·½Î»
-		g.v = getDouble(loc.getSpeed() * 36 / 10, 10);// ËÙ¶È
+		g.t = new Date(loc.getTime());// æ—¶é—´
+		g.r = loc.getAccuracy();// ç²¾åº¦
+		g.w = getDouble(loc.getLatitude(), 100000);// çº¬åº¦
+		g.j = getDouble(loc.getLongitude(), 100000);// ç»åº¦
+		g.h = getDouble(loc.getAltitude(), 10);// æµ·æ‹”
+		g.f = getDouble(loc.getBearing(), 10);// æ–¹ä½
+		g.v = getDouble(loc.getSpeed() * 36 / 10, 10);// é€Ÿåº¦
 		// -------------------------------------------------------------------
 		g.R = GpsRuns();
 		// -------------------------------------------------------------------
@@ -37,7 +37,7 @@ public class BBKGpsMath {
 	@SuppressLint("SimpleDateFormat")
 	private final SimpleDateFormat gpsTmFt = new SimpleDateFormat("HH:mm:ss");
 	// ---------------------------------------------------------------
-	private final double GpsMinR = 0.00001;// ¼ÇÂ¼¹ì¼£µãµÄ×îĞ¡·¶Î§
+	private final double GpsMinR = 0.00001;// è®°å½•è½¨è¿¹ç‚¹çš„æœ€å°èŒƒå›´
 	public GPS g = new GPS();
 
 	// ---------------------------------------------------------------
@@ -45,30 +45,31 @@ public class BBKGpsMath {
 		// -----------------------------------------
 		public boolean Y, R;
 		// -----------------------------------------
-		public Date t, ts;// GPSÊ±¼ä/Æô¶¯Ê±¼ä
-		public double tl;// ³ÖĞøÊ±¼ä
-		public String tr;// ³ÖĞøÊ±¼ä×Ö·ûĞÎÊ½
+		public Date t;// GPSæ—¶é—´
+		public Date ts;// å¯åŠ¨æ—¶é—´
+		public double tl;// æŒç»­æ—¶é—´
+		public String tls;// æŒç»­æ—¶é—´å­—ç¬¦å½¢å¼
 		// -----------------------------------------
-		public double r;// ¾«¶È
+		public double r;// ç²¾åº¦
 		// -----------------------------------------
-		public double w, lw;// Î³¶È¡¢ÉÏÒ»´ÎÎ³¶È
-		public double j, lj;// ¾­¶È¡¢ÉÏÒ»´Î¾­¶È
-		public double h;// º£°Î
-		public double f;// ·½Ïò
+		public double w, lw;// çº¬åº¦ã€ä¸Šä¸€æ¬¡çº¬åº¦
+		public double j, lj;// ç»åº¦ã€ä¸Šä¸€æ¬¡ç»åº¦
+		public double h;// æµ·æ‹”
+		public double f;// æ–¹å‘
 		// -----------------------------------------
-		public double v;// ËÙ¶È
-		public double va;// Æ½¾ùËÙ¶È
-		public double vm;// ×î´óËÙ¶È
-		public double l;// Àï³Ì
+		public double v;// é€Ÿåº¦
+		public double va;// å¹³å‡é€Ÿåº¦
+		public double vm;// æœ€å¤§é€Ÿåº¦
+		public double l;// é‡Œç¨‹
 		// -----------------------------------------
-		public String a;// T;// ±êÌâ
-		public String i;// ĞÅÏ¢
-		public String vs;// ËÙ¶È
+		public String a;// T;// æ ‡é¢˜
+		public String i;// ä¿¡æ¯
+		public String vs;// é€Ÿåº¦
 		// -----------------------------------------
-		public int m;// ÎÀĞÇÊıÄ¿
-		public int u;// ²ÎÓë½âËãÎÀĞÇÊıÄ¿
-		public int snr;// ÎÀĞÇÆ½¾ùĞÅºÅÖµ
-		public int usr;// ²ÎÓë½âËãÎÀĞÇÊıÄ¿
+		public int s;// å«æ˜Ÿæ•°ç›®
+		public int u;// å‚ä¸è§£ç®—å«æ˜Ÿæ•°ç›®
+		public int snr;// å«æ˜Ÿå¹³å‡ä¿¡å·å€¼
+		public int usr;// å‚ä¸è§£ç®—å«æ˜Ÿæ•°ç›®
 		// -----------------------------------------
 	}
 
@@ -77,7 +78,7 @@ public class BBKGpsMath {
 		g.Y = false;
 		g.R = false;
 		// ----------------------------------------------------
-		g.t = new Date(0);
+		g.t = new Date(System.currentTimeMillis());
 		g.ts = new Date(System.currentTimeMillis());
 		g.r = 0;
 		// ----------------------------------------------------
@@ -106,12 +107,10 @@ public class BBKGpsMath {
 	public void GpsInfos(double mapw, double mapj, float compass, boolean more) {
 		// ----------------------------------------------------
 		g.a = gpsTmFt.format(g.t);
-		g.a += " " + (int) g.r + "A" + g.u + "/" + g.m;
-		if (g.Y) {
-			g.a += "=" + g.usr;
-		} else {
-			g.a += "=" + g.snr;
-		}
+		g.a += " " + (int) g.r;
+		g.a += g.Y ? "A" : "N";
+		g.a += g.u + "/" + g.s;
+		g.a += "=" + (g.Y ? g.usr : g.snr);
 		g.a += " " + g.l + "km";
 		g.a += " " + (int) g.h + "m";
 		g.a += " F" + compass + "/" + (int) g.f;
@@ -125,7 +124,7 @@ public class BBKGpsMath {
 			g.i += " " + (int) compass;
 			g.i += "/" + (int) g.f + "\r\n";
 			g.i += "s=" + g.l + " km";
-			g.i += "/" + g.tr + " " + "\r\n";
+			g.i += "/" + g.tls + " " + "\r\n";
 			g.i += "v=" + g.va + " / " + g.vm + " km/h" + "\r\n";
 		}
 		// ---------------------------------------------------------------------
@@ -137,13 +136,13 @@ public class BBKGpsMath {
 			g.vm = g.v;
 		}
 		// -------------------------------------------------------------------
-		if (g.ts.getTime() > g.t.getTime())
+		if (g.Y && g.ts.getTime() > g.t.getTime())
 			g.ts = new Date(g.t.getTime());
 		// -------------------------------------------------------------------
 		g.tl = (g.t.getTime() - g.ts.getTime()) / 3600000f;
 		// -------------------------------------------------------------------
 		g.va = g.l / g.tl;
-		g.tr = getDFM(g.tl);
+		g.tls = getDFM(g.tl);
 		g.tl = getDouble(g.tl, 1000);
 		g.va = getDouble(g.va, 1000);
 		// -----------------------------------------------------------------------
@@ -173,10 +172,10 @@ public class BBKGpsMath {
 	// ====================================================================================
 	// ####################################################################################
 	// ##############################GpsMath_B#############################################
-	// ##############################ÎÀĞÇ×´Ì¬¼àÌıÆ÷########################################
+	// ##############################å«æ˜ŸçŠ¶æ€ç›‘å¬å™¨########################################
 	// ####################################################################################
 	// ====================================================================================
-	private List<GpsSatellite> numSatelliteList = new ArrayList<GpsSatellite>(); // ÎÀĞÇĞÅºÅ
+	private List<GpsSatellite> numSatelliteList = new ArrayList<GpsSatellite>(); // å«æ˜Ÿä¿¡å·
 	private Iterator<GpsSatellite> it;
 	private int GpsCount = 0, GpsUseds = 0;
 	private int GpsMax = 0, GpsAllSnr = 0, GpsUseSnr = 0;
@@ -184,10 +183,10 @@ public class BBKGpsMath {
 	public void updateGpsStatus(int event, GpsStatus status) {
 		if (status == null) {
 			// -----------------------------------------------------------------------
-			g.m = 0;// ÎÀĞÇÊıÄ¿
-			g.u = 0;// ²ÎÓë½âËãÎÀĞÇÊıÄ¿
-			g.snr = 0;// ÎÀĞÇÆ½¾ùĞÅºÅÖµ
-			g.usr = 0;// ²ÎÓë½âËãÎÀĞÇÊıÄ¿
+			g.s = 0;// å«æ˜Ÿæ•°ç›®
+			g.u = 0;// å‚ä¸è§£ç®—å«æ˜Ÿæ•°ç›®
+			g.snr = 0;// å«æ˜Ÿå¹³å‡ä¿¡å·å€¼
+			g.usr = 0;// å‚ä¸è§£ç®—å«æ˜Ÿæ•°ç›®
 			// -----------------------------------------------------------------------
 		} else if (event == GpsStatus.GPS_EVENT_SATELLITE_STATUS) {
 			// -----------------------------------------------------------------------
@@ -207,27 +206,19 @@ public class BBKGpsMath {
 				GpsCount++;
 			}
 			// -----------------------------------------------------------------------
-			g.m = numSatelliteList.size();
-			if (g.m != 0) {
-				g.snr = GpsAllSnr / g.m;
-			} else {
-				g.snr = 0;
-			}
+			g.s = numSatelliteList.size();
 			g.u = GpsUseds;
-			if (g.u != 0) {
-				g.usr = GpsUseSnr / g.u;
-			} else {
-				g.usr = 0;
-			}
+			g.snr = g.s == 0 ? 0 : GpsAllSnr / g.s;
+			g.usr = g.u == 0 ? 0 : GpsUseSnr / g.u;
 			// -----------------------------------------------------------------------
 		}
 		// -----------------------------------------------------------
-		// °üÀ¨ ÎÀĞÇµÄ¸ß¶È½Ç¡¢·½Î»½Ç¡¢ĞÅÔë±È¡¢ºÍÎ±Ëæ»úºÅ£¨¼°ÎÀĞÇ±àºÅ£©
-		// satellite.getElevation(); //ÎÀĞÇÑö½Ç
-		// satellite.getAzimuth(); //ÎÀĞÇ·½Î»½Ç
-		// satellite.getSnr(); //ĞÅÔë±È
-		// satellite.getPrn(); //Î±Ëæ»úÊı£¬¿ÉÒÔÈÏÎªËû¾ÍÊÇÎÀĞÇµÄ±àºÅ
-		// satellite.hasAlmanac(); //ÎÀĞÇÀúÊé
+		// åŒ…æ‹¬ å«æ˜Ÿçš„é«˜åº¦è§’ã€æ–¹ä½è§’ã€ä¿¡å™ªæ¯”ã€å’Œä¼ªéšæœºå·ï¼ˆåŠå«æ˜Ÿç¼–å·ï¼‰
+		// satellite.getElevation(); //å«æ˜Ÿä»°è§’
+		// satellite.getAzimuth(); //å«æ˜Ÿæ–¹ä½è§’
+		// satellite.getSnr(); //ä¿¡å™ªæ¯”
+		// satellite.getPrn(); //ä¼ªéšæœºæ•°ï¼Œå¯ä»¥è®¤ä¸ºä»–å°±æ˜¯å«æ˜Ÿçš„ç¼–å·
+		// satellite.hasAlmanac(); //å«æ˜Ÿå†ä¹¦
 		// satellite.hasEphemeris();
 		// satellite.usedInFix();
 		// -----------------------------------------------------------
@@ -241,9 +232,9 @@ public class BBKGpsMath {
 	public String getDFM(double t) {
 		DFSX_type d = new DFSX_type(t);
 		String s = "";
-		s += d.d + "Ê± ";
-		s += d.f + "·Ö ";
-		s += (int) d.s + "Ãë";
+		s += d.d + "æ—¶ ";
+		s += d.f + "åˆ† ";
+		s += (int) d.s + "ç§’";
 		return s;
 	}
 
@@ -259,8 +250,8 @@ public class BBKGpsMath {
 	// ===========================================================================================
 	public class DFSX_type {
 		// --------------------------------------------
-		public int d = 0, f = 0;// ¶È·Ö
-		public double s = 0.0;// Ãë
+		public int d = 0, f = 0;// åº¦åˆ†
+		public double s = 0.0;// ç§’
 		public double ddd = 0.0;// DD.DDDDD
 
 		// --------------------------------------------
@@ -282,11 +273,11 @@ public class BBKGpsMath {
 		// --------------------------------------------
 	}
 
-	// ================= µØÇò»ù´¡ĞÅÏ¢ ==========================================
-	public static double EARTH_RADIUS = 6378137; // Ã×£¬µØÇò´ó¸Å°ë¾¶6371.004Ç§Ã×
+	// ================= åœ°çƒåŸºç¡€ä¿¡æ¯ ==========================================
+	public static double EARTH_RADIUS = 6378137; // ç±³ï¼Œåœ°çƒå¤§æ¦‚åŠå¾„6371.004åƒç±³
 
-	// =================Àï³Ì¼ÆËãº¯Êı============================================
-	public static double GetDistance(double lat1, double lng1, double lat2, double lng2) {// Êä³öÊÇ¹«Àï
+	// =================é‡Œç¨‹è®¡ç®—å‡½æ•°============================================
+	public static double GetDistance(double lat1, double lng1, double lat2, double lng2) {// è¾“å‡ºæ˜¯å…¬é‡Œ
 		double r1, r2, a, b, s;
 		// ----------------------------------------------------------------------
 		try {
@@ -306,7 +297,7 @@ public class BBKGpsMath {
 		// ----------------------------------------------------------------------
 	}
 
-	// =================½Ç¶È×ª»¡¶Èº¯Êı============================================
+	// =================è§’åº¦è½¬å¼§åº¦å‡½æ•°============================================
 	public static double TempFxPI = Math.PI / 180.0;
 
 	public static double rad(double d) {
@@ -319,7 +310,7 @@ public class BBKGpsMath {
 		return dbRet;
 	}
 
-	// =========½Ç¶ÈÎÄ×Ö»»Ëã========================================================
+	// =========è§’åº¦æ–‡å­—æ¢ç®—========================================================
 	public static String OrientationToStr(float degree) {
 		// ----------------------------------------------------
 		while (degree > 180) {
@@ -330,21 +321,21 @@ public class BBKGpsMath {
 		}
 		// ----------------------------------------------------
 		if (degree >= -5 && degree < 5) {
-			return "Õı±±";
+			return "æ­£åŒ—";
 		} else if (degree >= 5 && degree < 85) {
-			return "¶«±±";
+			return "ä¸œåŒ—";
 		} else if (degree >= 85 && degree <= 95) {
-			return "Õı¶«";
+			return "æ­£ä¸œ";
 		} else if (degree >= 95 && degree < 175) {
-			return "¶«ÄÏ";
+			return "ä¸œå—";
 		} else if ((degree >= 175 && degree <= 180) || (degree) >= -180 && degree < -175) {
-			return "ÕıÄÏ";
+			return "æ­£å—";
 		} else if (degree >= -175 && degree < -95) {
-			return "Î÷ÄÏ";
+			return "è¥¿å—";
 		} else if (degree >= -95 && degree < -85) {
-			return "ÕıÎ÷";
+			return "æ­£è¥¿";
 		} else if (degree >= -85 && degree < -5) {
-			return "Î÷±±";
+			return "è¥¿åŒ—";
 		}
 		// ----------------------------------------------------
 		return "XX";

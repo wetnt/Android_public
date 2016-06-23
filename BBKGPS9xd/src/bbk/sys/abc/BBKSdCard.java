@@ -1,4 +1,4 @@
-package bbk.sys.abc;
+Ôªøpackage bbk.sys.abc;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -41,7 +41,7 @@ public class BBKSdCard {
 
 	// ====================================================================================
 	// ####################################################################################
-	// ##############################SDø®¬∑æ∂…Ë÷√##########################################
+	// ##############################SDÂç°Ë∑ØÂæÑËÆæÁΩÆ##########################################
 	// ####################################################################################
 	// ====================================================================================
 	public static String BBKSdCardGet() {
@@ -56,10 +56,10 @@ public class BBKSdCard {
 	private static boolean BBKSdCardSet() {
 		// ----------------------------------------------------
 		if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-			bd.d("BBKSdCard.BBKSdCardSet = SD Card ≤ªø…”√", false, true);
+			bd.d("BBKSdCard.BBKSdCardSet = SD Card ‰∏çÂèØÁî®", false, true);
 			return false;
 		} else {
-			bd.d("BBKSdCard.BBKSdCardSet = SD Card ø…”√", false, true);
+			bd.d("BBKSdCard.BBKSdCardSet = SD Card ÂèØÁî®", false, true);
 		}
 		// ----------------------------------------------------
 		try {
@@ -84,7 +84,7 @@ public class BBKSdCard {
 		fs = new File(ps);
 		// ----------------------------------------------------
 		File files[] = fs.listFiles();
-		for (int i = 0; i < files.length; i++) {// ±È¿˙ƒø¬ºœ¬À˘”–µƒŒƒº˛
+		for (int i = 0; i < files.length; i++) {// ÈÅçÂéÜÁõÆÂΩï‰∏ãÊâÄÊúâÁöÑÊñá‰ª∂
 			// ----------------------------------------------------
 			ps = files[i].getPath();
 			bd.d("BBKSdCard.getParent = " + ps, false, true);
@@ -146,27 +146,27 @@ public class BBKSdCard {
 
 	// ====================================================================================
 	// ####################################################################################
-	// ##############################≥Ã–Ú¬∑æ∂…Ë÷√##########################################
+	// ##############################Á®ãÂ∫èË∑ØÂæÑËÆæÁΩÆ##########################################
 	// ####################################################################################
 	// ====================================================================================
 
 	/**
-	 * ªÒ»°Õ‚÷√SDø®¬∑æ∂
+	 * Ëé∑ÂèñÂ§ñÁΩÆSDÂç°Ë∑ØÂæÑ
 	 * 
 	 * @return
 	 */
 	@SuppressWarnings("unused")
 	private static String getSDCardPath() {
 		String cmd = "cat /proc/mounts";
-		Runtime run = Runtime.getRuntime();// ∑µªÿ”Îµ±«∞ Java ”¶”√≥Ã–Úœ‡πÿµƒ‘À–– ±∂‘œÛ
+		Runtime run = Runtime.getRuntime();// ËøîÂõû‰∏éÂΩìÂâç Java Â∫îÁî®Á®ãÂ∫èÁõ∏ÂÖ≥ÁöÑËøêË°åÊó∂ÂØπË±°
 		try {
-			Process p = run.exec(cmd);// ∆Ù∂Ø¡Ì“ª∏ˆΩ¯≥Ã¿¥÷¥––√¸¡Ó
+			Process p = run.exec(cmd);// ÂêØÂä®Âè¶‰∏Ä‰∏™ËøõÁ®ãÊù•ÊâßË°åÂëΩ‰ª§
 			BufferedInputStream in = new BufferedInputStream(p.getInputStream());
 			BufferedReader inBr = new BufferedReader(new InputStreamReader(in));
 
 			String lineStr;
 			while ((lineStr = inBr.readLine()) != null) {
-				// ªÒµ√√¸¡Ó÷¥––∫Û‘⁄øÿ÷∆Ã®µƒ ‰≥ˆ–≈œ¢
+				// Ëé∑ÂæóÂëΩ‰ª§ÊâßË°åÂêéÂú®ÊéßÂà∂Âè∞ÁöÑËæìÂá∫‰ø°ÊÅØ
 				bd.d("BBKSdCard.getSDCardPath = " + lineStr, false, true);
 				if (lineStr.contains("sdcard") && lineStr.contains(".android_secure")) {
 					String[] strArray = lineStr.split(" ");
@@ -175,10 +175,10 @@ public class BBKSdCard {
 						return result;
 					}
 				}
-				// ºÏ≤È√¸¡Ó «∑Ò÷¥–– ß∞‹°£
+				// Ê£ÄÊü•ÂëΩ‰ª§ÊòØÂê¶ÊâßË°åÂ§±Ë¥•„ÄÇ
 				if (p.waitFor() != 0 && p.exitValue() == 1) {
-					// p.exitValue()==0±Ì æ’˝≥£Ω· ¯£¨1£∫∑«’˝≥£Ω· ¯
-					bd.d("BBKSdCard.getSDCardPath.159 = " + "√¸¡Ó÷¥–– ß∞‹!", false, true);
+					// p.exitValue()==0Ë°®Á§∫Ê≠£Â∏∏ÁªìÊùüÔºå1ÔºöÈùûÊ≠£Â∏∏ÁªìÊùü
+					bd.d("BBKSdCard.getSDCardPath.159 = " + "ÂëΩ‰ª§ÊâßË°åÂ§±Ë¥•!", false, true);
 				}
 			}
 			inBr.close();

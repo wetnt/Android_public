@@ -1,4 +1,4 @@
-package bbk.map.lay;
+ï»¿package bbk.map.lay;
 
 import bbk.bbk.box.BBKSoft;
 import bbk.map.lay.BBKMapLay.Lay_type;
@@ -245,7 +245,7 @@ public class BBKMapEdit {
 	// ====================================================================================
 
 	// =================================================================================
-	// Ò»ÖÖ¿ìËÙÇóµãµ½Ïß¶Î¾àÀëµÄËã·¨
+	// ä¸€ç§å¿«é€Ÿæ±‚ç‚¹åˆ°çº¿æ®µè·ç¦»çš„ç®—æ³•
 	// http://blog.163.com/maosth@126/blog/static/135068435201002111739759/
 	// =================================================================================
 	private static double GetPointDistance(int ax, int ay, int px, int py) {
@@ -253,7 +253,7 @@ public class BBKMapEdit {
 	}
 
 	private static double GetNearestDistance(int ax, int ay, int bx, int by, int px, int py, int rs) {
-		// ----------Í¼2--------------------
+		// ----------å›¾2--------------------
 		double a, b, c;
 		a = GetPointDistance(bx, by, px, py);
 		if (a <= rs)
@@ -263,14 +263,14 @@ public class BBKMapEdit {
 			return b;
 		c = GetPointDistance(ax, ay, bx, by);
 		if (c <= 1)
-			return Math.min(a, b);// Èç¹ûPAºÍPB×ø±êÏàÍ¬£¬ÔòÍË³öº¯Êı£¬²¢·µ»Ø¾àÀë
+			return Math.min(a, b);// å¦‚æœPAå’ŒPBåæ ‡ç›¸åŒï¼Œåˆ™é€€å‡ºå‡½æ•°ï¼Œå¹¶è¿”å›è·ç¦»
 		// ------------------------------
 		if (a * a >= b * b + c * c)
 			return b;
 		if (b * b >= a * a + c * c)
 			return a;
-		double l = (a + b + c) / 2; // ÖÜ³¤µÄÒ»°ë
-		double s = Math.sqrt(l * (l - a) * (l - b) * (l - c)); // º£Â×¹«Ê½ÇóÃæ»ı
+		double l = (a + b + c) / 2; // å‘¨é•¿çš„ä¸€åŠ
+		double s = Math.sqrt(l * (l - a) * (l - b) * (l - c)); // æµ·ä¼¦å…¬å¼æ±‚é¢ç§¯
 		return 2 * s / c;
 		// ------------------------------
 	}

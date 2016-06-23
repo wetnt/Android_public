@@ -1,4 +1,4 @@
-package bbk.hrd.abc;
+ï»¿package bbk.hrd.abc;
 
 import android.app.Activity;
 import android.app.Service;
@@ -14,7 +14,7 @@ public class BBKBody {
 		// ----------------------------------------
 	}
 
-	public static void BeepBeep(final Activity pthis) {// »úÉíÕð¶¯
+	public static void BeepBeep(final Activity pthis) {// æœºèº«éœ‡åŠ¨
 		Vibrator mV = (Vibrator) pthis.getApplicationContext().getSystemService(Service.VIBRATOR_SERVICE);
 		mV.vibrate(new long[] { 100, 10, 100, 1000 }, -1);
 	}

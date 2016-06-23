@@ -1,4 +1,4 @@
-package bbk.sys.abc;
+ï»¿package bbk.sys.abc;
 
 import java.io.DataOutputStream;
 
@@ -8,9 +8,9 @@ public class BBKRoot {
 
 	// ====================================================================================
 	/**
-	 * Ó¦ÓÃ³ÌĞòÔËĞĞÃüÁî»ñÈ¡ RootÈ¨ÏŞ£¬Éè±¸±ØĞëÒÑÆÆ½â(»ñµÃROOTÈ¨ÏŞ)
+	 * åº”ç”¨ç¨‹åºè¿è¡Œå‘½ä»¤è·å– Rootæƒé™ï¼Œè®¾å¤‡å¿…é¡»å·²ç ´è§£(è·å¾—ROOTæƒé™)
 	 * 
-	 * @return Ó¦ÓÃ³ÌĞòÊÇ/·ñ»ñÈ¡RootÈ¨ÏŞ
+	 * @return åº”ç”¨ç¨‹åºæ˜¯/å¦è·å–Rootæƒé™
 	 */
 	// ====================================================================================
 	// upgradeRootPermission(getPackageCodePath());
@@ -19,7 +19,7 @@ public class BBKRoot {
 		Process process = null;
 		DataOutputStream os = null;
 		try {
-			process = Runtime.getRuntime().exec("su"); // ÇĞ»»µ½rootÕÊºÅ
+			process = Runtime.getRuntime().exec("su"); // åˆ‡æ¢åˆ°rootå¸å·
 			String cmd = "chmod 777 " + pkgCodePath;
 			os = new DataOutputStream(process.getOutputStream());
 			os.writeBytes(cmd + "\n");
@@ -58,29 +58,29 @@ public class BBKRoot {
 		exsMs = sysMs - curMs;
 		exsMs = (long) (exsMs / 1000f);
 		// ------------------------------------
-		String str = "GPSÊ±¼äĞ£×¼" + "\r\n" + "\r\n";
-		str += "ÎÀĞÇÊ±¼ä£º" + curMs + "\r\n";
-		str += "ÏµÍ³Ê±¼ä£º" + sysMs + "\r\n";
+		String str = "GPSæ—¶é—´æ ¡å‡†" + "\r\n" + "\r\n";
+		str += "å«æ˜Ÿæ—¶é—´ï¼š" + curMs + "\r\n";
+		str += "ç³»ç»Ÿæ—¶é—´ï¼š" + sysMs + "\r\n";
 		if (exsMs > 0) {
-			str += "ÏµÍ³×ß¿ì£º" + Math.abs(exsMs) + "Ãë\r\n";
+			str += "ç³»ç»Ÿèµ°å¿«ï¼š" + Math.abs(exsMs) + "ç§’\r\n";
 		} else {
-			str += "ÏµÍ³×ßÂı£º" + Math.abs(exsMs) + "Ãë\r\n";
+			str += "ç³»ç»Ÿèµ°æ…¢ï¼š" + Math.abs(exsMs) + "ç§’\r\n";
 		}
 		// -------------------------------------------------------------
 		String back = "";
 		// if (BBKSoft.myGps.gm.g.Y) {
 		if (gpslock) {
 			// -------------------------------------------------------------
-			isSuc = SystemClock.setCurrentTimeMillis(curMs);// ĞèÒªRootÈ¨ÏŞ
+			isSuc = SystemClock.setCurrentTimeMillis(curMs);// éœ€è¦Rootæƒé™
 			// -------------------------------------------------------------
 			if (isSuc) {
-				back = "GPSÊ±¼äĞ£×¼³É¹¦£¡";
+				back = "GPSæ—¶é—´æ ¡å‡†æˆåŠŸï¼";
 			} else {
-				back = "³ÌĞòÎ´ÄÜROOT£¡";
+				back = "ç¨‹åºæœªèƒ½ROOTï¼";
 			}
 			// -------------------------------------------------------------
 		} else {
-			back = "GPSÎ´ÄÜ¶¨Î»£¡";
+			back = "GPSæœªèƒ½å®šä½ï¼";
 		}
 		// -------------------------------------------------------------
 		str = "	" + back + "\r\n\r\n" + str;

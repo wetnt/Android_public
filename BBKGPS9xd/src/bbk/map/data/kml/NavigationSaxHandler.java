@@ -1,4 +1,4 @@
-package bbk.map.data.kml;
+﻿package bbk.map.data.kml;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;

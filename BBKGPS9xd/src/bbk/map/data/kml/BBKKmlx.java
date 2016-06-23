@@ -1,4 +1,4 @@
-package bbk.map.data.kml;
+锘縫ackage bbk.map.data.kml;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -18,7 +18,7 @@ import android.util.Log;
 public class BBKKmlx {
 
 	public static void runx() {
-		String PathName = "D:/!项目/512/实际测试数据/333/678.kml";
+		String PathName = "D:/!椤圭洰/512/瀹為檯娴嬭瘯鏁版嵁/333/678.kml";
 		NavigationDataSet ss;
 		String str = null;
 		try {

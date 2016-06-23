@@ -1,4 +1,4 @@
-package bbk.map.ask;
+ï»¿package bbk.map.ask;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -26,7 +26,7 @@ import bbk.zzz.debug.bd;
 public class BBKGoogle {
 
 	// =========================================================================================
-	// https://developers.google.com/maps/documentation/directions/ //Â·ÏßÇëÇó
+	// https://developers.google.com/maps/documentation/directions/ //è·¯çº¿è¯·æ±‚
 	// =========================================================================================
 	private String originStr = "", destinationStr = "";
 
@@ -49,18 +49,18 @@ public class BBKGoogle {
 	// =========================================================================================
 	// --------------------------------------------------------------------------------------------------
 	// http://maps.googleapis.com/maps/api/geocode/xml?address=%E8%8D%A3%E4%B8%8A%E5%B1%85&sensor=false
-	// http://maps.googleapis.com/maps/api/geocode/json?address=±£¶¨»ªµç¶şÇø&sensor=false
+	// http://maps.googleapis.com/maps/api/geocode/json?address=ä¿å®šåç”µäºŒåŒº&sensor=false
 	// --------------------------------------------------------------------------------------------------
-	// http://maps.google.com/maps/api/directions/json?origin=ÈÙÉÏ¾Ó&destination=½õÇï¹ú¼Ê´óÏÃ&sensor=false&hl=zh-CN&mode=walking
+	// http://maps.google.com/maps/api/directions/json?origin=è£ä¸Šå±…&destination=é”¦ç§‹å›½é™…å¤§å¦&sensor=false&hl=zh-CN&mode=walking
 	// --------------------------------------------------------------------------------------------------
 	private final String gbCode = "UTF-8";
 	private String[] AskMode = { "driving", "walking", "bicycling", "transit" };
 	private String GgUrl = "http://maps.google.cn/maps/api/directions/json?";// directions/xml?";//maps.google.com
 
-	// driving£¨Ä¬ÈÏ£©£¬ÓÃÓÚ±íÊ¾Ê¹ÓÃµÀÂ·ÍøÂçµÄ±ê×¼ĞĞ³µÂ·Ïß¡£
-	// walking£¬ÓÃÓÚÇëÇó¾­¹ı²½ĞĞ½ÖºÍÈËĞĞµÀ£¨Èç¹ûÓĞµÄ»°£©µÄ²½ĞĞÂ·Ïß¡£
-	// bicycling£¬ÓÃÓÚÇëÇó¾­¹ıÆïĞĞµÀºÍÓÅÏÈ½ÖµÀ£¨Èç¹ûÓĞµÄ»°£©µÄÆïĞĞÂ·Ïß¡£
-	// transit£¬ÓÃÓÚÇëÇó¾­¹ı¹«½»Â·Ïß£¨Èç¹ûÓĞµÄ»°£©µÄÂ·Ïß¡£
+	// drivingï¼ˆé»˜è®¤ï¼‰ï¼Œç”¨äºè¡¨ç¤ºä½¿ç”¨é“è·¯ç½‘ç»œçš„æ ‡å‡†è¡Œè½¦è·¯çº¿ã€‚
+	// walkingï¼Œç”¨äºè¯·æ±‚ç»è¿‡æ­¥è¡Œè¡—å’Œäººè¡Œé“ï¼ˆå¦‚æœæœ‰çš„è¯ï¼‰çš„æ­¥è¡Œè·¯çº¿ã€‚
+	// bicyclingï¼Œç”¨äºè¯·æ±‚ç»è¿‡éª‘è¡Œé“å’Œä¼˜å…ˆè¡—é“ï¼ˆå¦‚æœæœ‰çš„è¯ï¼‰çš„éª‘è¡Œè·¯çº¿ã€‚
+	// transitï¼Œç”¨äºè¯·æ±‚ç»è¿‡å…¬äº¤è·¯çº¿ï¼ˆå¦‚æœæœ‰çš„è¯ï¼‰çš„è·¯çº¿ã€‚
 
 	// =======================================================================================================================
 	private String setNaviUrl(String origin, String destination, int md, double cw, double cj) {
@@ -83,7 +83,7 @@ public class BBKGoogle {
 
 	private void NaviRun(String a, String b, int md, double cw, double cj) {
 		// ------------------------------------------------------
-		// ½Ó¿ÚÎª»ğĞÇ×ø±ê£¬²éÑ¯Ê±ĞèÒª°ÑÕæÊµ×ø±ê¸ÄÎª»ğĞÇ×ø±ê
+		// æ¥å£ä¸ºç«æ˜Ÿåæ ‡ï¼ŒæŸ¥è¯¢æ—¶éœ€è¦æŠŠçœŸå®åæ ‡æ”¹ä¸ºç«æ˜Ÿåæ ‡
 		a = BBKReg.Str_WJ_TF(a);
 		b = BBKReg.Str_WJ_TF(b);
 		// ------------------------------------------------------
@@ -98,28 +98,28 @@ public class BBKGoogle {
 		bd.d(NaviWeb, false, true);
 		final String myjson = BBKHttpGet.BBKHttpGetUrl(NaviWeb, gbCode, false);
 		// ------------------------------------------------------
-		// JSON×ª»»Îª½á¹¹»¯Êı¾İ
+		// JSONè½¬æ¢ä¸ºç»“æ„åŒ–æ•°æ®
 		ArrayList<HashMap<String, Object>> tab = JsonToHashMap(myjson, true);
 		if (tab == null)
 			return;
 		// ------------------------------------------------------
-		BBKSoft.myLays.layask = JsonToMapLay(tab);// ½á¹¹»¯Êı¾İ±äÍ¼²ã
+		BBKSoft.myLays.layask = JsonToMapLay(tab);// ç»“æ„åŒ–æ•°æ®å˜å›¾å±‚
 		// ------------------------------------------------------
-		// Google¶¼¸ÄÎªÁË¾­Î³¶ÈÆğÖ¹µã²éÑ¯£¬¼ÇÒäÎŞÒâÒåÁË
+		// Googleéƒ½æ”¹ä¸ºäº†ç»çº¬åº¦èµ·æ­¢ç‚¹æŸ¥è¯¢ï¼Œè®°å¿†æ— æ„ä¹‰äº†
 		// String pathname = BBKSoft.PathAsks + originStr + "_" +
 		// destinationStr;
 		// BBKSoft.myLays.LaySave(BBKSoft.myLays.layask, pathname);
 		// ------------------------------------------------------
-		handlerNav.post(RunnableNav);// ·µ»Ø½á¹ûÍ¼²ã¡¢±íµ¥ÏÔÊ¾
+		handlerNav.post(RunnableNav);// è¿”å›ç»“æœå›¾å±‚ã€è¡¨å•æ˜¾ç¤º
 		// ------------------------------------------------------
 	}
 
 	private Handler handlerNav = new Handler();
 	private Runnable RunnableNav = new Runnable() {
-		public void run() {// ·µ»Ø½á¹ûÍ¼²ã¡¢±íµ¥ÏÔÊ¾
+		public void run() {// è¿”å›ç»“æœå›¾å±‚ã€è¡¨å•æ˜¾ç¤º
 			// ------------------------------------------------------
 			String name = originStr + "_" + destinationStr;
-			BBKSoft.myAsk.AskInfoListShowRun("µ¼º½: " + name);
+			BBKSoft.myAsk.AskInfoListShowRun("å¯¼èˆª: " + name);
 			BBKSoft.myAsk.ListViewBack();
 			// ------------------------------------------------------
 		}
@@ -156,7 +156,7 @@ public class BBKGoogle {
 
 	// ========================================================================
 	public String[] tabitems = { "ID", "NAME", "Mode", "Distance", "ADD", "LAT", "LON", "HTML", "Points" };
-	private String Yzbm = "ÓÊÕş±àÂë:";
+	private String Yzbm = "é‚®æ”¿ç¼–ç :";
 
 	@SuppressWarnings("unused")
 	private ArrayList<HashMap<String, Object>> JsonToHashMap(String dataJson, boolean reg) {
@@ -204,10 +204,10 @@ public class BBKGoogle {
 					l.end_address = l.end_address.replace(Yzbm, "");
 					// ----------------------------------------------
 					Main_Ask.askBackInfoStrAdd(//
-					"·¶Î§£º\t" + homeCity + "\r\n" + //
-							"Æğµã£º\t" + l.start_address + "\r\n" + //
-							"ÖÕµã£º\t" + l.end_address + "\r\n" + //
-							"Àï³Ì£º\t" + sname //
+					"èŒƒå›´ï¼š\t" + homeCity + "\r\n" + //
+							"èµ·ç‚¹ï¼š\t" + l.start_address + "\r\n" + //
+							"ç»ˆç‚¹ï¼š\t" + l.end_address + "\r\n" + //
+							"é‡Œç¨‹ï¼š\t" + sname //
 					);
 					LegsABtoTab(map, tab, 0, l.start_address, "All", l.distance.txt, l.duration.txt, l.start_location.lat, l.start_location.lng, l.start_address, "");
 					// ----------------------------------------------
@@ -291,7 +291,7 @@ public class BBKGoogle {
 			str = s.html_instructions + "[";
 			str += s.transit_details.departure_stop.name + "->";
 			str += s.transit_details.line.short_name + "(";
-			str += s.transit_details.num_stops + "Õ¾)->";
+			str += s.transit_details.num_stops + "ç«™)->";
 			str += s.transit_details.arrival_stop.name + "]";
 		} else {
 			if (s.html_instructions == null)
@@ -309,15 +309,15 @@ public class BBKGoogle {
 	// =====================================================================================
 	private final String[] NaviStringItem = {
 			// ---------------------------------------------------------------------------------
-			"destination", "-Ä¿µÄµØ",
+			"destination", "-ç›®çš„åœ°",
 			// ---------------------------------------------------------------------------------
-			"u-turn", "µôÍ·", "fork", "²æÂ·", "roundabout", "»·µº", "ramp", "ÔÑµÀ", "exit", "³öÖ÷Â·", "toll road", "ÊÕ·Ñ¹«Â·", "sharp", "¼±×ª",
+			"u-turn", "æ‰å¤´", "fork", "å‰è·¯", "roundabout", "ç¯å²›", "ramp", "åŒé“", "exit", "å‡ºä¸»è·¯", "toll road", "æ”¶è´¹å…¬è·¯", "sharp", "æ€¥è½¬",
 			// ---------------------------------------------------------------------------------
-			"east", "¶«", "west", "Î÷", "south", "ÄÏ", "north", "±±", "right", "ÓÒ", "left", "×ó",
+			"east", "ä¸œ", "west", "è¥¿", "south", "å—", "north", "åŒ—", "right", "å³", "left", "å·¦",
 			// ---------------------------------------------------------------------------------
-			"toward", "Ïò", "to", "-", "turn", "×ª", "head", "Ïò", "stay", "Áô", "keep", "Ö±ĞĞ", "slight", "¿¿", "continue", "Ö±ĞĞ", "merge", "½øÈë",
+			"toward", "å‘", "to", "-", "turn", "è½¬", "head", "å‘", "stay", "ç•™", "keep", "ç›´è¡Œ", "slight", "é ", "continue", "ç›´è¡Œ", "merge", "è¿›å…¥",
 			// ---------------------------------------------------------------------------------
-			"partial", "²¿·Ö", "road", "Â·", "make", "", "take", "", "onto", "½øÈë", "will be", "", "the", "", "at", "ÔÚ", "on", "", "and", "", "a ", "",
+			"partial", "éƒ¨åˆ†", "road", "è·¯", "make", "", "take", "", "onto", "è¿›å…¥", "will be", "", "the", "", "at", "åœ¨", "on", "", "and", "", "a ", "",
 			// ---------------------------------------------------------------------------------
 			" ", ""
 	// ---------------------------------------------------------------------------------
@@ -743,8 +743,8 @@ public class BBKGoogle {
 	// =====================================================================================
 	// =====================================================================================
 
-	// ½âÎö·µ»ØXMLÖĞoverview_polylineµÄÂ·Ïß±àÂë
-	private List<GeoPoint> decodePoly(String encoded) {// ½âÎö·µ»ØxmlÖĞoverview_polylineµÄÂ·Ïß±àÂë
+	// è§£æè¿”å›XMLä¸­overview_polylineçš„è·¯çº¿ç¼–ç 
+	private List<GeoPoint> decodePoly(String encoded) {// è§£æè¿”å›xmlä¸­overview_polylineçš„è·¯çº¿ç¼–ç 
 
 		List<GeoPoint> poly = new ArrayList<GeoPoint>();
 		int index = 0, len = encoded.length();
@@ -793,12 +793,12 @@ public class BBKGoogle {
 		// (int) (location2.getLongitude() * 1E6));
 	}
 
-	// É¾³ıinput×Ö·û´®ÖĞµÄhtml¸ñÊ½
+	// åˆ é™¤inputå­—ç¬¦ä¸²ä¸­çš„htmlæ ¼å¼
 	private String splitAndFilterString(String input, int length) {
 		if (input == null || input.trim().equals("")) {
 			return "";
 		}
-		// È¥µôËùÓĞhtmlÔªËØ,
+		// å»æ‰æ‰€æœ‰htmlå…ƒç´ ,
 		String str = input.replaceAll("\\&[a-zA-Z]{1,10};", "").replaceAll("<[^>]*>", "");
 		str = str.replaceAll("[(/>)<]", "");
 		int len = str.length();
@@ -872,10 +872,10 @@ public class BBKGoogle {
 					l.end_address = l.end_address.replace(homeCity, "");
 					// ----------------------------------------------
 					Main_Ask.askBackInfoStrAdd(//
-					"³ÇÊĞ£º\t" + homeCity + "\r\n" + //
-							"Æğµã£º\t" + l.start_address + "\r\n" + //
-							"ÖÕµã£º\t" + l.end_address + "\r\n" + //
-							"Àï³Ì£º\t" + sname //
+					"åŸå¸‚ï¼š\t" + homeCity + "\r\n" + //
+							"èµ·ç‚¹ï¼š\t" + l.start_address + "\r\n" + //
+							"ç»ˆç‚¹ï¼š\t" + l.end_address + "\r\n" + //
+							"é‡Œç¨‹ï¼š\t" + sname //
 					);
 					LegsABtoTab(map, tab, 0, l.start_address, "All", l.distance.txt, l.duration.txt, l.start_location.lat, l.start_location.lng, l.start_address, "");
 					// ----------------------------------------------

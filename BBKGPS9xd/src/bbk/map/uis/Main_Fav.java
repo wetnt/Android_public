@@ -1,4 +1,4 @@
-package bbk.map.uis;
+Ôªøpackage bbk.map.uis;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -115,7 +115,7 @@ public class Main_Fav extends BBKLayView {
 		// --------------------------------------------
 		// listlay.pois.remove(n);
 		// --------------------------------------------------------------------------------
-		String Ask = "»∑∂®…æ≥˝£ø\r\n" + BBKSoft.myLays.layfav.pois.get(ListId).s.a;
+		String Ask = "Á°ÆÂÆöÂà†Èô§Ôºü\r\n" + BBKSoft.myLays.layfav.pois.get(ListId).s.a;
 		// --------------------------------------------------------------------------------
 		DialogInterface.OnClickListener YesLs = new DialogInterface.OnClickListener() {
 			@Override
@@ -189,7 +189,7 @@ public class Main_Fav extends BBKLayView {
 		FavReName.setText(name);
 		ListId = BBKSoft.myLays.layfav.pois.size() - 1;
 		// -------------------------------------------------------------
-		BBKMsgBox.tShow("<" + name + ">" + "\r\n       ’≤ÿ≥…π¶£°");
+		BBKMsgBox.tShow("<" + name + ">" + "\r\n      Êî∂ËóèÊàêÂäüÔºÅ");
 		BBKSoft.myLays.LaysFavSave();
 		// -------------------------------------------------------------
 	}

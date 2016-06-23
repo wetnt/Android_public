@@ -1,4 +1,4 @@
-package bbk.sys.file;
+ï»¿package bbk.sys.file;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -53,7 +53,7 @@ public class FileManager extends ListActivity {
 		File f = new File(filePath);
 		File[] files = f.listFiles();
 		// --------------------------------------------
-		Arrays.sort(files);// ÅÅĞò´óĞ¡Ğ´Ãô¸Ğ
+		Arrays.sort(files);// æ’åºå¤§å°å†™æ•æ„Ÿ
 		// --------------------------------------------
 		if (!filePath.equals(rootPath)) {
 			items.add("b1");

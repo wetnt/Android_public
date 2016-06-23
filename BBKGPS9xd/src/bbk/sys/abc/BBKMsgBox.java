@@ -1,4 +1,4 @@
-package bbk.sys.abc;
+ï»¿package bbk.sys.abc;
 
 import com.example.bbkgps9xd.R;
 
@@ -48,13 +48,13 @@ public class BBKMsgBox extends BBKLayView {
 	// ====================================================================================
 	public static void MsgYesNo(String Ask, String Yes, String No, OnClickListener YesLs) {
 		// ---------------------------------------------------------------------
-		new AlertDialog.Builder(BBKSoft.bbkContext)// ×¢²á
-				.setTitle(BBKAbout.SoftTitle)// ±êÌâ
-				.setMessage(Ask)// ÄÚÈİ
-				.setPositiveButton(Yes, YesLs)// DialogInterface.BUTTON_POSITIVE://-1È·¶¨µÄ
-				.setNegativeButton(No, YesLs)// DialogInterface.BUTTON_NEGATIVE://-2·ñ¶¨µÄ
-				// .setNeutralButton(Em,YesLs)//DialogInterface.BUTTON_NEUTRAL://-3ÖĞĞÔµÄ
-				.show();// ÏÔÊ¾
+		new AlertDialog.Builder(BBKSoft.bbkContext)// æ³¨å†Œ
+				.setTitle(BBKAbout.SoftTitle)// æ ‡é¢˜
+				.setMessage(Ask)// å†…å®¹
+				.setPositiveButton(Yes, YesLs)// DialogInterface.BUTTON_POSITIVE://-1ç¡®å®šçš„
+				.setNegativeButton(No, YesLs)// DialogInterface.BUTTON_NEGATIVE://-2å¦å®šçš„
+				// .setNeutralButton(Em,YesLs)//DialogInterface.BUTTON_NEUTRAL://-3ä¸­æ€§çš„
+				.show();// æ˜¾ç¤º
 		// ---------------------------------------------------------------------
 	}
 
@@ -67,11 +67,11 @@ public class BBKMsgBox extends BBKLayView {
 			}
 		};
 		// ---------------------------------------------------------------------
-		new AlertDialog.Builder(BBKSoft.bbkContext)// ×¢²á
-				.setTitle(BBKAbout.SoftTitle)// ±êÌâ
-				.setMessage(Ask)// ÄÚÈİ
-				.setPositiveButton("OK", YesRun)// -1È·¶¨µÄ
-				.show();// ÏÔÊ¾
+		new AlertDialog.Builder(BBKSoft.bbkContext)// æ³¨å†Œ
+				.setTitle(BBKAbout.SoftTitle)// æ ‡é¢˜
+				.setMessage(Ask)// å†…å®¹
+				.setPositiveButton("OK", YesRun)// -1ç¡®å®šçš„
+				.show();// æ˜¾ç¤º
 		// ---------------------------------------------------------------------
 	}
 

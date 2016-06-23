@@ -1,4 +1,4 @@
-package bbk.map.dat;
+锘縫ackage bbk.map.dat;
 
 import java.io.IOException;
 
@@ -22,7 +22,7 @@ public class BBKKml {
 
 	public void adfsaf() {
 
-		String PathName = "D:/!项目/512/实际测试数据/333/689.kml";
+		String PathName = "D:/!椤圭洰/512/瀹為檯娴嬭瘯鏁版嵁/333/689.kml";
 		String strDoc = BBKSYS.FileRead(PathName);
 
 		NavigationDataSet navigationDataSet;

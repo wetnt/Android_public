@@ -1,4 +1,4 @@
-package bbk.map.uis;
+ï»¿package bbk.map.uis;
 
 import com.example.bbkgps9xd.R;
 
@@ -16,7 +16,7 @@ import bbk.uis.view.BBKLayView;
 
 public class Main_ScreenLight extends BBKLayView {
 
-	// http://blog.csdn.net/w8320273/article/details/7852752 SeekBarÑùÊ½
+	// http://blog.csdn.net/w8320273/article/details/7852752 SeekBaræ ·å¼
 	// ---------------------------------------------------------------
 	ImageButton sPowerR, sPowerL, sPowerX;
 	SeekBar bPower;
@@ -59,7 +59,7 @@ public class Main_ScreenLight extends BBKLayView {
 			}
 		});
 		// ------------------------------------------------------------------------------------------
-		bPower.setOnSeekBarChangeListener(new OnSeekBarChangeListener() // µ÷Òô¼àÌıÆ÷
+		bPower.setOnSeekBarChangeListener(new OnSeekBarChangeListener() // è°ƒéŸ³ç›‘å¬å™¨
 		{
 			public void onProgressChanged(SeekBar arg0, int progress, boolean fromUser) {
 				// --------------------------------------------
@@ -125,8 +125,8 @@ public class Main_ScreenLight extends BBKLayView {
 	// ===========================================================================================
 	// ===========================================================================================
 	/**
-	 * »ñµÃµ±Ç°ÆÁÄ»ÁÁ¶ÈµÄÄ£Ê½ SCREEN_BRIGHTNESS_MODE_AUTOMATIC=1 Îª×Ô¶¯µ÷½ÚÆÁÄ»ÁÁ¶È
-	 * SCREEN_BRIGHTNESS_MODE_MANUAL=0 ÎªÊÖ¶¯µ÷½ÚÆÁÄ»ÁÁ¶È
+	 * è·å¾—å½“å‰å±å¹•äº®åº¦çš„æ¨¡å¼ SCREEN_BRIGHTNESS_MODE_AUTOMATIC=1 ä¸ºè‡ªåŠ¨è°ƒèŠ‚å±å¹•äº®åº¦
+	 * SCREEN_BRIGHTNESS_MODE_MANUAL=0 ä¸ºæ‰‹åŠ¨è°ƒèŠ‚å±å¹•äº®åº¦
 	 */
 	private int getScreenMode(Activity activity) {
 		int screenMode = 0;
@@ -139,7 +139,7 @@ public class Main_ScreenLight extends BBKLayView {
 	}
 
 	/**
-	 * »ñµÃµ±Ç°ÆÁÄ»ÁÁ¶ÈÖµ 0--255
+	 * è·å¾—å½“å‰å±å¹•äº®åº¦å€¼ 0--255
 	 */
 	private int getScreenBrightness(Activity activity) {
 		int screenBrightness = 255;
@@ -152,8 +152,8 @@ public class Main_ScreenLight extends BBKLayView {
 	}
 
 	/**
-	 * ÉèÖÃµ±Ç°ÆÁÄ»ÁÁ¶ÈµÄÄ£Ê½ SCREEN_BRIGHTNESS_MODE_AUTOMATIC=1 Îª×Ô¶¯µ÷½ÚÆÁÄ»ÁÁ¶È
-	 * SCREEN_BRIGHTNESS_MODE_MANUAL=0 ÎªÊÖ¶¯µ÷½ÚÆÁÄ»ÁÁ¶È
+	 * è®¾ç½®å½“å‰å±å¹•äº®åº¦çš„æ¨¡å¼ SCREEN_BRIGHTNESS_MODE_AUTOMATIC=1 ä¸ºè‡ªåŠ¨è°ƒèŠ‚å±å¹•äº®åº¦
+	 * SCREEN_BRIGHTNESS_MODE_MANUAL=0 ä¸ºæ‰‹åŠ¨è°ƒèŠ‚å±å¹•äº®åº¦
 	 */
 	@SuppressWarnings("unused")
 	private void setScreenMode(Activity activity, int paramInt) {
@@ -165,7 +165,7 @@ public class Main_ScreenLight extends BBKLayView {
 	}
 
 	/**
-	 * ÉèÖÃµ±Ç°ÆÁÄ»ÁÁ¶ÈÖµ 0--255
+	 * è®¾ç½®å½“å‰å±å¹•äº®åº¦å€¼ 0--255
 	 */
 	private void setScreenBrightness(Activity activity, int paramInt) {
 		Window localWindow = activity.getWindow();
@@ -176,7 +176,7 @@ public class Main_ScreenLight extends BBKLayView {
 	}
 
 	/**
-	 * ±£´æµ±Ç°µÄÆÁÄ»ÁÁ¶ÈÖµ£¬²¢Ê¹Ö®ÉúĞ§
+	 * ä¿å­˜å½“å‰çš„å±å¹•äº®åº¦å€¼ï¼Œå¹¶ä½¿ä¹‹ç”Ÿæ•ˆ
 	 */
 	@SuppressWarnings("unused")
 	private void saveScreenBrightness(Activity activity, int paramInt) {
