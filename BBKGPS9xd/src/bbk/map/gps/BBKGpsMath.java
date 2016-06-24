@@ -15,7 +15,7 @@ public class BBKGpsMath {
 
 	public void GpsUpdata(Location loc) {
 		// -------------------------------------------------------------------
-		g.Y = loc.hasAccuracy();// loc.hasAltitude()/loc.hasBearing()/loc.hasSpeed();
+		g.Y =loc.hasAccuracy();// loc.hasAltitude()/loc.hasBearing()/loc.hasSpeed();
 		// -------------------------------------------------------------------
 		g.t = new Date(loc.getTime());// 时间
 		g.r = loc.getAccuracy();// 精度
@@ -43,7 +43,9 @@ public class BBKGpsMath {
 	// ---------------------------------------------------------------
 	public class GPS {
 		// -----------------------------------------
-		public boolean Y, R;
+		public boolean K;//是否定位
+		public boolean Y;//是否数据更新
+		public boolean R;//是否合理移动
 		// -----------------------------------------
 		public Date t;// GPS时间
 		public Date ts;// 启动时间
@@ -75,6 +77,7 @@ public class BBKGpsMath {
 
 	public void GpsFirst() {
 		// ----------------------------------------------------
+		g.K = false;
 		g.Y = false;
 		g.R = false;
 		// ----------------------------------------------------
@@ -99,6 +102,7 @@ public class BBKGpsMath {
 
 	public void GpsClose() {
 		// ----------------------------------------------------
+		g.K = false;
 		g.Y = false;
 		g.R = false;
 		// ----------------------------------------------------
@@ -118,7 +122,7 @@ public class BBKGpsMath {
 		g.vs = " " + g.v; // + "km/h";
 		// ---------------------------------------------------------------------
 		g.i = mapw + "," + mapj + "\r\n";
-		if (g.Y || more) {
+		if (g.K || more) {
 			g.i += g.w + "," + g.j + "," + g.h + "\r\n";
 			g.i += OrientationToStr(compass);
 			g.i += " " + (int) compass;
@@ -136,7 +140,7 @@ public class BBKGpsMath {
 			g.vm = g.v;
 		}
 		// -------------------------------------------------------------------
-		if (g.Y && g.ts.getTime() > g.t.getTime())
+		if (g.K && g.ts.getTime() > g.t.getTime())
 			g.ts = new Date(g.t.getTime());
 		// -------------------------------------------------------------------
 		g.tl = (g.t.getTime() - g.ts.getTime()) / 3600000f;

@@ -162,6 +162,7 @@ public class BBKGps {
 			// ----------------------------------------------------
 			case GpsStatus.GPS_EVENT_FIRST_FIX:// 第一次定位
 				// BBKDebug.ddd("第一次定位");
+				gm.g.K =true;
 				break;
 			// ----------------------------------------------------
 			case GpsStatus.GPS_EVENT_SATELLITE_STATUS:// 卫星状态改变
@@ -173,13 +174,11 @@ public class BBKGps {
 				break;
 			// ----------------------------------------------------
 			case GpsStatus.GPS_EVENT_STARTED:// 定位启动
-				gm.GpsClose();
-				// BBKDebug.ddd("定位启动");
+				gm.GpsClose();// BBKDebug.ddd("定位启动");
 				break;
 			// ----------------------------------------------------
 			case GpsStatus.GPS_EVENT_STOPPED:// 定位结束
-				gm.GpsClose();
-				// BBKDebug.ddd("定位结束");
+				gm.GpsClose();// BBKDebug.ddd("定位结束");
 				break;
 			// ----------------------------------------------------
 			}
