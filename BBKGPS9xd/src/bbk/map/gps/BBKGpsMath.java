@@ -15,17 +15,18 @@ public class BBKGpsMath {
 
 	public void GpsUpdata(Location loc) {
 		// -------------------------------------------------------------------
-		g.Y =loc.hasAccuracy();// loc.hasAltitude()/loc.hasBearing()/loc.hasSpeed();
+		// g.Y = loc.hasAccuracy();//
+		// loc.hasAltitude()/loc.hasBearing()/loc.hasSpeed();
 		// -------------------------------------------------------------------
 		g.t = new Date(loc.getTime());// 时间
-		g.r = loc.getAccuracy();// 精度
-		g.w = getDouble(loc.getLatitude(), 100000);// 纬度
-		g.j = getDouble(loc.getLongitude(), 100000);// 经度
-		g.h = getDouble(loc.getAltitude(), 10);// 海拔
-		g.f = getDouble(loc.getBearing(), 10);// 方位
-		g.v = getDouble(loc.getSpeed() * 36 / 10, 10);// 速度
+		g.w = getDouble(loc.getLatitude(), 6);// 纬度
+		g.j = getDouble(loc.getLongitude(), 6);// 经度
+		g.h = getDouble(loc.getAltitude(), 0);// 海拔
+		g.r = g.K ? loc.getAccuracy() : 0;// 精度
+		g.f = g.K ? getDouble(loc.getBearing(), 7) : 0;// 方位
+		g.v = g.K ? getDouble(loc.getSpeed() * 3.6, 7) : 0;// 速度
 		// -------------------------------------------------------------------
-		g.R = GpsRuns();
+		g.R = g.K ? GpsRuns() : false;
 		// -------------------------------------------------------------------
 	}
 
@@ -43,16 +44,16 @@ public class BBKGpsMath {
 	// ---------------------------------------------------------------
 	public class GPS {
 		// -----------------------------------------
-		public boolean K;//是否定位
-		public boolean Y;//是否数据更新
-		public boolean R;//是否合理移动
+		public boolean K;// 是否定位
+		// public boolean Y;// 是否数据更新
+		public boolean R;// 是否合理移动
 		// -----------------------------------------
 		public Date t;// GPS时间
 		public Date ts;// 启动时间
 		public double tl;// 持续时间
 		public String tls;// 持续时间字符形式
 		// -----------------------------------------
-		public double r;// 精度
+		public float r;// 精度
 		// -----------------------------------------
 		public double w, lw;// 纬度、上一次纬度
 		public double j, lj;// 经度、上一次经度
@@ -78,7 +79,7 @@ public class BBKGpsMath {
 	public void GpsFirst() {
 		// ----------------------------------------------------
 		g.K = false;
-		g.Y = false;
+		// g.Y = false;
 		g.R = false;
 		// ----------------------------------------------------
 		g.t = new Date(System.currentTimeMillis());
@@ -103,7 +104,7 @@ public class BBKGpsMath {
 	public void GpsClose() {
 		// ----------------------------------------------------
 		g.K = false;
-		g.Y = false;
+		// g.Y = false;
 		g.R = false;
 		// ----------------------------------------------------
 	}
@@ -112,18 +113,18 @@ public class BBKGpsMath {
 		// ----------------------------------------------------
 		g.a = gpsTmFt.format(g.t);
 		g.a += " " + (int) g.r;
-		g.a += g.Y ? "A" : "N";
+		g.a += g.K ? "A" : "N";
 		g.a += g.u + "/" + g.s;
-		g.a += "=" + (g.Y ? g.usr : g.snr);
+		g.a += "=" + (g.K ? g.usr : g.snr);
 		g.a += " " + g.l + "km";
 		g.a += " " + (int) g.h + "m";
 		g.a += " F" + compass + "/" + (int) g.f;
 		// ----------------------------------------------------
 		g.vs = " " + g.v; // + "km/h";
 		// ---------------------------------------------------------------------
-		g.i = mapw + "," + mapj + "\r\n";
+		g.i = "[+]" + mapw + "," + mapj + "\r\n";
 		if (g.K || more) {
-			g.i += g.w + "," + g.j + "," + g.h + "\r\n";
+			g.i += "[g]" + g.w + "," + g.j + "," + g.h + "\r\n";
 			g.i += OrientationToStr(compass);
 			g.i += " " + (int) compass;
 			g.i += "/" + (int) g.f + "\r\n";
@@ -143,12 +144,16 @@ public class BBKGpsMath {
 		if (g.K && g.ts.getTime() > g.t.getTime())
 			g.ts = new Date(g.t.getTime());
 		// -------------------------------------------------------------------
-		g.tl = (g.t.getTime() - g.ts.getTime()) / 3600000f;
+		if (g.t.getTime() >= g.ts.getTime()) {
+			g.tl = g.t.getTime() - g.ts.getTime();
+		} else {
+			g.tl = g.ts.getTime() - g.t.getTime();
+		}
+		g.tl = getDouble(g.tl / 3600000f, 3);
+		g.tls = g.t.getTime() > g.ts.getTime() ? "" : "-";
+		g.tls += getDFM(g.tl);
 		// -------------------------------------------------------------------
-		g.va = g.l / g.tl;
-		g.tls = getDFM(g.tl);
-		g.tl = getDouble(g.tl, 1000);
-		g.va = getDouble(g.va, 1000);
+		g.va = getDouble(g.l / g.tl, 1);
 		// -----------------------------------------------------------------------
 		if (g.w == 0 && g.j == 0) {
 			return false;
@@ -163,7 +168,7 @@ public class BBKGpsMath {
 			return false;
 		// -----------------------------------------------------------------------
 		g.l += GetDistance(g.w, g.j, g.lw, g.lj);
-		g.l = getDouble(g.l, 1000);
+		g.l = getDouble(g.l, 3);
 		// -----------------------------------------------------------------------
 		g.lw = g.w;
 		g.lj = g.j;
@@ -243,12 +248,31 @@ public class BBKGpsMath {
 	}
 
 	// ====================================================================================
-	public double getDouble(double a, int n) {
-		double a2 = a * n;
-		int b = (int) a2;
-		double c = (double) b;
-		double d = c / n;
-		return d;
+	public double getDouble(double a, int Decimals) {
+		double n = 1;
+		if (Decimals == 0)
+			n = 1;
+		else if (Decimals == 1)
+			n = 10;
+		else if (Decimals == 2)
+			n = 100;
+		else if (Decimals == 3)
+			n = 1000;
+		else if (Decimals == 4)
+			n = 10000;
+		else if (Decimals == 5)
+			n = 100000;
+		else if (Decimals == 6)
+			n = 1000000;
+		else if (Decimals == 7)
+			n = 10000000;
+		else if (Decimals == 8)
+			n = 100000000;
+		else if (Decimals == 9)
+			n = 1000000000;
+		int b = (int) (a * n);
+		double r = (double) b / n;
+		return r;
 	}
 
 	// ===========================================================================================
@@ -272,7 +296,7 @@ public class BBKGpsMath {
 		// --------------------------------------------
 		public void DFStoDD(double dx, double fx, double sx) {
 			ddd = dx + fx / 60f + sx / 3600f;
-			ddd = getDouble(ddd, 100000);
+			ddd = getDouble(ddd, 6);
 		}
 		// --------------------------------------------
 	}
@@ -332,7 +356,7 @@ public class BBKGpsMath {
 			return "正东";
 		} else if (degree >= 95 && degree < 175) {
 			return "东南";
-		} else if ((degree >= 175 && degree <= 180) || (degree) >= -180 && degree < -175) {
+		} else if ((degree >= 175 && degree <= 180) || degree >= -180 && degree < -175) {
 			return "正南";
 		} else if (degree >= -175 && degree < -95) {
 			return "西南";

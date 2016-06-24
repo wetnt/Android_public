@@ -183,7 +183,12 @@ public class Main_Track2 extends BBKLayView {
 		// -------------------------------------------------------------------------
 		Lay_type lay = BBKBBT.BBTtoLay_type(path, false);
 		bd.d(lay.line.get(0).p.size(), false, false);
-		BBKSoft.myLays.laytmp.clone(lay);
+		// -------------------------------------------------------------------------
+		// BBKSoft.myLays.laytmp.clone(lay);//加载独立路线
+		BBKSoft.myLays.laytmp.addlay(lay);// 叠加加载路线
+		// -------------------------------------------------------------------------
+		BBKSoft.myMaps.MapCenterSet(lay.line.get(0).p.get(0).w, lay.line.get(0).p.get(0).j);
+		BBKSoft.MapFlash(true);
 		// -------------------------------------------------------------------------
 		ArrayList<HashMap<String, Object>> lt;
 		lt = BBKListView.BBKLayToArrayList(BBKSoft.myLays.laytmp, true, false, false);

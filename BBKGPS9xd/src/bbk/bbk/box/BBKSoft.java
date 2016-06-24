@@ -228,7 +228,7 @@ public class BBKSoft {
 			myGps.gm.GpsInfos(myMaps.mapPt.w, myMaps.mapPt.j, mySens.CompassAngle, true);
 			myBoxs.LabTit.setText(myGps.gm.g.a);
 			myBoxs.LabSpd.setText(myGps.gm.g.vs);
-			if (myGps.gm.g.Y) {
+			if (myGps.gm.g.K) {
 				myBoxs.LabInf.setText(myGps.gm.g.i);
 			}
 		}
@@ -556,7 +556,7 @@ public class BBKSoft {
 	public static void MapMove() {
 		myMove.MapMove(myMaps.mapPt.w, myMaps.mapPt.j);
 		if (!myGps.gm.g.R)
-			myBoxs.LabInf.setText(myMaps.mapPt.w + "," + myMaps.mapPt.j);
+			myBoxs.LabInf.setText("[+]" + myMaps.mapPt.w + "," + myMaps.mapPt.j);
 	}
 
 	public static void MapTouch(int x, int y) {

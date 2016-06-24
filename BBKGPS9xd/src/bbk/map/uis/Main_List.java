@@ -32,7 +32,7 @@ public class Main_List extends BBKLayView {
 	private ImageButton ListLaySave, ListLayMap;
 	private ListView ListLayView;
 	private int ListLayId = -1;
-	public ArrayList<HashMap<String, Object>> list;
+	public ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
 	private ArrayList<HashMap<String, Object>> temp = new ArrayList<HashMap<String, Object>>();
 
 	// ====================================================================================

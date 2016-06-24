@@ -19,7 +19,8 @@ public class BBKAbout {
 		SoftAbout += "昵称： BOBOKing  海云飞" + "\r\n";
 		SoftAbout += "邮箱： wetnt@sina.com" + "\r\n";
 		SoftAbout += "电话： 13911969356" + "\r\n";
-		SoftAbout += "日期： 2016.6.25";
+		// ------------------------------------------------------
+		SoftAbout += "日期： 2016.6.24 NoteBook";
 		// ------------------------------------------------------
 	}
 

@@ -283,14 +283,9 @@ public class BBKMapMath {
 	final static int Decimals = 1000000; // (int)Math.pow(10,N);
 
 	public static double getDouble(double a) {
-		// -----------------------------------
-		double a2 = a * Decimals;
-		int b = (int) a2;
-		double c = (double) b;
-		double d = c / Decimals;
-		// -----------------------------------
+		int b = (int) (a * Decimals);
+		double d = (double) b / Decimals;
 		return d;
-		// -----------------------------------
 	}
 
 	// ====================================================================================

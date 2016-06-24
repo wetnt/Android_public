@@ -20,10 +20,10 @@ import bbk.bbk.box.BBKSoft;
 public class BBKGps {
 
 	// ---------------------------------------------------------------
-	Activity bbkAct;
+	private Activity bbkAct;
 	private LocationManager lm;
-	public BBKGpsMath gm = new BBKGpsMath();
 	public boolean GpsIsRun = false;
+	public BBKGpsMath gm = new BBKGpsMath();
 
 	// ====================================================================================
 	// ####################################################################################
@@ -38,7 +38,8 @@ public class BBKGps {
 			// -----------------------------------------------------------
 		} else {
 			// -----------------------------------------------------------
-			gm.g.Y = false;// 失效时触发
+			gm.g.K = false;// 失效时触发
+			//gm.g.Y = false;// 失效时触发
 			gm.g.r = 0;
 			gm.g.v = 0;
 			// -----------------------------------------------------------

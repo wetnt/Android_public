@@ -233,7 +233,7 @@ public class BBKButMenu {
 	// ====================================================================================
 	public void BBKGpsSYSTime() {
 		// ---------------------------------------------
-		BBKSoft.myRoot.BBKSysTimeGpsSync(BBKSoft.myGps.gm.g.t.getTime(), BBKSoft.myGps.gm.g.Y);
+		BBKSoft.myRoot.BBKSysTimeGpsSync(BBKSoft.myGps.gm.g.t.getTime(), BBKSoft.myGps.gm.g.K);
 		// ---------------------------------------------
 	}
 	// ====================================================================================
