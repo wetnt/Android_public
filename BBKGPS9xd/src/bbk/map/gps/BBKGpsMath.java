@@ -23,8 +23,8 @@ public class BBKGpsMath {
 		g.j = getDouble(loc.getLongitude(), 6);// 经度
 		g.h = getDouble(loc.getAltitude(), 0);// 海拔
 		g.r = g.K ? loc.getAccuracy() : 0;// 精度
-		g.f = g.K ? getDouble(loc.getBearing(), 7) : 0;// 方位
-		g.v = g.K ? getDouble(loc.getSpeed() * 3.6, 7) : 0;// 速度
+		g.f = g.K ? getDouble(loc.getBearing(), 0) : 0;// 方位
+		g.v = g.K ? getDouble(loc.getSpeed() * 3.6, 1) : 0;// 速度
 		// -------------------------------------------------------------------
 		g.R = g.K ? GpsRuns() : false;
 		// -------------------------------------------------------------------
@@ -45,7 +45,6 @@ public class BBKGpsMath {
 	public class GPS {
 		// -----------------------------------------
 		public boolean K;// 是否定位
-		// public boolean Y;// 是否数据更新
 		public boolean R;// 是否合理移动
 		// -----------------------------------------
 		public Date t;// GPS时间
@@ -79,7 +78,6 @@ public class BBKGpsMath {
 	public void GpsFirst() {
 		// ----------------------------------------------------
 		g.K = false;
-		// g.Y = false;
 		g.R = false;
 		// ----------------------------------------------------
 		g.t = new Date(System.currentTimeMillis());
@@ -101,11 +99,12 @@ public class BBKGpsMath {
 		// ----------------------------------------------------
 	}
 
-	public void GpsClose() {
+	public void GpsSetFalse() {
 		// ----------------------------------------------------
 		g.K = false;
-		// g.Y = false;
 		g.R = false;
+		g.v = 0;
+		g.r = 0;
 		// ----------------------------------------------------
 	}
 
@@ -124,12 +123,10 @@ public class BBKGpsMath {
 		// ---------------------------------------------------------------------
 		g.i = "[+]" + mapw + "," + mapj + "\r\n";
 		if (g.K || more) {
-			g.i += "[g]" + g.w + "," + g.j + "," + g.h + "\r\n";
-			g.i += OrientationToStr(compass);
-			g.i += " " + (int) compass;
+			g.i += "[.]" + g.w + "," + g.j + "," + g.h + "\r\n";
+			g.i += OrientationToStr(compass) + " " + (int) compass;
 			g.i += "/" + (int) g.f + "\r\n";
-			g.i += "s=" + g.l + " km";
-			g.i += "/" + g.tls + " " + "\r\n";
+			g.i += "s=" + g.l + " km" + "/" + g.tls + " " + "\r\n";
 			g.i += "v=" + g.va + " / " + g.vm + " km/h" + "\r\n";
 		}
 		// ---------------------------------------------------------------------
@@ -138,7 +135,7 @@ public class BBKGpsMath {
 	public boolean GpsRuns() {
 		// -------------------------------------------------------------------
 		if (g.vm < g.v) {
-			g.vm = g.v;
+			g.vm = getDouble(g.v, 1);
 		}
 		// -------------------------------------------------------------------
 		if (g.K && g.ts.getTime() > g.t.getTime())

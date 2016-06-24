@@ -39,7 +39,6 @@ public class BBKGps {
 		} else {
 			// -----------------------------------------------------------
 			gm.g.K = false;// 失效时触发
-			//gm.g.Y = false;// 失效时触发
 			gm.g.r = 0;
 			gm.g.v = 0;
 			// -----------------------------------------------------------
@@ -175,11 +174,11 @@ public class BBKGps {
 				break;
 			// ----------------------------------------------------
 			case GpsStatus.GPS_EVENT_STARTED:// 定位启动
-				gm.GpsClose();// BBKDebug.ddd("定位启动");
+				gm.GpsSetFalse();// BBKDebug.ddd("定位启动");
 				break;
 			// ----------------------------------------------------
 			case GpsStatus.GPS_EVENT_STOPPED:// 定位结束
-				gm.GpsClose();// BBKDebug.ddd("定位结束");
+				gm.GpsSetFalse();// BBKDebug.ddd("定位结束");
 				break;
 			// ----------------------------------------------------
 			}
