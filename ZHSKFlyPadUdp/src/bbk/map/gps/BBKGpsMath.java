@@ -22,7 +22,7 @@ public class BBKGpsMath {
 		g.w = getDouble(loc.getLatitude(), 6);// 纬度
 		g.j = getDouble(loc.getLongitude(), 6);// 经度
 		g.h = getDouble(loc.getAltitude(), 0);// 海拔
-		g.r = g.K ? loc.getAccuracy() : 0;// 精度
+		g.r = g.K ? (int)loc.getAccuracy() : 0;// 精度
 		g.f = g.K ? getDouble(loc.getBearing(), 0) : 0;// 方位
 		g.v = g.K ? getDouble(loc.getSpeed() * 3.6, 1) : 0;// 速度
 		// -------------------------------------------------------------------
@@ -50,30 +50,33 @@ public class BBKGpsMath {
 		public boolean R;// 是否合理移动
 		// -----------------------------------------
 		public Date t;// GPS时间
-		public Date ts;// 启动时间
-		public double tl;// 持续时间
-		public String tls;// 持续时间字符形式
 		// -----------------------------------------
-		public float r;// 精度
-		// -----------------------------------------
-		public double w, lw;// 纬度、上一次纬度
-		public double j, lj;// 经度、上一次经度
+		public double w;// 纬度
+		public double j;// 经度
 		public double h;// 海拔
+		public double v;// 速度
 		public double f;// 方向
 		// -----------------------------------------
-		public double v;// 速度
-		public double va;// 平均速度
-		public double vm;// 最大速度
-		public double l;// 里程
-		// -----------------------------------------
-		public String a;// T;// 标题
-		public String i;// 信息
-		public String vs;// 速度
-		// -----------------------------------------
+		public int r;// 定位精度
 		public int s;// 卫星数目
 		public int u;// 参与解算卫星数目
 		public int snr;// 卫星平均信号值
 		public int usr;// 参与解算卫星数目
+		// -----------------------------------------
+		public double lw;// 上一次纬度
+		public double lj;// 上一次经度
+		// -----------------------------------------
+		public double l;// 里程
+		public double va;// 平均速度
+		public double vm;// 最大速度
+		// -----------------------------------------
+		public Date ts;// 启动时间
+		public double tl;// 持续时间
+		public String tls;// 持续时间字符形式
+		// -----------------------------------------
+		public String a;// 标题
+		public String i;// 信息
+		public String vs;// 速度
 		// -----------------------------------------
 	}
 

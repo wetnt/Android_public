@@ -51,7 +51,8 @@ public class BBK_Tool_Net {
 		}
 	}
 
-	public static void UdpSend(final String _localHost, final int server_port, final String message, charsetNameType t) {
+	public static void UdpSend(final String _localHost, final int server_port, final String message,
+			charsetNameType t) {
 		// --------------------------------------------------------
 		byte[] messageByte = null;
 		try {
@@ -66,21 +67,7 @@ public class BBK_Tool_Net {
 	}
 
 	public final static int PORT_Max = 65500;//65535
-
 	public static void UdpSend(final String _localHost, final int server_port, final byte[] messageByte) {
-		// --------------------------------------------------------
-		if (_localHost.length() < 5) {
-			d.m("IPHost Error!");
-			return;
-		}
-		if (server_port < 10) {
-			d.m("Port Error!");
-			return;
-		}
-		if (messageByte.length < 1) {
-			d.m("Message Error!");
-			return;
-		}
 		// --------------------------------------------------------
 		Runnable runnable = new Runnable() {
 			@Override

@@ -43,8 +43,10 @@ public class MainActivity extends Activity {
 	}
 
 	private static TextView fnp_info_txt;
+	private static TextView fnp_host_send_times;
 	private Button fnp_gpsopen_btn, fnp_host_send_btn;
-	private static CheckBox fnp_host_auto_ckbox;
+	private static CheckBox fnp_host_auto_ckbox, fnp_host_force_ckbox;
+
 	private static EditText fnp_host_id_edit, fnp_host_ip_edit, fnp_host_pt_edit;
 	private static EditText fnp_info_send_edit, fnp_info_receive_txt;
 
@@ -57,8 +59,10 @@ public class MainActivity extends Activity {
 		fnp_host_ip_edit = (EditText) findViewById(R.id.fnp_host_ip_edit);
 		fnp_host_pt_edit = (EditText) findViewById(R.id.fnp_host_port_edit);
 		// --------------------------------------------------------
+		fnp_host_send_times = (TextView) findViewById(R.id.fnp_host_send_times);
 		fnp_host_send_btn = (Button) findViewById(R.id.fnp_host_send_btn);
 		fnp_host_auto_ckbox = (CheckBox) findViewById(R.id.fnp_host_auto_ckbox);
+		fnp_host_force_ckbox = (CheckBox) findViewById(R.id.fnp_host_force_ckbox);
 		// --------------------------------------------------------
 		fnp_info_send_edit = (EditText) findViewById(R.id.fnp_info_send_edit);
 		fnp_info_receive_txt = (EditText) findViewById(R.id.fnp_info_receive_txt);
@@ -82,6 +86,7 @@ public class MainActivity extends Activity {
 				String ids = fnp_host_id_edit.getText().toString().trim();
 				idl = Long.parseLong(ids.length() == 0 ? "0" : ids);
 				BBK_Tool_Setting.Save_Long(KEY_IDSS, idl);
+				xIDchange();
 			}
 		});
 		fnp_host_ip_edit.addTextChangedListener(new TextWatcher() {
@@ -179,13 +184,31 @@ public class MainActivity extends Activity {
 		x.gamma = 0; // 滚转
 		x.psi = g.f; // 方位
 		// --------------------------------------------------------
-		x.jx=3111;
+		x.jx = 3111;
+		// --------------------------------------------------------
+	}
+
+	private static void xIDchange() {
+		// --------------------------------------------------------
+		x.ID = idl; // 唯一标识
+		x.ShowID = (int) idl;
+		// --------------------------------------------------------
+		try {
+			fnp_info_send_edit.setText(x.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// --------------------------------------------------------
+		udp_send_times = 0;
+		fnp_host_send_times.setText(udp_send_times+"");
 		// --------------------------------------------------------
 	}
 
 	private static String ips = "";
 	private static int prt = 9527;
 	private static long idl = 9988;
+	private static long updSendTime = System.currentTimeMillis();
+	private static int udp_send_times = 0;
 
 	public static void UDP_send_data() {
 		try {
@@ -194,8 +217,11 @@ public class MainActivity extends Activity {
 			BBK_Tool_Net.UdpSend(ips, prt, x.data);
 			tcpDataSend();
 			fnp_info_receive_txt.setText(bytes2hex(x.data));
+			udp_send_times++;
+			fnp_host_send_times.setText(udp_send_times+"");
 			// --------------------------------------------------------
 			myGpsUpd.AddGps(gps.gm.g);
+			updSendTime = System.currentTimeMillis();
 			// --------------------------------------------------------
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
@@ -210,7 +236,11 @@ public class MainActivity extends Activity {
 
 	@Override
 	protected void onDestroy() {
+		// ----------------------------------------------------
 		gps.GpsClose();
+		// ----------------------------------------------------
+		TwinkHandler.removeCallbacks(TwinkRunnable); // 停止Timer
+		// ----------------------------------------------------
 		super.onDestroy();
 	}
 
@@ -279,7 +309,8 @@ public class MainActivity extends Activity {
 		fnp_host_ip_edit.setEnabled(EditLock);
 		fnp_host_pt_edit.setEnabled(EditLock);
 		fnp_host_auto_ckbox.setEnabled(EditLock);
-		// fnp_host_send_btn.setEnabled(EditLock);
+		fnp_host_force_ckbox.setEnabled(EditLock);
+		//fnp_host_send_btn.setEnabled(EditLock);
 		fnp_info_receive_txt.setEnabled(EditLock);
 	}
 
@@ -337,6 +368,7 @@ public class MainActivity extends Activity {
 
 	private void tcpRun() {
 		try {
+			forceUDPSend();
 			myGpsUpd.GpsUpRunThread();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -357,7 +389,7 @@ public class MainActivity extends Activity {
 	// ========================================================================================
 	// ========================================================================================
 	// ========================================================================================
-
+	
 	// ====================================================================
 	// ====================================================================
 	// ====================================================================
@@ -372,10 +404,25 @@ public class MainActivity extends Activity {
 			e.printStackTrace();
 		}
 	}
-	private static void tcpDataSend(){
+
+	private static void tcpDataSend() {
 		tcp.send_Date(x.data, "");
 	}
 	// ====================================================================
 	// ====================================================================
 	// ====================================================================
+
+	private void forceUDPSend() {
+		// ----------------------------------------------------
+		if (!fnp_host_force_ckbox.isChecked())
+			return;
+		if (System.currentTimeMillis() - updSendTime < 1500)
+			return;
+		// ----------------------------------------------------
+		UDP_send_data();
+		// ----------------------------------------------------
+	}
+	// =========================================================================================
+	// =========================================================================================
+	// =========================================================================================
 }

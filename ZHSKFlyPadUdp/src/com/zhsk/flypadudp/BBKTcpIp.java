@@ -43,11 +43,9 @@ public class BBKTcpIp {
 
 			try {
 				s = new Socket(IP, Port);
-				// ��ȡҪ���͵��ַ���
 				d.s("s=" + s);
 
 				DataOutputStream dos = new DataOutputStream(s.getOutputStream());
-				// ���ַ�������UTF-8�ֽ�����ʽ���䡣�ȴ��䳤�ȣ��ٴ����ֽ����ݡ�
 				
 				if(data!=null){
 					dos.write(data);
@@ -66,7 +64,7 @@ public class BBKTcpIp {
 				hd.post(new Runnable() {
 					@Override
 					public void run() {
-						d.s("���ͳɹ�!");
+						d.s("");
 					}
 				});
 
@@ -74,7 +72,7 @@ public class BBKTcpIp {
 				hd.post(new Runnable() {
 					@Override
 					public void run() {
-						d.s("���ͳ�ʧ�ܣ�");
+						d.s("");
 					}
 				});
 
