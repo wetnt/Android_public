@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import com.zhsk.bbktool.BBK_Tool_Byte;
+
 import android.annotation.SuppressLint;
 import android.location.GpsSatellite;
 import android.location.GpsStatus;
@@ -44,7 +46,7 @@ public class BBKGpsMath {
 	public GPS g = new GPS();
 
 	// ---------------------------------------------------------------
-	public class GPS {
+	public static class GPS {
 		// -----------------------------------------
 		public boolean K;// 是否定位
 		public boolean R;// 是否合理移动
@@ -79,7 +81,6 @@ public class BBKGpsMath {
 		public String vs;// 速度
 		// -----------------------------------------
 	}
-
 	public void GpsFirst() {
 		// ----------------------------------------------------
 		g.K = false;

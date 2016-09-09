@@ -1,29 +1,15 @@
 package net;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
 import java.net.SocketAddress;
 import java.net.UnknownHostException;
 
 import com.zhsk.bbktool.d;
 
-/**
- * 服务器端程序
- * 
- * @author ccna_zhang
- * 
- */
-public class Receiver {
-
+public class Receiver2 {
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		//-----------------------------------------------
@@ -51,6 +37,7 @@ public class Receiver {
 				socket.receive(packet); //通过套接字接收数据
 				String getMsg = new String(buf, 0, packet.getLength());
 				System.out.println("客户端发送的数据为：" + getMsg);
+				BBKNetUDP.bufExp(buf);
 				//-----------------------------------------------
 				//从服务器返回给客户端数据  
 				sendAddress = packet.getSocketAddress();
@@ -82,33 +69,8 @@ public class Receiver {
 			e.printStackTrace();
 		}
 	}
+	
+	
 
-	public static final int PORT = 8080;
-
-	public static void myServer(String[] args) throws IOException {
-		ServerSocket s = new ServerSocket(PORT);
-		System.out.println("Started:" + s);
-		try {
-			Socket socket = s.accept();
-			try {
-				System.out.println("连接被接受" + socket);
-				BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-				PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
-				while (true) {
-					String str = in.readLine();
-					if (str.endsWith("END"))
-						break;
-					System.out.println("Echoing: " + str);
-					out.println(str);
-				}
-			} catch (Exception e) {
-				System.out.println(e.toString());
-			} finally {
-				System.out.println("closing ...");
-				socket.close();
-			}
-		} finally {
-			s.close();
-		}
-	}
+	
 }

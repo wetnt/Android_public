@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import bbk.map.gps.BBKGps;
 import bbk.net.abc.BBKNetGpsUpd;
+import bbk.net.abc.BBKNetUDP;
 
 public class MainActivity extends Activity {
 
@@ -209,12 +210,13 @@ public class MainActivity extends Activity {
 	private static long idl = 9988;
 	private static long updSendTime = System.currentTimeMillis();
 	private static int udp_send_times = 0;
-
+	
 	public static void UDP_send_data() {
 		try {
 			// --------------------------------------------------------
 			x.toBytes();
 			BBK_Tool_Net.UdpSend(ips, prt, x.data);
+			BBK_Tool_Net.UdpSend(ips, 38888, BBKNetUDP.toBytes(10000,gps.gm.g));
 			tcpDataSend();
 			fnp_info_receive_txt.setText(bytes2hex(x.data));
 			udp_send_times++;

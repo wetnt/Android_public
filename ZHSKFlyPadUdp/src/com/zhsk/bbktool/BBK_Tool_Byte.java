@@ -1,47 +1,11 @@
-package bbk.gps.udp;
+package com.zhsk.bbktool;
 
-public class BBKGpsType {
-
-	public long i = 0; // 8 唯一标识
-	public double w = 0; // 8 纬度
-	public double j = 0; // 8 经度
-	public double h = 0; // 8 高度
-	public double v = 0; // 4 速度
-	public double f = 0; // 8 方位
-
-	byte[] data = new byte[125];// 8*10+4*10+1*5=125
-	private static final String rn = "\r\n";
-
-	public BBKGpsType() {
-	}
-
-	public byte[] toBytes() {
-		putLong(data, i, 60); // long4唯一标识
-		putDouble(data, w, 0); // double8 纬度
-		putDouble(data, j, 16);// double8 经度	
-		putDouble(data, h, 8); // double8 高度	
-		putDouble(data, f, 40);// double8 方位
-		putDouble(data, v, 48); // float4 速度
-		return data;
-	}
-
-	public String toString() {
-		// --------------------------------------------------------
-		String s = "";
-		// --------------------------------------------------------
-		s += "标识\t" + i + rn; // 唯一标识
-		// --------------------------------------------------------
-		s += "纬度\t" + w + rn;// 纬度
-		s += "经度\t" + j + rn;// 经度
-		s += "高度\t" + h + rn;// 高度
-		s += "速度\t" + v + rn; // 速度
-		s += "方向\t" + f + rn; // 方向
-		// --------------------------------------------------------
-		return s;
-	}
+public class BBK_Tool_Byte {
 
 	// =============================================================
 	// =============================================================
+	//http://blog.csdn.net/tungkee/article/details/7549285
+	//新的回头改
 	// =============================================================
 	// 1.整型
 	// 类型 存储需求 bit数 取值范围 备注
@@ -62,7 +26,14 @@ public class BBKGpsType {
 	// =============================================================
 	// =============================================================
 	// =============================================================
-	public void putInt(byte[] bb, int num, int index) {
+	public static void putBoolean(byte[] bb, boolean num, int index) {
+		bb[index + 0] = (byte) (num ? 1 : 0);
+		//		bb[index + 1] = 0;
+		//		bb[index + 2] = 0;
+		//		bb[index + 3] = 0;
+	}
+
+	public static void putInt(byte[] bb, int num, int index) {
 		byte[] result = new byte[4];
 		result[0] = (byte) (num >>> 24);
 		result[1] = (byte) (num >>> 16);
@@ -74,7 +45,7 @@ public class BBKGpsType {
 		bb[index + 3] = result[0];
 	}
 
-	public void putLong(byte[] bb, long num, int index) {
+	public static void putLong4(byte[] bb, long num, int index) {
 		byte[] result = new byte[4];
 		result[0] = (byte) (num >>> 24);
 		result[1] = (byte) (num >>> 16);
@@ -86,7 +57,7 @@ public class BBKGpsType {
 		bb[index + 3] = result[0];
 	}
 
-	public void putFloat(byte[] bb, float x, int index) {
+	public static void putFloat(byte[] bb, float x, int index) {
 		byte[] result = new byte[4];
 		int l = Float.floatToIntBits(x);
 		for (int i = 0; i < 4; i++) {
@@ -99,7 +70,7 @@ public class BBKGpsType {
 		bb[index + 3] = result[0];
 	}
 
-	public void putDouble(byte[] bb, double x, int index) {
+	public static void putDouble(byte[] bb, double x, int index) {
 		byte[] output = new byte[8];
 		long lng = Double.doubleToLongBits(x);
 		for (int i = 0; i < 8; i++)
@@ -114,7 +85,64 @@ public class BBKGpsType {
 		bb[index + 6] = output[1];
 		bb[index + 7] = output[0];
 	}
+
 	// =============================================================
 	// =============================================================
 	// =============================================================
+	public static boolean getBoolean(byte[] b, int s) {
+		return b[s + 0] == 1;
+	}
+
+	public static int getInt(byte[] b, int s) {
+		return (int) (//
+		(((b[s + 3] & 0xff) << 24)//
+				| ((b[s + 2] & 0xff) << 16) //
+				| ((b[s + 1] & 0xff) << 8) //
+				| ((b[s + 0] & 0xff) << 0))//
+		);
+	}
+
+	public static double getDouble(byte[] arr, int s) {
+		long value = 0;
+		for (int i = 0; i < 8; i++) {
+			value |= ((long) (arr[s + i] & 0xff)) << (8 * i);
+		}
+		return Double.longBitsToDouble(value);
+	}
+
+	public static long getLong4(byte[] b, int s) {
+		long l = 0;
+		l = b[s + 0];
+		l |= ((long) b[s + 1] << 8);
+		l |= ((long) b[s + 2] << 16);
+		l |= ((long) b[s + 3] << 24);
+		return l;
+	}
+
+	public static void putLong8(byte[] bb, long x, int index) {
+		bb[index + 7] = (byte) (x >> 56);
+		bb[index + 6] = (byte) (x >> 48);
+		bb[index + 5] = (byte) (x >> 40);
+		bb[index + 4] = (byte) (x >> 32);
+		bb[index + 3] = (byte) (x >> 24);
+		bb[index + 2] = (byte) (x >> 16);
+		bb[index + 1] = (byte) (x >> 8);
+		bb[index + 0] = (byte) (x >> 0);
+	}
+
+	public static long getLong8(byte[] bb, int index) {
+		return ((((long) bb[index + 7] & 0xff) << 56) //
+				| (((long) bb[index + 6] & 0xff) << 48) //
+				| (((long) bb[index + 5] & 0xff) << 40) //
+				| (((long) bb[index + 4] & 0xff) << 32) //
+				| (((long) bb[index + 3] & 0xff) << 24) //
+				| (((long) bb[index + 2] & 0xff) << 16) //
+				| (((long) bb[index + 1] & 0xff) << 8) //
+				| (((long) bb[index + 0] & 0xff) << 0)//
+		);
+	}
+	// =============================================================
+	// =============================================================
+	// =============================================================
+
 }
