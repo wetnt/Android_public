@@ -31,10 +31,25 @@ public class BBKNetUDP {
 		return data;
 	}
 
-	public static String toString(long id, GPS g) {
+	public static String toUdpString(long id, GPS g) {
 		String s = "";
-		s += id + "\r\n";
-		s += tp + "\r\n";
+		s += id + ",";
+		s += tp + ",";
+		s += g.K ? "1" + "," : "0" + ",";
+		s += g.w + ",";
+		s += g.j + ",";
+		s += g.h + ",";
+		s += g.v + ",";
+		s += g.f + ",";
+		s += g.r + ",";
+		s += g.t.getTime();
+		return s;
+	}
+
+	public static String toLogString(long id, GPS g) {
+		String s = "";
+		s += "id=" + id + ",";//+ "\r\n";
+		s += "tp=" + tp + ",";//+ "\r\n";
 		s += "k=" + g.K + "\r\n";
 		s += "w=" + g.w + "\r\n";
 		s += "j=" + g.j + "\r\n";

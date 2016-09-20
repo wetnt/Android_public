@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:gravity="center"
-            android:text="实时状态" />
+            android:text="状态" />
 
         <TextView
             android:id="@+id/fnp_info_txt"
@@ -50,7 +50,7 @@
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:gravity="center"
-            android:text="本机标识" />
+            android:text="标识" />
 
         <EditText
             android:id="@+id/fnp_host_id_edit"
@@ -59,7 +59,7 @@
             android:layout_weight="3"
             android:background="@drawable/bg_edittext"
             android:gravity="left|center"
-            android:text="999888" />
+            android:text="10001" />
     </LinearLayout>
 
     <LinearLayout
@@ -74,7 +74,7 @@
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:gravity="center"
-            android:text="目标主机" />
+            android:text="主机" />
 
         <EditText
             android:id="@+id/fnp_host_ip_edit"
@@ -83,22 +83,14 @@
             android:layout_weight="3"
             android:background="@drawable/bg_edittext"
             android:gravity="left|center"
-            android:text="211.157.174.242" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:gravity="center"
-        android:orientation="horizontal" >
+            android:text="boboking.jios.org" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:gravity="center"
-            android:text="目标端口" />
+            android:text="端口" />
 
         <EditText
             android:id="@+id/fnp_host_port_edit"
@@ -139,20 +131,6 @@
                 android:gravity="left|center"
                 android:text="0" />
 
-            <CheckBox
-                android:id="@+id/fnp_host_force_ckbox"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:checked="true"
-                android:text="强制" />
-
-            <CheckBox
-                android:id="@+id/fnp_host_auto_ckbox"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:checked="true"
-                android:text="自动" />
-
             <Button
                 android:id="@+id/fnp_host_send_btn"
                 android:layout_width="wrap_content"
@@ -161,11 +139,43 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|center" >
+
+            <CheckBox
+                android:id="@+id/fnp_host_byte_ckbox"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Byte" />
+
+            <CheckBox
+                android:id="@+id/fnp_host_force_ckbox"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="强制" />
+
+            <CheckBox
+                android:id="@+id/fnp_host_move_ckbox"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:checked="true"
+                android:text="Move" />
+
+            <CheckBox
+                android:id="@+id/fnp_host_auto_ckbox"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:checked="true"
+                android:text="自动" />
+        </LinearLayout>
+
         <EditText
             android:id="@+id/fnp_info_send_edit"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:background="@drawable/bg_edittext"
             android:gravity="top|left"
             android:singleLine="false"

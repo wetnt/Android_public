@@ -8,6 +8,13 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.provider.Settings;
+
 public class BBK_Tool_Net {
 
 	// UTF-8、ISO-8859-1、GBK
@@ -51,7 +58,8 @@ public class BBK_Tool_Net {
 		}
 	}
 
-	public static void UdpSend(final String _localHost, final int server_port, final String message, charsetNameType t) {
+	public static void UdpSend(final String _localHost, final int server_port, final String message,
+			charsetNameType t) {
 		// --------------------------------------------------------
 		byte[] messageByte = null;
 		try {
@@ -65,22 +73,17 @@ public class BBK_Tool_Net {
 		// --------------------------------------------------------
 	}
 
-	public final static int PORT_Max = 65500;//65535
+	public final static int PORT_Max = 65500;// 65535
+	public static Context ctx = null;
+
+	public static void initNet(Context _ctx) {
+		ctx = _ctx;
+	}
 
 	public static void UdpSend(final String _localHost, final int server_port, final byte[] messageByte) {
 		// --------------------------------------------------------
-		if (_localHost.length() < 5) {
-			d.m("IPHost Error!");
+		if (!CheckNetworkState(ctx))
 			return;
-		}
-		if (server_port < 10) {
-			d.m("Port Error!");
-			return;
-		}
-		if (messageByte.length < 1) {
-			d.m("Message Error!");
-			return;
-		}
 		// --------------------------------------------------------
 		Runnable runnable = new Runnable() {
 			@Override
@@ -91,12 +94,14 @@ public class BBK_Tool_Net {
 					server_ip = InetAddress.getByName(_localHost);
 				} catch (UnknownHostException e) {
 					e.printStackTrace();
+					return;
 				}
 				DatagramSocket socket = null;
 				try {
 					socket = new DatagramSocket();
 				} catch (SocketException e1) {
 					e1.printStackTrace();
+					return;
 				}
 				// --------------------------------------------------------
 				int xPort = server_port > PORT_Max ? PORT_Max : server_port;
@@ -112,5 +117,34 @@ public class BBK_Tool_Net {
 		};
 		new Thread(runnable).start();
 		// --------------------------------------------------------
+	}
+
+	private static boolean CheckNetworkState(final Context ctx) {
+		boolean flag = false;
+		ConnectivityManager manager = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
+		if (manager.getActiveNetworkInfo() != null) {
+			flag = manager.getActiveNetworkInfo().isAvailable();
+		}
+		if (!flag) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
+			builder.setIcon(android.R.drawable.ic_dialog_alert);
+			builder.setTitle("Network not avaliable");//
+			builder.setMessage("Current network is not avaliable, set it?");//
+			builder.setPositiveButton("Setting", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					ctx.startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS)); // 直接进入手机中的wifi网络设置界面
+				}
+			});
+			builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.cancel();
+				}
+			});
+			builder.create();
+			builder.show();
+		}
+		return flag;
 	}
 }

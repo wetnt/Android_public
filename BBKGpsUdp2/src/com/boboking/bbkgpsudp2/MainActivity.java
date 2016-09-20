@@ -44,7 +44,7 @@ public class MainActivity extends Activity {
 	private static TextView fnp_info_txt;
 	private static TextView fnp_host_send_times;
 	private Button fnp_gpsopen_btn, fnp_host_send_btn;
-	private static CheckBox fnp_host_auto_ckbox, fnp_host_force_ckbox;
+	private static CheckBox fnp_host_auto_ckbox, fnp_host_force_ckbox, fnp_host_byte_ckbox, fnp_host_move_ckbox;
 
 	private static EditText fnp_host_id_edit, fnp_host_ip_edit, fnp_host_pt_edit;
 	private static EditText fnp_info_send_edit, fnp_info_receive_txt;
@@ -60,8 +60,10 @@ public class MainActivity extends Activity {
 		// --------------------------------------------------------
 		fnp_host_send_times = (TextView) findViewById(R.id.fnp_host_send_times);
 		fnp_host_send_btn = (Button) findViewById(R.id.fnp_host_send_btn);
-		fnp_host_auto_ckbox = (CheckBox) findViewById(R.id.fnp_host_auto_ckbox);
 		fnp_host_force_ckbox = (CheckBox) findViewById(R.id.fnp_host_force_ckbox);
+		fnp_host_auto_ckbox = (CheckBox) findViewById(R.id.fnp_host_auto_ckbox);
+		fnp_host_byte_ckbox = (CheckBox) findViewById(R.id.fnp_host_byte_ckbox);
+		fnp_host_move_ckbox = (CheckBox) findViewById(R.id.fnp_host_move_ckbox);
 		// --------------------------------------------------------
 		fnp_info_send_edit = (EditText) findViewById(R.id.fnp_info_send_edit);
 		fnp_info_receive_txt = (EditText) findViewById(R.id.fnp_info_receive_txt);
@@ -121,6 +123,7 @@ public class MainActivity extends Activity {
 			}
 		});
 		// --------------------------------------------------------
+		BBK_Tool_Net.initNet(MainActivity.this);
 		EditLock_Turn();
 		forceInit();
 		// --------------------------------------------------------
@@ -133,7 +136,7 @@ public class MainActivity extends Activity {
 			if (v == fnp_gpsopen_btn) {
 				// gps.GpsOpen();
 			} else if (v == fnp_host_send_btn) {
-				UDP_send_data();
+				UDP_send_data(true);
 			}
 		}
 	};
@@ -151,22 +154,20 @@ public class MainActivity extends Activity {
 		}
 		// --------------------------------------------------------
 		try {
-			fnp_info_send_edit.setText(BBKNetUDP.toString(idl, gps.gm.g));
+			fnp_info_send_edit.setText(BBKNetUDP.toLogString(idl, gps.gm.g));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		// --------------------------------------------------------
 		if (fnp_host_auto_ckbox.isChecked())
-			UDP_send_data();
+			UDP_send_data(false);
 		// --------------------------------------------------------
 	}
-
-
 
 	private static void xIDchange() {
 		// --------------------------------------------------------
 		udp_send_times = 0;
-		fnp_host_send_times.setText(udp_send_times+"");
+		fnp_host_send_times.setText(udp_send_times + "");
 		// --------------------------------------------------------
 	}
 
@@ -175,14 +176,21 @@ public class MainActivity extends Activity {
 	private static long idl = 10000;
 	private static long updSendTime = System.currentTimeMillis();
 	private static int udp_send_times = 0;
-	
-	public static void UDP_send_data() {
+
+	public static void UDP_send_data(boolean force) {
 		try {
 			// --------------------------------------------------------
-			BBK_Tool_Net.UdpSend(ips, prt, BBKNetUDP.toBytes(idl,gps.gm.g));
+			if (!force && fnp_host_move_ckbox.isChecked() && !gps.gm.g.R)
+				return;
+			// --------------------------------------------------------
+			if (fnp_host_byte_ckbox.isChecked()) {
+				BBK_Tool_Net.UdpSend(ips, prt, BBKNetUDP.toBytes(idl, gps.gm.g));
+			} else {
+				BBK_Tool_Net.UdpSend(ips, prt, BBKNetUDP.toUdpString(idl, gps.gm.g).getBytes());
+			}
 			// --------------------------------------------------------
 			udp_send_times++;
-			fnp_host_send_times.setText(udp_send_times+"");
+			fnp_host_send_times.setText(udp_send_times + "");
 			updSendTime = System.currentTimeMillis();
 			// --------------------------------------------------------
 		} catch (NumberFormatException e) {
@@ -201,7 +209,7 @@ public class MainActivity extends Activity {
 		// ----------------------------------------------------
 		gps.GpsClose();
 		// ----------------------------------------------------
-		TwinkHandler.removeCallbacks(TwinkRunnable); // Í£Ö¹Timer
+		TwinkHandler.removeCallbacks(TwinkRunnable); // åœæ­¢Timer
 		// ----------------------------------------------------
 		super.onDestroy();
 	}
@@ -228,9 +236,9 @@ public class MainActivity extends Activity {
 
 	private void WorkSetting_read() {
 		// --------------------------------------------------------
-		idl = BBK_Tool_Setting.Read_Long(KEY_IDSS, 999888);
-		ips = BBK_Tool_Setting.Read_String(KEY_IPSS, "211.157.174.242");
-		prt = (int) BBK_Tool_Setting.Read_Long(KEY_PORT, 32838);
+		idl = BBK_Tool_Setting.Read_Long(KEY_IDSS, 10009);
+		ips = BBK_Tool_Setting.Read_String(KEY_IPSS, "boboking.jios.org");
+		prt = (int) BBK_Tool_Setting.Read_Long(KEY_PORT, 38888);
 		prt = prt > BBK_Tool_Net.PORT_Max ? BBK_Tool_Net.PORT_Max : prt;
 		// --------------------------------------------------------
 		d.s(idl + " \t" + ips + " \t" + prt);
@@ -272,8 +280,10 @@ public class MainActivity extends Activity {
 		fnp_host_pt_edit.setEnabled(EditLock);
 		fnp_host_auto_ckbox.setEnabled(EditLock);
 		fnp_host_force_ckbox.setEnabled(EditLock);
-		//fnp_host_send_btn.setEnabled(EditLock);
 		fnp_info_receive_txt.setEnabled(EditLock);
+		fnp_host_byte_ckbox.setEnabled(EditLock);
+		fnp_host_move_ckbox.setEnabled(EditLock);
+		// fnp_host_send_btn.setEnabled(EditLock);
 	}
 
 	// ========================================================================================
@@ -281,15 +291,15 @@ public class MainActivity extends Activity {
 	// ========================================================================================
 	protected void dialog() {
 		AlertDialog.Builder builder = new Builder(MainActivity.this);
-		builder.setMessage("È·¶¨ÒªÍË³öÂğ?");
-		builder.setTitle("ÌáÊ¾");
-		builder.setPositiveButton("È·ÈÏ", new android.content.DialogInterface.OnClickListener() {
+		builder.setMessage("ç¡®å®šè¦é€€å‡ºå—?");
+		builder.setTitle("æç¤º");
+		builder.setPositiveButton("ç¡®è®¤", new android.content.DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.dismiss();
 				MainActivity.this.finish();
 			}
 		});
-		builder.setNegativeButton("È¡Ïû", new android.content.DialogInterface.OnClickListener() {
+		builder.setNegativeButton("å–æ¶ˆ", new android.content.DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.dismiss();
 			}
@@ -299,7 +309,7 @@ public class MainActivity extends Activity {
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) { // ¼à¿Ø/À¹½Ø/ÆÁ±Î·µ»Ø¼ü
+		if (keyCode == KeyEvent.KEYCODE_BACK) { // ç›‘æ§/æ‹¦æˆª/å±è”½è¿”å›é”®
 			// dialog();
 			return false;
 		} else if (keyCode == KeyEvent.KEYCODE_MENU) {
@@ -312,7 +322,7 @@ public class MainActivity extends Activity {
 		return super.onKeyDown(keyCode, event);
 	}
 
-	// À¹½Ø/ÆÁ±ÎÏµÍ³Home¼ü
+	// æ‹¦æˆª/å±è”½ç³»ç»ŸHomeé”®
 	// public void onAttachedToWindow() {
 	// this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
 	// super.onAttachedToWindow();
@@ -320,11 +330,12 @@ public class MainActivity extends Activity {
 	// ========================================================================================
 	// ========================================================================================
 	// ========================================================================================
-	public int GpsUpdTm = 5;// 5s¼ä¸ôÉÏ´«
+	public int GpsUpdTm = 5;// 5sé—´éš”ä¸Šä¼ 
 
 	private void forceInit() {
-		TwinkHandler.postDelayed(TwinkRunnable, GpsUpdTm * 1000); // ¿ªÊ¼Timer
+		TwinkHandler.postDelayed(TwinkRunnable, GpsUpdTm * 1000); // å¼€å§‹Timer
 	}
+
 	private Handler TwinkHandler = new Handler();
 	private Runnable TwinkRunnable = new Runnable() {
 		public void run() {
@@ -334,6 +345,7 @@ public class MainActivity extends Activity {
 			// ------------------------------------------------------
 		}
 	};
+
 	private void forceUDPSend() {
 		// ----------------------------------------------------
 		if (!fnp_host_force_ckbox.isChecked())
@@ -341,7 +353,7 @@ public class MainActivity extends Activity {
 		if (System.currentTimeMillis() - updSendTime < 1500)
 			return;
 		// ----------------------------------------------------
-		UDP_send_data();
+		UDP_send_data(true);
 		// ----------------------------------------------------
 	}
 	// =========================================================================================
