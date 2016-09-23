@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.boboking.bbkgpsudp2"
+    package="com.boboking.bbkgpsudp"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -8,8 +8,7 @@
         android:minSdkVersion="15"
         android:targetSdkVersion="15" />
     
-        
-        <!-- 允许改变设置 -->
+    <!-- 允许改变设置 -->
     <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
     <!-- 粗略定位授权 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />

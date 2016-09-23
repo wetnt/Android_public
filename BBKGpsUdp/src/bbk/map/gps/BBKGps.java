@@ -1,6 +1,6 @@
 ﻿package bbk.map.gps;
 
-import com.boboking.bbkgpsudp2.MainActivity;
+import com.boboking.bbkgpsudp.MainActivity;
 
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -163,7 +163,7 @@ public class BBKGps {
 			// ----------------------------------------------------
 			case GpsStatus.GPS_EVENT_FIRST_FIX:// 第一次定位
 				// BBKDebug.ddd("第一次定位");
-				gm.g.K =true;
+				gm.g.K = true;
 				break;
 			// ----------------------------------------------------
 			case GpsStatus.GPS_EVENT_SATELLITE_STATUS:// 卫星状态改变

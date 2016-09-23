@@ -1,6 +1,5 @@
-package com.boboking.bbkgpsudp2;
+package com.boboking.bbkgpsudp;
 
-import com.boboking.bbkgpsudp.BBKNetUDP;
 import com.zhsk.bbktool.BBK_Tool_Net;
 import com.zhsk.bbktool.BBK_Tool_Setting;
 import com.zhsk.bbktool.d;
@@ -209,7 +208,7 @@ public class MainActivity extends Activity {
 		// ----------------------------------------------------
 		gps.GpsClose();
 		// ----------------------------------------------------
-		TwinkHandler.removeCallbacks(TwinkRunnable); // åœæ­¢Timer
+		TwinkHandler.removeCallbacks(TwinkRunnable); // Í£Ö¹Timer
 		// ----------------------------------------------------
 		super.onDestroy();
 	}
@@ -291,15 +290,15 @@ public class MainActivity extends Activity {
 	// ========================================================================================
 	protected void dialog() {
 		AlertDialog.Builder builder = new Builder(MainActivity.this);
-		builder.setMessage("ç¡®å®šè¦é€€å‡ºå—?");
-		builder.setTitle("æç¤º");
-		builder.setPositiveButton("ç¡®è®¤", new android.content.DialogInterface.OnClickListener() {
+		builder.setMessage("È·¶¨ÒªÍË³öÂğ?");
+		builder.setTitle("ÌáÊ¾");
+		builder.setPositiveButton("È·ÈÏ", new android.content.DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.dismiss();
 				MainActivity.this.finish();
 			}
 		});
-		builder.setNegativeButton("å–æ¶ˆ", new android.content.DialogInterface.OnClickListener() {
+		builder.setNegativeButton("È¡Ïû", new android.content.DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.dismiss();
 			}
@@ -309,7 +308,7 @@ public class MainActivity extends Activity {
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) { // ç›‘æ§/æ‹¦æˆª/å±è”½è¿”å›é”®
+		if (keyCode == KeyEvent.KEYCODE_BACK) { // ¼à¿Ø/À¹½Ø/ÆÁ±Î·µ»Ø¼ü
 			// dialog();
 			return false;
 		} else if (keyCode == KeyEvent.KEYCODE_MENU) {
@@ -322,7 +321,7 @@ public class MainActivity extends Activity {
 		return super.onKeyDown(keyCode, event);
 	}
 
-	// æ‹¦æˆª/å±è”½ç³»ç»ŸHomeé”®
+	// À¹½Ø/ÆÁ±ÎÏµÍ³Home¼ü
 	// public void onAttachedToWindow() {
 	// this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
 	// super.onAttachedToWindow();
@@ -330,10 +329,10 @@ public class MainActivity extends Activity {
 	// ========================================================================================
 	// ========================================================================================
 	// ========================================================================================
-	public int GpsUpdTm = 5;// 5sé—´éš”ä¸Šä¼ 
+	public int GpsUpdTm = 5;// 5s¼ä¸ôÉÏ´«
 
 	private void forceInit() {
-		TwinkHandler.postDelayed(TwinkRunnable, GpsUpdTm * 1000); // å¼€å§‹Timer
+		TwinkHandler.postDelayed(TwinkRunnable, GpsUpdTm * 1000); // ¿ªÊ¼Timer
 	}
 
 	private Handler TwinkHandler = new Handler();
