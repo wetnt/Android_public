@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -71,6 +72,12 @@ public class MainActivity extends Activity {
 		fnp_host_send_btn.setOnClickListener(clickWork);
 		// --------------------------------------------------------
 		fnp_info_send_edit.setEnabled(false);
+		fnp_info_send_edit.setTypeface(Typeface.MONOSPACE);//设置字体  
+
+		//AssetManager mgr=getAssets();//得到AssetManager
+		//Typeface tf=Typeface.createFromAsset(mgr, "fonts/ttf.ttf");//根据路径得到Typeface
+
+		//textChat.setFont(SWTResourceManager.getFont("SimSun-ExtB", 14, SWT.NORMAL));
 		// --------------------------------------------------------
 		fnp_host_id_edit.addTextChangedListener(new TextWatcher() {
 			@Override

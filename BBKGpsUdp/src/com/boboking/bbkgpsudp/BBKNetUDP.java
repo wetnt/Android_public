@@ -51,13 +51,14 @@ public class BBKNetUDP {
 		s += "id=" + id + ",";//+ "\r\n";
 		s += "tp=" + tp + ",";//+ "\r\n";
 		s += "k=" + g.K + "\r\n";
-		s += "w=" + g.w + "\r\n";
+		s += "w= " + g.w + "\r\n";
 		s += "j=" + g.j + "\r\n";
 		s += "h=" + g.h + "\r\n";
 		s += "v=" + g.v + "\r\n";
 		s += "f=" + g.f + "\r\n";
 		s += "r=" + g.r + "\r\n";
 		s += "t=" + g.t.getTime() + "\r\n";
+		s += "m=" + g.m + "\r\n";
 		return s;
 	}
 

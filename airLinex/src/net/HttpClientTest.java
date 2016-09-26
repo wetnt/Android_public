@@ -36,6 +36,7 @@ import org.apache.http.util.EntityUtils;
   
 public class HttpClientTest {  
  
+	http://www.cnblogs.com/zhuawang/archive/2012/12/08/2809380.html
     public void jUnitTest() {  
         get();  
     }  

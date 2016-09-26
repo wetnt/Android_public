@@ -6,8 +6,6 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import com.zhsk.bbktool.BBK_Tool_Byte;
-
 import android.annotation.SuppressLint;
 import android.location.GpsSatellite;
 import android.location.GpsStatus;
@@ -24,13 +22,13 @@ public class BBKGpsMath {
 		g.w = getDouble(loc.getLatitude(), 6);// 纬度
 		g.j = getDouble(loc.getLongitude(), 6);// 经度
 		g.h = getDouble(loc.getAltitude(), 0);// 海拔
-		g.r = g.K ? (int)loc.getAccuracy() : 0;// 精度
+		g.r = g.K ? (int) loc.getAccuracy() : 0;// 精度
 		g.f = g.K ? getDouble(loc.getBearing(), 0) : 0;// 方位
 		g.v = g.K ? getDouble(loc.getSpeed() * 3.6, 1) : 0;// 速度
 		// -------------------------------------------------------------------
 		g.R = g.K ? GpsRuns() : false;
 		// -------------------------------------------------------------------
-		GpsInfos(0,0,0,false);
+		GpsInfos(0, 0, 0, false);
 		// -------------------------------------------------------------------
 	}
 
@@ -42,7 +40,8 @@ public class BBKGpsMath {
 	@SuppressLint("SimpleDateFormat")
 	private final SimpleDateFormat gpsTmFt = new SimpleDateFormat("HH:mm:ss");
 	// ---------------------------------------------------------------
-	private final double GpsMinR = 0.00001;// 记录轨迹点的最小范围
+	//private final double GpsMinR = 0.00001;// 记录轨迹点的最小范围
+	private final double GpsMinR = 0.010;//(公里) 记录轨迹点的最小范围
 	public GPS g = new GPS();
 
 	// ---------------------------------------------------------------
@@ -50,6 +49,7 @@ public class BBKGpsMath {
 		// -----------------------------------------
 		public boolean K;// 是否定位
 		public boolean R;// 是否合理移动
+		public double m;//漂移值
 		// -----------------------------------------
 		public Date t;// GPS时间
 		// -----------------------------------------
@@ -81,10 +81,12 @@ public class BBKGpsMath {
 		public String vs;// 速度
 		// -----------------------------------------
 	}
+
 	public void GpsFirst() {
 		// ----------------------------------------------------
 		g.K = false;
 		g.R = false;
+		g.m = 0;
 		// ----------------------------------------------------
 		g.t = new Date(System.currentTimeMillis());
 		g.ts = new Date(System.currentTimeMillis());
@@ -111,6 +113,7 @@ public class BBKGpsMath {
 		g.R = false;
 		g.v = 0;
 		g.r = 0;
+		g.m = 0;
 		// ----------------------------------------------------
 	}
 
@@ -167,14 +170,18 @@ public class BBKGpsMath {
 			g.lj = g.j;
 		}
 		// -----------------------------------------------------------------------
-		if (Math.abs(g.lw - g.w) < GpsMinR && Math.abs(g.lj - g.j) < GpsMinR)
-			return false;
+		//if (Math.abs(g.lw - g.w) < GpsMinR && Math.abs(g.lj - g.j) < GpsMinR)
+		//	return false;
 		// -----------------------------------------------------------------------
-		g.l += GetDistance(g.w, g.j, g.lw, g.lj);
-		g.l = getDouble(g.l, 3);
-		// -----------------------------------------------------------------------
+		g.m = GetDistance(g.w, g.j, g.lw, g.lj);
 		g.lw = g.w;
 		g.lj = g.j;
+		// -----------------------------------------------------------------------
+		if (g.m < GpsMinR)
+			return false;
+		// -----------------------------------------------------------------------
+		g.l += g.m;
+		g.l = getDouble(g.l, 3);
 		// -----------------------------------------------------------------------
 		// System.out.println("w=" + gps.w + " j=" + gps.j);
 		return true;
