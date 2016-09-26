@@ -44,7 +44,8 @@ public class MainActivity extends Activity {
 	private static TextView fnp_info_txt;
 	private static TextView fnp_host_send_times;
 	private Button fnp_gpsopen_btn, fnp_host_send_btn;
-	private static CheckBox fnp_host_auto_ckbox, fnp_host_force_ckbox, fnp_host_byte_ckbox, fnp_host_move_ckbox;
+	private static CheckBox fnp_host_auto_ckbox, fnp_host_force_ckbox, fnp_host_move_ckbox;
+	private static CheckBox fnp_host_char_ckbox, fnp_host_byte_ckbox;
 
 	private static EditText fnp_host_id_edit, fnp_host_ip_edit, fnp_host_pt_edit;
 	private static EditText fnp_info_send_edit, fnp_info_receive_txt;
@@ -62,8 +63,10 @@ public class MainActivity extends Activity {
 		fnp_host_send_btn = (Button) findViewById(R.id.fnp_host_send_btn);
 		fnp_host_force_ckbox = (CheckBox) findViewById(R.id.fnp_host_force_ckbox);
 		fnp_host_auto_ckbox = (CheckBox) findViewById(R.id.fnp_host_auto_ckbox);
-		fnp_host_byte_ckbox = (CheckBox) findViewById(R.id.fnp_host_byte_ckbox);
 		fnp_host_move_ckbox = (CheckBox) findViewById(R.id.fnp_host_move_ckbox);
+		// --------------------------------------------------------
+		fnp_host_char_ckbox = (CheckBox) findViewById(R.id.fnp_host_char_ckbox);
+		fnp_host_byte_ckbox = (CheckBox) findViewById(R.id.fnp_host_byte_ckbox);
 		// --------------------------------------------------------
 		fnp_info_send_edit = (EditText) findViewById(R.id.fnp_info_send_edit);
 		fnp_info_receive_txt = (EditText) findViewById(R.id.fnp_info_receive_txt);
@@ -73,10 +76,9 @@ public class MainActivity extends Activity {
 		// --------------------------------------------------------
 		fnp_info_send_edit.setEnabled(false);
 		fnp_info_send_edit.setTypeface(Typeface.MONOSPACE);//设置字体  
-
+		// --------------------------------------------------------
 		//AssetManager mgr=getAssets();//得到AssetManager
 		//Typeface tf=Typeface.createFromAsset(mgr, "fonts/ttf.ttf");//根据路径得到Typeface
-
 		//textChat.setFont(SWTResourceManager.getFont("SimSun-ExtB", 14, SWT.NORMAL));
 		// --------------------------------------------------------
 		fnp_host_id_edit.addTextChangedListener(new TextWatcher() {
@@ -142,7 +144,7 @@ public class MainActivity extends Activity {
 			if (v == fnp_gpsopen_btn) {
 				// gps.GpsOpen();
 			} else if (v == fnp_host_send_btn) {
-				UDP_send_data(true);
+				GPS_INFO_Send_Udp();
 			}
 		}
 	};
@@ -166,7 +168,7 @@ public class MainActivity extends Activity {
 		}
 		// --------------------------------------------------------
 		if (fnp_host_auto_ckbox.isChecked())
-			UDP_send_data(false);
+			Auto_GPS_Send_Udp();
 		// --------------------------------------------------------
 	}
 
@@ -183,21 +185,11 @@ public class MainActivity extends Activity {
 	private static long updSendTime = System.currentTimeMillis();
 	private static int udp_send_times = 0;
 
-	public static void UDP_send_data(boolean force) {
+	public static void Auto_GPS_Send_Udp() {
 		try {
 			// --------------------------------------------------------
-			if (!force && fnp_host_move_ckbox.isChecked() && !gps.gm.g.R)
+			if (fnp_host_move_ckbox.isChecked() && !gps.gm.g.R)
 				return;
-			// --------------------------------------------------------
-			if (fnp_host_byte_ckbox.isChecked()) {
-				BBK_Tool_Net.UdpSend(ips, prt, BBKNetUDP.toBytes(idl, gps.gm.g));
-			} else {
-				BBK_Tool_Net.UdpSend(ips, prt, BBKNetUDP.toUdpString(idl, gps.gm.g).getBytes());
-			}
-			// --------------------------------------------------------
-			udp_send_times++;
-			fnp_host_send_times.setText(udp_send_times + "");
-			updSendTime = System.currentTimeMillis();
 			// --------------------------------------------------------
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
@@ -287,9 +279,10 @@ public class MainActivity extends Activity {
 		fnp_host_auto_ckbox.setEnabled(EditLock);
 		fnp_host_force_ckbox.setEnabled(EditLock);
 		fnp_info_receive_txt.setEnabled(EditLock);
-		fnp_host_byte_ckbox.setEnabled(EditLock);
 		fnp_host_move_ckbox.setEnabled(EditLock);
 		// fnp_host_send_btn.setEnabled(EditLock);
+		fnp_host_byte_ckbox.setEnabled(EditLock);
+		fnp_host_char_ckbox.setEnabled(EditLock);
 	}
 
 	// ========================================================================================
@@ -359,8 +352,28 @@ public class MainActivity extends Activity {
 		if (System.currentTimeMillis() - updSendTime < 1500)
 			return;
 		// ----------------------------------------------------
-		UDP_send_data(true);
+		GPS_INFO_Send_Udp();
 		// ----------------------------------------------------
+	}
+
+	// =========================================================================================
+	// =========================================================================================
+	// =========================================================================================	
+	private void GPS_INFO_Send_Udp() {
+		try {
+			// --------------传输记次------------------------------------------
+			udp_send_times++;
+			fnp_host_send_times.setText(udp_send_times + "");
+			updSendTime = System.currentTimeMillis();
+			// --------------回传方式------------------------------------------
+			if (fnp_host_byte_ckbox.isChecked())
+				BBK_Tool_Net.UdpSend(ips, prt, BBKNetUDP.toBytes(idl, gps.gm.g));
+			if (fnp_host_char_ckbox.isChecked())
+				BBK_Tool_Net.UdpSend(ips, prt, BBKNetUDP.toUdpString(idl, gps.gm.g).getBytes());
+			// --------------------------------------------------------
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	// =========================================================================================
 	// =========================================================================================

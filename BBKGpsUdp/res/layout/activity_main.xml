@@ -145,10 +145,18 @@
             android:gravity="left|center" >
 
             <CheckBox
-                android:id="@+id/fnp_host_byte_ckbox"
+                android:id="@+id/fnp_host_auto_ckbox"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:text="Byte" />
+                android:checked="true"
+                android:text="自动" />
+
+            <CheckBox
+                android:id="@+id/fnp_host_move_ckbox"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:checked="true"
+                android:text="移动" />
 
             <CheckBox
                 android:id="@+id/fnp_host_force_ckbox"
@@ -157,18 +165,17 @@
                 android:text="强制" />
 
             <CheckBox
-                android:id="@+id/fnp_host_move_ckbox"
+                android:id="@+id/fnp_host_char_ckbox"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:checked="true"
-                android:text="Move" />
+                android:text="字符" />
 
             <CheckBox
-                android:id="@+id/fnp_host_auto_ckbox"
+                android:id="@+id/fnp_host_byte_ckbox"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:checked="true"
-                android:text="自动" />
+                android:text="Byte" />
         </LinearLayout>
 
         <EditText
