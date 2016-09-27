@@ -18,12 +18,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import bbk.map.gps.BBKGps;
+import bbk.map.gps.BBKGpsMath;
 
 public class MainActivity extends Activity {
 
@@ -49,6 +53,8 @@ public class MainActivity extends Activity {
 
 	private static EditText fnp_host_id_edit, fnp_host_ip_edit, fnp_host_pt_edit;
 	private static EditText fnp_info_send_edit, fnp_info_receive_txt;
+
+	private static Spinner fnp_host_send_mover;
 
 	private void ViewLoad() {
 		// --------------------------------------------------------
@@ -130,6 +136,24 @@ public class MainActivity extends Activity {
 				BBK_Tool_Setting.Save_Long(KEY_PORT, prt);
 			}
 		});
+
+		// --------------------------------------------------------
+		fnp_host_send_mover = (Spinner) findViewById(R.id.fnp_spinner);
+		fnp_host_send_mover.setOnItemSelectedListener(new OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				String[] radius = getResources().getStringArray(R.array.radius);
+				String rs = radius[position];
+				rs = rs.replace("m", "");
+				BBKGpsMath.GpsMinR = Double.parseDouble(rs) / 1000;
+				d.s("BBKGpsMath.GpsMinR=" + BBKGpsMath.GpsMinR);
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+
+			}
+		});
 		// --------------------------------------------------------
 		BBK_Tool_Net.initNet(MainActivity.this);
 		EditLock_Turn();
@@ -147,6 +171,7 @@ public class MainActivity extends Activity {
 				GPS_INFO_Send_Udp();
 			}
 		}
+
 	};
 	// ================================================================================
 
@@ -186,14 +211,9 @@ public class MainActivity extends Activity {
 	private static int udp_send_times = 0;
 
 	public static void Auto_GPS_Send_Udp() {
-		try {
-			// --------------------------------------------------------
-			if (fnp_host_move_ckbox.isChecked() && !gps.gm.g.R)
-				return;
-			// --------------------------------------------------------
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		}
+		if (fnp_host_move_ckbox.isChecked() && !gps.gm.g.R)
+			return;
+		GPS_INFO_Send_Udp();
 	}
 
 	Runnable runnable = new Runnable() {
@@ -359,8 +379,9 @@ public class MainActivity extends Activity {
 	// =========================================================================================
 	// =========================================================================================
 	// =========================================================================================	
-	private void GPS_INFO_Send_Udp() {
+	private static void GPS_INFO_Send_Udp() {
 		try {
+			d.s("GPS_INFO_Send_Udp");
 			// --------------´«Êä¼Ç´Î------------------------------------------
 			udp_send_times++;
 			fnp_host_send_times.setText(udp_send_times + "");
@@ -372,6 +393,7 @@ public class MainActivity extends Activity {
 				BBK_Tool_Net.UdpSend(ips, prt, BBKNetUDP.toUdpString(idl, gps.gm.g).getBytes());
 			// --------------------------------------------------------
 		} catch (Exception e) {
+			d.s("GPS_INFO_Send_Udp___err");
 			e.printStackTrace();
 		}
 	}

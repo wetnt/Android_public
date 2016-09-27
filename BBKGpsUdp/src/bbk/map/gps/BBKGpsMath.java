@@ -41,7 +41,7 @@ public class BBKGpsMath {
 	private final SimpleDateFormat gpsTmFt = new SimpleDateFormat("HH:mm:ss");
 	// ---------------------------------------------------------------
 	//private final double GpsMinR = 0.00001;// 记录轨迹点的最小范围
-	private final double GpsMinR = 0.010;//(公里) 记录轨迹点的最小范围
+	public static double GpsMinR = 0.010;//(公里) 记录轨迹点的最小范围
 	public GPS g = new GPS();
 
 	// ---------------------------------------------------------------
@@ -174,14 +174,15 @@ public class BBKGpsMath {
 		//	return false;
 		// -----------------------------------------------------------------------
 		g.m = GetDistance(g.w, g.j, g.lw, g.lj);
-		g.lw = g.w;
-		g.lj = g.j;
 		// -----------------------------------------------------------------------
 		if (g.m < GpsMinR)
 			return false;
 		// -----------------------------------------------------------------------
 		g.l += g.m;
 		g.l = getDouble(g.l, 3);
+		// -----------------------------------------------------------------------
+		g.lw = g.w;
+		g.lj = g.j;
 		// -----------------------------------------------------------------------
 		// System.out.println("w=" + gps.w + " j=" + gps.j);
 		return true;

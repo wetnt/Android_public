@@ -131,6 +131,14 @@
                 android:gravity="left|center"
                 android:text="0" />
 
+            <CheckBox
+                android:id="@+id/fnp_host_auto_ckbox"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_margin="5dp"
+                android:checked="true"
+                android:text="自动" />
+
             <Button
                 android:id="@+id/fnp_host_send_btn"
                 android:layout_width="wrap_content"
@@ -144,24 +152,32 @@
             android:layout_height="wrap_content"
             android:gravity="left|center" >
 
-            <CheckBox
-                android:id="@+id/fnp_host_auto_ckbox"
+            <Spinner
+                android:id="@+id/fnp_spinner"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:entries="@array/radius" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:checked="true"
-                android:text="自动" />
+                android:layout_marginRight="10dp"
+                android:gravity="left|center"
+                android:text="米" />
 
             <CheckBox
                 android:id="@+id/fnp_host_move_ckbox"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:checked="true"
+                android:singleLine="true"
                 android:text="移动" />
 
             <CheckBox
                 android:id="@+id/fnp_host_force_ckbox"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
+                android:singleLine="true"
                 android:text="强制" />
 
             <CheckBox
@@ -169,12 +185,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:checked="true"
+                android:singleLine="true"
                 android:text="字符" />
 
             <CheckBox
                 android:id="@+id/fnp_host_byte_ckbox"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
+                android:singleLine="true"
                 android:text="Byte" />
         </LinearLayout>
 
