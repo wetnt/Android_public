@@ -40,7 +40,7 @@ public class d {// BBKDebug
 			debugfile.delete();
 		} catch (IOException e) {
 			outPut("!!! bbt file Create Error !!!", true, false);
-		}// 测试创建文件
+		} // 测试创建文件
 			// ---------------------------------------------------------------------------------------
 	}
 
@@ -82,14 +82,14 @@ public class d {// BBKDebug
 	}
 
 	// ====================================================================================
-	public static void slist(String[] s ) {
+	public static void slist(String[] s) {
 		String str = "";
 		for (int i = 0; i < s.length; i++) {
 			str += s[i] + ",";
 		}
 		outPut(str + "", false, false);
 	}
-	
+
 	public static void slist(Float... array) {
 		String str = "";
 		List<Float> list = Arrays.asList(array);

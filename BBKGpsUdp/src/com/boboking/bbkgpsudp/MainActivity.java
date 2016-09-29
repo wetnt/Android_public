@@ -81,10 +81,10 @@ public class MainActivity extends Activity {
 		fnp_host_send_btn.setOnClickListener(clickWork);
 		// --------------------------------------------------------
 		fnp_info_send_edit.setEnabled(false);
-		fnp_info_send_edit.setTypeface(Typeface.MONOSPACE);//ÉèÖÃ×ÖÌå  
+		fnp_info_send_edit.setTypeface(Typeface.MONOSPACE);//è®¾ç½®å­—ä½“  
 		// --------------------------------------------------------
-		//AssetManager mgr=getAssets();//µÃµ½AssetManager
-		//Typeface tf=Typeface.createFromAsset(mgr, "fonts/ttf.ttf");//¸ù¾İÂ·¾¶µÃµ½Typeface
+		//AssetManager mgr=getAssets();//å¾—åˆ°AssetManager
+		//Typeface tf=Typeface.createFromAsset(mgr, "fonts/ttf.ttf");//æ ¹æ®è·¯å¾„å¾—åˆ°Typeface
 		//textChat.setFont(SWTResourceManager.getFont("SimSun-ExtB", 14, SWT.NORMAL));
 		// --------------------------------------------------------
 		fnp_host_id_edit.addTextChangedListener(new TextWatcher() {
@@ -227,7 +227,7 @@ public class MainActivity extends Activity {
 		// ----------------------------------------------------
 		gps.GpsClose();
 		// ----------------------------------------------------
-		TwinkHandler.removeCallbacks(TwinkRunnable); // Í£Ö¹Timer
+		TwinkHandler.removeCallbacks(TwinkRunnable); // åœæ­¢Timer
 		// ----------------------------------------------------
 		super.onDestroy();
 	}
@@ -310,15 +310,15 @@ public class MainActivity extends Activity {
 	// ========================================================================================
 	protected void dialog() {
 		AlertDialog.Builder builder = new Builder(MainActivity.this);
-		builder.setMessage("È·¶¨ÒªÍË³öÂğ?");
-		builder.setTitle("ÌáÊ¾");
-		builder.setPositiveButton("È·ÈÏ", new android.content.DialogInterface.OnClickListener() {
+		builder.setMessage("ç¡®å®šè¦é€€å‡ºå—?");
+		builder.setTitle("æç¤º");
+		builder.setPositiveButton("ç¡®è®¤", new android.content.DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.dismiss();
 				MainActivity.this.finish();
 			}
 		});
-		builder.setNegativeButton("È¡Ïû", new android.content.DialogInterface.OnClickListener() {
+		builder.setNegativeButton("å–æ¶ˆ", new android.content.DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.dismiss();
 			}
@@ -328,7 +328,7 @@ public class MainActivity extends Activity {
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) { // ¼à¿Ø/À¹½Ø/ÆÁ±Î·µ»Ø¼ü
+		if (keyCode == KeyEvent.KEYCODE_BACK) { // ç›‘æ§/æ‹¦æˆª/å±è”½è¿”å›é”®
 			// dialog();
 			return false;
 		} else if (keyCode == KeyEvent.KEYCODE_MENU) {
@@ -341,7 +341,7 @@ public class MainActivity extends Activity {
 		return super.onKeyDown(keyCode, event);
 	}
 
-	// À¹½Ø/ÆÁ±ÎÏµÍ³Home¼ü
+	// æ‹¦æˆª/å±è”½ç³»ç»ŸHomeé”®
 	// public void onAttachedToWindow() {
 	// this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
 	// super.onAttachedToWindow();
@@ -349,10 +349,10 @@ public class MainActivity extends Activity {
 	// ========================================================================================
 	// ========================================================================================
 	// ========================================================================================
-	public int GpsUpdTm = 5;// 5s¼ä¸ôÉÏ´«
+	public int GpsUpdTm = 5;// 5sé—´éš”ä¸Šä¼ 
 
 	private void forceInit() {
-		TwinkHandler.postDelayed(TwinkRunnable, GpsUpdTm * 1000); // ¿ªÊ¼Timer
+		TwinkHandler.postDelayed(TwinkRunnable, GpsUpdTm * 1000); // å¼€å§‹Timer
 	}
 
 	private Handler TwinkHandler = new Handler();
@@ -382,11 +382,11 @@ public class MainActivity extends Activity {
 	private static void GPS_INFO_Send_Udp() {
 		try {
 			d.s("GPS_INFO_Send_Udp");
-			// --------------´«Êä¼Ç´Î------------------------------------------
+			// --------------ä¼ è¾“è®°æ¬¡------------------------------------------
 			udp_send_times++;
 			fnp_host_send_times.setText(udp_send_times + "");
 			updSendTime = System.currentTimeMillis();
-			// --------------»Ø´«·½Ê½------------------------------------------
+			// --------------å›ä¼ æ–¹å¼------------------------------------------
 			if (fnp_host_byte_ckbox.isChecked())
 				BBK_Tool_Net.UdpSend(ips, prt, BBKNetUDP.toBytes(idl, gps.gm.g));
 			if (fnp_host_char_ckbox.isChecked())

@@ -58,8 +58,7 @@ public class BBK_Tool_Net {
 		}
 	}
 
-	public static void UdpSend(final String _localHost, final int server_port, final String message,
-			charsetNameType t) {
+	public static void UdpSend(final String _localHost, final int server_port, final String message, charsetNameType t) {
 		// --------------------------------------------------------
 		byte[] messageByte = null;
 		try {
@@ -119,6 +118,9 @@ public class BBK_Tool_Net {
 		// --------------------------------------------------------
 	}
 
+	//private static AlertDialog.Builder builder;
+	private static boolean dialogIsShow = false;
+
 	private static boolean CheckNetworkState(final Context ctx) {
 		boolean flag = false;
 		ConnectivityManager manager = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -126,6 +128,11 @@ public class BBK_Tool_Net {
 			flag = manager.getActiveNetworkInfo().isAvailable();
 		}
 		if (!flag) {
+			// --------------------------------------------------------
+			if (dialogIsShow)
+				return flag;
+			dialogIsShow = true;
+			// --------------------------------------------------------
 			AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
 			builder.setIcon(android.R.drawable.ic_dialog_alert);
 			builder.setTitle("Network not avaliable");//
@@ -134,12 +141,14 @@ public class BBK_Tool_Net {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					ctx.startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS)); // 直接进入手机中的wifi网络设置界面
+					dialogIsShow = false;
 				}
 			});
 			builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					dialog.cancel();
+					dialogIsShow = false;
 				}
 			});
 			builder.create();

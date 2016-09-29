@@ -40,7 +40,6 @@ public class BBK_Tool_Image {
 		}
 	}
 
-	@SuppressWarnings("resource")
 	public static byte[] Uri2Bytes(Uri uri) {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		FileInputStream fis;
@@ -56,7 +55,6 @@ public class BBK_Tool_Image {
 		return baos.toByteArray();
 	}
 
-	@SuppressWarnings("resource")
 	public static byte[] FilePath2Bytes(String filePathName) {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		FileInputStream fis;
@@ -242,8 +240,8 @@ public class BBK_Tool_Image {
 		options.inJustDecodeBounds = true;// 不加载bitmap到内存中
 		BitmapFactory.decodeFile(filePathName, options);
 		wh[0] = options.outWidth;
-		wh[1] = options.outHeight;		
-		return wh;		
+		wh[1] = options.outHeight;
+		return wh;
 	}
 	// ===============================================================================================
 	// ===============================================================================================

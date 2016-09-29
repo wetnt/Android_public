@@ -32,7 +32,8 @@ public class BBK_Tool_Screen {
 		act.requestWindowFeature(8); // 全屏抗锯齿
 		// --------------隐去标题栏--------------------------------------
 	}
-	public static void BBKActivitySet_Show_Self_Title(Activity act) {		
+
+	public static void BBKActivitySet_Show_Self_Title(Activity act) {
 		act.requestWindowFeature(Window.FEATURE_CONTEXT_MENU);
 		act.requestWindowFeature(8); // 全屏抗锯齿
 	}

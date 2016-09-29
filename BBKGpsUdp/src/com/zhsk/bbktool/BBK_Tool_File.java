@@ -64,12 +64,12 @@ public class BBK_Tool_File {
 	public static boolean FileReName(String Path, String OldName, String NewName) {
 		// -----------------------------------------------------------------------------
 		File file = new File(Path + OldName);
-		d.s("OldName=="+file.getPath());
+		d.s("OldName==" + file.getPath());
 		if (!file.exists())
 			return false;
 		// -----------------------------------------------------------------------------
 		File newfile = new File(Path + NewName);
-		d.s("newfile=="+newfile.getPath());
+		d.s("newfile==" + newfile.getPath());
 		return file.renameTo(newfile);
 		// -----------------------------------------------------------------------------
 	}
@@ -89,15 +89,15 @@ public class BBK_Tool_File {
 	public static String[] FileGetPathNameExte(String filePathName) {
 		// -----------------------------------------------------------------------------
 		String[] r = new String[3];
-		int p1 = filePathName.lastIndexOf(File.separator) ;
+		int p1 = filePathName.lastIndexOf(File.separator);
 		int p2 = filePathName.lastIndexOf(".");
-		r[0] = filePathName.substring(0,p1);
-		r[1] = filePathName.substring(p1+1,p2);
-		r[2] = filePathName.substring(p2+1);
+		r[0] = filePathName.substring(0, p1);
+		r[1] = filePathName.substring(p1 + 1, p2);
+		r[2] = filePathName.substring(p2 + 1);
 		return r;
 		// -----------------------------------------------------------------------------
 	}
-	
+
 	public static String FileGetExte(String fileNameString) {
 		// -----------------------------------------------------------------------------
 		int start = fileNameString.lastIndexOf(".") + 1;
