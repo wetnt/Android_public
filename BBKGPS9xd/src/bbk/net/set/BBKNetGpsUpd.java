@@ -4,7 +4,7 @@ import java.util.Date;
 
 import android.os.Handler;
 import bbk.bbk.box.BBKSoft;
-import bbk.map.gps.BBKGpsMath.GPS;
+import bbk.map.gps.BBK_Tool_GPS.GPS;
 import bbk.net.abc.BBKHttpGet;
 import bbk.sys.abc.BBKMsgBox;
 import bbk.zzz.debug.bd;

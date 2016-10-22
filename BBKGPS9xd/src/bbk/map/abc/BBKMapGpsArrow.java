@@ -14,10 +14,10 @@ public class BBKMapGpsArrow {
 
 	public static void MapGpsArrow(int mapzm) {// 绘制箭头
 		// ---------------------------------------------------------------------
-		gpsw = BBKSoft.myGps.gm.g.w;
-		gpsj = BBKSoft.myGps.gm.g.j;
-		gpsf = BBKSoft.myGps.gm.g.f;
-		gpsr = BBKSoft.myGps.gm.g.r;
+		gpsw = BBKSoft.myGps.g.w;
+		gpsj = BBKSoft.myGps.g.j;
+		gpsf = BBKSoft.myGps.g.f;
+		gpsr = BBKSoft.myGps.g.r;
 		// ---------------------------------------------------------------------
 		if (gpsw == 0 && gpsj == 0)
 			return;

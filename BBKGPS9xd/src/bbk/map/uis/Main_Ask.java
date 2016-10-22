@@ -107,7 +107,7 @@ public class Main_Ask extends BBKLayView {
 		ListAskGps.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				// --------------------------------------------
-				ListAskMapClick(BBKSoft.myGps.gm.g.w + "," + BBKSoft.myGps.gm.g.j);
+				ListAskMapClick(BBKSoft.myGps.g.w + "," + BBKSoft.myGps.g.j);
 				// --------------------------------------------
 			}
 		});
@@ -230,7 +230,7 @@ public class Main_Ask extends BBKLayView {
 
 	public static void NavissLoadRun() {
 		// --------------------------------------------------------------------------
-		ListAskStr.setText(BBKSoft.myGps.gm.g.w + "," + BBKSoft.myGps.gm.g.j);
+		ListAskStr.setText(BBKSoft.myGps.g.w + "," + BBKSoft.myGps.g.j);
 		ListAskEnd.setText(BBKSoft.myMaps.mapPt.w + "," + BBKSoft.myMaps.mapPt.j);
 		// --------------------------------------------------------------------------
 		askBackInfoStrInt = 0;

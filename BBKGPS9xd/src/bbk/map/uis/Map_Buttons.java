@@ -1,5 +1,7 @@
 ﻿package bbk.map.uis;
 
+import com.example.bbkgps9xd.R;
+
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
@@ -15,8 +17,6 @@ import bbk.map.gps.BBKGpsReport;
 import bbk.map.lay.BBKMapLay.line_type;
 import bbk.sys.abc.BBKMsgBox;
 import bbk.uis.view.BBKLayView;
-
-import com.example.bbkgps9xd.R;
 
 public class Map_Buttons extends BBKLayView {
 
@@ -122,9 +122,9 @@ public class Map_Buttons extends BBKLayView {
 		// ----------------------------------------------------------------------
 		BBKSoft.GpsIsFollow = !BBKSoft.GpsIsFollow;
 		// ----------------------------------------------------------------------
-		if (BBKSoft.GpsIsFollow && BBKSoft.myGps.gm.g.w != 0 && BBKSoft.myGps.gm.g.j != 0) {
+		if (BBKSoft.GpsIsFollow && BBKSoft.myGps.g.w != 0 && BBKSoft.myGps.g.j != 0) {
 			// ------------------------------------------------------------------
-			BBKSoft.myMaps.MapCenterSet(BBKSoft.myGps.gm.g.w, BBKSoft.myGps.gm.g.j);
+			BBKSoft.myMaps.MapCenterSet(BBKSoft.myGps.g.w, BBKSoft.myGps.g.j);
 			BBKSoft.MapFlash(true);
 			// ------------------------------------------------------------------
 		}

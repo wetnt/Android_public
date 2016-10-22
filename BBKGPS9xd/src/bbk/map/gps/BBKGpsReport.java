@@ -18,13 +18,13 @@ public class BBKGpsReport {
 	public static String Gps_Statistics() {
 		// ------------------------------------------------------------------
 		GpsInfos = "行程信息统计 >>" + lrn + lrn;
-		GpsInfos += "起始：" + gpsTmFt.format(BBKSoft.myGps.gm.g.ts) + lrn;
-		GpsInfos += "当前：" + gpsTmFt.format(BBKSoft.myGps.gm.g.t) + lrn;
-		GpsInfos += "耗时：" + BBKSoft.myGps.gm.g.tls + " " + lrn;
+		GpsInfos += "起始：" + gpsTmFt.format(BBKSoft.myGps.g.ts) + lrn;
+		GpsInfos += "当前：" + gpsTmFt.format(BBKSoft.myGps.g.t) + lrn;
+		GpsInfos += "耗时：" + BBKSoft.myGps.g.tls + " " + lrn;
 		GpsInfos += lrn;
-		GpsInfos += "里程：" + BBKSoft.myGps.gm.g.l + " km" + lrn;
-		GpsInfos += "均速：" + BBKSoft.myGps.gm.g.va + " km/h" + lrn;
-		GpsInfos += "最大：" + BBKSoft.myGps.gm.g.vm + " km/h" + lrn;
+		GpsInfos += "里程：" + BBKSoft.myGps.g.l + " km" + lrn;
+		GpsInfos += "均速：" + BBKSoft.myGps.g.va + " km/h" + lrn;
+		GpsInfos += "最大：" + BBKSoft.myGps.g.vm + " km/h" + lrn;
 		GpsInfos += lrn;
 		// ------------------------------------------------------------------
 		return GpsInfos;
@@ -34,7 +34,7 @@ public class BBKGpsReport {
 	// ====================================================================================
 	public static void GpsInfoShow() {
 		// ---------------------------------------------------------------------
-		BBKSoft.myGps.gm.GpsRuns();
+		//BBKSoft.myGps.GpsRuns();
 		BBKMsgBox.MsgOK(Gps_Statistics());
 		// ---------------------------------------------------------------------
 	}
@@ -42,7 +42,7 @@ public class BBKGpsReport {
 	// ====================================================================================
 	public static void AlertDialogExit(Context act) {
 		// ---------------------------------------------------------------------
-		if (BBKSoft.myGps.gm.g.l < 0.5) {
+		if (BBKSoft.myGps.g.l < 0.5) {
 			BBKSoft.SoftExit();
 			return;
 		}

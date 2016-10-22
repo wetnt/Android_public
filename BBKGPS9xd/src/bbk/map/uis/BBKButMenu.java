@@ -9,8 +9,8 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.view.Menu;
 import android.view.MenuItem;
-import bbk.bbk.box.BBKSoft;
 import bbk.bbk.box.BBKAbout;
+import bbk.bbk.box.BBKSoft;
 import bbk.map.gps.BBKGpsReport;
 import bbk.map.lay.BBKMapLay.line_type;
 import bbk.sys.abc.BBKMsgBox;
@@ -233,7 +233,7 @@ public class BBKButMenu {
 	// ====================================================================================
 	public void BBKGpsSYSTime() {
 		// ---------------------------------------------
-		BBKSoft.myRoot.BBKSysTimeGpsSync(BBKSoft.myGps.gm.g.t.getTime(), BBKSoft.myGps.gm.g.K);
+		BBKSoft.myRoot.BBKSysTimeGpsSync(BBKSoft.myGps.g.t.getTime(), BBKSoft.myGps.g.K);
 		// ---------------------------------------------
 	}
 	// ====================================================================================

@@ -14,9 +14,9 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class BBKMenuView {
 

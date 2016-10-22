@@ -12,22 +12,22 @@ import bbk.map.abc.BBKMap;
 import bbk.map.abc.BBKMap.MapPoiWJ;
 import bbk.map.ask.BBKBaiDu;
 import bbk.map.ask.BBKGoogle;
-import bbk.map.gps.BBKGps;
+import bbk.map.gps.BBK_Tool_GPS;
 import bbk.map.lay.BBKLay;
 import bbk.map.lay.BBKMapLay.Lay_type;
-import bbk.map.lay.BBKMapLayShow;
 import bbk.map.lay.BBKMapLay.poi_type;
+import bbk.map.lay.BBKMapLayShow;
 import bbk.map.set.BBKGpsNetSet;
 import bbk.map.set.BBKMapZoomSet;
 import bbk.map.uis.BBKButMenu;
-import bbk.map.uis.Main_Track2;
-import bbk.map.uis.Map_Buttons;
 import bbk.map.uis.BBKMenuView;
-import bbk.map.uis.Main_List;
 import bbk.map.uis.Main_Ask;
 import bbk.map.uis.Main_AskHis;
 import bbk.map.uis.Main_Fav;
+import bbk.map.uis.Main_List;
 import bbk.map.uis.Main_ScreenLight;
+import bbk.map.uis.Main_Track2;
+import bbk.map.uis.Map_Buttons;
 import bbk.map.uis.Map_Measure;
 import bbk.map.uis.Map_Move;
 import bbk.net.abc.BBKNetCheck;
@@ -73,7 +73,7 @@ public class BBKSoft {
 	public static BBKLay myLays = new BBKLay();
 	public static BBKMapView myView = new BBKMapView();
 	// ----------------------------------------------------
-	public static BBKGps myGps = new BBKGps();
+	public static BBK_Tool_GPS myGps = new BBK_Tool_GPS();
 	// ----------------------------------------------------
 	public static Map_Measure myMeasure = new Map_Measure();
 	public static Map_Move myMove = new Map_Move();
@@ -225,11 +225,11 @@ public class BBKSoft {
 	public static void TxtGpsRuns() {
 		// -------------------------------------------------------------------
 		if (true) {// 界面GPS信息显示
-			myGps.gm.GpsInfos(myMaps.mapPt.w, myMaps.mapPt.j, mySens.CompassAngle, true);
-			myBoxs.LabTit.setText(myGps.gm.g.a);
-			myBoxs.LabSpd.setText(myGps.gm.g.vs);
-			if (myGps.gm.g.K) {
-				myBoxs.LabInf.setText(myGps.gm.g.i);
+			myGps.GpsInfos(myMaps.mapPt.w, myMaps.mapPt.j, mySens.CompassAngle, true);
+			myBoxs.LabTit.setText(myGps.g.a);
+			myBoxs.LabSpd.setText(myGps.g.vs);
+			if (myGps.g.K) {
+				myBoxs.LabInf.setText(myGps.g.i);
 			}
 		}
 		// ------------------------------------------------------------------
@@ -245,15 +245,15 @@ public class BBKSoft {
 
 	public static void MapGpsRuns() {
 		// ------------------------------------------------------------------
-		if (myGps.gm.g.R) {// 轨迹记录
+		if (myGps.g.R) {// 轨迹记录
 			// ----------------------lay_bjp---------------------------------
-			gpsn = new StringBuffer(myGps.gm.g.v + "," + myGps.gm.g.f + "," + myGps.gm.g.t.toString());
-			gpsp = new poi_type(em, em, gpsn, myGps.gm.g.w, myGps.gm.g.j, myGps.gm.g.h, myGps.gm.g.t);
+			gpsn = new StringBuffer(myGps.g.v + "," + myGps.g.f + "," + myGps.g.t.toString());
+			gpsp = new poi_type(em, em, gpsn, myGps.g.w, myGps.g.j, myGps.g.h, myGps.g.t);
 			// ----------------------lay_bjp---------------------------------
 			myLays.laygps.pois.add(gpsp);
-			myLays.laygps.line.get(0).add(myGps.gm.g.w, myGps.gm.g.j);
+			myLays.laygps.line.get(0).add(myGps.g.w, myGps.g.j);
 			// -----------------------bbt------------------------------------
-			BBKSYS.appendSaveBBT(myGps.gm.g.w, myGps.gm.g.j, myGps.gm.g.h, myGps.gm.g.t);
+			BBKSYS.appendSaveBBT(myGps.g.w, myGps.g.j, myGps.g.h, myGps.g.t);
 			// -----------------------Sql------------------------------------
 			// mySql.insertRecord(UserIDid, myGps.gps.w, myGps.gps.j,
 			// myGps.gps.h,myGps.gps.v, myGps.gps.f, "G", "0", "0", 0,
@@ -261,22 +261,22 @@ public class BBKSoft {
 			// --------------------------------------------------------------
 		}
 		// ------------------------------------------------------------------
-		if (myGps.gm.g.R && myGps.gm.g.w != 0 && myGps.gm.g.j != 0) {
+		if (myGps.g.R && myGps.g.w != 0 && myGps.g.j != 0) {
 			// --------------------------------------------------------------
-			// mySqlGps.AddGps(myGps.gm.g.w, myGps.gm.g.j, myGps.gm.g.h,
-			// myGps.gm.g.v, myGps.gm.g.f, myGps.gm.g.t);
+			// mySqlGps.AddGps(myGps.g.w, myGps.g.j, myGps.g.h,
+			// myGps.g.v, myGps.g.f, myGps.g.t);
 			// --------------------------------------------------------------
 			if (GpsIsFollow) {
-				myMaps.MapCenterSet(myGps.gm.g.w, myGps.gm.g.j);
+				myMaps.MapCenterSet(myGps.g.w, myGps.g.j);
 			}
 			MapFlash(false);
 			// --------------------------------------------------------------
 		}
 		// ------------------------------------------------------------------
-		if (myGps.gm.g.R) {// 信息上传
+		if (myGps.g.R) {// 信息上传
 			// --------------------------------------------------------------
 			if (BBKSoft.myNetSet.GpsUpdRunKey) {
-				myGpsUpd.AddGps(myGps.gm.g);
+				myGpsUpd.AddGps(myGps.g);
 			}
 			// myNetGps.GpsUpRunThead();
 			// mySync.gpsUp.GpsListAdd();
@@ -466,7 +466,12 @@ public class BBKSoft {
 
 	public static void GPSOpenRun() {
 		// -----------------------------------------------------
-		myGps.GpsInt((Activity) bbkContext);
+		myGps.GpsInt((Activity) bbkContext, new BBK_Tool_GPS.GpsUpdateWork() {
+			@Override
+			public void work() {
+				BBKSoft.MapGpsRuns();
+			}
+		});
 		boolean gpsyes = myGps.GpsIsRun;
 		if (gpsyes)
 			return;
@@ -555,7 +560,7 @@ public class BBKSoft {
 
 	public static void MapMove() {
 		myMove.MapMove(myMaps.mapPt.w, myMaps.mapPt.j);
-		if (!myGps.gm.g.R)
+		if (!myGps.g.R)
 			myBoxs.LabInf.setText("[+]" + myMaps.mapPt.w + "," + myMaps.mapPt.j);
 	}
 
