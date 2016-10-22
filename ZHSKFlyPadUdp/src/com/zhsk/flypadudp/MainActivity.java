@@ -1,5 +1,6 @@
 package com.zhsk.flypadudp;
 
+import com.zhsk.bbktool.BBK_Tool_GPS;
 import com.zhsk.bbktool.BBK_Tool_Net;
 import com.zhsk.bbktool.BBK_Tool_Setting;
 import com.zhsk.bbktool.d;
@@ -23,7 +24,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import bbk.map.gps.BBKGps;
 import bbk.net.abc.BBKNetGpsUpd;
 import bbk.net.abc.BBKNetUDP;
 
@@ -142,20 +142,20 @@ public class MainActivity extends Activity {
 	};
 	// ================================================================================
 
-	public static BBKGps gps = new BBKGps();
+	public static BBK_Tool_GPS gps = new BBK_Tool_GPS();
 	public static OSGPLANEINFO x = new OSGPLANEINFO();
 
 	public static void GpsUpdate() {
 		// --------------------------------------------------------
 		try {
-			fnp_info_txt.setText(gps.gm.g.a);
+			fnp_info_txt.setText(gps.g.a);
 			// d.s(gps.gm.g.a);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		// --------------------------------------------------------
 		try {
-			GpsToOSGPLANEINFO(idl, gps.gm.g);
+			GpsToOSGPLANEINFO(idl, gps.g);
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
@@ -171,7 +171,7 @@ public class MainActivity extends Activity {
 		// --------------------------------------------------------
 	}
 
-	private static void GpsToOSGPLANEINFO(long idl, bbk.map.gps.BBKGpsMath.GPS g) {
+	private static void GpsToOSGPLANEINFO(long idl, BBK_Tool_GPS.GPS g) {
 		// --------------------------------------------------------
 		x.ID = idl; // 唯一标识
 		x.ShowID = (int) idl;
@@ -201,7 +201,7 @@ public class MainActivity extends Activity {
 		}
 		// --------------------------------------------------------
 		udp_send_times = 0;
-		fnp_host_send_times.setText(udp_send_times+"");
+		fnp_host_send_times.setText(udp_send_times + "");
 		// --------------------------------------------------------
 	}
 
@@ -210,19 +210,19 @@ public class MainActivity extends Activity {
 	private static long idl = 9988;
 	private static long updSendTime = System.currentTimeMillis();
 	private static int udp_send_times = 0;
-	
+
 	public static void UDP_send_data() {
 		try {
 			// --------------------------------------------------------
 			x.toBytes();
 			BBK_Tool_Net.UdpSend(ips, prt, x.data);
-			BBK_Tool_Net.UdpSend(ips, 38888, BBKNetUDP.toBytes(10000,gps.gm.g));
+			BBK_Tool_Net.UdpSend(ips, 38888, BBKNetUDP.toBytes(10000, gps.g));
 			tcpDataSend();
 			fnp_info_receive_txt.setText(bytes2hex(x.data));
 			udp_send_times++;
-			fnp_host_send_times.setText(udp_send_times+"");
+			fnp_host_send_times.setText(udp_send_times + "");
 			// --------------------------------------------------------
-			myGpsUpd.AddGps(gps.gm.g);
+			myGpsUpd.AddGps(gps.g);
 			updSendTime = System.currentTimeMillis();
 			// --------------------------------------------------------
 		} catch (NumberFormatException e) {
@@ -391,7 +391,7 @@ public class MainActivity extends Activity {
 	// ========================================================================================
 	// ========================================================================================
 	// ========================================================================================
-	
+
 	// ====================================================================
 	// ====================================================================
 	// ====================================================================

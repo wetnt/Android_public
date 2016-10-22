@@ -2,11 +2,10 @@
 
 import java.util.Date;
 
+import com.zhsk.bbktool.BBK_Tool_GPS.GPS;
 import com.zhsk.bbktool.d;
 
 import android.os.Handler;
-import bbk.map.gps.BBKGpsMath.GPS;
-import bbk.net.abc.BBKHttpGet;
 
 public class BBKNetGpsUpd {
 
@@ -73,7 +72,8 @@ public class BBKNetGpsUpd {
 			myjson = "GpsNoDate";
 		} else {
 			// --------------------------------------------------
-			myAsk = GpsUpUrl(gpss, tkey);d.s(myAsk);
+			myAsk = GpsUpUrl(gpss, tkey);
+			d.s(myAsk);
 			myjson = BBKHttpGet.BBKHttpGetUrl(myAsk, gbCode, false);
 			// ------------------------------------------------------
 			if (myjson.length() > 10) {

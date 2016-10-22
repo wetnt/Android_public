@@ -1,10 +1,8 @@
 package bbk.net.abc;
 
 import com.zhsk.bbktool.BBK_Tool_Byte;
+import com.zhsk.bbktool.BBK_Tool_GPS.GPS;
 import com.zhsk.bbktool.d;
-
-import bbk.map.gps.BBKGpsMath;
-import bbk.map.gps.BBKGpsMath.GPS;
 
 public class BBKNetUDP {
 
@@ -34,7 +32,7 @@ public class BBKNetUDP {
 	// -----------------------------------------
 	public static void bufExp(byte[] b) {
 		//d.s(b.toString());
-		GPS g = new BBKGpsMath.GPS();
+		GPS g = new GPS();
 		// -----------------------------------------
 		long id = BBK_Tool_Byte.getLong4(b, 0);
 		long tp = BBK_Tool_Byte.getLong4(b, 4);
