@@ -23,6 +23,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.widget.Toast;
+import bbk.map.abc.BBKMapMath;
 
 public class BBK_Tool_GPS {
 
@@ -36,7 +37,7 @@ public class BBK_Tool_GPS {
 	public GpsUpdateWork myGpsUpdateWork = new GpsUpdateWork() {
 		@Override
 		public void work() {
-			//d.s("myGpsUpdateWork==Default_New_Work");
+			// d.s("myGpsUpdateWork==Default_New_Work");
 		}
 	};
 
@@ -99,7 +100,7 @@ public class BBK_Tool_GPS {
 	private Activity bbkAct;
 	private LocationManager lm;
 
-	public interface GpsUpdateWork {//GPS更新接口
+	public interface GpsUpdateWork {// GPS更新接口
 		public void work();
 	}
 
@@ -150,14 +151,14 @@ public class BBK_Tool_GPS {
 	// ====================================================================================
 	// ###############################GPS监听设置###########################################
 	// ====================================================================================
-	private LocationListener lg = new LocationListener() {//位置监听
+	private LocationListener lg = new LocationListener() {// 位置监听
 		@Override
-		public void onLocationChanged(Location location) {//位置信息变化时触发
+		public void onLocationChanged(Location location) {// 位置信息变化时触发
 			GpsUpdate(location);
 		}
 
 		@Override
-		public void onStatusChanged(String provider, int status, Bundle extras) {//GPS状态变化时触发
+		public void onStatusChanged(String provider, int status, Bundle extras) {// GPS状态变化时触发
 			switch (status) {
 			case LocationProvider.AVAILABLE:
 				// BBKDebug.ddd("当前GPS状态为可见状态");
@@ -172,17 +173,17 @@ public class BBK_Tool_GPS {
 		}
 
 		@Override
-		public void onProviderEnabled(String provider) {//GPS开启时触发
+		public void onProviderEnabled(String provider) {// GPS开启时触发
 			GpsUpdate(lm.getLastKnownLocation(provider));
 		}
 
 		@Override
-		public void onProviderDisabled(String provider) {//GPS禁用时触发
+		public void onProviderDisabled(String provider) {// GPS禁用时触发
 			GpsUpdate(null);
 		}
 
 	};
-	private GpsStatus.Listener ls = new GpsStatus.Listener() {//状态监听
+	private GpsStatus.Listener ls = new GpsStatus.Listener() {// 状态监听
 		public void onGpsStatusChanged(int event) {
 			switch (event) {
 			// ----------------------------------------------------
@@ -279,14 +280,14 @@ public class BBK_Tool_GPS {
 	// ====================================================================================
 	@SuppressLint("SimpleDateFormat")
 	private final SimpleDateFormat gpsTmFt = new SimpleDateFormat("HH:mm:ss");
-	private final double GpsMinR = 0.00001;// 记录轨迹点的最小范围	
+	private final double GpsMinR = 0.00001;// 记录轨迹点的最小范围
 	// ---------------------------------------------------------------
 
 	public class GPS {
 		// -----------------------------------------
 		public boolean K;// 是否定位
 		public boolean R;// 是否合理移动
-		public double m;//漂移值
+		public double m;// 漂移值
 		// -----------------------------------------
 		public Date t;// GPS时间
 		// -----------------------------------------
@@ -367,9 +368,10 @@ public class BBK_Tool_GPS {
 		// ----------------------------------------------------
 		g.vs = " " + g.v; // + "km/h";
 		// ---------------------------------------------------------------------
-		g.i = "[+]" + mapw + "," + mapj + "\r\n";
+		double dks = BBKMapMath.GetDistance(g.w, g.j, mapw, mapj);
+		g.i = "[+]" + mapw + "," + mapj + "," + dks + "km\r\n";
 		if (g.K || more) {
-			g.i += "[g]" + g.w + "," + g.j + "," + g.h + "\r\n";
+			g.i += "[g]" + g.w + "," + g.j + "," + g.h + "m\r\n";
 			g.i += Orientation_To_String(compass) + " " + (int) compass;
 			g.i += "/" + (int) g.f + "\r\n";
 			g.i += "s=" + g.l + " km" + "/" + g.tls + " " + "\r\n";
@@ -407,8 +409,8 @@ public class BBK_Tool_GPS {
 			g.lj = g.j;
 		}
 		// -----------------------------------------------------------------------
-		//if (Math.abs(g.lw - g.w) < GpsMinR && Math.abs(g.lj - g.j) < GpsMinR)
-		//	return false;
+		// if (Math.abs(g.lw - g.w) < GpsMinR && Math.abs(g.lj - g.j) < GpsMinR)
+		// return false;
 		// -----------------------------------------------------------------------
 		g.m = GetDistance(g.w, g.j, g.lw, g.lj);
 		// -----------------------------------------------------------------------
@@ -487,8 +489,8 @@ public class BBK_Tool_GPS {
 	// ####################################################################################
 	// ##############################GpsMath_B#############################################
 	// ####################################################################################
-	// ====================================================================================	
-	public class DFM_type {//度_分_秒__模型
+	// ====================================================================================
+	public class DFM_type {// 度_分_秒__模型
 		public int d = 0, f = 0;// 度分
 		public double s = 0.0;// 秒
 		public double ddd = 0.0;// DD.DDDDD
@@ -507,7 +509,7 @@ public class BBK_Tool_GPS {
 		}
 	}
 
-	public String get_DFM_String(double t) {//度.度度度__转__度_分_秒
+	public String get_DFM_String(double t) {// 度.度度度__转__度_分_秒
 		DFM_type d = new DFM_type(t);
 		String s = "";
 		s += d.d + "时 ";
@@ -549,7 +551,7 @@ public class BBK_Tool_GPS {
 	}
 
 	// =========================================================================
-	public double getDouble(double a, int Decimals) {//获取小数精度
+	public double getDouble(double a, int Decimals) {// 获取小数精度
 		double n = 1;
 		if (Decimals == 0)
 			n = 1;
@@ -589,7 +591,8 @@ public class BBK_Tool_GPS {
 			r2 = rad(lat2);
 			a = r1 - r2;
 			b = rad(lng1) - rad(lng2);
-			s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(r1) * Math.cos(r2) * Math.pow(Math.sin(b / 2), 2)));
+			s = 2 * Math.asin(Math
+					.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(r1) * Math.cos(r2) * Math.pow(Math.sin(b / 2), 2)));
 			s = Math.round(s * EARTH_RADIUS) / 1000.0;
 			// ------------------------------------------------------------------
 		} catch (Exception e) {
