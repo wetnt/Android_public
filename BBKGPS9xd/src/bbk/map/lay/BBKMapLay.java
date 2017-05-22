@@ -145,7 +145,8 @@ public class BBKMapLay {
 			poi.add(p);
 		}
 
-		public void reSet(int i, StringBuffer nm, StringBuffer pp, StringBuffer ss, double wd, double jd, double hb, Date dt) {
+		public void reSet(int i, StringBuffer nm, StringBuffer pp, StringBuffer ss, double wd, double jd, double hb,
+				Date dt) {
 			poi_type p = new poi_type(nm, pp, ss, wd, jd, hb, dt);
 			poi.set(i, p);
 		}

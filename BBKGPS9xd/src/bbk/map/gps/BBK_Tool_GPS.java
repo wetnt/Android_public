@@ -368,8 +368,8 @@ public class BBK_Tool_GPS {
 		// ----------------------------------------------------
 		g.vs = " " + g.v; // + "km/h";
 		// ---------------------------------------------------------------------
-		double dks = BBKMapMath.GetDistance(g.w, g.j, mapw, mapj);
-		g.i = "[+]" + mapw + "," + mapj + "," + dks + "km\r\n";
+		// double dks = BBKMapMath.GetDistance(g.w, g.j, mapw, mapj);
+		g.i = "[+]" + mapw + "," + mapj + "," + BBKMapMath.GetDistance(g.w, g.j, mapw, mapj) + "km\r\n";
 		if (g.K || more) {
 			g.i += "[g]" + g.w + "," + g.j + "," + g.h + "m\r\n";
 			g.i += Orientation_To_String(compass) + " " + (int) compass;

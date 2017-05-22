@@ -5,8 +5,11 @@ import bbk.map.abc.BBKMap.MapPoiXY;
 public class BBKMapMath {
 
 	// =================比例尺==============================================================
-	public final static String BLCKMM[] = { "8000km(0)", "4000km(1)", "2000km(2)", "1000km(3)", "500km(4)", "250km(5)", "120km(6)", "60km(7)", "30km(8)", "15km(9)", "7.5km(10)", "3km(11)", "2km(12)", "800m(13)", "400m(14)", "200m(15)", "100m(16)", "50m(17)", "25m(18)", "12m(19)", "6m(20)", "3m(21)", "1m(22)", "0.5m(22)" };
-	public final static long BLCLONG[] = { 1, 1, 20000000, 10000000, 5000000, 2500000, 120000, 60000, 16000, 15500, 8000, 4000, 2000, 1000, 500, 250, 120, 53, 30, 15, 8, 4, 2, 1 };
+	public final static String BLCKMM[] = { "8000km(0)", "4000km(1)", "2000km(2)", "1000km(3)", "500km(4)", "250km(5)",
+			"120km(6)", "60km(7)", "30km(8)", "15km(9)", "7.5km(10)", "3km(11)", "2km(12)", "800m(13)", "400m(14)",
+			"200m(15)", "100m(16)", "50m(17)", "25m(18)", "12m(19)", "6m(20)", "3m(21)", "1m(22)", "0.5m(22)" };
+	public final static long BLCLONG[] = { 1, 1, 20000000, 10000000, 5000000, 2500000, 120000, 60000, 16000, 15500,
+			8000, 4000, 2000, 1000, 500, 250, 120, 53, 30, 15, 8, 4, 2, 1 };
 	// =================比例尺==============================================================
 	public static double pow2n[] = new double[21];
 
@@ -82,7 +85,8 @@ public class BBKMapMath {
 					PinM = 0;
 				}
 				PinPB = polygon[PinM];
-				if (p.Y > Math.min(PinPA.Y, PinPB.Y) && p.Y <= Math.max(PinPA.Y, PinPB.Y) && PinPA.Y != PinPB.Y && p.X <= Math.max(PinPA.X, PinPB.X)) {
+				if (p.Y > Math.min(PinPA.Y, PinPB.Y) && p.Y <= Math.max(PinPA.Y, PinPB.Y) && PinPA.Y != PinPB.Y
+						&& p.X <= Math.max(PinPA.X, PinPB.X)) {
 					PinA = p.Y - PinPA.Y;
 					PinB = PinPB.X - PinPA.X;
 					Pinc = PinPB.Y - PinPA.Y;
@@ -130,7 +134,8 @@ public class BBKMapMath {
 			r2 = rad(lat2);
 			a = r1 - r2;
 			b = rad(lng1) - rad(lng2);
-			s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(r1) * Math.cos(r2) * Math.pow(Math.sin(b / 2), 2)));
+			s = 2 * Math.asin(Math
+					.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(r1) * Math.cos(r2) * Math.pow(Math.sin(b / 2), 2)));
 			s = Math.round(s * EARTH_RADIUS) / 1000.0;
 			// ----------------------------------------------------------------------
 		} catch (Exception e) {
@@ -225,8 +230,10 @@ public class BBKMapMath {
 	}
 
 	// =================Map_Max_X/Y_Check==============================================================
-	public static int[] MapMaxX = { 0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535, 131071, 262143, 524287, 1048575 };
-	public static int[] MapMaxY = { 0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1022, 2044, 4089, 8178, 16357, 32714, 65428, 130857, 261714, 523429, 1046858 };
+	public static int[] MapMaxX = { 0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535,
+			131071, 262143, 524287, 1048575 };
+	public static int[] MapMaxY = { 0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1022, 2044, 4089, 8178, 16357, 32714, 65428,
+			130857, 261714, 523429, 1046858 };
 
 	public static int MapMaxXCheck(int Mapx, int Zm) {
 		if (Mapx > MapMaxX[Zm]) {

@@ -36,14 +36,16 @@ public class BBKHttpGet {
 	// // -----------------------------
 	// }
 	// }.start();
-	private static String BBKHttpGetUrlNew(String strUrl, String strCode, String proxy, int sort, int timeout, boolean debugKey)
+	private static String BBKHttpGetUrlNew(String strUrl, String strCode, String proxy, int sort, int timeout,
+			boolean debugKey)
 	// 此过程必须放在新线程中：see81192154:
 	{
 		try {
 			// -------------------------------------------------------------------
 			if (debugKey) {
 				bd.d("BBKHttpGet.BBKHttpGetUrlNew.BackStrCode = " + strCode, false, false);
-				bd.d("BBKHttpGet.BBKHttpGetUrlNew.proxy.sort.out = " + proxy + "," + sort + "," + timeout, false, false);
+				bd.d("BBKHttpGet.BBKHttpGetUrlNew.proxy.sort.out = " + proxy + "," + sort + "," + timeout, false,
+						false);
 				bd.d("BBKHttpGet.BBKHttpGetUrlNew.strUrl == " + strUrl, false, false);
 			}
 			// -------------------------------------------------------------------

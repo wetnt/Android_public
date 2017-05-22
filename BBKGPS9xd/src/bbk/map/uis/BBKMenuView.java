@@ -34,10 +34,17 @@ public class BBKMenuView {
 	private final int ITEM_FULLSCREEN = 3;// 全屏
 	private final int ITEM_MORE = 11;// 菜单
 
-	int[] menu_image_array = { R.drawable.menu_search, R.drawable.menu_filemanager, R.drawable.menu_downmanager, R.drawable.menu_fullscreen, R.drawable.menu_inputurl, R.drawable.menu_bookmark, R.drawable.menu_bookmark_sync_import, R.drawable.menu_sharepage, R.drawable.menu_quit, R.drawable.menu_nightmode, R.drawable.menu_refresh, R.drawable.menu_more };
+	int[] menu_image_array = { R.drawable.menu_search, R.drawable.menu_filemanager, R.drawable.menu_downmanager,
+			R.drawable.menu_fullscreen, R.drawable.menu_inputurl, R.drawable.menu_bookmark,
+			R.drawable.menu_bookmark_sync_import, R.drawable.menu_sharepage, R.drawable.menu_quit,
+			R.drawable.menu_nightmode, R.drawable.menu_refresh, R.drawable.menu_more };
 	String[] menu_name_array = { "搜索", "文件管理", "下载管理", "全屏", "网址", "书签", "加入书签", "分享页面", "退出", "夜间模式", "刷新", "更多" };
-	int[] menu_image_array2 = { R.drawable.menu_auto_landscape, R.drawable.menu_penselectmodel, R.drawable.menu_page_attr, R.drawable.menu_novel_mode, R.drawable.menu_page_updown, R.drawable.menu_checkupdate, R.drawable.menu_checknet, R.drawable.menu_refreshtimer, R.drawable.menu_syssettings, R.drawable.menu_help, R.drawable.menu_about, R.drawable.menu_return };
-	String[] menu_name_array2 = { "自动横屏", "笔选模式", "阅读模式", "浏览模式", "快捷翻页", "检查更新", "检查网络", "定时刷新", "设置", "帮助", "关于", "返回" };
+	int[] menu_image_array2 = { R.drawable.menu_auto_landscape, R.drawable.menu_penselectmodel,
+			R.drawable.menu_page_attr, R.drawable.menu_novel_mode, R.drawable.menu_page_updown,
+			R.drawable.menu_checkupdate, R.drawable.menu_checknet, R.drawable.menu_refreshtimer,
+			R.drawable.menu_syssettings, R.drawable.menu_help, R.drawable.menu_about, R.drawable.menu_return };
+	String[] menu_name_array2 = { "自动横屏", "笔选模式", "阅读模式", "浏览模式", "快捷翻页", "检查更新", "检查网络", "定时刷新", "设置", "帮助", "关于",
+			"返回" };
 
 	public void onCreateMenu(Context context, Menu menu) {
 		// ---------------------------------------------
@@ -102,7 +109,8 @@ public class BBKMenuView {
 			map.put("itemText", menuNameArray[i]);
 			data.add(map);
 		}
-		SimpleAdapter simperAdapter = new SimpleAdapter(bbkAct, data, R.layout.menu_item, new String[] { "itemImage", "itemText" }, new int[] { R.id.item_image, R.id.item_text });
+		SimpleAdapter simperAdapter = new SimpleAdapter(bbkAct, data, R.layout.menu_item,
+				new String[] { "itemImage", "itemText" }, new int[] { R.id.item_image, R.id.item_text });
 		return simperAdapter;
 	}
 

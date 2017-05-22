@@ -7,7 +7,8 @@ public class BBKAbout {
 	// ====================================================================================
 	public final static String SoftTitle = "BBK GPS V9X";
 	public final static String SoftYesOKs = "确定";
-	public final static String SoftCopyRitht = "@boboking.com";// "@www.boboking.com 2014";
+	public final static String SoftCopyRitht = "@boboking.com";// "@www.boboking.com
+																// 2014";
 	public static String SoftAbout = "";
 
 	// ====================================================================================

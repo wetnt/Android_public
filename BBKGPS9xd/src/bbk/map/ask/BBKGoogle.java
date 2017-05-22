@@ -31,7 +31,8 @@ public class BBKGoogle {
 	private String originStr = "", destinationStr = "";
 
 	// =========================================================================================
-	public void NaviRunThead(final String origin, final String destination, final int md, final double cw, final double cj) {
+	public void NaviRunThead(final String origin, final String destination, final int md, final double cw,
+			final double cj) {
 		// -------------------------------------
 		originStr = origin;
 		destinationStr = destination;
@@ -204,12 +205,13 @@ public class BBKGoogle {
 					l.end_address = l.end_address.replace(Yzbm, "");
 					// ----------------------------------------------
 					Main_Ask.askBackInfoStrAdd(//
-					"范围：\t" + homeCity + "\r\n" + //
-							"起点：\t" + l.start_address + "\r\n" + //
-							"终点：\t" + l.end_address + "\r\n" + //
-							"里程：\t" + sname //
+							"范围：\t" + homeCity + "\r\n" + //
+									"起点：\t" + l.start_address + "\r\n" + //
+									"终点：\t" + l.end_address + "\r\n" + //
+									"里程：\t" + sname //
 					);
-					LegsABtoTab(map, tab, 0, l.start_address, "All", l.distance.txt, l.duration.txt, l.start_location.lat, l.start_location.lng, l.start_address, "");
+					LegsABtoTab(map, tab, 0, l.start_address, "All", l.distance.txt, l.duration.txt,
+							l.start_location.lat, l.start_location.lng, l.start_address, "");
 					// ----------------------------------------------
 					stepsJy = legJSObj.getJSONArray("steps");
 					for (int sti = 0; sti < stepsJy.length(); sti++) {
@@ -234,7 +236,8 @@ public class BBKGoogle {
 						// ----------------------------------------------
 					}
 					// ----------------------------------------------
-					LegsABtoTab(map, tab, 0, l.end_address, "All", l.distance.txt, l.duration.txt, l.end_location.lat, l.end_location.lng, l.end_address, "");
+					LegsABtoTab(map, tab, 0, l.end_address, "All", l.distance.txt, l.duration.txt, l.end_location.lat,
+							l.end_location.lng, l.end_address, "");
 					// ----------------------------------------------
 				}
 				// ----------------------------------------------
@@ -259,7 +262,7 @@ public class BBKGoogle {
 	}
 
 	private void LegsABtoTab(//
-			HashMap<String, Object> map, ArrayList<HashMap<String, Object>> tab,//
+			HashMap<String, Object> map, ArrayList<HashMap<String, Object>> tab, //
 			int id, String name, String type, String dis, String add, double w, double j, String h, String p) {
 		// ----------------------------------------------
 		map = new HashMap<String, Object>();
@@ -311,16 +314,19 @@ public class BBKGoogle {
 			// ---------------------------------------------------------------------------------
 			"destination", "-目的地",
 			// ---------------------------------------------------------------------------------
-			"u-turn", "掉头", "fork", "叉路", "roundabout", "环岛", "ramp", "匝道", "exit", "出主路", "toll road", "收费公路", "sharp", "急转",
+			"u-turn", "掉头", "fork", "叉路", "roundabout", "环岛", "ramp", "匝道", "exit", "出主路", "toll road", "收费公路", "sharp",
+			"急转",
 			// ---------------------------------------------------------------------------------
 			"east", "东", "west", "西", "south", "南", "north", "北", "right", "右", "left", "左",
 			// ---------------------------------------------------------------------------------
-			"toward", "向", "to", "-", "turn", "转", "head", "向", "stay", "留", "keep", "直行", "slight", "靠", "continue", "直行", "merge", "进入",
+			"toward", "向", "to", "-", "turn", "转", "head", "向", "stay", "留", "keep", "直行", "slight", "靠", "continue",
+			"直行", "merge", "进入",
 			// ---------------------------------------------------------------------------------
-			"partial", "部分", "road", "路", "make", "", "take", "", "onto", "进入", "will be", "", "the", "", "at", "在", "on", "", "and", "", "a ", "",
+			"partial", "部分", "road", "路", "make", "", "take", "", "onto", "进入", "will be", "", "the", "", "at", "在",
+			"on", "", "and", "", "a ", "",
 			// ---------------------------------------------------------------------------------
 			" ", ""
-	// ---------------------------------------------------------------------------------
+			// ---------------------------------------------------------------------------------
 	};
 
 	private String EnglishToChinese(String name) {
@@ -872,12 +878,13 @@ public class BBKGoogle {
 					l.end_address = l.end_address.replace(homeCity, "");
 					// ----------------------------------------------
 					Main_Ask.askBackInfoStrAdd(//
-					"城市：\t" + homeCity + "\r\n" + //
-							"起点：\t" + l.start_address + "\r\n" + //
-							"终点：\t" + l.end_address + "\r\n" + //
-							"里程：\t" + sname //
+							"城市：\t" + homeCity + "\r\n" + //
+									"起点：\t" + l.start_address + "\r\n" + //
+									"终点：\t" + l.end_address + "\r\n" + //
+									"里程：\t" + sname //
 					);
-					LegsABtoTab(map, tab, 0, l.start_address, "All", l.distance.txt, l.duration.txt, l.start_location.lat, l.start_location.lng, l.start_address, "");
+					LegsABtoTab(map, tab, 0, l.start_address, "All", l.distance.txt, l.duration.txt,
+							l.start_location.lat, l.start_location.lng, l.start_address, "");
 					// ----------------------------------------------
 					stepsJy = legJSObj.getJSONArray("steps");
 					for (int sti = 0; sti < stepsJy.length(); sti++) {
@@ -911,7 +918,8 @@ public class BBKGoogle {
 						// ----------------------------------------------
 					}
 					// ----------------------------------------------
-					LegsABtoTab(map, tab, 0, l.end_address + sname, "All", l.distance.txt, l.duration.txt, l.end_location.lat, l.end_location.lng, l.end_address, "");
+					LegsABtoTab(map, tab, 0, l.end_address + sname, "All", l.distance.txt, l.duration.txt,
+							l.end_location.lat, l.end_location.lng, l.end_address, "");
 					// ----------------------------------------------
 				}
 				// ----------------------------------------------

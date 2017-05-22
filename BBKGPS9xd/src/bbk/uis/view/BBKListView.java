@@ -37,10 +37,10 @@ public class BBKListView {
 	public static void ListViewLoad(ArrayList<HashMap<String, Object>> list, ListView listview) {
 		// -----------------------------------------------------------------------------
 		SimpleAdapter adapter = new SimpleAdapter(// 数据装载
-				BBKSoft.bbkContext,// 目标
-				list,// 数据
-				R.layout.list_item,// 样式
-				fromItem,// 对应输入
+				BBKSoft.bbkContext, // 目标
+				list, // 数据
+				R.layout.list_item, // 样式
+				fromItem, // 对应输入
 				toItem // 对应输出
 		);
 		// -----------------------------------------------------------------------------
@@ -48,7 +48,8 @@ public class BBKListView {
 		// -----------------------------------------------------------------------------
 	}
 
-	public static ArrayList<HashMap<String, Object>> BBKLayToArrayList(Lay_type lay, boolean poi, boolean line, boolean ploy) {
+	public static ArrayList<HashMap<String, Object>> BBKLayToArrayList(Lay_type lay, boolean poi, boolean line,
+			boolean ploy) {
 		// -----------------------------------------------------------------------------
 		ArrayList<HashMap<String, Object>> lt = new ArrayList<HashMap<String, Object>>();
 		// -----------------------------------------------------------------------------
@@ -152,7 +153,8 @@ public class BBKListView {
 		double j = Double.parseDouble(jj);
 		double h = Double.parseDouble(hh);
 		// --------------------------------------------
-		poi_type poi = new poi_type(new StringBuffer(Title), new StringBuffer("0"), new StringBuffer(Content), w, j, h, dt);
+		poi_type poi = new poi_type(new StringBuffer(Title), new StringBuffer("0"), new StringBuffer(Content), w, j, h,
+				dt);
 		return poi;
 		// --------------------------------------------
 	}
@@ -179,7 +181,8 @@ public class BBKListView {
 	// ###############################数据设置#############################################
 	// ####################################################################################
 	// ====================================================================================
-	public static ArrayList<HashMap<String, Object>> TrackListAlSchSelect(String str, ArrayList<HashMap<String, Object>> lt) {// 过滤算法
+	public static ArrayList<HashMap<String, Object>> TrackListAlSchSelect(String str,
+			ArrayList<HashMap<String, Object>> lt) {// 过滤算法
 		// ------------------------------------------------------------------------------------------
 		ArrayList<HashMap<String, Object>> lout = new ArrayList<HashMap<String, Object>>();
 		HashMap<String, Object> map = new HashMap<String, Object>();

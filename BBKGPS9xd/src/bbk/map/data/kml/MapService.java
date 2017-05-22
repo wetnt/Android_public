@@ -28,16 +28,19 @@ public class MapService {
 		return out.toString();
 	}
 
-	public static NavigationDataSet calculateRoute(Double startLat, Double startLng, Double targetLat, Double targetLng, int mode) {
+	public static NavigationDataSet calculateRoute(Double startLat, Double startLng, Double targetLat, Double targetLng,
+			int mode) {
 		return calculateRoute(startLat + "," + startLng, targetLat + "," + targetLng, mode);
 	}
 
 	public static NavigationDataSet calculateRoute(String startCoords, String targetCoords, int mode) {
-		String urlPedestrianMode = "http://maps.google.com/maps?" + "saddr=" + startCoords + "&daddr=" + targetCoords + "&sll=" + startCoords + "&dirflg=w&hl=en&ie=UTF8&z=14&output=kml";
+		String urlPedestrianMode = "http://maps.google.com/maps?" + "saddr=" + startCoords + "&daddr=" + targetCoords
+				+ "&sll=" + startCoords + "&dirflg=w&hl=en&ie=UTF8&z=14&output=kml";
 
 		BBKDebug.ddd("urlPedestrianMode: " + urlPedestrianMode);
 
-		String urlCarMode = "http://maps.google.com/maps?" + "saddr=" + startCoords + "&daddr=" + targetCoords + "&sll=" + startCoords + "&hl=en&ie=UTF8&z=14&output=kml";
+		String urlCarMode = "http://maps.google.com/maps?" + "saddr=" + startCoords + "&daddr=" + targetCoords + "&sll="
+				+ startCoords + "&hl=en&ie=UTF8&z=14&output=kml";
 
 		BBKDebug.ddd("urlCarMode: " + urlCarMode);
 
