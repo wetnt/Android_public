@@ -1,10 +1,13 @@
 ﻿package bbk.bbk.box;
 
 import android.app.Activity;
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import bbk.hrd.abc.BBKACC;
 import bbk.hrd.abc.BBKBody;
 import bbk.hrd.abc.BBKMagnetic;
@@ -45,6 +48,7 @@ import bbk.zzz.debug.bd;
 public class BBKSoft {
 
 	public static Context bbkContext;
+
 
 	public void BBKInt(final Context ctxt) {
 		bbkContext = ctxt;
@@ -442,6 +446,7 @@ public class BBKSoft {
 		myNetSet.SetSave();
 		// ------------------------------------------------------------------
 		myMsg.WaitShow(false);
+		//((MainActivity) MainActivity.act).onDestroys();
 		System.exit(0);// 正常退出App
 		// ------------------------------------------------------------------
 	}
@@ -575,11 +580,9 @@ public class BBKSoft {
 		MapFlash(true);
 		// ---------------------------------------------------------
 	}
-
 	// ====================================================================================
 	// ####################################################################################
 	// #############################协助函数###############################################
 	// ####################################################################################
 	// ====================================================================================
-
 }
