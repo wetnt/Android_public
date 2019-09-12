@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayoutListLay"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/newbgs"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/ListLayTitle"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_margin="2dp"
+            android:layout_weight="5"
+            android:background="@drawable/button_bg"
+            android:text="详细信息" />
+
+        <ImageButton
+            android:id="@+id/ListLayExit"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg"
+            android:contentDescription="@string/app_name"
+            android:src="@android:drawable/ic_menu_revert" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/ListLayEdit"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_margin="2dp"
+            android:layout_weight="5"
+            android:inputType="text"
+            android:src="@android:drawable/editbox_background"
+            android:text="" />
+
+        <ImageButton
+            android:id="@+id/ListLaySave"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg"
+            android:contentDescription="@string/app_name"
+            android:src="@android:drawable/ic_menu_myplaces" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/ListLaySearch"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_margin="2dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="5"
+            android:drawableLeft="@android:drawable/ic_menu_search"
+            android:inputType="text"
+            android:text="" />
+
+        <ImageButton
+            android:id="@+id/ListLayMap"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg"
+            android:contentDescription="@string/app_name"
+            android:src="@android:drawable/ic_menu_mapmode" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/ListLayView"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="4dp" />
+
+</LinearLayout>

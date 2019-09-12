@@ -1,17 +1,21 @@
 ﻿package com.example.bbkgps9xd;
 
-import bbk.bbk.box.BBKSoft;
-import bbk.hrd.abc.BBKScreen;
-import bbk.zzz.debug.bd;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
+import android.os.PowerManager;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
+import bbk.bbk.box.BBKSoft;
+import bbk.hrd.abc.BBKScreen;
+import bbk.zzz.debug.bd;
 
 public class MainActivity extends Activity {
 
@@ -21,7 +25,7 @@ public class MainActivity extends Activity {
 	public static Activity act;
 	public static BBKSoft mybbksoft = new BBKSoft();
 	public static int MainBoxW, MainBoxH;
-
+	// private PowerManager.WakeLock mWakeLock;
 	// ====================================================================================
 	// ####################################################################################
 	// ====================================================================================
@@ -46,6 +50,8 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		// ----------------------------------------------------
 		BBKScreen.BBKActivitySet_Hide_Self_Title(MainActivity.this);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
+				WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		setContentView(R.layout.activity_main);
 		act = this;
 		// ----------------------------------------------------
@@ -57,7 +63,6 @@ public class MainActivity extends Activity {
 		});
 		// ----------------------------------------------------
 	}
-
 	// ====================================================================================
 	// ####################################################################################
 	// ##############################程序界面创建##########################################
